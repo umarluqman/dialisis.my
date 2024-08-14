@@ -14,9 +14,12 @@
     "prod:build": "npx prisma generate && npx prisma migrate deploy && next build"
   },
   "dependencies": {
+    "@radix-ui/react-icons": "^1.3.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "contentlayer": "^0.3.2",
     "dayjs": "^1.11.12",
     "eslint": "8.36.0",
@@ -27,6 +30,8 @@
     "react": "18.2.0",
     "react-cookie-consent": "^8.0.1",
     "react-dom": "18.2.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "4.9.5"
   },
   "devDependencies": {
