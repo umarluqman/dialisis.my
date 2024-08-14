@@ -1,0 +1,3377 @@
+[
+  {
+    "name": "Centres",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Ayer Hitam",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Perbadanan Islam Johor (Ayer Hitam), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD ANDALAS PUTRA BIN MOHAMED ISMAIL;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perbadanan Islam Johor\n(Insist Amilat Sdn Bhd)\nNo. 17 & 19, Jln Bandar Baru 8\nPusat Bandar Baru Ayer Hitam  86100 Ayer Hitam  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perbadanan Islam Johor (Ayer Hitam), HD Unit",
+    "tel": "011-11467893",
+    "email": "admin@insistamilat.com.my"
+  },
+  {
+    "name": "Bandar Tenggara",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Impian Bandar Tenggara, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB JABAR BIN ISHAK;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Impian Bandar Tenggara\nNo. 3 & 5 Jalan Impian 1/1,\nTaman Desa Impian  81440 Bandar Tenggara  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Impian Bandar Tenggara, HD Unit",
+    "tel": "017-7005181",
+    "email": "impianbt.hd@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Nour Hannan, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABDUL HANAN BIN NAMAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Nour Hannan\nNo. 70, 71 & 72, Jalan Anggerik 3/1\nTaman Anggerik Tenggara  81440 Bandar Tenggara  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Nour Hannan, HD Unit",
+    "tel": "07-8963411",
+    "email": "nourhannanhaemodialisis@gmail.com"
+  },
+  {
+    "name": "Batu Pahat",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Hospital Sultanah Nora Ismail, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Sultanah Nora Ismail\nJalan Kurma  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Sultanah Nora Ismail, CAPD Unit",
+    "tel": "074363000  3152",
+    "email": ""
+  },
+  {
+    "name": "Pantai Hospital Batu Pahat, CAPD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KEE SWEE ANN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pantai Hospital Batu Pahat\n3rd Floor, CAPD Unit\n9S, Jalan Bintang Satu\nTaman Koperasi Bahagia  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pantai Hospital Batu Pahat, CAPD Unit",
+    "tel": "( 07)4338811  3821 /2529",
+    "email": ""
+  },
+  {
+    "name": "BP Renal Care (Rengit), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "EMA JULIATY BINTI JAMALUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renal Care (Rengit) Sdn. Bhd\nNo.12, Jalan Keembong\nTaman Rengit  83100 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renal Care (Rengit), HD Unit",
+    "tel": "( 07)4242200",
+    "email": "bprenalcarerengit@yahoo.com"
+  },
+  {
+    "name": "BP Renal Care Sdn Bhd (Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KEE SWEE ANN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renal Care Sdn Bhd (Batu Pahat)\nNo.5&5A, 6&6A, 7A, Jalan Salang\nTaman Nira  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renal Care Sdn Bhd (Batu Pahat), HD Unit",
+    "tel": "017-3653599",
+    "email": "bprenalcare@gmail.com"
+  },
+  {
+    "name": "Che Eng Khor Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "YEK TIEW TIING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Che Eng Khor Haemodialysis Centre\nNo 22 & 23, Jalan Susur\nTaman Pantai Baru  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Che Eng Khor Centre, HD Unit",
+    "tel": "( 07)4330088",
+    "email": "cheengkor@gmail.com"
+  },
+  {
+    "name": "Hospital Sultanah Nora Ismail, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit Satelit Haemodialisis\nHospital Sultanah Nora Ismail\nJalan Korma  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Sultanah Nora Ismail, HD Unit",
+    "tel": "( 07)4363000  3152 /3153",
+    "email": ""
+  },
+  {
+    "name": "KPJ Batu Pahat Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KAMARUL ARIFFIN HAMZAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "KPJ Batu Pahat Specialist Hospital\nNo.1, Jalan Mutiara Gading 1\nTaman Mutiara Gading  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "KPJ Batu Pahat Specialist Hospital, HD Unit",
+    "tel": "07-4591000",
+    "email": "bpsh@kpjbatupahat.com"
+  },
+  {
+    "name": "Pantai Hospital Batu Pahat, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "EMA JULIATY BINTI JAMALUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nPantai Hospital Batu Pahat\n95, Jalan Bintang Satu\nTaman Koperasi Bahagia  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pantai Hospital Batu Pahat, HD Unit",
+    "tel": "( 07)4338811  8063",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis PERKESO (Cawangan Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "JACKY TEIN FUWEN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis PERKESO (Cawangan Batu Pahat)\nAras Bawah, No. 14, 16, 18 & 20 \nJalan Maju Timur, Tman Maju  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis PERKESO (Cawangan Batu Pahat), HD Unit",
+    "tel": "014-3894409",
+    "email": "ncm.batupahat@nephro.com"
+  },
+  {
+    "name": "Pusat Haemodialisis Algazel, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ZULKIFLI BIN TAAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Haemodialisis Algazel\nNo 1 & 2, Jalan Universiti 2\nTaman Universiti\nParit Raja  86400 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Haemodialisis Algazel, HD Unit",
+    "tel": "07-4541418",
+    "email": "hemodialisis.algazel@gmail.com"
+  },
+  {
+    "name": "Pusat Haemodialisis Rotary, Batu Pahat, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "AHMED KAMAL KHAIRON BIN IBRAHIM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Haemodialisis Rotary, Batu Pahat\n14 & 16, Jalan Bintang 1\nTaman Koperasi Bahagia  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Haemodialisis Rotary, Batu Pahat, HD Unit",
+    "tel": "( 07)4318885",
+    "email": "dialysisrotarybp@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Darul Ta'zim (Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ZULKIFLI BIN MOHD SHAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Darul Ta'zim\nNo. 7, Jalan Bunga Tanjung  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Darul Ta'zim (Batu Pahat), HD Unit",
+    "tel": "( 07)4384862",
+    "email": "phdtbpt2@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Darul Ta'zim (Parit Raja), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NORULKAMAR BIN SOIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Darul Ta'zim (Parit Raja)\nNo. 12 & 14, Jalan Siswa Jaya 1\nMedan niaga Siswa Jaya, Parit Raja  86400 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Darul Ta'zim (Parit Raja), HD Unit",
+    "tel": "( 07)4541799",
+    "email": "phdtparitraja@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Majlis Agama Islam Negeri Johor, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NORULKAMAR BIN SOIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Majlis Agama Islam Negeri Johor\n(Sinar Haemodialysis Sdn Bhd)\nBangunan Wakaf, Jalan Tanah Merah  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Majlis Agama Islam Negeri Johor, HD Unit",
+    "tel": "( 07)4335242",
+    "email": "sinarmaijclinical@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Sejahtera (Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMED KAMAL KHAIRON BIN IBRAHIM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Sejahtera Sdn Bhd\nNo. 4 & 5, Jalan Sri Sulong\nTaman Sri Sulong Mewah\nParit Sulong  83500 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sejahtera (Batu Pahat), HD Unit",
+    "tel": "07-4185311",
+    "email": "sejahterabp@yahoo.com"
+  },
+  {
+    "name": "Sinar Haemodialysis (Cawangan Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "FOO SEE FONG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Sinar Haemodialysis Sdn Bhd  (Cawangan Batu Pahat) \nNo. 26 & 28 Jalan Penjaja 3, Kim's Park Business Centre  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sinar Haemodialysis (Cawangan Batu Pahat), HD Unit",
+    "tel": "( 07)4322691",
+    "email": "sinarcawbp@gmail.com"
+  },
+  {
+    "name": "Syukur Haemodialysis (Batu Pahat), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "HISHAMUDDIN BIN ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Syukur Haemodialysis (Batu Pahat)\nNo. 29, 30 & 30A,\nJalan Komersil Pantai 3A,\nPusat Komersil Pantai  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Syukur Haemodialysis (Batu Pahat), HD Unit",
+    "tel": "014-3548484",
+    "email": "syukurhdbp@gmail.com"
+  },
+  {
+    "name": "Hospital Sultanah Nora Ismail, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis  Unit)\nHospital Sultanah Nora Ismail\nJalan Korma  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Sultanah Nora Ismail, Tx Unit",
+    "tel": "( 07)4363000  3152 /3153",
+    "email": ""
+  },
+  {
+    "name": "Hospital Sultanah Nora Ismail, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Batu Pahat  83000 Batu Pahat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Sultanah Nora Ismail, MRRB Unit",
+    "tel": "-",
+    "email": "-"
+  },
+  {
+    "name": "Benut",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Seri Benut Dialysis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABU BAKAR BIN MUHAMMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Seri Benut Dialysis Sdn Bhd\nNo. 2, Jalan Desa Indah 1\nTaman Desa Indah  82200 Benut  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Seri Benut Dialysis, HD Unit",
+    "tel": "( 07)6906905",
+    "email": "seribenutdialysis@gmail.com"
+  },
+  {
+    "name": "Bukit Gambir",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Arrraudhah (Gambir), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Arrraudhah (Gambir) Sdn Bhd\nNo. 23, Jalan Melor\nTaman Melor Utama  84800 Bukit Gambir  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Arrraudhah (Gambir), HD Unit",
+    "tel": "018-6660996",
+    "email": "arraudhahwecarebg@gmail.com"
+  },
+  {
+    "name": "Gelang Patah",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Rahimra, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "JUMIAH BINTI SAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Rahimra Sdn Bhd\nNo. 39, 41 & 43, Jalan NIP 2/5\nTaman Perindustrian Nusajaya 2  79200 Gelang Patah  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Rahimra, HD Unit",
+    "tel": "( 07)5548800",
+    "email": "rahimradialisis43@gmail.com"
+  },
+  {
+    "name": "Gemas Baru",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "NSCMH Dialysis Care Cawangan Gemas, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "PAUL PARIMANAM A/L SEGAJANTHAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "NSCMH Dialysis Care Cawangan Gemas\nNo. 21, Ground Floor, Jalan Orkid 1\nTaman Megah  73400 Gemas Baru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "NSCMH Dialysis Care Cawangan Gemas, HD Unit",
+    "tel": "07-9483039",
+    "email": "dialysisgemas@gmail.com"
+  },
+  {
+    "name": "Iskandar Puteri",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Anjung Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB SAMAD BIN SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Anjung Dialysis Centre\nLot R25, R26, R27 & R28, Ground Floor\nAnjung Neighbourhood Centre\nNo.5 Persiaran Ledang Heights  79250 Iskandar Puteri  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Anjung Dialysis Centre, HD Unit",
+    "tel": "07-5090909",
+    "email": "prasarana_teguh@yahoo.com"
+  },
+  {
+    "name": "Johor Bahru",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Johor Specialist Hospital, CAPD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Johor Specialist Hospital\n39B, Jalan Abdul Samad  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Johor Specialist Hospital, CAPD Unit",
+    "tel": "07-2253000",
+    "email": ""
+  },
+  {
+    "name": "Puteri Specialist Hospital, CAPD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAUZI BIN HJ ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit / Haemodialysis Unit\nPuteri Specialist Hospital\nNo. 33, Jalan Tun Abdul Razak, Susur 5  80000 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Puteri Specialist Hospital, CAPD Unit",
+    "tel": "( 07)2253222  289",
+    "email": "-"
+  },
+  {
+    "name": "Sultan Ismail Hospital (Paed), CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "NG WEN YING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Ward 8C (CAPD Unit)\nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital (Paed), CAPD Unit",
+    "tel": "( 07)3565000  8304 /8303",
+    "email": ""
+  },
+  {
+    "name": "Sultan Ismail Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ BIN NORDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital, CAPD Unit",
+    "tel": "07-3565000",
+    "email": "hsicapd@gmail.com"
+  },
+  {
+    "name": "Sultanah Aminah Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nBangunan Siantan\nHospital Sultanah Aminah  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultanah Aminah Hospital, CAPD Unit",
+    "tel": "( 07)2231666  4213",
+    "email": "-"
+  },
+  {
+    "name": "Coop Dialisis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NAFIZA BINTI MOHAMED;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Coop Dialisis\n(Kopris Dialysis Sdn Bhd\nNo 47 & 49, Jalan Uda Utama 3/14\nBandar Uda Utama  81200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Coop Dialisis, HD Unit",
+    "tel": "( 07)2342410",
+    "email": "kopris_dialysis@yahoo.com.my"
+  },
+  {
+    "name": "JJ Lions Dialysis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "KOH CHIN TUAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "JJ Lions Dialysis Centre\nNo. 110, 112 & 114, Jalan Bakawali 52\nTaman Johor Jaya  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "JJ Lions Dialysis Centre, HD Unit",
+    "tel": "( 07)3576233",
+    "email": "jjlionsdc@gmail.com"
+  },
+  {
+    "name": "Johor Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "YUDISTHRA A/L M. GANESHADEVA;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nJohor Specialist Hospital\nNo. 39-B, Jalan Abdul Samad  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Johor Specialist Hospital, HD Unit",
+    "tel": "07-2253000  193/739",
+    "email": "jsh@jsh.kpjhealth.com.my"
+  },
+  {
+    "name": "JQA Dialysis Foundation, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NUR BINTI AWAB;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "JQA Dialysis Foundation\nNo.5, Jln Bakawali 48\nTaman Johor Jaya  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "JQA Dialysis Foundation, HD Unit",
+    "tel": "( 07)3528689",
+    "email": "johorquarriesassn@gmail.com"
+  },
+  {
+    "name": "KPJ Puteri Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAUZI BIN HJ ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Centre\nKPJ Puteri Specialist Hospital\nNo. 33, Jalan Tun Abdul Razak (Susur 5)  80000 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "KPJ Puteri Specialist Hospital, HD Unit",
+    "tel": "( 07)2253222  289",
+    "email": "-"
+  },
+  {
+    "name": "Leo Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "THAMILSELVI A/P VELAIAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Leo Dialysis Centre\nNo. 40, Jalan Seri Austin 3/55,\nTaman Seri Austin,  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Leo Dialysis Centre, HD Unit",
+    "tel": "07-3500715",
+    "email": "admin@leodialysiscentre.com"
+  },
+  {
+    "name": "Pertubuhan Kebajikan Amitabha, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "JUMIAH BINTI SAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pertubuhan Kebajikan Amitabha\nNo. 59, Jalan Glasiar\nTaman Tasek  80200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pertubuhan Kebajikan Amitabha, HD Unit",
+    "tel": "( 07)2380448",
+    "email": "jos_mary93@yahoo.com"
+  },
+  {
+    "name": "Premier Renal Care, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KAMARUDIN BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Premier Renal Care Sdn. Bhd.\nNo. 40-N, Jalan Kemuncak 1\nTaman Nong Chik  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Premier Renal Care, HD Unit",
+    "tel": "( 07)2274596",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis & Kesihatan Masjid Bandar Baru Uda, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "KAMARUDIN BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis & Kesihatan \nMasjid Bandar Baru Uda\nJalan Padi Ria 1\nBandar Baru Uda  81200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis & Kesihatan Masjid Bandar Baru Uda, HD Unit",
+    "tel": "( 07)2384024",
+    "email": "norijahdaiman@yahoo.com"
+  },
+  {
+    "name": "Pusat Dialisis Davita Bandar Baru Uda, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOOK CHONG PHENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Bandar Baru Uda\nGround Floor, No 72 & 74 Jalan Padi 1\nBandar Baru Uda  82100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Bandar Baru Uda, HD Unit",
+    "tel": "07-2396227",
+    "email": "Aishah.MohdHari@davita.com"
+  },
+  {
+    "name": "Pusat Dialisis Davita Johor Bahru, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHIN CHEE KHIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Johor Bahru\nUnit 02-02 & 02-03, Level 2\nNo. 12, Jalan Ngee Heng\nMenara Landmark Mall  80000 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Johor Bahru, HD Unit",
+    "tel": "07-2212128",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Davita Taman Seri Setia, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "VIKNESWARI A/P RAJA GOBAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Taman Seri Setia\n117, Jalan Damai\nTaman Sri Setia  80300 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Taman Seri Setia, HD Unit",
+    "tel": "07-2220186",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis FN, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "WOON WEE YAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis FN\nNo. 26 & 28, Jalan Pulai 22\nTaman Pulai Utama  81300 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis FN, HD Unit",
+    "tel": "07-5542104",
+    "email": "pusatdialisisfn@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Pelangi Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LAW TEIK YEONG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Pelangi Sdn Bhd\n46, 46-01 & 48, 48-01\nJalan Tun Abdul Razak\nSusur 1  8000 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Pelangi Sdn Bhd, HD Unit",
+    "tel": "07-2200033",
+    "email": "chong.pauyin@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Perbadanan Islam (Johor Bahru), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB SAMAD BIN SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perbadanan Islam\n(ICMC Healthcare Sdn Bhd)\nG4, G5, & G6, TINGKAT BAWAH , Bangunan Perbadanan Islam\nNo. 26, Jalan Rebana, Kebun Teh,\nTAMAN PERBADANAN ISLAM,  80250 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perbadanan Islam (Johor Bahru), HD Unit",
+    "tel": "(607)3333500",
+    "email": "icmckebunteh@yahoo.com"
+  },
+  {
+    "name": "Pusat Dialisis Waqaf An Nur Masjid Taman Bukit Tiram, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MAZUAN BINTI ISMAIL;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Waqaf An Nur Masjid Taman Bukit Tiram\n(Waqaf An-nur Corporation Berhad)\nMasjid Jamek Al Makmur, Jalan Sri Panti\nTaman Bukit Tiram  81800 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Waqaf An Nur Masjid Taman Bukit Tiram, HD Unit",
+    "tel": "( 07)8614102",
+    "email": "seharazadv@ymail.com"
+  },
+  {
+    "name": "Pusat Dialisis Waqaf An-Nur Galleria @ Kotaraya, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MAZUAN BINTI ISMAIL;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Waqaf An-Nur Galleria @ Kotaraya\n(Waqaf An-Nur Corporation Berhad)\nL2-16, Tkt 2, Plaza Galleria @ Kotaraya\nJalan Trus  80000 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Waqaf An-Nur Galleria @ Kotaraya, HD Unit",
+    "tel": "( 07)2244788",
+    "email": "dialisisgalleria@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Amal Lexin, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "ONG JING WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Amal Lexin\nNo. 20, 22, 24 & 26, Jalan Perkasa 5,\nTaman Ungku Tun Aminah  81300 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Amal Lexin, HD Unit",
+    "tel": "07-5544343",
+    "email": "amallexin@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Cemerlang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHAMAD FADRI BIN ABDULLAH @ HARUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Cemerlang\n7, 7-01, 9 Jalan Mutiara Emas 2/4,\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Cemerlang, HD Unit",
+    "tel": "07-3518157",
+    "email": "phdcemerlang@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis MAIJ, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZIZAH BINTI ABD HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis MAIJ\nTingkat Bawah Bangunan Wakaf Johor\nBatu 6, Jalan Skudai  81200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis MAIJ, HD Unit",
+    "tel": "( 07)2353370",
+    "email": "1@maij.gov.my"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (1), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "ERMAN SYAH BIN ABDUL HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (1)\nNo. 5 & 7, Jalan Perisai\nTaman Sri Tebrau  80050 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (1), HD Unit",
+    "tel": "(016)7230233",
+    "email": "jb1@maamedicare.org"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (2), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LIM JIN LING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (2)\nNo. 5, 5A & 7, Jalan Baiduri 1\nTaman Baiduri  81200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Pusat Dialisis Amal JB Lions Charity Dialysis Centre MAAEDICARE (2), HD Unit",
+    "tel": "(016)7230255",
+    "email": "jb2@maamedicare.org"
+  },
+  {
+    "name": "Rotary Club of Johor Bahru Haemodialysis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Rotary Club of Johor Bahru Haemodialysis Centre Berhad\nNo. 4N, Susur 3, Jalan Tun Abdul Razak  80200 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Rotary Club of Johor Bahru Haemodialysis Centre, HD Unit",
+    "tel": "( 07)2222433  108",
+    "email": "rcjbhcb@gmail.com"
+  },
+  {
+    "name": "Sultan Ismail Hospital (Paed), HD Unit",
+    "sector": "MOH",
+    "drInCharge": "NG WEN YING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Ward 8C  (Haemodialysis Unit)\nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital (Paed), HD Unit",
+    "tel": "( 07)3565000  8303 /8304",
+    "email": "-"
+  },
+  {
+    "name": "Sultan Ismail Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital, HD Unit",
+    "tel": "( 07)3565000  3503",
+    "email": "Halmijais060983@gmail.com"
+  },
+  {
+    "name": "Sultanah Aminah Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nBangunan Bakawali\nHospital Sultanah Aminah  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultanah Aminah Hospital, HD Unit",
+    "tel": "( 07)2231666  2055",
+    "email": "dbakawali@yahoo.com.my"
+  },
+  {
+    "name": "Sultan Ismail Hospital (Paed), Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "SUSAN PEE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Ward 8 C (Renal Transplant Clinic (Paed)) \nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital (Paed), Tx Unit",
+    "tel": "( 07)3565000  8303 /8304",
+    "email": ""
+  },
+  {
+    "name": "Sultan Ismail Pandan Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic \nc/o Haemodialysis Unit\nSultan Ismail Pandan Hospital\nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Pandan Hospital, Tx Unit",
+    "tel": "( 07)3565000  3508 /3509",
+    "email": ""
+  },
+  {
+    "name": "Sultanah Aminah Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic\nHospital Sultanah Aminah  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultanah Aminah Hospital, Tx Unit",
+    "tel": "( 07)2257000  2055",
+    "email": "dbakawali@yahoo.com.my"
+  },
+  {
+    "name": "Puteri Specialist Hospital, MRRB Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAUZI BIN HJ ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Puteri Specialist Hospital\n33, Jalan Tun Abdul Razak (Susur 5)  80350 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Puteri Specialist Hospital, MRRB Unit",
+    "tel": "( 07)2233377  273",
+    "email": ""
+  },
+  {
+    "name": "Sultan Ismail Hospital (Paed), MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "NG WEN YING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "c/o Ward 8 C & D\nHospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital (Paed), MRRB Unit",
+    "tel": "( 07)3565000",
+    "email": ""
+  },
+  {
+    "name": "Sultan Ismail Hospital, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ BIN NORDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Sultan Ismail \nJalan Persiaran Mutiara Emas Utama\nTaman Mount Austin  81100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultan Ismail Hospital, MRRB Unit",
+    "tel": "07-3565000  3508/3502",
+    "email": "Dr FARIZ BIN NORDIN"
+  },
+  {
+    "name": "Sultanah Aminah Hospital, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Department of Medicine\nHospital Sultanah Aminah  80100 Johor Bahru  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sultanah Aminah Hospital, MRRB Unit",
+    "tel": "( 07)2257000  2301",
+    "email": "-"
+  },
+  {
+    "name": "Johor Bharu",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Columbia Asia Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TEE SHIN KUAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Columbia Asia Hospital\nPersiaran Southkey 5\nKota Southkey  80150 Johor Bharu  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Columbia Asia Hospital, HD Unit",
+    "tel": "07-27299999  1044/1045",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Hariz, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABDUL KADIR JAILANI B DUSEH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Hariz\nNo.86, 86-01, 86-02, Jalan Adda 7\nAdda Heights  81100 Johor Bharu  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Hariz, HD Unit",
+    "tel": "011-11294676",
+    "email": "harizdialysis@gmail.com"
+  },
+  {
+    "name": "Kahang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "BP Renalcare (Kahang) Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOKE WING KIT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renalcare (Kahang) Sdn Bhd\nNo.3, Jalan Ria 1\nTaman Ria  86700 Kahang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renalcare (Kahang) Sdn Bhd, HD Unit",
+    "tel": "07-7883500",
+    "email": "bprenalcare@gmail.com"
+  },
+  {
+    "name": "Kangkar Pulai",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Sinar Kangkar Pulai, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "DAISY LING LEONG KEENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Sinar Kangkar Pulai\nNo. 24, 24-1 & 26, 26-1, Jalan Hijauan 2\nTaman Pulai Hijauan  81110 Kangkar Pulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sinar Kangkar Pulai, HD Unit",
+    "tel": "07-5863344",
+    "email": "sinar.kangkarpulai@sinarhdu.com"
+  },
+  {
+    "name": "Kluang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "BP Renal Care (Kluang), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOKE WING KIT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renal Care (Kluang) Sdn Bhd\nNo. 7, Susur 1, Off Jalan Johor Tenggara  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renal Care (Kluang), HD Unit",
+    "tel": "077728195",
+    "email": "bprckluang@gmail.my"
+  },
+  {
+    "name": "Hospital Enche' Besar Hajjah Khalsom, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Enche' Besar Hajjah Khalsom\nKM 5, Jalan Kota Tinggi  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Enche' Besar Hajjah Khalsom, HD Unit",
+    "tel": "( 07)7787000  1262 /1269",
+    "email": "mohdfauzi.asri@yahoo.com"
+  },
+  {
+    "name": "KPJ Hemodialysis Kluang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZHARI BIN MD YATIM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "KPJ Hemodialysis Kluang\nTingkat 2, No.11\nSusur 1, Jalan Besar  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "KPJ Hemodialysis Kluang, HD Unit",
+    "tel": "07-7713900",
+    "email": "kush@kpjkluang.com"
+  },
+  {
+    "name": "Persatuan Membaiki Akhlak-Che Luan Khor_NKF, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "HARRIS FADZILIAH BIN HJ ABDUL HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis \nPersatuan Membaiki Akhlak Che Luan Khor_NKF\nNo. 6, Jalan Lintang  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Persatuan Membaiki Akhlak-Che Luan Khor_NKF, HD Unit",
+    "tel": "( 07)7765313",
+    "email": "jb2_nkf@yahoo.com"
+  },
+  {
+    "name": "Prima Dialisis Kluang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "HARRIS FADZILIAH BIN HJ ABDUL HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Prima Dialisis Kluang\nNo. 8 & 10, Jalan Persiaran Idaman\nTaman Idaman  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Prima Dialisis Kluang, HD Unit",
+    "tel": "(012)7016121",
+    "email": "primadialysis@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis PERKESO (Cawangan Kluang), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "FAUZI BIN WAHAB;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis PERKESO (Cawangan Kluang)\nLOT 58, 59, 60, 61 , 62, 63 & 63-1\nJalan Seri Impian 8/1B\nBandar Seri Impian  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis PERKESO (Cawangan Kluang), HD Unit",
+    "tel": "012-7960940",
+    "email": "ncm.kluang@nephro.com.my"
+  },
+  {
+    "name": "Pusat Hemodialisis BH Dialysis Centre Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZHARI BIN MD YATIM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis BH Dialysis Centre Sdn Bhd\nNo. 76, 77 Dan 77-01, Jalan Kluang Perdana 1\nTaman Kluang Perdana  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis BH Dialysis Centre Sdn Bhd, HD Unit",
+    "tel": "07-7392006",
+    "email": "bhdialysiscentresb@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Impian Kluang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "FARAHDIZA BINTI BUANG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Impian (Kluang)\n(Comfort Hemodialysis Centre Sdn Bhd)\nNo. 57, Tkt Bawah, Jalan Sekolah Chong Hwa  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Impian Kluang, HD Unit",
+    "tel": "( 07)7718088",
+    "email": "impian.kluang@gmail.com"
+  },
+  {
+    "name": "Yayasan Rotary Kluang, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "TEOW KING FOK;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Yayasan Rotary Kluang HD Centre\nC/o Yayasan Rotary Kluang\nNo. 3, 4 & 5  Jalan 1/13\nTaman Sri Kluang  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Yayasan Rotary Kluang, HD Unit",
+    "tel": "( 07)7733211",
+    "email": ""
+  },
+  {
+    "name": "Hospital Enche' Besar Hajjah Khalsom, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nHospital Enche' Besar Hajjah Khalsom\nKM5, Jalan Kota Tinggi  86000 Kluang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Enche' Besar Hajjah Khalsom, Tx Unit",
+    "tel": "( 07)7787000  1269 /1262",
+    "email": "mohdfauzi.asri@yahoo.com"
+  },
+  {
+    "name": "Kota Tinggi",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Klinik Kesihatan Bandar Mas, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Klinik Kesihatan Bandar Mas  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Klinik Kesihatan Bandar Mas, HD Unit",
+    "tel": "( 07)8235344",
+    "email": "norlie_76@yahoo.com"
+  },
+  {
+    "name": "Kota Tinggi Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nKota Tinggi Hospital\nJalan Tun Habab  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Kota Tinggi Hospital, HD Unit",
+    "tel": "( 07)8831131  246",
+    "email": "-"
+  },
+  {
+    "name": "Pusat Dialisis Davita Kota Tinggi, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NUR BINTI AWAB;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Kota Tinggi\nNo. 20 & 22, Jalan SS/1\nTaman Sri Saujana  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Kota Tinggi, HD Unit",
+    "tel": "07-8823159",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Ikhlas, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHAMAD AFIQ BIN GHAZALI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Ikhlas\nNo. 21, 23, 25 & 27, Jalan Berlian Utama 2\nTaman Daiman Jaya  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Ikhlas, HD Unit",
+    "tel": "07-8821576",
+    "email": "dialysisikhlas@yahoo.com.my"
+  },
+  {
+    "name": "Pusat Dialisis Muafakat, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB SAMAD BIN SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Muafakat\nWisma LYAZ, Jalan Durian\nFelda Linggiu  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Muafakat, HD Unit",
+    "tel": "07-8905575",
+    "email": "lyazhealthcare575@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Murni, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZIZAH BINTI ABD HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Murni Sdn Bhd\nNo. 2, Jalan Dato Onn\nBandar Penawar  81930 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Murni, HD Unit",
+    "tel": "( 07)8221666",
+    "email": "hdmurni@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Nephrocare (Cawangan Bandar Penawar), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MUHAMMAD UWAIS AL QORNI BIN ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Nephrocare (Cawangan Bandar Penawar)\nNo 38, 39 & 40, Jalan Dato Jaafar 24\nTaman Mutiara Desaru\nBandar Penawar  81390 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Nephrocare (Cawangan Bandar Penawar), HD Unit",
+    "tel": "07-8222161",
+    "email": "ncm.bandarpenawar@nephro.com.my"
+  },
+  {
+    "name": "Pusat Rawatan Perbadanan Islam (Kota Tinggi), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB SAMAD BIN SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialysis Perbadanan Islam (Kota Tinggi)\nNo. 95, Tingkat Bawah, Batu 1, \nJalan Tun Sri Lanang  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Perbadanan Islam (Kota Tinggi), HD Unit",
+    "tel": "( 07)8828500",
+    "email": "icmcktinggi@yahoo.com.my"
+  },
+  {
+    "name": "Rotary Club of Kota Tinggi (2019)-Hemodialisis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "SINGARAVELOO A/L MUTHUSAMY;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Rotary Club of Kota Tinggi (2002)-Hemodialisis Centre\nNo. 16, Jalan Kemajuan\nKawasan Perindustrian  81900 Kota Tinggi  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Rotary Club of Kota Tinggi (2019)-Hemodialisis Centre, HD Unit",
+    "tel": "( 07)8834646",
+    "email": "rotaryclubofkotatinggi@gmail.com"
+  },
+  {
+    "name": "Kulai",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "AD Dhouha Haemodialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABDUL HANAN BIN NAMAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "AD Dhouha Haemodialysis Centre Sdn Bhd\nNo. 342 & 343, Jalan Scientex 10\nTaman Scientex  81000 Kulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "AD Dhouha Haemodialysis Centre, HD Unit",
+    "tel": "(016)7016742",
+    "email": "addhouhahaemodialysis@gmail.com"
+  },
+  {
+    "name": "Prima Dialisis Lagenda Putra, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD FARID BIN ABU SAMAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Prima Dialisis Lagenda Putra\nNo. 1372 & 1373, Jalan Lagenda 49\nTaman Lagenda Putra  81000 Kulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Prima Dialisis Lagenda Putra, HD Unit",
+    "tel": "( 07)6626550",
+    "email": "lagendaputra1372@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Ceria Indahpura, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "JOCELYNN TIAN LI CHIEH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Ceria Indahpura\nNo. 104, 104A & 105, Jalan Kiambang 5\nPusat Komersial Indah\nBandar Indahpura  81000 Kulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Ceria Indahpura, HD Unit",
+    "tel": "017-9863978",
+    "email": "pusatdialisisceria@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Al Falah Haemodialysis Centre Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NAFIZA BINTI MOHAMED;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Al Falah Haemodialysis Centre Sdn Bhd\nNo. 9 & 9A Dan 10 & 10A\nJalan Mas 1, Taman Desamas  81000 Kulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Al Falah Haemodialysis Centre Sdn Bhd, HD Unit",
+    "tel": "013-9844230",
+    "email": "alfalahhaemodialysiscentre@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Nour, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABDUL HANAN BIN NAMAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Nour Sdn Bhd\nNo. 355G  & 356G, Jalan Kenanga 29/9\nBandar Indahpura  81000 Kulai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Nour, HD Unit",
+    "tel": "( 07)6631258",
+    "email": "haemodialisisnour@gmail.com"
+  },
+  {
+    "name": "Kulai Jaya",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Temenggong Seri Maharaja Tun Ibrahim Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Temenggong Seri Maharaja Tun Ibrahim  81000 Kulai Jaya  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Temenggong Seri Maharaja Tun Ibrahim Hospital, HD Unit",
+    "tel": "( 07)6623333  263 / 262",
+    "email": ""
+  },
+  {
+    "name": "Labis",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pertubuhan Hemodialisis Muhibbah Segamat (Labis), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "SOON KIEN EE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pertubuhan Hemodialisis Muhibbah Segamat (Cawangan Labis)\nNo 13, 14, 15 & 16, Jalan Indah 1\nTaman Indah  85300 Labis  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pertubuhan Hemodialisis Muhibbah Segamat (Labis), HD Unit",
+    "tel": "( 07)9254800",
+    "email": "muhibbahlabis@gmail.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Perdana, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "BANI BIN MAHMOOD @ ABU;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Perdana\nNo.20 & 21, Tingkat Bawah\nJalan Maju Jaya 1\nTaman Maju Jaya 2  85300 Labis  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Perdana, HD Unit",
+    "tel": "07-9251912",
+    "email": "perdanadialisis@gmail.com"
+  },
+  {
+    "name": "Ledang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Nephrocare (Cawangan Bukit Gambir), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZMIL BIN ATIMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "No. 175 & 176, Jalan Bukit Gambir 8/1\nBandar Baru Bukit Gambir  84800 Ledang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Nephrocare (Cawangan Bukit Gambir), HD Unit",
+    "tel": "019-6378675",
+    "email": "corporate@nephro.com.my"
+  },
+  {
+    "name": "Masai",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Prima Dialysis Masai, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD FARID BIN ABU SAMAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Prima Dialysis Masai\n(Explorich Sdn Bhd)\nNo. 17 & 19 & 19-01, Jalan Masai Utama 2\nTaman Masai Utama  81750 Masai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Prima Dialysis Masai, HD Unit",
+    "tel": "( 07)2541688",
+    "email": "primadialysis80@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis NKF-Yayasan Pembangunan Keluarga Darul Ta'zim, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "CHEONG WAI SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis NKF-Yayasan Pembangunan Keluarga Darul Ta'zim\nNo. 4 & 6, Jalan 3/17\nBandar Permas Jaya  81750 Masai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis NKF-Yayasan Pembangunan Keluarga Darul Ta'zim, HD Unit",
+    "tel": "( 07)3866164",
+    "email": "jh1_nkf@yahoo.com"
+  },
+  {
+    "name": "Pusat Dialisis Perbadanan Islam Johor (Taman Rinting), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ERMAN SYAH BIN ABDUL HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perbadanan Islam Johor (PIJ)\nCawangan Taman Rinting\nNo. 41, Jalan Sena 1\nTaman Rinting  81750 Masai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perbadanan Islam Johor (Taman Rinting), HD Unit",
+    "tel": "07-2513111",
+    "email": "-"
+  },
+  {
+    "name": "Regency Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "YAW CHONG HWA;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Regency Specialist Hospital\nNo.1, Jln Suria\nBandar Seri Alam  81750 Masai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Regency Specialist Hospital, HD Unit",
+    "tel": "(607)3817700",
+    "email": "-"
+  },
+  {
+    "name": "Mersing",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Mersing Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Mersing\nJalan Ismail  86800 Mersing  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Mersing Hospital, HD Unit",
+    "tel": "( 07)7993333  1065",
+    "email": "yusof.abdkarim@yahoo.com"
+  },
+  {
+    "name": "Mersing Rotary Haemodialysis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LAI CHIN LAI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Mersing Rotary Haemodialysis Centre\nNo. 90, Jalan Merdeka\nMersing Kecil  86800 Mersing  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Mersing Rotary Haemodialysis Centre, HD Unit",
+    "tel": "( 07)7992932",
+    "email": "mrhcmersing@yahoo.com.my"
+  },
+  {
+    "name": "Pusat Dialisis Perbadanan Islam Mersing, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AB SAMAD BIN SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perbadanan Islam Mersing\nNo. 45, Jalan Jeti\nBandar Tepian Sungai  86800 Mersing  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perbadanan Islam Mersing, HD Unit",
+    "tel": "( 07)7991500",
+    "email": "icmcmrsg@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Ar Rahmah Sendirian Berhad, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RABIATUL ADAWIAH BINTI SULAIMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Ar Rahmah Sendirian Berhad\nNo. 3 & 5, Taman Nilam  86800 Mersing  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Ar Rahmah Sendirian Berhad, HD Unit",
+    "tel": "07-7995050",
+    "email": ""
+  },
+  {
+    "name": "Mersing Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nHospital Mersing\nJalan Ismail  86800 Mersing  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Mersing Hospital, Tx Unit",
+    "tel": "( 07)7993333  1065",
+    "email": "-"
+  },
+  {
+    "name": "Muar",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Hospital Pakar Sultanah Fatimah (Muar), CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nHospital Pakar Sultanah Fatimah Muar\nJalan Salleh  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Pakar Sultanah Fatimah (Muar), CAPD Unit",
+    "tel": "06-9564000  203",
+    "email": "muarcapd@gmail.com"
+  },
+  {
+    "name": "Hospital Pakar Sultanah Fatimah (Muar), HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Pakar Sultanah Fatimah Muar\nJalan Salleh  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Pakar Sultanah Fatimah (Muar), HD Unit",
+    "tel": "06-9564000  164",
+    "email": "hemohpsf@gmail.com"
+  },
+  {
+    "name": "KPJ Bandar Maharani Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "YIA @ YEOW HUA JERN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nKPJ Bandar Maharani Specialist Hospital\n73-1, Jalan Stadium  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "KPJ Bandar Maharani Specialist Hospital, HD Unit",
+    "tel": "( 06)9564500  3002",
+    "email": ""
+  },
+  {
+    "name": "Muar Dialysis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOO HOU CHAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Muar Dialysis Sdn Bhd\nNo. 6, 7 & 8, Taman Temiang Jaya\nJalan Kim Kee  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Muar Dialysis, HD Unit",
+    "tel": "( 06)9556341",
+    "email": "mdsb72@yahoo.com"
+  },
+  {
+    "name": "Muar Lions Renal Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "WONG PIK WEE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Muar Lions Renal Centre\nNo. 1-7 & 1-9, Jalan Indah 2/1\nTaman Indah, Jalan Hj Abdullah  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Muar Lions Renal Centre, HD Unit",
+    "tel": "( 06)9535122",
+    "email": "mlrc_308b1@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Hidayah, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KAMARIAH BINTI HASSAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Hidayah Sdn Bhd\nNo. 17-18, Jalan Damai\nTaman Damai Sungai Abong  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Hidayah, HD Unit",
+    "tel": "06-9100084",
+    "email": "phhmuar@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Pagoh, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RASHIDAH BINTI ABU SAID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Pagoh\nNo. 67 &69, Jalan Pagoh Jaya 1, \nPusat Perniagaan Pagoh Jaya  84500 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Pagoh, HD Unit",
+    "tel": "06-9747258",
+    "email": "sfprocare@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Sejahtera (Parit Jawa), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NURUL AKMAL BINTI ADNAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Sejahtera (Parit Jawa) Sdn Bhd\nNo. Pintu 5 & 7, Tingkat Bawah, Jalan Seroja 1/1\nTaman Seroja  84150 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sejahtera (Parit Jawa), HD Unit",
+    "tel": "(06)9875111",
+    "email": "phs_paritjawa@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Sejahtera Muar, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "HISHAMUDDIN BIN ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Sejahtera Muar Sdn Bhd\n1-3 & 1-4, Tingkat Bawah, Jalan Ismail  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sejahtera Muar, HD Unit",
+    "tel": "( 06)9531761",
+    "email": "sejahtera.muar@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Muar), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD RAIHAN BIN OMAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Muar)\nNo. 19 & 21, Pusat Perniagaan Sulaiman\nJalan Sulaiman  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Muar), HD Unit",
+    "tel": "012-2183481",
+    "email": "-"
+  },
+  {
+    "name": "Syukur Haemodialysis (Bakri), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "HISHAMUDDIN BIN ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Syukur Haemodialysis (Bakri)\nNo. 23, 25 & 25, Tingkat Satu, Jalan Sinar Bakri 2\nPusat Perniagaan Sinar Bakri, Jalan Bakri\nBukit Bakri  84200 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Syukur Haemodialysis (Bakri), HD Unit",
+    "tel": "011-11323436",
+    "email": "syukurhdbakri@gmail.com"
+  },
+  {
+    "name": "Syukur Haemodialysis Semerah, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "EMA JULIATY BINTI JAMALUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Syukur Haemodialysis Semerah\nNo.18 & 18A, Jalan Pekan Baru 1\nPusat Perniagaan Parit Yusof  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Syukur Haemodialysis Semerah, HD Unit",
+    "tel": "014-3548484",
+    "email": "semerahsyukurhd@gmail.com"
+  },
+  {
+    "name": "Total Kidney Care Haemodialysis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOO HOU CHAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Total Kidney Care Haemodialysis Sdn Bhd\nNo. 19 & 21, Tingkat bawah, Jalan Bukit\nTaman Treh 2, Jalan Bakariah Bukit Treh  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Total Kidney Care Haemodialysis, HD Unit",
+    "tel": "( 06)9534229",
+    "email": "t.kidneycare@gmail.com"
+  },
+  {
+    "name": "Hospital Pakar Sultanah Fatimah (Muar), Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nHospital Pakar Sultanah Fatimah Muar\nJalan Salleh  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Pakar Sultanah Fatimah (Muar), Tx Unit",
+    "tel": "( 06)9564000  398 / 492",
+    "email": "hemohpsf@gmail.com"
+  },
+  {
+    "name": "Hospital Pakar Sultanah Fatimah (Muar), MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Pakar Sultanah Fatimah  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Hospital Pakar Sultanah Fatimah (Muar), MRRB Unit",
+    "tel": "-",
+    "email": "Dr. NUZAIMIN HADAFI BIN AHMAD"
+  },
+  {
+    "name": "KPJ Bandar Maharani Specialist Hospital, MRRB Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "YIA @ YEOW HUA JERN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "MRRB Unit\nKPJ Bandar Maharani Specialist Hospital\n73-1, Jalan Stadium  84000 Muar  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "KPJ Bandar Maharani Specialist Hospital, MRRB Unit",
+    "tel": "( 06)9564500  3002",
+    "email": ""
+  },
+  {
+    "name": "Nusajaya",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Gleneagles Medini, CAPD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Gleneagles Medini\nNo. 2, Jalan Medini Utara 4, Medini Iskandar\nIskandar Puteri  79250 Nusajaya  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Gleneagles Medini, CAPD Unit",
+    "tel": "07-5601028",
+    "email": ""
+  },
+  {
+    "name": "Gleneagles Medini, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHEONG WAI SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pantai Medical Centre Sdn Bhd\nNo. 2, Jalan Medini Utara 4, Medini Iskandar\nIskandar Puteri  79250 Nusajaya  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Gleneagles Medini, HD Unit",
+    "tel": "607-5601000  1028",
+    "email": "-"
+  },
+  {
+    "name": "Prima Dialisis Nusajaya, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAIDHI BIN SAIDI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Prima Dialisis Nusajaya\nNo. 22 & 24 Jalan Nusaria 1 J/1\nTaman Nusantara  79200 Nusajaya  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Prima Dialisis Nusajaya, HD Unit",
+    "tel": "07-5539482",
+    "email": "primanusajaya19@yahoo.com"
+  },
+  {
+    "name": "Pagoh",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "TSM-HATTA Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHONG CHUN FUNG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "TSM-HATTA Dialysis Centre\nLot 8261, Mukim Jorak\nDaerah Muar  84600 Pagoh  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "TSM-HATTA Dialysis Centre, HD Unit",
+    "tel": "012-7335242",
+    "email": "tsm-hatta@sinarhdu.com"
+  },
+  {
+    "name": "Parit Raja",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Sinar Haemodialysis (Batu Pahat) Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "FOO SEE FONG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Sinar Haemodialysis (Batu Pahat) Sdn Bhd\nNo. 4 & 5, Jalan Budiman 1\nTaman Budiman, Kampung Parit Jambol  86400 Parit Raja  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Sinar Haemodialysis (Batu Pahat) Sdn Bhd, HD Unit",
+    "tel": "(07)4535482",
+    "email": "sinarpj40@gmail.com"
+  },
+  {
+    "name": "Pasir Gudang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pasir Gudang Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Lot PTD 204781, Jalan Persiaran Dahlia2, Taman Bukit Dahlia  81700 Pasir Gudang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pasir Gudang Specialist Hospital, HD Unit",
+    "tel": "07-2573999  3958",
+    "email": "pgsh@kpjpgsh.com"
+  },
+  {
+    "name": "Pusat Dialisis An-Nur (Pasir Gudang), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "NOR AIZAL BINTI CHE HAMZAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis An-Nur\n(Waqaf An-Nur Corporation Berhad)\nBalai Masjid Jamek Pasir Gudang\nJalan Masjid  81700 Pasir Gudang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis An-Nur (Pasir Gudang), HD Unit",
+    "tel": "( 07)2555415  10 / 25",
+    "email": "dwaqafpg@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Sinar Care, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ERMAN SYAH BIN ABDUL HAMID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Sinar Care\nLot 204273\nJalan Bandar Pusat Perdagangan Pasir Gudang  81700 Pasir Gudang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Sinar Care, HD Unit",
+    "tel": "016-7444237",
+    "email": "dialisissinarcare.pg@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Cemerlang Pasir Gudang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHAMAD FADRI BIN ABDULLAH @ HARUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Cemerlang Pasir Gudang\nNo. 2, 3 Dan 3A, Jalan Lampam 7\nTanjung Puteri Resort  81700 Pasir Gudang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Cemerlang Pasir Gudang, HD Unit",
+    "tel": "017-6062290",
+    "email": "cemerlanghealthcarepasirgudang@gmail.com"
+  },
+  {
+    "name": "Pekan Nanas",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Prima Dialisis Pekan Nanas, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAIDHI BIN SAIDI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Prima Dialisis Pekan Nanas\nNo. 11 & 12 (Ground Floor & First Floor)\nJalan Nenas 1, Taman Emas Merah  81500 Pekan Nanas  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Prima Dialisis Pekan Nanas, HD Unit",
+    "tel": "07-6996334",
+    "email": "primapekannanas21@gmail.com"
+  },
+  {
+    "name": "Pengerang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis APM, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MANOJ VARUGHESE K SAMUEL;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis APM\nNo. 36, 36-01 & 37, Jalan Persiaran 2/2\nTaman Bayu Damai  81600 Pengerang  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis APM, HD Unit",
+    "tel": "019-3398709",
+    "email": "apm@smatmedi.com.my"
+  },
+  {
+    "name": "Pontian",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Iman Dialysis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ADIBAH BINTI DRESS;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Iman Dialysis Sdn Bhd\nNo. 2, Jalan Megah 11\nTaman Megah  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Iman Dialysis, HD Unit",
+    "tel": "( 07)6878700",
+    "email": "imandialysis@gmail.com"
+  },
+  {
+    "name": "Pontian Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit \nPontian Hospital\nJalan Alfagoff  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pontian Hospital, HD Unit",
+    "tel": "( 07)6873333  618 / 617",
+    "email": "-"
+  },
+  {
+    "name": "Pontian Rotary Haemodialysis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "PIONG CHEE LIAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pontian Rotary Haemodialysis Centre\nWisma Rotary, 141, Jalan Nong Chik 7\nTaman Nong Chik  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pontian Rotary Haemodialysis Centre, HD Unit",
+    "tel": "( 07)6866333",
+    "email": "norhaslinda_sprhc@yahoo.com.my"
+  },
+  {
+    "name": "Pusat Dialisis Davita Benut, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LOOK CHONG PHENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Benut\nNo. 1, Gnd & 1st Floor, Jalan Benut Utama 1\nTaman Benut Utama, Benut  82200 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Benut, HD Unit",
+    "tel": "07-6901101",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Nefro Utama (Pontian), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Nefro Utama Sdn Bhd\n(NUSB Global (M) Sdn Bhd)\nNo. 31 & 32, Jalan Delima 2\nPusat Perdagangan Pontian  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Nefro Utama (Pontian), HD Unit",
+    "tel": "( 07)6883613",
+    "email": "-"
+  },
+  {
+    "name": "Pusat Dialisis Perbadanan Islam (Pontian), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NAFIZA BINTI MOHAMED;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Perbadanan Islam (Pontian)\nNo. 50, Tingkat Bawah & Satu, Jalan Delima\nPusat Perdagangan Pontian  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perbadanan Islam (Pontian), HD Unit",
+    "tel": "( 07)6881500",
+    "email": "icmc_pontian@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Afiat Care, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD FAIDHI BIN SAIDI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Afiat Care Sdn. Bhd.\nPusat Hemodialisis Afiat Care\n13, Jalan Sri Api Api 1/1\nTaman Api Api Emas  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Afiat Care, HD Unit",
+    "tel": "017-7427014",
+    "email": "afiatcare123@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Sentosa Sdn. Bhd., HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHAMAD FADRI BIN ABDULLAH @ HARUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Sentosa Snd. Bhd.\nNo. 65, 67 & 69, Jalan Industri 8/1\nTaman Perindustrian Pekan Nanas\nPekan Nanas  81500 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sentosa Sdn. Bhd., HD Unit",
+    "tel": "07-6790026",
+    "email": "phsentosasb@gmail.com"
+  },
+  {
+    "name": "Pontian Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nPontian Hospital\nJalan Alsagoff  82000 Pontian  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pontian Hospital, Tx Unit",
+    "tel": "( 07)6873333  618 / 617",
+    "email": "-"
+  },
+  {
+    "name": "Segamat",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "BP Renalcare (Segamat) Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHEW MAY YEEN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renalcare (Segamat) Sdn Bhd\nNo.9,10,11,11A,12 & 12A\nJalan Putra 1/5\nBandar Putra  85000 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renalcare (Segamat) Sdn Bhd, HD Unit",
+    "tel": "07-9431200",
+    "email": "bprc.segamat@gmail.com"
+  },
+  {
+    "name": "Pertubuhan Hemodialisis Muhibbah Segamat (Cawangan Jementah), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LEE HONG TEE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pertubuhan Hemodialisis Muhibbah Segamat (Cawangan Jementah)\nNo.42, 44 & 46, Jalan Ah Tong\nJementah  85200 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pertubuhan Hemodialisis Muhibbah Segamat (Cawangan Jementah), HD Unit",
+    "tel": "07-9471 025",
+    "email": "muhibbah.jmt@gmail.com"
+  },
+  {
+    "name": "Pertubuhan Hemodialisis Muhibbah Segamat, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "SOON KIEN EE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pertubuhan Hemodialisis Muhibah Segamat Johor\n1st Floor, Wisma MUHIBBAH\nJalan Putra 1/1, Bandar IOI  85000 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pertubuhan Hemodialisis Muhibbah Segamat, HD Unit",
+    "tel": "( 07)9435900",
+    "email": "phmsj95@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Sinar (Jementah), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "EZZAH NAFISAH BINTI ARPAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Zamrud Haemodialisis Sdn. Bhd.\nPusat Hemodialisis Sinar (Jementah)\nNo. 2 & 3, Jalan Mesra 1,\nTaman Mesra, Jementah  85200 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Sinar (Jementah), HD Unit",
+    "tel": "(07)9475242",
+    "email": "sinarjementah@gmail.com"
+  },
+  {
+    "name": "Pusat Perbadanan Islam Segamat, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "BANI BIN MAHMOOD @ ABU;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perbadanan Islam Segamat\nNo. 29, Batu 1, Jalan Buluh Kasap  85000 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Perbadanan Islam Segamat, HD Unit",
+    "tel": "( 07)9312500",
+    "email": "icmcsgmt@yahoo.com"
+  },
+  {
+    "name": "Putera Bistari Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD NGALI BIN BUYASIM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Putera Bistari Dialysis Centre\nNo. 3, 3A & 4 Jalan Astaka Jaya 6\nTaman Astakajaya  85010 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Putera Bistari Dialysis Centre, HD Unit",
+    "tel": "( 07)9444223",
+    "email": "pbdc@familymedicare.com.my"
+  },
+  {
+    "name": "Segamat Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Segamat\nKM6. Jalan Genuang  83500 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Segamat Hospital, HD Unit",
+    "tel": "( 07)9433333  147 / 149",
+    "email": "-"
+  },
+  {
+    "name": "Segamat Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nHospital Segamat\nKM 6, Jalan Genuang  83500 Segamat  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Segamat Hospital, Tx Unit",
+    "tel": "( 07)9433333  147 / 149",
+    "email": "-"
+  },
+  {
+    "name": "Senai",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Perdana, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "GOH BOON SER;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Perdana\nNo.5 & 5-01, Jalan Seni  81400 Senai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Perdana, HD Unit",
+    "tel": "016-7402627",
+    "email": "perdanakidney@gmail.com"
+  },
+  {
+    "name": "Pusat Dialysis Makmur (Senai), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ROSILAWATI BINTI MOHD NOOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialysis Makmur\n(Makmur Healthcare Centre Sdn Bhd)\nNo. 168, Lorong Padi Mahsuri 2\nTmn Senai Baru  81400 Senai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialysis Makmur (Senai), HD Unit",
+    "tel": "( 07)5951833",
+    "email": "makmurhealthcare@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialysis Rotary Kulai, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "PIONG CHEE LIAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialysis Rotary Kulai \n(The Rotary Club of Kulai Foundation)\nNo. 1, Jalan Bintang 2\nTaman Bintang  81400 Senai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialysis Rotary Kulai, HD Unit",
+    "tel": "( 07)5980822",
+    "email": "rckulai1997@gmail.com"
+  },
+  {
+    "name": "Simpang Renggam",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "BP Renal Care Simpang Renggam, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TAY YAO KEONG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renal Care Simpang Renggam\nNo. 58, 60 Jalan Setia 2,\nPusat Perdagangan Setia  86200 Simpang Renggam  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renal Care Simpang Renggam, HD Unit",
+    "tel": "( 07)7555642",
+    "email": "bprcsimpangrenggam@gmail.com"
+  },
+  {
+    "name": "Pelangi Haemodialysis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZHAR BIN JASWADI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pelangi Haemodialysis \n(Pusat Haemodialysis Centre Sdn Bhd)\nNo. 23, Pusat Perniagaan Pelangi\nJalan Pelangi  86200 Simpang Renggam  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pelangi Haemodialysis, HD Unit",
+    "tel": "(019)5713910",
+    "email": "fati6464@yahoo.com"
+  },
+  {
+    "name": "Pusat Dialisis Klinik Kesihatan Simpang Renggam, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Klinik Kesihatan Simpang Renggam\nPusat Dialisis Klinik Kesihatan\nJalan Rambutan  86200 Simpang Renggam  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Klinik Kesihatan Simpang Renggam, HD Unit",
+    "tel": "( 07)7552655",
+    "email": ""
+  },
+  {
+    "name": "Skudai",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Perkhidmatan Hemodialisis Raudhah Dialisis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KAMARUDIN BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Perkhidmatan Hemodialisis Raudhah Dialisis Centre\nNo. 47 & 49, Jalan Utama 34\nTaman Mutiara Rini  81300 Skudai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Perkhidmatan Hemodialisis Raudhah Dialisis Centre, HD Unit",
+    "tel": "07-5952128",
+    "email": "raudhahdialisis@gmail.com"
+  },
+  {
+    "name": "Zhi En Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LAW TEIK YEONG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Zhi En Dialysis Centre\nNo. 33, Jalan Impian Emas 5/2\nTaman Impian Emas  81300 Skudai  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Zhi En Dialysis Centre, HD Unit",
+    "tel": "( 07)5546882",
+    "email": "zhiendialysiscentre@gmail.com"
+  },
+  {
+    "name": "Sungai Mati",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Pusat Hemodialisis Syukur, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LITA A/P RAMASAMY;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Pusat Hemodialisis Syukur\nSunmars Sdn Bhd\nNo. 4 (Tingkat Bawah), Jalan Waja,\nTaman Kangkar Jaya  84400 Sungai Mati  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Pusat Hemodialisis Syukur, HD Unit",
+    "tel": "06-9753692",
+    "email": "hdsyukurtangkak@gmail.com"
+  },
+  {
+    "name": "Tangkak",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Haemodialisis Suria (Tangkak), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD RAIHAN BIN OMAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Haemodialisis Suria (Tangkak)\n(Kumar Urology & Stone Centre Sdn Bhd)\nNo. 5, Jalan Payamas 3/2\nTaman Payamasa 3  84900 Tangkak  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Haemodialisis Suria (Tangkak), HD Unit",
+    "tel": "012-2343483",
+    "email": "suria.tangkak@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Ar-Raudhah, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Ar-Raudhah Sdn Bhd\nNo. 19 & 20, Jalan Dato' Ngah\nPusat Perniagaan Anjung Batu  84900 Tangkak  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Ar-Raudhah, HD Unit",
+    "tel": "( 06)9789951",
+    "email": "arraudhahwecare@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Fomema Haemodialysis Tangkak, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ZEENAT BINTI ABDUL SHAKUR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Fomema Haemodialysis Tangkak\nNo. JM 18 & 19, Jalan Manja  84900 Tangkak  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Fomema Haemodialysis Tangkak, HD Unit",
+    "tel": "06-9650333",
+    "email": "fh.tangkak@fomemadialysis.com.my"
+  },
+  {
+    "name": "Tangkak Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "LIU WEN JIUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nTangkak Hospital  84900 Tangkak  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Tangkak Hospital, HD Unit",
+    "tel": "( 06)9781206  1059 /1060",
+    "email": "hospitaltangkakjohor@gmail.com"
+  },
+  {
+    "name": "Tangkak Lions Renal Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Tangkak Lions Renal Centre\nNo. 1, Jalan Ikhtiari 1\nTaman Ikhtiari  84900 Tangkak  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Tangkak Lions Renal Centre, HD Unit",
+    "tel": "( 06)9781680",
+    "email": "tangkaklion1680@gmail.com"
+  },
+  {
+    "name": "Ulu Tiram",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Haemodialysis Wecare, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "GHANA NATHAN A/L RAJENDRAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Haemodialysis Wecare\nNo. 104 (Tingkat Bawah, Tingkat 1 & Tingkat 2) &\n106 (Tingkat Bawah, Tingkat 1 & Tingkat 2)\nJalan Bandar Cemerlang 3/1\nBandar Cemerlang  81800 Ulu Tiram  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Haemodialysis Wecare, HD Unit",
+    "tel": "07-8639670",
+    "email": "haemodialysiswecare@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Mutiara, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RAZLINA BINTI JOHARI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Mutiara\nNo.2, Jalan Cantik 5\nTaman Pelangi Indah  81800 Ulu Tiram  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Mutiara, HD Unit",
+    "tel": "07-8616359",
+    "email": "rfpelangi01@gmail.com"
+  },
+  {
+    "name": "Yong Peng",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "BP Renalcare (Yong Peng) Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KEE SWEE ANN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "BP Renalcare (Yong Peng) Sdn Bhd\nNo.2 & 2A Jalan Utama 3\nTaman Utama  83700 Yong Peng  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "BP Renalcare (Yong Peng) Sdn Bhd, HD Unit",
+    "tel": "07-4672244",
+    "email": "bprenalcare.yp@gmail.com"
+  },
+  {
+    "name": "NSCMH Dialysis Care Cawangan Yong Peng, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "SHANTA HENRY JAWAHAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "NSCMH Dialysis Care Cawangan Yong Peng\nNo.14 & 16, Jalan Sutera 1\nTaman Sutera  83700 Yong Peng  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "NSCMH Dialysis Care Cawangan Yong Peng, HD Unit",
+    "tel": "011-16125288",
+    "email": "dialysisyp@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Darul Ta'zim (Parit Yaani), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NORULKAMAR BIN SOIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "No.23 & 24, Jalan Perdagangan 1\nTaman Perdagangan Parit Yaani  83710 Yong Peng  Johor Darul Takzim  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Darul Ta'zim (Parit Yaani), HD Unit",
+    "tel": "07-4846111",
+    "email": "bvphdt@gmail.com"
+  }
+]
