@@ -1,0 +1,1532 @@
+[
+  {
+    "name": "Centres",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Bandar Bera",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Hospital Bera, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "NURZULIANA BINTI ZULKARNAIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Bera\nJalan Majlis  28200 Bandar Bera  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Hospital Bera, HD Unit",
+    "tel": "09-2509679",
+    "email": "nefrologyhosber@gmail.com"
+  },
+  {
+    "name": "Bandar Jengka",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Jengka), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD ALI HANAFIAH BIN MAT SO'AD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Jengka)\nNo. 7, 8 & 9 Lorong TJ/1,\nTaman Jengka Indah  26400 Bandar Jengka  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Jengka), HD Unit",
+    "tel": "09-4661615",
+    "email": "dialisismuip.jengka@gmail.com"
+  },
+  {
+    "name": "Bentong",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Bentong Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "MOHD KAMIL BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nHospital Bentong  28700 Bentong  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Bentong Hospital, CAPD Unit",
+    "tel": "( 09)2223333  147",
+    "email": "capdbentong@gmail.com"
+  },
+  {
+    "name": "Bentong Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "TEH HENG YAP;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Bentong  28700 Bentong  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Bentong Hospital, HD Unit",
+    "tel": "( 09)2223333  127 / 146",
+    "email": "suzainizainol938@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Fomema Haemodialysis Bentong, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD IKHWAN BIN MOHD RADZI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Fomema Haemodialysis Bentong\nNo. 33-1 & 35-1, Jalan One Bentong\nPusat Komersial Bentong  28700 Bentong  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Fomema Haemodialysis Bentong, HD Unit",
+    "tel": "010-2743177",
+    "email": "fh.bentong@fomemadialysis.com.my"
+  },
+  {
+    "name": "Pusat Hemodialysis Suria (Bentong), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LIEW JIA SHIAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialysis (Bentong)\n(Kumar Urology & Stone Centre Sdn Bhd)\nPlot 5, Ground Floor (TBP)\nPusat Perniagaan Ketari  28700 Bentong  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialysis Suria (Bentong), HD Unit",
+    "tel": "(016)6618665",
+    "email": "suriabentong@yahoo.com"
+  },
+  {
+    "name": "Pusat Perubatan Dialisis (Bentong), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RAFIDAH BINTI RAHMAT;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "No. P75-G & P76-G, Jalan Prima 2\nPusat Komersial Bentong Prima  28700 Bentong  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Perubatan Dialisis (Bentong), HD Unit",
+    "tel": "09-2221174",
+    "email": "ppdbentong0522@gmail.com"
+  },
+  {
+    "name": "Bera",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Bera), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MUHAMMAD ZAFRI BIN ZAINUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Bera)\nNo. 20 & 22 GF, Jalan Kempas Jaya 1\nTaman Kempas Jaya, Kerayong  28200 Bera  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Bera), HD Unit",
+    "tel": "019-2390325",
+    "email": "suriabera@yahoo.com"
+  },
+  {
+    "name": "Cameron Highlands",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Hospital Sultanah Hajjah Kalsom, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "SAMUEL RAJ A/L VASUDAYAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hemodialisis Unit\nHospital Sultanah Hajjah Kalsom\nJalan Persiaran Dayang Endah, Tanah Rata  39000 Cameron Highlands  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Hospital Sultanah Hajjah Kalsom, HD Unit",
+    "tel": "( 05)4913333  1431",
+    "email": "hducameron@gmail.com"
+  },
+  {
+    "name": "Jengka",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Jengka Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nJengka Hospital  26400 Jengka  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Jengka Hospital, HD Unit",
+    "tel": "( 09)4662333  259",
+    "email": "mohdniazhan@yahoo.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Jengka), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KHAIRUL AZHAR BIN JAAFAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Jengka)\nNo. 62 & 63G, Jalan Baiduri 5\nPusat Komersial Bandar Jengka Nadi Kota\nBandar Tun Razak Jengka  26400 Jengka  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Jengka), HD Unit",
+    "tel": "( 09)4661737",
+    "email": "suriajengka@gmail.com"
+  },
+  {
+    "name": "Jerantut",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Jerantut Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Jerantut  27000 Jerantut  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Jerantut Hospital, HD Unit",
+    "tel": "( 09)2663333  2501",
+    "email": "hspjer@phg.moh.gov.my"
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Jerantut), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ZAKARIA BIN ABD RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Jerantut)\n(Kumar Urology & Stone Centre Sdn Bhd)\nLot 9056 (Mukim Pedah)\nNo. 23 & 25 (Tingkat Bawah)\nJalan Pine 1, Taman Pine  27000 Jerantut  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Jerantut), HD Unit",
+    "tel": "( 09)3011094",
+    "email": "suria.jerantut@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Jerantut, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "SYED MUHAMMAD SYAMIM BIN SYED ABDUL AZIZ;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Jerantut\nNo. 1, Tingkat Bawah & Tingkat 1\nLoring IP 1, Taman Impian Permai  26400 Jerantut  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Jerantut, HD Unit",
+    "tel": "019-9868140",
+    "email": "jerantut@yasadialysis.com.my"
+  },
+  {
+    "name": "Quality Dialysis Care (Jerantut), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ZAKARIA BIN ABD RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Quality Dialysis Care Sdn Bhd\nNo. 6, Lorong Alamanda 1\nTaman Alamanda  27000 Jerantut  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Quality Dialysis Care (Jerantut), HD Unit",
+    "tel": "(016)2267681",
+    "email": "cdc.jrtt@gmail.com"
+  },
+  {
+    "name": "Karak",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Karak), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "UMANAGENDRI A/P SANTANA DEVAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Karak)\nNo. 16-G & 16-I\nJalan Besar Daerah Bentong  28600 Karak  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Karak), HD Unit",
+    "tel": "012-6693491",
+    "email": "suriakarak2021@gmail.com"
+  },
+  {
+    "name": "Kuala Krau",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Kuala Krau), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NURUL FARAHIDAH BINTI ALIAS;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Kuala Krau)\nNo. 39-G, Jalan Mewah\nTaman Mewah  28050 Kuala Krau  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Kuala Krau), HD Unit",
+    "tel": "012-3722532",
+    "email": "hdsuriakualakrau@gmail.com"
+  },
+  {
+    "name": "Kuala Lipis",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Kuala Lipis Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Kuala Lipis Hospital, CAPD Unit  27200 Kuala Lipis  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Kuala Lipis Hospital, CAPD Unit",
+    "tel": "09-3123333  157",
+    "email": "capdlipis@gmail.com"
+  },
+  {
+    "name": "Kuala Lipis Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Kuala Lipis  27200 Kuala Lipis  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Kuala Lipis Hospital, HD Unit",
+    "tel": "( 09)3123333  130",
+    "email": "hdukualalipis@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Mukmin Kuala Lipis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "SUGUMAR A/L K PALANIYANDY;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Mukmin Kuala Lipis\nNo.47-G. 47-1, 48-G & 49-G\nJalan PPBR 3/4, Pusat Perniagaan Bukit Residen  27200 Kuala Lipis  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Mukmin Kuala Lipis, HD Unit",
+    "tel": "017-5631151",
+    "email": "pdmkualalipis@gedungpenawar.com"
+  },
+  {
+    "name": "Unit Hemodialisis Sungai Koyan, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit Hemodialisis Sungai Koyan, HD Unit\n(Cawangan Hospital Kuala Lipis)\nBlok B Klinik Kesihatan Sungai Koyan  27200 Kuala Lipis  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Unit Hemodialisis Sungai Koyan, HD Unit",
+    "tel": "09-3401195",
+    "email": "hdusgkoyan@gmail.com"
+  },
+  {
+    "name": "Kuala Rompim",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "YKN Dialisis Rompin, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MOHD SAYUTI BIN ABU BAKAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "YKN Dialisis Rompin\nJalan Rhu, Pantai Hiburan  26800 Kuala Rompim  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "YKN Dialisis Rompin, HD Unit",
+    "tel": "( 09)4140230",
+    "email": "ykn_rompin@yahoo.com"
+  },
+  {
+    "name": "Kuala Rompin",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Kuala Rompin), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD FEISAL BIN ABD MAJID;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Kuala Rompin)\nNo. 13-G, Jalan Sentosa 1\nTaman Sentosa  26800 Kuala Rompin  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Kuala Rompin), HD Unit",
+    "tel": "012-3372302",
+    "email": "hdsuriakualarompin@gmail.com"
+  },
+  {
+    "name": "Kuantan",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital (Paed), CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "SELVA KUMAR A/L SIVAPUNNIAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit CAPD HTAA Kuantan (Paed)\nHospital Tengku Ampuan Afzan\nJalan Tanah Putih  20400 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital (Paed), CAPD Unit",
+    "tel": "( 09)5572467",
+    "email": "-"
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit CAPD HTAA Kuanta (Adult)\nTengku Ampuan Afzan Hospital\nJalan Tanah Putih  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital, CAPD Unit",
+    "tel": "( 09)5572467  2119 /2467",
+    "email": "-"
+  },
+  {
+    "name": "Al-Musoffa Haemodialysis Centre (Balok) Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "KHAIRUL AZHAR BIN JAAFAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Al-Musoffa Haemodialysis Centre (Balok) Sdn Bhd\nNo. 52, Taman Cahaya,\nSeberang Balok,\nJalan Kuantan-Kemaman  26100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Al-Musoffa Haemodialysis Centre (Balok) Sdn Bhd, HD Unit",
+    "tel": "09-5093868",
+    "email": "almusoffahaemodialysisbalok@gmail.com"
+  },
+  {
+    "name": "IIUM Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHE ROSLE BIN DERAMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "IIUM Dialysis Centre\nLot Pt 50748\nHSD 16480 Atabara\nBandar Indera Mahkota  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "IIUM Dialysis Centre, HD Unit",
+    "tel": "09-5701445",
+    "email": "nazlinasnam@gmail.com"
+  },
+  {
+    "name": "Klinik Kesihatan Sungai Lembing, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit Hemodialisis\nKlinik Kesihatan Sungai Lembing\nJalan Batu 4 1/2, Sungai Lembing  26200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Klinik Kesihatan Sungai Lembing, HD Unit",
+    "tel": "( 09)5411054",
+    "email": "hemodialisishtaa@gmail.com"
+  },
+  {
+    "name": "KMI Kuantan Medical Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD RAMLI BIN SEMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "KMI Kuantan Medical Centre\nJalan Tun Razak\nBandar Indera Mahkota  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "KMI Kuantan Medical Centre, HD Unit",
+    "tel": "( 09)5902828  8807",
+    "email": "suni.eh.fo@tdmberhad.com.my"
+  },
+  {
+    "name": "KPJ Kuantan Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ROHANA BINTI ZAKARIA;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "KPJ Kuantan Dialysis Centre\nKuantan Specialist Centre\nTingkat 4, No. 51, Jalan Alor Akar\nTaman Kuantan  25250 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "KPJ Kuantan Dialysis Centre, HD Unit",
+    "tel": "( 09)5678588  8011",
+    "email": "-"
+  },
+  {
+    "name": "Kuantan Clinical Diagnostic Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TAN YAN MEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Kuantan Clinical Diagnostic Centre Sdn. Bhd.\nNo. A37 - A43, Jalan Dato' Lim Hoe Lek  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Kuantan Clinical Diagnostic Centre, HD Unit",
+    "tel": "( 09)5139891",
+    "email": "acc.kcdc@gmail.com"
+  },
+  {
+    "name": "Kuantan Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD FAHMI BIN ABDULLAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Kuantan Dialysis Centre Sdn Bhd\nNo. A7 & A9, Jalan Sri Kuantan 2\nSri Kuantan Square, Off Jalan Teluk Sisek  25000 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Kuantan Dialysis Centre, HD Unit",
+    "tel": "( 09)5138177",
+    "email": "imran_kdc@outlook.com"
+  },
+  {
+    "name": "Nur Iman Dialysis Pahang Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "WAN AHMAD SYAHRIL ROZLI BIN WAN ALI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Nur Iman Dialysis Pahang Sdn Bhd\nNo. B-4 & B-6, Ground Floor & B-4 & B-6, Mezzanine Floor,\nLorong Mat Kilau 1/2  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Nur Iman Dialysis Pahang Sdn Bhd, HD Unit",
+    "tel": "012-6377100",
+    "email": "nuriman.dialysis@yahoo.com"
+  },
+  {
+    "name": "Pahang Buddhist Association, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MOHD KAMIL BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pahang Buddhist Association Haemodialysis Centre\nLot PT 57339, Jalan Bukit Ubi  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pahang Buddhist Association, HD Unit",
+    "tel": "( 09)5735507",
+    "email": "pbahdcentre@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Gambang), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD SAYUTI BIN ABU BAKAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Gambang)\nNo.A-19, No.A-21 & A-23, Ground Floor\nLorong Seri Fajar 1/1\nPerumahan Makmur Fajar Jaya\nKM20, Jalan Kuantan-Gambang  26300 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang (Cawangan Gambang), HD Unit",
+    "tel": "09-5486002",
+    "email": "dialisismuip.gambang@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD SAYUTI BIN ABU BAKAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang\n(Klinik Al-Amin Sdn Bhd)\nPerkarangan Masjid Saidina Umar Al-Khattab\nPerkampungan Cenderawasih  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Majlis Ugama Islam dan Adat Resam Melayu Pahang, HD Unit",
+    "tel": "( 09)5131379",
+    "email": "dialisismuip.ktn@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Pakar (Kuantan), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHE ROSLE BIN DERAMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Pakar\n(Pakar Prima Sdn Bhd)\nNo. B812, Jalan Bukit Ubi\nOff Jalan Sg Lembing  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Pakar (Kuantan), HD Unit",
+    "tel": "( 09)5132354",
+    "email": "pusatdialisispakar@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Qaseh PKPP, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TENGKU SYED MUHAMMAD NAQUIB BIN TENGKU SYED ABDUL RAHMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "No. A49 & A51, Pusat Komersial\nBatu 3, Jalan Kurnia Jaya 3  25150 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Qaseh PKPP, HD Unit",
+    "tel": "09-5319866",
+    "email": "teqmedtech@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Yayasan PHIM (Batu 6), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "AZRIL SHAHREEZ BIN ABDUL GHANI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Yayasan PHIM (Batu 6)\nB2, Tingkat Bawah & Satu, Lorong Seri Damai Perdana 4\nBatu 6, Jalan Gambang  25150 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Yayasan PHIM (Batu 6), HD Unit",
+    "tel": "09-5368338",
+    "email": "yphim.batu6@gmail.com"
+  },
+  {
+    "name": "Pusat Dialisis Yayasan PHIM, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MOHD KAMIL BIN AHMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Yayasan PHIM\n(Yayasan Pusat Hemodialisis Islam Makmur Pahang [YPHIM])\nNo 168, Tingkat Bawah, Jalan Besar  25000 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Yayasan PHIM, HD Unit",
+    "tel": "( 09)5164709",
+    "email": "yayasanphim@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialysis Suria Kuantan, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD IKHWAN SHAH BIN AKHTAR ALI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialysis Suria Kuantan\nNo. A-16 & A-18, Lorong Lengkok Kanan 22\nTaman Putih Baru  25150 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialysis Suria Kuantan, HD Unit",
+    "tel": "( 09)5132746",
+    "email": "kuantansuria@yahoo.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Fitra (Kuantan), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZRIL SHAHREEZ BIN ABDUL GHANI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Fitra (Cawangan Kuantan)\nNo. A139, Ground Floor, Lorong Seri Teruntum 8\nJalan Wong Ah Jang, Taman Tunas Maju  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Fitra (Kuantan), HD Unit",
+    "tel": "( 09)5178909",
+    "email": "prd.fitrakuantan@gmail.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Fitra (Seri Perdana), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ROHANA BINTI MOHD ZAIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Fitra (Cawangan Seri Perdana)\nNo, A115 & A117, Ground & 1st Floor\nLorong IM 16/1, Taman Seri Perdana\nBandar Indera Mahkota  25200 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Fitra (Seri Perdana), HD Unit",
+    "tel": "( 09)5733909",
+    "email": "prdfitra@gmail.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis NKF-Tun Abdul Razak (Kuantan), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "NURUL SYAZWANI BINTI MAT NASIR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis NKF-Tun Abdul Razak\n(National Kidney Foundation)\nNo. 19A-21A, Jalan Sri Kuantan 2\nOff Jalan Teluk Sisek  25050 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis NKF-Tun Abdul Razak (Kuantan), HD Unit",
+    "tel": "( 09)5141566",
+    "email": "tar_nkf@yahoo.com"
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital (Paed), HD Unit",
+    "sector": "MOH",
+    "drInCharge": "SELVA KUMAR A/L SIVAPUNNIAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit (Paed)\nHospital Tengku Ampuan Afzan\nJalan Tanah Putih  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital (Paed), HD Unit",
+    "tel": "( 09)5133333",
+    "email": "-"
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit (Adult)\nHospital Tengku Ampuan Afzan\nJalan Tanah Putih  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital, HD Unit",
+    "tel": "( 09)5572341",
+    "email": "-"
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic\nKlinik Nefrologi\nHospital Tengku Ampuan Afzan  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital, Tx Unit",
+    "tel": "( 09)5572471",
+    "email": "fairusmohddaud@yahoo.com"
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital (Paed), MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "SELVA KUMAR A/L SIVAPUNNIAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Department of Paeditric Medicine\nc/o Haemodialysis Unit\nHospital Tengku Ampuan Afzan\nJalan Tanah Putih  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital (Paed), MRRB Unit",
+    "tel": "( 09)5133333",
+    "email": ""
+  },
+  {
+    "name": "Tengku Ampuan Afzan Hospital, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Department of Medicine\nHospital Tengku Ampuan Afzan\nJalan Tanah Putih  25100 Kuantan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Tengku Ampuan Afzan Hospital, MRRB Unit",
+    "tel": "( 09)5133333",
+    "email": ""
+  },
+  {
+    "name": "Maran",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Fitra (Maran), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AZRIL SHAHREEZ BIN ABDUL GHANI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Fitra (Cawangan Maran)\n(Fitramed Sdn Bhd)\nNo. 13, Lorong Permai 2\nTaman Bandar Baru Permai  26500 Maran  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Fitra (Maran), HD Unit",
+    "tel": "( 09)4771909",
+    "email": "prdfitra@gmail.com"
+  },
+  {
+    "name": "Mentakab",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Mentakab Haemodialysis Unit, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Unit Haemodialysis Mentakab\n(Hospital Mentakab Lama)\nJalan Karak  28400 Mentakab  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Mentakab Haemodialysis Unit, HD Unit",
+    "tel": "( 09)2783200",
+    "email": "sabrianje@yahoo.com.my"
+  },
+  {
+    "name": "Pahang Buddhist Association Haemodialysis Centre (Mentakab), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "MUHAMMAD ZAFRI BIN ZAINUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pahang Buddhist Association Haemodialysis Centre (Mentakab)\nNo 17 & 18, Jalan Keruing\nTaman Rimba  28400 Mentakab  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pahang Buddhist Association Haemodialysis Centre (Mentakab), HD Unit",
+    "tel": "09-2770986",
+    "email": "PBAmentakab2018@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Fomema Haemodialysis Mentakab, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NOOR ADIBAH BT ZULKIFLI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Fomema Haemodialysis Mentakab\nNo. 4 & No. 6, Ground Floor \nJalan Semantan Indah 1\nTaman Semantan Indah  28400 Mentakab  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Fomema Haemodialysis Mentakab, HD Unit",
+    "tel": "010-2413177",
+    "email": "fh.mentakab@fomemadialysis.com.my"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Pusat Dialisis Amal MAAEDICARE (Mentakab), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "HALIM BIN ISHAK;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Pusat Dialisis Amal MAAEDICARE (Mentakab)\nNo. 57 - 59, Jalan Angsana\nTaman Rimba  28400 Mentakab  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Pusat Dialisis Amal MAAEDICARE (Mentakab), HD Unit",
+    "tel": "(016)9210652",
+    "email": "mentakab@maamedicare.org"
+  },
+  {
+    "name": "Muadzam Shah",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Muadzam Shah Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "MUHAMAD RIDZUAN BIN ABU BAKAR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Muadzam Shah  26700 Muadzam Shah  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Muadzam Shah Hospital, HD Unit",
+    "tel": "( 09)45202136  292",
+    "email": "syamanefro2020@gmail.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Fitra (Cawangan Muadzam Shah), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "SITI NOOR SAFINAT BINTI SAADAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Fitra (Cawangan Muadzam Shah)\nNo.17/17-1 & 19, Jalan Makmur 7\nPresint Niaga Bandar Satelit  26700 Muadzam Shah  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Fitra (Cawangan Muadzam Shah), HD Unit",
+    "tel": "010-4421909",
+    "email": "prdfitra@gmail.com"
+  },
+  {
+    "name": "Pekan",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pekan Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Pekan  26600 Pekan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pekan Hospital, HD Unit",
+    "tel": "( 09)4221291",
+    "email": "hdupekan@moh.gov.my"
+  },
+  {
+    "name": "Pusat Dialisis Pakar (Pekan), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHE ROSLE BIN DERAMAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Pakar \n(Pakar Prima Sdn Bhd)\nNo. 1 ARKED Pusat Komersial\nJln Engku Muda Mansor  26600 Pekan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Pakar (Pekan), HD Unit",
+    "tel": "( 09)4222149",
+    "email": "pdppekan@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Pekan, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "NABEELA SAAEDAH BINTI SHOFWAN BADRIE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Pekan\nTingkat Bawah, Mezzanine Dan Tingkat 1\nNo. 4, Pusat Komersial Mahkota\nJalan Mahkota  26600 Pekan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Yayasan Al-Sultan Abdullah (YASA) Pekan, HD Unit",
+    "tel": "09-4219697",
+    "email": "pekan@yasadialysis.com.my"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Fitra Pekan, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "HARISON BINTI MOHD AMIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis Fitra Pekan\n(Fitra Med Sdn Bhd)\nNo. 6 & 7, Lorong Taman Ketapang 1, Batu 2 1/2, Jalan Pekan Nenasi  26600 Pekan  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Fitra Pekan, HD Unit",
+    "tel": "( 09)4227039",
+    "email": "-"
+  },
+  {
+    "name": "Raub",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Hemodialisis Attibbiyyin Dialisis, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "ABDUL RAHMAN BIN MOHAMAD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Attibbiyyin Dialisis\nNo. 70, 71, & 71A, Pusat Perniagaan Km2\nJalan Lipis  27600 Raub  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Attibbiyyin Dialisis, HD Unit",
+    "tel": "09-3561400",
+    "email": "dialisisraub@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Suria (Raub), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RAGAVAN A/L V DAMODARAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Suria (Raub)\nNo. 1 & 2 Tingkat Bawah\nJalan Komersial Utama\nPusat Komersial Raub  27600 Raub  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Suria (Raub), HD Unit",
+    "tel": "019-6355867",
+    "email": ""
+  },
+  {
+    "name": "Raub Dialysis Centre Sdn Bhd, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MOHD ALI HANAFIAH BIN MAT SO'AD;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Raub Dialysis Centre Sdn Bhd\nNo.31, Jalan Lestari Utama\nTaman Amalina Lestari  27600 Raub  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Raub Dialysis Centre Sdn Bhd, HD Unit",
+    "tel": "09-3554055",
+    "email": "raubdialysiscentre@gmail.com"
+  },
+  {
+    "name": "Raub Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Raub\nJalan Tengku Abdul Samad  27600 Raub  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Raub Hospital, HD Unit",
+    "tel": "( 09)3553333  2800",
+    "email": "hduraub@gmail.com"
+  },
+  {
+    "name": "Rompin",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Rompin Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialisis Unit\nHospital Rompin\nKampung Kolam  26800 Rompin  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Rompin Hospital, HD Unit",
+    "tel": "( 09)4141305  2028",
+    "email": "hdurompin@gmail.com"
+  },
+  {
+    "name": "Temerloh",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Sultan Haji Ahmad Shah Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nSultan Haji Ahmad Shah Hospital\nJalan Maran  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Sultan Haji Ahmad Shah Hospital, CAPD Unit",
+    "tel": "( 09)2955333  1179",
+    "email": "sabrianje@yahoo.com.my"
+  },
+  {
+    "name": "Pusat Dialisis Mukmin Temerloh, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RENA MENON A/P N RAMACHANDRAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Mukmin Temerloh\n(Gedung Penawar Sdn Bhd)\nNo. 26, 28 & 30, Jalan Sungai Rabit\nOff Jalan Tengku Ismail  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Mukmin Temerloh, HD Unit",
+    "tel": "( 09)2901768",
+    "email": "pdmtemerloh@gedungpenawar.com"
+  },
+  {
+    "name": "Pusat Dialisis My Angkasa (Temerloh), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD ALIAS TAJUDDIN ZAKARIA;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis My Angkasa\n(Myangkasa Dialisis Sdn Bhd)\nNo. 2, Jalan Pak Sako 2\nBandar Sri Semantan  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis My Angkasa (Temerloh), HD Unit",
+    "tel": "( 09)2965599",
+    "email": "pdma.termerloh@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialisis Addin, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AHMAD ALIAS TAJUDDIN ZAKARIA;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialisis Addin\nNo. 67 & 67A, Jalan BDS 2,\nBukit Desa Semantan  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialisis Addin, HD Unit",
+    "tel": "09-2902322",
+    "email": "penerajumakmur24@gmail.com"
+  },
+  {
+    "name": "Pusat Hemodialysis Suria (Temerloh), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "MUHAMMAD ZAFRI BIN ZAINUDDIN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Hemodialysis Suria (Temerloh)\nNo. 1, Jalan Jaya 7/1, Taman Jaya\nJalan Maran  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Hemodialysis Suria (Temerloh), HD Unit",
+    "tel": "( 09)2972535",
+    "email": "suriatemerloh@yahoo.com"
+  },
+  {
+    "name": "Sultan Haji Ahmad Shah Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Sultan Haji Ahmad Shah\nJalan Maran  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Sultan Haji Ahmad Shah Hospital, HD Unit",
+    "tel": "( 09)2955354",
+    "email": "sabrianje@yahoo.com.my"
+  },
+  {
+    "name": "Sultan Haji Ahmad Shah Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Unit)\nHospital Sultan Haji Ahmad Shah\nJalan Maran  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Sultan Haji Ahmad Shah Hospital, Tx Unit",
+    "tel": "( 09)2955333  1170",
+    "email": ""
+  },
+  {
+    "name": "Sultan Haji Ahmad Shah Hospital, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "FARIZ SAFHAN BIN MOHAMAD NOR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Sultan Haji Ahmad Shah Hospital\nJalan Maran  28000 Temerloh  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Sultan Haji Ahmad Shah Hospital, MRRB Unit",
+    "tel": "( 09)29553333",
+    "email": "Dr. FARIZ SAFHAN BIN MOHAMAD NOR"
+  },
+  {
+    "name": "Triang Bera",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "Pusat Dialisis NKF-Sang Riang (Triang), HD Unit",
+    "sector": "NGO",
+    "drInCharge": "RENA MENON A/P N RAMACHANDRAN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis NKF-Sang Riang, Triang\n(National Kidney Foundation of Malaysia)\nNo. 2 -13 Jalan Warga Emas  28300 Triang Bera  Pahang Darul Makmur  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis NKF-Sang Riang (Triang), HD Unit",
+    "tel": "( 09)2505709",
+    "email": "sangriang@nkf.org.my"
+  }
+]

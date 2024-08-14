@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Labuan Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "Haemodialysis Unit\nHospital Labuan\nP.O. Box 81006  87020 Labuan  Wilayah Persekutuan Labuan, Sabah  MALAYSIA",
+    "addressWithUnit": "Labuan Hospital, HD Unit",
+    "tel": "(087)596888  4195"
+  },
+  {
+    "name": "Labuan Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "Renal Transplant Clinic\nc/o Haemodialysis Unit\nHospital Labuan  87020 Labuan  Wilayah Persekutuan Labuan, Sabah  MALAYSIA",
+    "addressWithUnit": "Labuan Hospital, Tx Unit",
+    "tel": "(087)596888  4193 /4195"
+  }
+]

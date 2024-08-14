@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Putrajaya Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "RAFIDAH BINTI ABDULLAH;",
+    "address": "CAPD Unit, Putrajaya Hospital\nJalan P9, Presint 7  62250 Putrajaya  Wilayah Persekutuan Putrajaya, Selangor  MALAYSIA",
+    "addressWithUnit": "Putrajaya Hospital, CAPD Unit",
+    "tel": "03-83124200  4257",
+    "email": "capdhpj@gmail.com"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis Hidayah, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "GANESAN PARTHIBAN;",
+    "address": "Pusat Rawatan Dialisis Hidayah Sdn Bhd\nLot 01 Komplek Kejiranan Persint 9  62250 Putrajaya  Wilayah Persekutuan Putrajaya, Selangor  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis Hidayah, HD Unit",
+    "tel": "( 03)88811816",
+    "email": "prdh.putrajaya@gmail.com"
+  },
+  {
+    "name": "Putrajaya Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "RAFIDAH BINTI ABDULLAH;",
+    "address": "Haemodialysis Unit \nHospital Putrajaya\nPusat Pentadbiran Kerajaan Persekutuan\nPresint 7  62250 Putrajaya  Wilayah Persekutuan Putrajaya, Selangor  MALAYSIA",
+    "addressWithUnit": "Putrajaya Hospital, HD Unit",
+    "tel": "( 03)83124257  4257",
+    "email": "( 03)88880137"
+  }
+]

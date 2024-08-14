@@ -1,0 +1,1402 @@
+[
+  {
+    "name": "Centres",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Beaufort",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Beaufort Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nBeaufort Hospital\nPeti Surat 40  89807 Beaufort  Sabah  MALAYSIA",
+    "addressWithUnit": "Beaufort Hospital, HD Unit",
+    "tel": "(087)212334  332",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Nobel Dialysis Centre (Beaufort), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "PURNAMA BIN JAMIR;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Nobel Dialysis Centre (Beaufort)\n48, 49, 50 (Ground Floors), Block G\nBeaufort Square Avenue 4\nJalan Binunuk  89800 Beaufort  Sabah  MALAYSIA",
+    "addressWithUnit": "Nobel Dialysis Centre (Beaufort), HD Unit",
+    "tel": "087-222622",
+    "email": "eNRR",
+    "centreDetailTable 24": "Staff Nurse GADIUS BIN MALALAP"
+  },
+  {
+    "name": "Beluran",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Beluran Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Beluran \nMail Bag 02  90109 Beluran  Sabah  MALAYSIA",
+    "addressWithUnit": "Beluran Hospital, HD Unit",
+    "tel": "(089)511233  184",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "keningau",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Keningau Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Keningau Hospital\nPeti Surat 11, Jalan Apin-Apin  89007 keningau  Sabah  MALAYSIA",
+    "addressWithUnit": "Keningau Hospital, CAPD Unit",
+    "tel": "08-7313000  1110",
+    "email": "Email:",
+    "centreDetailTable 24": "SN LEONG KOK HUEI"
+  },
+  {
+    "name": "Keningau Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Keningau\nPeti Surat 11  89007 Keningau  Sabah  MALAYSIA",
+    "addressWithUnit": "Keningau Hospital, HD Unit",
+    "tel": "(087)313000  1110",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "RenalTeam Dialysis Centre (Keningau), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "DAINNA A. GIMBALU KAMPUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renalteam Dialysis Centre (Keningau)\nLot 29 & 30, Apollo Atrium Keningau\nJalan Bariawa Laut, Kg Bariawa  89000 Keningau  Sabah  MALAYSIA",
+    "addressWithUnit": "RenalTeam Dialysis Centre (Keningau), HD Unit",
+    "tel": "(087)336773",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Kota Belud",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kota Belud Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Daerah Kota Belud\nP. O. Box 159  89158 Kota Belud  Sabah  MALAYSIA",
+    "addressWithUnit": "Kota Belud Hospital, HD Unit",
+    "tel": "(088)976333  248 / 207",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Nobel Dialysis Centre (Kota Belud), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TIONG CHI YEW;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Nobel Dialysis Centre Kota Belud\nLot 22-24, Ground Floor, Block D, Kompleks Alapbana  98157 Kota Belud  Sabah  MALAYSIA",
+    "addressWithUnit": "Nobel Dialysis Centre (Kota Belud), HD Unit",
+    "tel": "088-979622",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Kota Kinabalu",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit (Paed) c/o Wad Melur 2\nHospital Wanita Dan Kanak-Kanak Sabah \n((Hospital Likas) \nLocked Bag Number 187  88996 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), CAPD Unit",
+    "tel": "(088)522600  613 / 615",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Queen Elizabeth Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit\nHospital Queen Elizabeth\nKarung Berkuci No 2029  88450 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Queen Elizabeth Hospital, CAPD Unit",
+    "tel": "(088)517555  7255",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "B. Braun Avitum (Kota Kinabalu) Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LIEW BOON SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "B. Braun Avitum Dialysis Centre\nLot 6, Blk C Grd & 1st Floor, Lintas Jaya Uptwonship\nJalan Lintas, Kepayan Highway  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "B. Braun Avitum (Kota Kinabalu) Dialysis Centre, HD Unit",
+    "tel": "(088)724754",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Gleneagles Kota Kinabalu, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "SREETHARAN A/L SIVAPATHA SUNDARAM;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Gleneagles Kota Kinabalu\nLevel 3A, Dialysis Unit\nA1, Lorong Riverson @ Sembulan  88100 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Gleneagles Kota Kinabalu, HD Unit",
+    "tel": "(088)518958  7137",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Hospital Queen Elizabeth II, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nTingkat 2, Hospital Queen Elizabeth II\nLorong Bersatu Off Jalan Damai\nLuyang  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Hospital Queen Elizabeth II, HD Unit",
+    "tel": "(088)324600  2159 /2156",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit (Paed)\nHospital Wanita Dan Kanak-Kanak Sabah (Hospital Likas)\nLocked Bag Number 187  88996 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), HD Unit",
+    "tel": "(088)522600  714 / 723",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Hospital Wanita Dan Kanak-Kanak Sabah, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialyis Unit\nHospital Wanita Dan Kanak-Kanak Sabah (Hospital Likas)\nKarung Berkunci 187, Likas  88996 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Hospital Wanita Dan Kanak-Kanak Sabah, HD Unit",
+    "tel": "(088)522600  714",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "KPJ Sabah Specialist Hospital, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "BHARATHAN A/L THEVA RAJAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nKPJ Sabah Specialist Hospital\n(SMC Healthcare Sdn Bhd)\nLot. 2, Off Jalan Damai, Luyang  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "KPJ Sabah Specialist Hospital, HD Unit",
+    "tel": "(088)32200  2159",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Nobel Dialysis Centre (Kota Kinabalu), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "BHARATHAN A/L THEVA RAJAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Nobel Dialysis Centre\n(S H Quality Care Sdn Bhd)\nLot 8 & 9, Ground Floor, Block A\nHeritage Plaza, Off Jalan Lintas, Luyang  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Nobel Dialysis Centre (Kota Kinabalu), HD Unit",
+    "tel": "(088)725622",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Persatuan Buah Pinggang Sabah, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LIEW BOON SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Persatuan Buah Pinggang Sabah\nNo. 822, Taman Dah Yeh Villa\nJalan Damai  88400 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Persatuan Buah Pinggang Sabah, HD Unit",
+    "tel": "(088)219901",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Persatuan Hemodialysis Kinabalu Sabah, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "KENNETH WU SOON TAK;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Persatuan Hemodialysis Kinabalu Sabah\nTL1019, Jalan Mat Salleh\nTanjung Aru  88100 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Persatuan Hemodialysis Kinabalu Sabah, HD Unit",
+    "tel": "(088)272276",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Peter Mole MAA-Medicare Charity Dialysis Centre, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LIEW BOON SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Peter Mole MAA-Medicare Charity Dialysis Centre\nLot 3/3A & 5 Blok A, Lorong Pusat Komersil 88/2\n88 Market Place, Off Jalan Pintas  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Peter Mole MAA-Medicare Charity Dialysis Centre, HD Unit",
+    "tel": "(016)8322329",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Pusat Dialisis Davita Kota Kinabalu, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Kota Kinabalu\nLot 3 & 4, Ground Floor, Bangunan Daya\nJalan Kebajikan  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Kota Kinabalu, HD Unit",
+    "tel": "088-213317",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Pusat Dialisis Tanjung Renal Care Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LESLIE CHAN CHAU NYEN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Tanjung Renal Care Centre\n5 Ground Floor & Mezzanine Floor\nWisma One Sulaman, Jalan Sulaman  88400 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Tanjung Renal Care Centre, HD Unit",
+    "tel": "011-51709288",
+    "email": "eNRR",
+    "centreDetailTable 24": "SN MAXWELL MOMELTUS"
+  },
+  {
+    "name": "Pusat Dialysis UMS-YKN, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LESLIE CHAN CHAU NYEN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "YKN Dialisis Sabah\nPusat Dialysis UMS-YKN\n(Persatuan Kebajikan Hemodialisis Universiti Malaysia Sabah)\nLot 28-0 & 30-0, Block E, Ground Floor, Lorong Plaza Kingfishers\nPlaza Kingfisher, Likas  88450 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialysis UMS-YKN, HD Unit",
+    "tel": "(088)431592",
+    "email": "Ext",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Pusat Rawatan Dialisis MUIS-NKF, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Rawatan Dialisis MUIS-NKF\n(MUIS-Majlis Ugama Islam Sabah)\nLot 109A-110A, Blok A, Tingkat 1\nWisma MUIS  88818 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Rawatan Dialisis MUIS-NKF, HD Unit",
+    "tel": "(088)538532",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Queen Elizabeth Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Queen Elizabeth  88856 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Queen Elizabeth Hospital, HD Unit",
+    "tel": "(088)517555  7129/ 7350",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Klinik Dr Choo & Liew, Tx Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LIEW BOON SENG;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Klinik Dr Choo & Liew\nNo. 9-0, Lorong Lintas Plaza 1\nLintas Plaza, Jalan Lintas  88380 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Klinik Dr Choo & Liew, Tx Unit",
+    "tel": "(088)237292",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "KPJ Sabah Specialist Hospital, Tx Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "BHARATHAN A/L THEVA RAJAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic (c/o Haemodialysis Centre) \nKPJ Sabah Specialist Hospital\nLot No. 2, Off Jalan Damai, Luyang  88300 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "KPJ Sabah Specialist Hospital, Tx Unit",
+    "tel": "(088)322000  2159",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Queen Elizabeth Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic\nc/o CAPD Unit\nHospital Queen Elizabeth\nKarung Berkunci No 2029  88986 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Queen Elizabeth Hospital, Tx Unit",
+    "tel": "(088)517555  7436",
+    "email": "Fax:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "LAI CHEE SING;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "c/o Haemodialysis Unit (Paed)\nHospital Wanita Dan Kanak-Kanak Sabah (Hospital Likas)\nKarung Berkunci 187, Likas  88996 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Hospital Wanita Dan Kanak-kanak Sabah (Paed), MRRB Unit",
+    "tel": "(088)522600",
+    "email": "Email:",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Queen Elizabeth Hospital, MRRB Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Intervention Room Nephrology\nHospital Queen Elizabeth  88586 Kota Kinabalu  Sabah  MALAYSIA",
+    "addressWithUnit": "Queen Elizabeth Hospital, MRRB Unit",
+    "tel": "0135569984  7422",
+    "email": "Tel (2):",
+    "centreDetailTable 24": "Mr. Md Azmil @ Abd Kamil Salleh"
+  },
+  {
+    "name": "Kota Marudu",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kota Marudu Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Kota Marudu\nPeti surat 255  89108 Kota Marudu  Sabah  MALAYSIA",
+    "addressWithUnit": "Kota Marudu Hospital, HD Unit",
+    "tel": "(088)661984  164",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kuala Penyu",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kuala Penyu Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Kuala Penyu\nW.D.T 35  89740 Kuala Penyu  Sabah  MALAYSIA",
+    "addressWithUnit": "Kuala Penyu Hospital, HD Unit",
+    "tel": "(087)853100  216",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Kudat",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kudat Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Daerah Kudat\nP O Box 22  89057 Kudat  Sabah  MALAYSIA",
+    "addressWithUnit": "Kudat Hospital, HD Unit",
+    "tel": "(088)613333  122",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Kunak",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kunak Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Kunak  91209 Kunak  Sabah  MALAYSIA",
+    "addressWithUnit": "Kunak Hospital, HD Unit",
+    "tel": "(089)894100  100",
+    "email": "Tel (2):",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Lahad Datu",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Lahad Datu Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Lahad Datu\nP. O. Box 60065  91110 Lahad Datu  Sabah  MALAYSIA",
+    "addressWithUnit": "Lahad Datu Hospital, HD Unit",
+    "tel": "(089)895111  2111/2113",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Nabawan",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Klinik Kesihatan Nabawan, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Klinik Kesihatan Nabawan\nPeti Surat 56  89957 Nabawan  Sabah  MALAYSIA",
+    "addressWithUnit": "Klinik Kesihatan Nabawan, HD Unit",
+    "tel": "087-366100",
+    "email": "eNRR",
+    "centreDetailTable 24": "-"
+  },
+  {
+    "name": "Papar",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Papar Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Papar\nPeti Sura No. 6  89607 Papar  Sabah  MALAYSIA",
+    "addressWithUnit": "Papar Hospital, HD Unit",
+    "tel": "(088)913333  210",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Pusat Dialisis Davita Papar, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RAMZEE MARYOO;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Papar\nNo. S1 & S2, Taman Tulip\nJalan Hospital, Kg. Berundong  89600 Papar  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Papar, HD Unit",
+    "tel": "088-911825",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Pusat Dialisis Renal-Link (Papar), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "RICHARD NG KAH PUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Renal-Link (Papar)\nNo.8 & 9, Ground & First Floor, Block A\nSri Alam Perdana Commercial Centre  89600 Papar  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Renal-Link (Papar), HD Unit",
+    "tel": "088-917919",
+    "email": "eNRR",
+    "centreDetailTable 24": "SN CHAN SIU LIENG"
+  },
+  {
+    "name": "Pitas",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Pitas Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Hospital Pitas\nP.O Box 88  89100 Pitas  Sabah  MALAYSIA",
+    "addressWithUnit": "Pitas Hospital, HD Unit",
+    "tel": "(088)676100  159 / 191",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Ranau",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Ranau Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Ranau  89300 Ranau  Sabah  MALAYSIA",
+    "addressWithUnit": "Ranau Hospital, HD Unit",
+    "tel": "(088)875266  137",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Sandakan",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Duchess of Kent Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit  / Transplant Unit\nHospital Duchess of Kent\nKM 3.2, Jalan Utara  90000 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Duchess of Kent Hospital, CAPD Unit",
+    "tel": "(089)248600  8696",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Duchess of Kent Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit \nHospital Duchess of Kent\nKM3.2, Jalan Utara  90000 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Duchess of Kent Hospital, HD Unit",
+    "tel": "(089)248600  8691",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Kota Kinabatangan Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Kota Kinabatangan, WDT 200\nKota Kinabatangan  90200 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Kota Kinabatangan Hospital, HD Unit",
+    "tel": "(089)561858  152",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Persatuan Buah Pinggang Sandakan Sabah, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "LIM THUNG CHEH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialyis Unit\nPersatuan Buah Pinggang Sandakan\nJKR No. 2037, Jln Bukit\nBatu 1.5, Off Jln Utara  90000 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Persatuan Buah Pinggang Sandakan Sabah, HD Unit",
+    "tel": "(089)227852",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Pusat Dialisis Davita Sandakan, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "LIM THUNG CHEH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Pusat Dialisis Davita Sandakan\nLot 3 & 4, Ground Floor, Bangunan Yuan Li\nJln Utara, Batu 1 1/2  90000 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Pusat Dialisis Davita Sandakan, HD Unit",
+    "tel": "089-210123",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Duchess of Kent Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic\nc/o CAPD Unit \nHospital Duchess of Kent\nKM3.2, Jalan Utara  90007 Sandakan  Sabah  MALAYSIA",
+    "addressWithUnit": "Duchess of Kent Hospital, Tx Unit",
+    "tel": "(089)2486000  8696",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Semporna",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Semporna Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Daerah Semporna\nPeti Surat 80  91308 Semporna  Sabah  MALAYSIA",
+    "addressWithUnit": "Semporna Hospital, HD Unit",
+    "tel": "(089)782108  371",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Sipitang",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Sipitang Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nSipitang Hospital\n(P. O. Box 250)  89857 Sipitang  Sabah  MALAYSIA",
+    "addressWithUnit": "Sipitang Hospital, HD Unit",
+    "tel": "(087)822296  203",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tambunan",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tambunan Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Tambunan\nP. O. Box 10  89657 Tambunan  Sabah  MALAYSIA",
+    "addressWithUnit": "Tambunan Hospital, HD Unit",
+    "tel": "(087)774333  280 / 279",
+    "email": "Fax:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Tawau",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tawau Hospital, CAPD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG CHUN MUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "CAPD Unit  / Hemodialysis Unit\nHospital Tawau\nPeti Surat 67  91007 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "Tawau Hospital, CAPD Unit",
+    "tel": "(089)983535",
+    "email": "Ext",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "B. Braun Avitum (Tawau) Dialysis Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "AU YONG KIM SOON;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "B. Braun Avitum Dialysis Centre\nLot A14 & A15, Ground & First Floor, \nHotspring Commercial Complex\nJalan Air Panas  91000 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "B. Braun Avitum (Tawau) Dialysis Centre, HD Unit",
+    "tel": "(089)714119",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "NSCMH Dialysis Care Cawangan Tawau, HD Unit",
+    "sector": "NGO",
+    "drInCharge": "SURIANY BINTI BULLAH;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "NSCMH Dialysis Care Cawangan Tawau\nTB 10773, Lot 47 & 48, Ground Floor \nJalan Megah 5, Taman Megah Jaya\n3 1/2 Jalan Apas  91000 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "NSCMH Dialysis Care Cawangan Tawau, HD Unit",
+    "tel": "089-747615",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Tawau Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG CHUN MUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Tawau\nPeti Surat 67  91007 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "Tawau Hospital, HD Unit",
+    "tel": "(089)773533  8221",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tawau Specialist Medical Centre, HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "CHUNG YAW YEE;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Tawau Specialist Medical Centre Sabah Sdn Bhd\nTSMC Haemodialysis Centre\nNo. 3680-3692,\nTanah Lot 107525664-107525780,\nTinagat Plaza Mile 2.5,\nJalan Bunga Raya, Off Jalan Apas  91000 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "Tawau Specialist Medical Centre, HD Unit",
+    "tel": "089-779082",
+    "email": "eNRR",
+    "centreDetailTable 24": "-"
+  },
+  {
+    "name": "Tawau Hospital, Tx Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG CHUN MUN;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Renal Transplant Clinic\nc/o Haemodialysis Unit\nHospital Tawau  91007 Tawau  Sabah  MALAYSIA",
+    "addressWithUnit": "Tawau Hospital, Tx Unit",
+    "tel": "(089)983535",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Tenom",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tenom Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Daerah Tenom\nP. O. Box 97  89907 Tenom  Sabah  MALAYSIA",
+    "addressWithUnit": "Tenom Hospital, HD Unit",
+    "tel": "(087)735577  167",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Tuaran",
+    "sector": "",
+    "drInCharge": "",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "Nobel Dialysis Centre (Tuaran), HD Unit",
+    "sector": "PRIVATE",
+    "drInCharge": "TIONG CHI YEW;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Nobel Dialysis Centre\n(S H Quality Care Sdn Bhd)\nLot 6 & 7, Ground Floor Block H\nJalan Sungai Damit  89200 Tuaran  Sabah  MALAYSIA",
+    "addressWithUnit": "Nobel Dialysis Centre (Tuaran), HD Unit",
+    "tel": "(088)788622",
+    "email": "Email:",
+    "centreDetailTable 24": "✓"
+  },
+  {
+    "name": "Tuaran Hospital, HD Unit",
+    "sector": "MOH",
+    "drInCharge": "WONG KOH WEI;",
+    "address": "",
+    "addressWithUnit": "",
+    "tel": "",
+    "email": "",
+    "centreDetailTable 24": ""
+  },
+  {
+    "name": "",
+    "sector": "",
+    "drInCharge": "",
+    "address": "Haemodialysis Unit\nHospital Tuaran\nPeti surat 996  89207 Tuaran  Sabah  MALAYSIA",
+    "addressWithUnit": "Tuaran Hospital, HD Unit",
+    "tel": "(088)788317  4130",
+    "email": "Tel (2):",
+    "centreDetailTable 24": ""
+  }
+]
