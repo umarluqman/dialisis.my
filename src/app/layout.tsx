@@ -2,6 +2,7 @@ import { CookieBanner } from "@/components/CookieBanner";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
+import FilterLayout from "@/components/filter-layout";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 // FIXME: change this
@@ -43,7 +44,12 @@ export default function RootLayout({
             </nav>
           </div>
         </header>
-        <main className="flex-grow">{children}</main>
+
+        <main className="flex-grow">
+          <FilterLayout params={{ state: "", district: "" }}>
+            {children}
+          </FilterLayout>
+        </main>
         <footer className="bg-primary text-primary-foreground py-4 px-6">
           <div className="container mx-auto flex justify-between items-center">
             <p>&copy; 2024 Dialisis Malaysia. All rights reserved.</p>
