@@ -9,3 +9,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model DialysisCenter {
+  id        String   @id @default(cuid())
+  name      String
+  address   String
+  town      String   
+  tel       String
+  email     String
+  state     State    @relation(fields: [stateId], references: [id])
+  stateId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([town])
+}
+
+model State {
+  id              String           @id @default(cuid())
+  name            String           @unique
+  dialysisCenters DialysisCenter[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
