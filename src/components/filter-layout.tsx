@@ -15,9 +15,20 @@ export default function FilterLayout({
     "All",
     "Selangor",
     "Kuala Lumpur",
-    "Penang",
+    "Pulau Pinang",
     "Johor",
     "Perak",
+    "Perlis",
+    "Putrajaya",
+    "Kedah",
+    "Kelantan",
+    "Melaka",
+    "Negeri Sembilan",
+    "Pahang",
+    "Sabah",
+    "Sarawak",
+    "Terengganu",
+    "Labuan",
   ];
   const districts = [
     "Petaling Jaya",
@@ -32,6 +43,8 @@ export default function FilterLayout({
     : params.state
     ? `Dialysis Centers in ${params.state}`
     : "Dialysis Centers in Malaysia";
+
+  console.log("Xxx", { params });
 
   return (
     <div className="min-h-screen bg-gray-100">

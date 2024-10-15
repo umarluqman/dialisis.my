@@ -1,10 +1,9 @@
 import { CookieBanner } from "@/components/CookieBanner";
+import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
-import FilterLayout from "@/components/filter-layout";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
 // FIXME: change this
 export const metadata = {
   title: "pSEO next template",
@@ -45,11 +44,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="flex-grow">
-          <FilterLayout params={{ state: "", district: "" }}>
-            {children}
-          </FilterLayout>
-        </main>
+        <main className="flex-grow">{children}</main>
         <footer className="bg-primary text-primary-foreground py-4 px-6">
           <div className="container mx-auto flex justify-between items-center">
             <p>&copy; 2024 Dialisis Malaysia. All rights reserved.</p>

@@ -12,22 +12,6 @@ export default function DialysisCenterDirectory() {
     setSearchQuery(event.target.value);
   };
 
-  const states = [
-    "All",
-    "Selangor",
-    "Kuala Lumpur",
-    "Penang",
-    "Johor",
-    "Perak",
-  ];
-  const districts = [
-    "Petaling Jaya",
-    "Shah Alam",
-    "Subang Jaya",
-    "Klang",
-    "Ampang",
-  ];
-
   const centers = [
     {
       name: "Dialysis Center 1",
