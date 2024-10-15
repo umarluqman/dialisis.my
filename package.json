@@ -11,7 +11,9 @@
     "db": "npx dotenv -e .env.local -- prisma migrate dev",
     "studio": "npx dotenv -e .env.local -- prisma studio",
     "dev": "next dev",
-    "prod:build": "npx prisma generate && npx prisma migrate deploy && next build"
+    "db:push": "dotenv -e .env -- prisma db push",
+    "prod:build": "npx prisma generate && npx prisma migrate deploy && next build",
+    "populate-db": "node scripts/populate-db.js"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
@@ -52,6 +54,7 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prisma": "^5.20.0",
-    "tailwindcss": "^3.3.1"
+    "tailwindcss": "^3.3.1",
+    "ts-node": "^10.9.2"
   }
 }

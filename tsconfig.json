@@ -25,6 +25,10 @@
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
+  // "ts-node": {
+  //   "esm": true,
+  //   "experimentalSpecifierResolution": "node"
+  // },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

@@ -3,11 +3,12 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("TURSO_DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model DialysisCenter {
@@ -16,6 +17,9 @@ model DialysisCenter {
   address   String
   town      String   
   tel       String
+  unit      String
+  sector    String
+  drInCharge String
   email     String
   state     State    @relation(fields: [stateId], references: [id])
   stateId   String
