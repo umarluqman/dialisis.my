@@ -17,7 +17,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const states = await prisma.state.findMany();
   return states.map((state) => ({
-    state: state.name,
+    state: state.name.replace(/\s+/g, "-").toLowerCase(),
   }));
 }
 
@@ -37,6 +37,7 @@ async function getDialysisCenters(state: string) {
 
 const VariantLayout = async ({ params }: { params: { state: string } }) => {
   const data = await getDialysisCenters(params.state);
+  console.log("data", data);
 
   if (!data || data.length === 0) {
     return <p>No dialysis centers found for: {params.state}</p>;
@@ -44,11 +45,6 @@ const VariantLayout = async ({ params }: { params: { state: string } }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex w-full justify-center py-16">
-        <h1 className="text-4xl font-bold">
-          Dialysis Centers in <span className="capitalize">{params.state}</span>
-        </h1>
-      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-screen-xl mx-auto">
         {data.map((item) => (
           <Link

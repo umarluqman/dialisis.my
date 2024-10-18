@@ -1,82 +1,44 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { useState } from "react";
+import FilterLayout from "@/components/filter-layout";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { prisma } from "@/lib/db";
+import { MailIcon, PhoneCallIcon } from "lucide-react";
 
-export default function DialysisCenterDirectory() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedState, setSelectedState] = useState("All");
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+async function getDialysisCenters() {
+  const centers = await prisma.dialysisCenter.findMany();
+  return centers;
+}
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const centers = [
-    {
-      name: "Dialysis Center 1",
-      state: "Selangor",
-      district: "Petaling Jaya",
-      height: "h-64",
-    },
-    {
-      name: "Dialysis Center 2",
-      state: "Kuala Lumpur",
-      district: "Ampang",
-      height: "h-80",
-    },
-    {
-      name: "Dialysis Center 3",
-      state: "Penang",
-      district: "George Town",
-      height: "h-72",
-    },
-    {
-      name: "Dialysis Center 4",
-      state: "Johor",
-      district: "Johor Bahru",
-      height: "h-96",
-    },
-    {
-      name: "Dialysis Center 5",
-      state: "Perak",
-      district: "Ipoh",
-      height: "h-64",
-    },
-    {
-      name: "Dialysis Center 6",
-      state: "Selangor",
-      district: "Shah Alam",
-      height: "h-80",
-    },
-  ];
+export default async function DialysisCenterDirectory() {
+  const data = await getDialysisCenters();
+  console.log("data", data);
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))]">
-        {centers.map((center, index) => (
-          <div key={index}>
-            <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-              <CardContent className="p-4 flex flex-col justify-between h-full">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">{center.name}</h3>
-                  <p className="text-sm text-gray-600">
-                    Location: {center.state}
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    District: {center.district}
-                  </p>
+    <FilterLayout>
+      <div className="min-h-screen bg-gray-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))]">
+          {data.map((item) => (
+            <Card
+              key={item.id}
+              className="shadow-sm hover:border-primary transition-shadow"
+            >
+              <CardHeader>
+                <CardTitle>{item.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="flex flex-col gap-2">
+                <p className="text-primary mb-4">{item.address}</p>
+                <div className="flex gap-2 items-center">
+                  <PhoneCallIcon className="w-4 h-4" />
+                  <p className="text-primary">{item.tel}</p>
                 </div>
-                <div className="mt-4">
-                  <Button variant="outline" className="w-full">
-                    View Details
-                  </Button>
+                <div className="flex gap-2 items-center">
+                  <MailIcon className="w-4 h-4" />
+                  <p className="text-primary">{item.email}</p>
                 </div>
               </CardContent>
             </Card>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+    </FilterLayout>
   );
 }

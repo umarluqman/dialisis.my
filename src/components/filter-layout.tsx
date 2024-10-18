@@ -1,51 +1,67 @@
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
+"use client";
+
 import { Input } from "@/components/ui/input";
-import { Filter, Search } from "lucide-react";
-import Link from "next/link";
+import { CITIES, STATES } from "@/constants";
+import { Search } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export default function FilterLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { state?: string; district?: string };
 }) {
-  const states = [
-    "All",
-    "Selangor",
-    "Kuala Lumpur",
-    "Pulau Pinang",
-    "Johor",
-    "Perak",
-    "Perlis",
-    "Putrajaya",
-    "Kedah",
-    "Kelantan",
-    "Melaka",
-    "Negeri Sembilan",
-    "Pahang",
-    "Sabah",
-    "Sarawak",
-    "Terengganu",
-    "Labuan",
-  ];
-  const districts = [
-    "Petaling Jaya",
-    "Shah Alam",
-    "Subang Jaya",
-    "Klang",
-    "Ampang",
-  ];
+  const router = useRouter();
 
-  const title = params.district
-    ? `Dialysis Centers in ${params.district}, ${params.state}`
-    : params.state
-    ? `Dialysis Centers in ${params.state}`
-    : "Dialysis Centers in Malaysia";
+  const pathname = usePathname();
+  const [_, encodedState, encodedCity] = pathname.split("/");
 
-  console.log("Xxx", { params });
+  const state = encodedState
+    ? decodeURIComponent(encodedState)
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+    : undefined;
 
+  const city = encodedCity
+    ? decodeURIComponent(encodedCity)
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ")
+    : undefined;
+
+  const title = city
+    ? `Pusat Dialisis di ${city}, ${state}`
+    : state
+    ? `Pusat Dialisis di ${state}`
+    : "Pusat Dialisis di Malaysia";
+
+  const handleStateChange = (value: string) => {
+    if (value === "all states") {
+      router.push("/");
+    } else {
+      router.push(`/${value.replace(/\s+/g, "-").toLowerCase()}`);
+    }
+  };
+
+  const handleCityChange = (value: string) => {
+    if (state) {
+      if (value === "all cities") {
+        router.push(`/${state?.toLowerCase()}`);
+      } else {
+        router.push(`/${state?.toLowerCase()}/${value}`);
+      }
+    }
+  };
+  const isHomepage = !state && !city;
+  const hasCity = state && Boolean(CITIES?.[state]);
+  console.log("hasCity", hasCity);
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="p-4 md:p-8">
@@ -53,7 +69,7 @@ export default function FilterLayout({
           <div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{title}</h1>
             <p className="text-gray-600">
-              Find the best dialysis centers near you
+              {`Cari pusat dialisis yang berdekatan dengan anda`}
             </p>
           </div>
           <div className="w-full md:w-64 mt-4 md:mt-0 relative">
@@ -68,8 +84,50 @@ export default function FilterLayout({
             />
           </div>
         </div>
-
-        <div className="mb-6 overflow-x-auto">
+        <div className="mb-6 flex flex-col sm:flex-row gap-4">
+          <div className="w-full sm:w-64">
+            <Select
+              defaultValue={state?.toLowerCase() || "all states"}
+              onValueChange={handleStateChange}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select a state" />
+              </SelectTrigger>
+              <SelectContent>
+                {STATES.map((state) => (
+                  <SelectItem key={state} value={state.toLowerCase()}>
+                    {state}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          {(isHomepage || hasCity) && (
+            <div className="w-full sm:w-64">
+              <Select
+                onValueChange={handleCityChange}
+                defaultValue={city?.toLowerCase() || "all cities"}
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem key={"all"} value={"all cities".toLowerCase()}>
+                    All Cities
+                  </SelectItem>
+                  {!isHomepage &&
+                    state &&
+                    CITIES?.[state]?.map((city: string) => (
+                      <SelectItem key={city} value={city.toLowerCase()}>
+                        {city}
+                      </SelectItem>
+                    ))}
+                </SelectContent>
+              </Select>
+            </div>
+          )}
+        </div>
+        {/* <div className="mb-6 overflow-x-auto">
           <div className="flex space-x-2 pb-2">
             {states.map((state) => (
               <Link key={state} href={`/${state.toLowerCase()}`}>
@@ -86,20 +144,20 @@ export default function FilterLayout({
               </Link>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
-
-      <div className="flex">
+      {children}
+      {/* <div className="flex">
         <div className="w-64 bg-white p-4 border-r hidden md:block">
-          <h2 className="text-lg font-semibold mb-4">Filter by District</h2>
-          {districts.map((district) => (
-            <div key={district} className="flex items-center space-x-2 mb-2">
-              <Checkbox id={district} />
+          <h2 className="text-lg font-semibold mb-4">Filter by Cities</h2>
+          {cities.map((cities) => (
+            <div key={cities} className="flex items-center space-x-2 mb-2">
+              <Checkbox id={cities} />
               <label
-                htmlFor={district}
+                htmlFor={cities}
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                {district}
+                {cities}
               </label>
             </div>
           ))}
@@ -112,7 +170,7 @@ export default function FilterLayout({
 
           {children}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
