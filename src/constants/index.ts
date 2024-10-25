@@ -1,5 +1,21 @@
+export const TREATMENT_TYPES = [
+  "Hemodialysis",
+  "Peritoneal Dialysis",
+  "Transplant",
+  "MRRB",
+];
+
+export const SECTOR = [
+  "MOH",
+  "NGO",
+  "Armed Force",
+  "Private",
+  "University",
+  "Others",
+];
+
 export const STATES = [
-  "All States",
+  "Semua Negeri / Wilayah",
   "Selangor",
   "Kuala Lumpur",
   "Pulau Pinang",

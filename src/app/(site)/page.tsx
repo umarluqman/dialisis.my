@@ -1,28 +1,90 @@
 import FilterLayout from "@/components/filter-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { prisma } from "@/lib/db";
 import { MailIcon, PhoneCallIcon } from "lucide-react";
 
-async function getDialysisCenters() {
-  const centers = await prisma.dialysisCenter.findMany();
-  return centers;
+const ITEMS_PER_PAGE = 10;
+
+async function getDialysisCenters(page: number = 1) {
+  const skip = (page - 1) * ITEMS_PER_PAGE;
+
+  const [centers, total] = await Promise.all([
+    prisma.dialysisCenter.findMany({
+      take: ITEMS_PER_PAGE,
+      skip,
+      orderBy: {
+        dialysisCenterName: "asc",
+      },
+    }),
+    prisma.dialysisCenter.count(),
+  ]);
+
+  return {
+    centers,
+    totalPages: Math.ceil(total / ITEMS_PER_PAGE),
+    currentPage: page,
+  };
 }
 
-export default async function DialysisCenterDirectory() {
-  const data = await getDialysisCenters();
-  console.log("data", data);
+function getVisiblePages(currentPage: number, totalPages: number) {
+  const delta = 2; // Number of pages to show before and after current page
+  const range = [];
+  const rangeWithDots = [];
+  let l;
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (
+      i === 1 ||
+      i === totalPages ||
+      (i >= currentPage - delta && i <= currentPage + delta)
+    ) {
+      range.push(i);
+    }
+  }
+
+  for (let i of range) {
+    if (l) {
+      if (i - l === 2) {
+        rangeWithDots.push(l + 1);
+      } else if (i - l !== 1) {
+        rangeWithDots.push("...");
+      }
+    }
+    rangeWithDots.push(i);
+    l = i;
+  }
+
+  return rangeWithDots;
+}
+
+export default async function DialysisCenterDirectory({
+  searchParams,
+}: {
+  searchParams: { page?: string };
+}) {
+  const currentPage = Number(searchParams.page) || 1;
+  const { centers: data, totalPages } = await getDialysisCenters(currentPage);
 
   return (
     <FilterLayout>
       <div className="min-h-screen bg-gray-100">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))] mb-8">
           {data.map((item) => (
             <Card
               key={item.id}
               className="shadow-sm hover:border-primary transition-shadow"
             >
               <CardHeader>
-                <CardTitle>{item.name}</CardTitle>
+                <CardTitle>{item.dialysisCenterName}</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col gap-2">
                 <p className="text-primary mb-4">{item.address}</p>
@@ -38,6 +100,37 @@ export default async function DialysisCenterDirectory() {
             </Card>
           ))}
         </div>
+
+        <Pagination className="mb-8">
+          <PaginationContent>
+            {currentPage > 1 && (
+              <PaginationItem>
+                <PaginationPrevious href={`?page=${currentPage - 1}`} />
+              </PaginationItem>
+            )}
+
+            {getVisiblePages(currentPage, totalPages).map((page, index) => (
+              <PaginationItem key={index}>
+                {page === "..." ? (
+                  <PaginationEllipsis />
+                ) : (
+                  <PaginationLink
+                    href={`?page=${page}`}
+                    isActive={currentPage === page}
+                  >
+                    {page}
+                  </PaginationLink>
+                )}
+              </PaginationItem>
+            ))}
+
+            {currentPage < totalPages && (
+              <PaginationItem>
+                <PaginationNext href={`?page=${currentPage + 1}`} />
+              </PaginationItem>
+            )}
+          </PaginationContent>
+        </Pagination>
       </div>
     </FilterLayout>
   );

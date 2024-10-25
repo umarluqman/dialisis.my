@@ -1,8 +1,8 @@
 import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
+import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
-import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -28,21 +28,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <header className="bg-primary text-primary-foreground py-4 px-6">
-          <div className="container mx-auto flex justify-end items-center">
-            <nav className="flex gap-4">
-              <Link href="#" className="hover:underline" prefetch={false}>
-                Home
-              </Link>
-              <Link href="#" className="hover:underline" prefetch={false}>
-                About
-              </Link>
-              <Link href="#" className="hover:underline" prefetch={false}>
-                Contact
-              </Link>
-            </nav>
-          </div>
-        </header>
+        <Navbar />
 
         <main className="flex-grow">{children}</main>
         {/* <footer className="bg-primary text-primary-foreground py-4 px-6">

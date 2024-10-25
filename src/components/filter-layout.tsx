@@ -1,9 +1,9 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { CITIES, STATES } from "@/constants";
-import { Search } from "lucide-react";
+import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
 import { usePathname, useRouter } from "next/navigation";
+import { useQueryState } from "nuqs";
 import {
   Select,
   SelectContent,
@@ -43,7 +43,7 @@ export default function FilterLayout({
     : "Pusat Dialisis di Malaysia";
 
   const handleStateChange = (value: string) => {
-    if (value === "all states") {
+    if (value === "semua negeri / wilayah") {
       router.push("/");
     } else {
       router.push(`/${value.replace(/\s+/g, "-").toLowerCase()}`);
@@ -52,7 +52,7 @@ export default function FilterLayout({
 
   const handleCityChange = (value: string) => {
     if (state) {
-      if (value === "all cities") {
+      if (value === "semua bandar") {
         router.push(`/${state?.toLowerCase()}`);
       } else {
         router.push(`/${state?.toLowerCase()}/${value}`);
@@ -62,17 +62,21 @@ export default function FilterLayout({
   const isHomepage = !state && !city;
   const hasCity = state && Boolean(CITIES?.[state]);
   console.log("hasCity", hasCity);
+
+  // Add this near the top with other state declarations
+  const [doctorName, setDoctorName] = useQueryState("doctor");
+
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-foreground text-black">
       <div className="p-4 md:p-8">
-        <div className="mb-8 flex flex-col md:flex-row justify-between items-start md:items-center">
-          <div>
+        <div className="mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center">
+          <div className="flex flex-col items-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{title}</h1>
             <p className="text-gray-600">
               {`Cari pusat dialisis yang berdekatan dengan anda`}
             </p>
           </div>
-          <div className="w-full md:w-64 mt-4 md:mt-0 relative">
+          {/* <div className="w-full md:w-64 mt-4 md:mt-0 relative">
             <Input
               type="search"
               placeholder="Search centers..."
@@ -82,16 +86,16 @@ export default function FilterLayout({
               className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
               size={20}
             />
-          </div>
+          </div> */}
         </div>
         <div className="mb-6 flex flex-col sm:flex-row gap-4">
           <div className="w-full sm:w-64">
             <Select
-              defaultValue={state?.toLowerCase() || "all states"}
+              defaultValue={state?.toLowerCase() || "semua negeri / wilayah"}
               onValueChange={handleStateChange}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select a state" />
+                <SelectValue placeholder="Pilih negeri / wilayah" />
               </SelectTrigger>
               <SelectContent>
                 {STATES.map((state) => (
@@ -106,14 +110,14 @@ export default function FilterLayout({
             <div className="w-full sm:w-64">
               <Select
                 onValueChange={handleCityChange}
-                defaultValue={city?.toLowerCase() || "all cities"}
+                defaultValue={city?.toLowerCase() || "semua bandar"}
               >
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem key={"all"} value={"all cities".toLowerCase()}>
-                    All Cities
+                  <SelectItem key={"all"} value={"semua bandar".toLowerCase()}>
+                    Semua bandar
                   </SelectItem>
                   {!isHomepage &&
                     state &&
@@ -126,25 +130,55 @@ export default function FilterLayout({
               </Select>
             </div>
           )}
-        </div>
-        {/* <div className="mb-6 overflow-x-auto">
-          <div className="flex space-x-2 pb-2">
-            {states.map((state) => (
-              <Link key={state} href={`/${state.toLowerCase()}`}>
-                <Button
-                  variant={
-                    params.state?.toLowerCase() === state.toLowerCase()
-                      ? "default"
-                      : "outline"
-                  }
-                  className="whitespace-nowrap"
-                >
-                  {state}
-                </Button>
-              </Link>
-            ))}
+          <div className="w-full sm:w-64">
+            <Select
+              onValueChange={handleCityChange}
+              defaultValue={city?.toLowerCase() || "semua rawatan"}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem key={"all"} value={"semua rawatan".toLowerCase()}>
+                  Semua rawatan
+                </SelectItem>
+                {TREATMENT_TYPES?.map((treatment: string) => (
+                  <SelectItem key={treatment} value={treatment.toLowerCase()}>
+                    {treatment}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
-        </div> */}
+          <div className="w-full sm:w-64">
+            <Input
+              type="text"
+              placeholder="Nama doktor yang bertugas"
+              value={doctorName || ""}
+              onChange={(e) => setDoctorName(e.target.value)}
+            />
+          </div>
+          <div className="w-full sm:w-64">
+            <Select
+              onValueChange={handleCityChange}
+              defaultValue={city?.toLowerCase() || "semua rawatan"}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem key={"all"} value={"semua rawatan".toLowerCase()}>
+                  Semua sektor
+                </SelectItem>
+                {SECTOR?.map((sector: string) => (
+                  <SelectItem key={sector} value={sector.toLowerCase()}>
+                    {sector}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
       </div>
       {children}
       {/* <div className="flex">
