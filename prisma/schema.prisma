@@ -12,21 +12,32 @@ datasource db {
 }
 
 model DialysisCenter {
-  id        String   @id @default(cuid())
-  name      String
-  address   String
-  town      String   
-  tel       String
-  unit      String
-  sector    String
-  drInCharge String
-  email     String
-  state     State    @relation(fields: [stateId], references: [id])
-  stateId   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                 String   @id @default(cuid())
+  dialysisCenterName String   @default("")
+  sector             String   @default("")
+  drInCharge         String   @default("")
+  address            String   @default("")
+  addressWithUnit    String   @default("")
+  tel                String   @default("")
+  fax                String?
+  panelNephrologist  String?
+  centreManager      String?
+  centreCoordinator  String?
+  email              String?
+  hepatitisBay       String?
+  longitude          Float?
+  latitude           Float?
+  phoneNumber        String   @default("")
+  website            String?
+  title              String   @default("")
+  units              String   @default("") // Will store as comma-separated string e.g. "HD Unit,CAPD Unit"
+  state              State    @relation(fields: [stateId], references: [id])
+  stateId            String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
 
-  @@index([town])
+  @@index([sector])
+  @@index([title])
 }
 
 model State {

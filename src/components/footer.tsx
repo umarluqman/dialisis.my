@@ -1,4 +1,3 @@
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -9,13 +8,13 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-black rounded-md"></div>
-              <span className="text-xl font-bold">Shadcnblocks</span>
+              <span className="text-xl font-bold">Dialisis Malaysia</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 max-w-xs">
-              A collection of 100+ responsive HTML templates for your startup
-              business or side project.
+              Dialisis Malaysia ialah platform yang membantu anda mencari pusat
+              dialisis di Malaysia.
             </p>
-            <div className="mt-4 flex space-x-4">
+            {/* <div className="mt-4 flex space-x-4">
               <Link href="#" className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">Instagram</span>
                 <Instagram className="h-6 w-6" />
@@ -32,7 +31,7 @@ export default function Footer() {
                 <span className="sr-only">LinkedIn</span>
                 <Linkedin className="h-6 w-6" />
               </Link>
-            </div>
+            </div> */}
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
@@ -72,7 +71,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Resources
+              Pautan Tambahan
             </h3>
             <ul className="mt-4 space-y-4">
               {["Help", "Sales", "Advertise", "Privacy"].map((item) => (

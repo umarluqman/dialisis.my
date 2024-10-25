@@ -1,132 +1,0 @@
-"name","sector","drInCharge","address","addressWithUnit","tel","email"
-"Centres","","","","","",""
-"Bachok","","","","","",""
-"Pusat Dialisis Ar Rahman Bachok Kelantan, HD Unit","NGO","AHMAD MUHAIMIN BIN MUSTAPHA;","","","",""
-"","","","Pusat Dialisis Ar Rahman Bachok Kelantan(We-1 Medic Sdn Bhd)Lot 747, 748 & 749, Komplek PerniagaanBeris Kubor Besar  16050 Bachok  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Ar Rahman Bachok Kelantan, HD Unit","(018)7694424","09-7644424"
-"Pusat Hemodialisis Paduka (Bachok), HD Unit","PRIVATE","ROONALIZA MERICAN BINTI ABDUL RAHIM MERICAN;","","","",""
-"","","","Pusat Hemodialisis Paduka(Al-Mardhiyyah Ros Management Sdn Bhd)Lot 2635, Kedai Gunung  16090 Bachok  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Bachok), HD Unit","09-7831177","09-7831115"
-"Gua Musang","","","","","",""
-"Gua Musang Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital Gua Musang  18300 Gua Musang  Kelantan Darul Naim  MALAYSIA","Gua Musang Hospital, HD Unit","( 09)9133328","( 09)9133300  3328"
-"Pusat Dialisis Mahmood Dialysis Centre Gua Musang, HD Unit","PRIVATE","MOHD SYAIFUL JOHAN BIN MAHMOOD;","","","",""
-"","","","Pusat Dialisis Mahmood Dialysis Centre Gua MusangPT 9309 Bangunan KPSBBandar Baru Gua Musang  18300 Gua Musang  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Mahmood Dialysis Centre Gua Musang, HD Unit","09-9121177","09-9121477"
-"Unit Dialisis Komuniti Chiku 3, HD Unit","MOH","MOHAMMAD FAHMIE BIN AHMAD TAKRI;","","","",""
-"","","","Unit Dialisis Komuniti Chiku 3  18300 Gua Musang  Kelantan Darul Naim  MALAYSIA","Unit Dialisis Komuniti Chiku 3, HD Unit","09-9287482","09-9287481"
-"Jeli","","","","","",""
-"Jeli Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital Jeli  17600 Jeli  Kelantan Darul Naim  MALAYSIA","Jeli Hospital, HD Unit","( 09)9443300  3340","( 09)9440092  3340"
-"Ketereh","","","","","",""
-"Pusat Dialisis Ar Rahman Ketereh, HD Unit","PRIVATE","KHAIRUL AFNAN BIN KHALID;","","","",""
-"","","","Pusat Dialisis Ar Rahman KeterehLot 1239, Grd Flr & 1st FlrRumah Kedai Ketereh  16450 Ketereh  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Ar Rahman Ketereh, HD Unit","09-7884424","017-7664424"
-"Kok Lanas","","","","","",""
-"Pusat Dialisis Al-Ehsan (Cawangan Kok Lanas), HD Unit","PRIVATE","AFIF BIN MOHD RIDZWAN;","","","",""
-"","","","PT 5078 (Tingkat Bawah) & 5078 (Tingkat Bawah & Tingkat Satu)Kompleks Perniagaan Saidina AliKok Lanas, Ketereh  16450 Kok Lanas  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Al-Ehsan (Cawangan Kok Lanas), HD Unit","011-64639303","09-7889303"
-"Kota Bharu","","","","","",""
-"Raja Perempuan Zainab II Hospital, CAPD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","CAPD UnitHospital Raja Perempuan Zainab II  15586 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Raja Perempuan Zainab II Hospital, CAPD Unit","( 09)7452555","( 09)7452235"
-"Al-Musoffa Haemodialysis Centre, HD Unit","PRIVATE","WAN MOHAMAD NOOR BIN WAN AHMAD;","","","",""
-"","","","Al-Musoffa Haemodialysis CentrePT540, Taman Uda MurniJalan Penkalan Chepa  16100 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Al-Musoffa Haemodialysis Centre, HD Unit","(012)3353202",""
-"Darul Naim Dialisis, HD Unit","PRIVATE","ROSLI ALLANI BIN S ABDUL KADIR;","","","",""
-"","","","Darul Naim Dialisis Sdn Bhd No. 6400-B, Jalan Raja Dewa Hulu 3Telipot  15150 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Darul Naim Dialisis, HD Unit","( 09)7419180","( 09)7419181"
-"Hudaz Tunjong Dialysis Centre, HD Unit","PRIVATE","ROSEMALAILY BT OMAR;","","","",""
-"","","","Hudaz Tunjong Dialysis CentreLot PT 266, Seksyen 65, Jalan Kuala KraiKampung Tunjong Pendek  16010 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Hudaz Tunjong Dialysis Centre, HD Unit","( 09)7124294","011-29824833"
-"KPJ Perdana Specialist Hospital, HD Unit","PRIVATE","NIK NOOR AZMI BIN MOHD YUNOS;","","","",""
-"","","","KPJ Perdana Specialist HospitalLot PT 37 & 600 dan 684 (Level 1, 2 & 3)Seksyen 14, Jalan Bayam  15200 Kota Bharu  Kelantan Darul Naim  MALAYSIA","KPJ Perdana Specialist Hospital, HD Unit","( 09)7458000  3016 /3017","( 09)7458128"
-"Lions Club Kota Budaya Dialysis Centre, HD Unit","NGO","ROONALIZA MERICAN BINTI ABDUL RAHIM MERICAN;","","","",""
-"","","","Lions Club Kota Budaya Dialysis CentreLot 1321, Taman KoperatifJalan Wakaf Mek Zainab  15300 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Lions Club Kota Budaya Dialysis Centre, HD Unit","( 09)7485488","( 09)7480488"
-"Pusat Dialisis Amal MAA-Medicare (Kota Bharu), HD Unit","NGO","ADILLA BINTI ALIMIN;","","","",""
-"","","","Pusat Dialisis Amal MAA-MedicareGround Floor, PT 1091, PT1092 & 1st Floor PT 1092Jln Long Yunus  15200 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Amal MAA-Medicare (Kota Bharu), HD Unit","016-9210653","09-9732004"
-"Pusat Dialisis Lestari, HD Unit","PRIVATE","ASLIZA ZURAINI BT MOHD YUNUS;","","","",""
-"","","","Pusat Dialisis Lestari(Pusat Kelestarian Dialysis Sdn Bhd)Lot 8014, Bandar Satelit IslamPasir Tumboh  16150 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Lestari, HD Unit","( 09)7646223","( 09)7646223"
-"Pusat Dialisis NKF - Bonuslink (Kota Bharu), HD Unit","NGO","SUKERI BIN MOHAMAD;","","","",""
-"","","","Pusat Dialisis NKF - Bonuslink (Pusat Dialisis Yayasan Buah Pinggang Kebangsaan Kota Bharu)Lot 832 - 833 A, Tingkat Bawah & SatuJalan Sri Cemerlang  15300 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis NKF - Bonuslink (Kota Bharu), HD Unit","( 09)7475834","( 09)7475812"
-"Pusat Dialisis Renal Pure, HD Unit","PRIVATE","WAN MOHAMAD NOOR BIN WAN AHMAD;","","","",""
-"","","","Pusat Dialisis Renal Pure(Renal Pure Dialysis Services Sdn Bhd)PT5034 & 5035, Kompleks Perniagaan Saidina AliKok Lanas  16450 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Renal Pure, HD Unit","( 09)7883393","( 09)7883397"
-"Raja Perempuan Zainab II Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis Unit (Kronik)Hospital Raja Perempuan Zainab II  15586 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Raja Perempuan Zainab II Hospital, HD Unit","( 09)7452000  4021","( 09)7452235  4017 /4015"
-"Renal-Link (Kelantan), HD Unit","PRIVATE","ZAINAL BIN DARUS;","","","",""
-"","","","Renal-Link (Kelantan) Sdn. Bhd.PT1620, Jalan Raja Perempuan Zainab IIKubang Kerian  16150 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Renal-Link (Kelantan), HD Unit","( 09)7649469","( 09)7640636"
-"YKN Dialisis (Kota Bharu), HD Unit","NGO","ZULKEFLEE BIN ISMAIL;","","","",""
-"","","","YKN Dialisis(Sribayu Trading Sdn Bhd)Lot 6402, Lorong Raja Dewa 2Off Jalan Raja Deqa, TelipotOff Jalan Raja Dewa Telipot  15150 Kota Bharu  Kelantan Darul Naim  MALAYSIA","YKN Dialisis (Kota Bharu), HD Unit","( 09)7437237","( 09)7432237"
-"Raja Perempuan Zainab II Hospital, Tx Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Renal Transplant Clinicc/o Haemodialysis UnitHospital Raja Perempuan Zainab II  15590 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Raja Perempuan Zainab II Hospital, Tx Unit","( 09)7452000  4021","( 09)7452235"
-"Raja Perempuan Zainab II Hospital, MRRB Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Department of MedicineC/o Haemodialysis UnitHospital Raja Perempuan Zainab II  15590 Kota Bharu  Kelantan Darul Naim  MALAYSIA","Raja Perempuan Zainab II Hospital, MRRB Unit","( 09)7452000","( 09)7452234"
-"Kuala Krai","","","","","",""
-"Kuala Krai Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital Kuala Krai  18000 Kuala Krai  Kelantan Darul Naim  MALAYSIA","Kuala Krai Hospital, HD Unit","( 09)9666333  1360","( 09)9611300  1359"
-"Pusat Hemodialisis Pertubuhan Wanita Prihatin Kuala Krai, HD Unit","PRIVATE","AZHAR BIN ISHAK;","","","",""
-"","","","Pusat Hemodialisis Pertubuhan Wanita Prihatin Kuala KraiLot 3019 Kg Baru Sri Rahmat  18000 Kuala Krai  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Pertubuhan Wanita Prihatin Kuala Krai, HD Unit","09-9601214",""
-"Pusat Rawatan Dialisis Islah (Kuala Krai), HD Unit","PRIVATE","AZHAR BIN ISHAK;","","","",""
-"","","","Pusat Rawatan Dialisis Islah (Kuala Krai)Lot 5552 (Tingkat Bawah) & Lot 5553 (Tingkat Bawah & Tingkat Satu)Taman Yani  18000 Kuala Krai  Kelantan Darul Naim  MALAYSIA","Pusat Rawatan Dialisis Islah (Kuala Krai), HD Unit","09-9612225","09-9613222"
-"Kubang Kerian","","","","","",""
-"Universiti Sains Malaysia Hospital, CAPD Unit","UNIVERSITY","","","","",""
-"","","","Haemodialysis / CAPD UnitHospital Universiti Sains Malaysia  16150 Kubang Kerian  Kelantan Darul Naim  MALAYSIA","Universiti Sains Malaysia Hospital, CAPD Unit","( 09)7673000  4117/3328","( 09)7652198"
-"Universiti Sains Malaysia Hospital, HD Unit","UNIVERSITY","MOHAMAD IKRAM ILIAS;","","","",""
-"","","","Haemodialysis UnitHospital Universiti Sains Malaysia  16150 Kubang Kerian  Kelantan Darul Naim  MALAYSIA","Universiti Sains Malaysia Hospital, HD Unit","( 09)7673000  4117/3328","( 09)7673327"
-"Universiti Sains Malaysia Hospital, Tx Unit","UNIVERSITY","","","","",""
-"","","","Renal Transplant Clinic (c/o Haemodialysis  Unit)Hospital Universiti Sains Malaysia  16150 Kubang Kerian  Kelantan Darul Naim  MALAYSIA","Universiti Sains Malaysia Hospital, Tx Unit","( 09)7673328  4117/3328","( 09)7673329"
-"Universiti Sains Malaysia Hospital, MRRB Unit","UNIVERSITY","AZREEN SYAZRIL BIN ADNAN;","","","",""
-"","","","Haemodialysis UnitHospital Universiti Sains Malaysia  16150 Kubang Kerian  Kelantan Darul Naim  MALAYSIA","Universiti Sains Malaysia Hospital, MRRB Unit","( 09)7664657","( 09)7673328"
-"Machang","","","","","",""
-"Machang Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital MachangJalan Pasir Puteh  18500 Machang  Kelantan Darul Naim  MALAYSIA","Machang Hospital, HD Unit","( 09)9741300  1405","( 09)9752470"
-"Pusat Hemodialisis Berkat Seroja Machang, HD Unit","PRIVATE","ASLIZA ZURAINI BT MOHD YUNUS;","","","",""
-"","","","Pusat Hemodialisis Berkat Seroja MachangPT1793-94, Jalan Kweng Hitam  18500 Machang  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Berkat Seroja Machang, HD Unit","( 09)9750060","( 09)9750066"
-"Melor","","","","","",""
-"Klinik Kesihatan Mahligai, HD Unit","MOH","NAZIRUL MUNIR B ABU HASSAN;","","","",""
-"","","","Unit Dialisis Komuniti MahligaiKlinik Kesihatan MahligaiBachok  16400 Melor  Kelantan Darul Naim  MALAYSIA","Klinik Kesihatan Mahligai, HD Unit","( 09)7831086","( 09)7831131"
-"Pasir Mas","","","","","",""
-"Pasir Mas Hospital, CAPD Unit","MOH","MAZNAH BINTI YUSOF;","","","",""
-"","","","Pasir Mas HospitalJalan Pasir Mas-Lati  17000 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pasir Mas Hospital, CAPD Unit","011-59619825","-"
-"Pasir Mas Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitPasir Mas HospitalJalan Meranti  17000 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pasir Mas Hospital, HD Unit","( 09)7932300  2366 /2368","( 09)7900996"
-"Pusat Dialisis Al-Hikmah (Pasir Mas), HD Unit","PRIVATE","ROSEMI BIN SALLEH;","","","",""
-"","","","Pusat Dialisis Al-Hikmah (Pasir Mas)PT 637, PT 638 & PT 639, Tingkat Bawah dan PT 637 Tingkat SatuKedai 2 Tingkat, Bandar Tasek Raja  17070 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Al-Hikmah (Pasir Mas), HD Unit","019-6213919",""
-"Pusat Dialisis Hudaz Pasir Mas, HD Unit","PRIVATE","ZURKURNAI BIN YUSOF;","","","",""
-"","","","Pusat Dialisis Hudaz Pasir MasPT 8615, Tingkat Bawah, Taman SemasaBandar Baru Lubok Jong  17070 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Hudaz Pasir Mas, HD Unit","09-7914197","011-53567719"
-"Pusat Hemodialisis Paduka (Gaung), HD Unit","PRIVATE","WAN ZULKHAIRI BIN WAN ZAIN;","","","",""
-"","","","Pusat Hemodialisis Paduka (Gaung)PT 637 (Ground Floor) & PT 638 (Ground & 1st Floor)Kampung Gaung, Lati  17000 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Gaung), HD Unit","011-55598007",""
-"Pusat Hemodialisis Paduka, HD Unit","PRIVATE","ROONALIZA MERICAN BINTI ABDUL RAHIM MERICAN;","","","",""
-"","","","Pusat Hemodialisis PadukaPT 432 & PT 433, Bangunan MDPM, Kg Jias  17000 Pasir Mas  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka, HD Unit","(09)7901327","(09)7922240"
-"SJAMK Hemodialisis, HD Unit","PRIVATE","WAN HAZURAINI BINTI WAN ZAIN;","","","",""
-"","","","SJAMK HemodialisisPejabat SJAM Kelantan BaratSek 1, Lot 824, Jalan Meranti  17900 Pasir Mas  Kelantan Darul Naim  MALAYSIA","SJAMK Hemodialisis, HD Unit","( 09)7907899","( 09)7673219"
-"Pasir Puteh","","","","","",""
-"Foresight Dialysis Pasir Puteh, HD Unit","PRIVATE","CHE HASLINAWATI BINTI CHE AWANG;","","","",""
-"","","","Foresight Dialysis Pasir PutehPt 3027-G & PT 3028-G & PT 3028-1Jalan Pasir Puteh Sentral 2/5Bandar Baru Pasir Puteh  16800 Pasir Puteh  Kelantan Darul Naim  MALAYSIA","Foresight Dialysis Pasir Puteh, HD Unit","03-60388808  210","012-6598289"
-"Pusat Hemodialisis Paduka (Pasir Puteh), HD Unit","PRIVATE","ABDUL HADI HAFIZ BIN AB AZIZ;","","","",""
-"","","","Pusat Hemodialisis Paduka (Pasir Puteh)Lot 2976, Jalan Pasir Puteh Sentral 1/6  16800 Pasir Puteh  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Pasir Puteh), HD Unit","09-7860494","011-10926500"
-"Pusat Rawatan Dialisis Islah (Pasir Puteh), HD Unit","PRIVATE","ABDUL HADI HAFIZ BIN AB AZIZ;","","","",""
-"","","","Pusat Rawatan Dialisis Islah (Pasir Puteh)Lot 1308 & 1309Rumah Kedai Wakaf BeranganJalan Kota Bharu  19800 Pasir Puteh  Kelantan Darul Naim  MALAYSIA","Pusat Rawatan Dialisis Islah (Pasir Puteh), HD Unit","09-7862225","09-7861225"
-"Tengku Anis Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital Tengku Anis  16800 Pasir Puteh  Kelantan Darul Naim  MALAYSIA","Tengku Anis Hospital, HD Unit","( 09)7843333  390 /392","( 09)7843444"
-"Pasir Putih","","","","","",""
-"Pusat Dialisis Foresight Dialysis Tok Bali, HD Unit","PRIVATE","AHMAD SYAKIRIN BIN ABDULLAH @ ZAWAWI;","","","",""
-"","","","Pusat Dialisis Foresight Dialysis Tok BaliPT 6740 (Tingkat Bawah) & 6741 (Tingkat Bawah)Jalan Tok BaliSemerak  16700 Pasir Putih  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Foresight Dialysis Tok Bali, HD Unit","017-2759279","016-3047971"
-"Pengkalan Chepa","","","","","",""
-"Pusat Cakna Dialisis, HD Unit","PRIVATE","ROSLIALLANI BIN S. ABDUL KADIR;","","","",""
-"","","","Pusat Cakna DialisisLot 3366 Bawah, 3391 Bawah & 3391 AtasTaman Kurnia Jaya 2Jalan Kurnia Jaya 2, Kemumin  16100 Pengkalan Chepa  Kelantan Darul Naim  MALAYSIA","Pusat Cakna Dialisis, HD Unit","09-7981405","019-6129621"
-"Tanah Merah","","","","","",""
-"Klinik Kesihatan Kemahang, HD Unit","MOH","","","","",""
-"","","","Unit Dialisis Komuniti KemahangKlinik Kesihatan Kemahang  17500 Tanah Merah  Kelantan Darul Naim  MALAYSIA","Klinik Kesihatan Kemahang, HD Unit","09-9582200","-"
-"Pusat Hemodialisis As-Salam, HD Unit","PRIVATE","MAZLAN BIN MAT;","","","",""
-"","","","Pusat Hemodialisis As-Salam(As Salam Dialisis Sdn Bhd)PT7128 & 7129, Taman Sri Remah  17500 Tanah Merah  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis As-Salam, HD Unit","( 09)9559655","( 09)9559755"
-"Pusat Hemodialisis Paduka (Tanah Merah 2), HD Unit","PRIVATE","RAMLI BIN MAMAT;","","","",""
-"","","","Pusat Hemodialisis PadukaLot Pt 8161 (Ground Floor & First Floor)Mukim Maka, Daerag Kusial, Jajahan Tanah Merah  17500 Tanah Merah  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Tanah Merah 2), HD Unit","011-55518900",""
-"Pusat Hemodialisis Paduka (Tanah Merah), HD Unit","PRIVATE","MAZLAN BIN MAT;","","","",""
-"","","","Pusat Hemodialisis Paduka (Tanah Merah)Lot 14443, Kg Bukit NangkaBandar Baru Bukit Bunga  17500 Tanah Merah  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Tanah Merah), HD Unit","09-9468888","011-55548700"
-"Tanah Merah Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitHospital Tanah Merah  17500 Tanah Merah  Kelantan Darul Naim  MALAYSIA","Tanah Merah Hospital, HD Unit","( 09)9545125","( 09)9545124"
-"Tumpat","","","","","",""
-"Hudaz Dialysis Centre Pasir Pekan, HD Unit","PRIVATE","ROSEMALAILY BT OMAR;","","","",""
-"","","","Hudaz Dialysis Centre, Pasir PekanPT 2936, Kota Kubang LabuPasir Pekan  16250 Tumpat  Kelantan Darul Naim  MALAYSIA","Hudaz Dialysis Centre Pasir Pekan, HD Unit","( 09)7197119","( 09)7195900"
-"Pusat Dialisis Hudaz Tumpat Dialysis Centre, HD Unit","PRIVATE","MUSLIHAH BINTI ROSMAN;","","","",""
-"","","","Pusat Dialisis Hudaz Tumpat Dialysis CentreLot 3599, Kampung Terbok,Bandar Baru Tumpat  16200 Tumpat  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Hudaz Tumpat Dialysis Centre, HD Unit","09-7260729","013-9237719"
-"Pusat Dialisis Klinik Waqaf An-nur Masjid Al-Ismaili, HD Unit","PRIVATE","FAKHRUL HISHAM BIN HASSAN;","","","",""
-"","","","Pusat Dialisis Klinik Waqaf An-nur Masjid Al-Ismaili(Waqaf An-nur Corporation Berhad)Masjid Al-Ismaili, Bandar Baru Pasir Pekan  16200 Tumpat  Kelantan Darul Naim  MALAYSIA","Pusat Dialisis Klinik Waqaf An-nur Masjid Al-Ismaili, HD Unit","( 09)7199000","09-7199003"
-"Pusat Hemodialisis Paduka (Tumpat), HD Unit","PRIVATE","RAMLI BIN MAMAT;","","","",""
-"","","","Pusat Hemodialisis Paduka (Tumpat)PT 753 (Tingkat Bawah) & PT 754 (Tingkat Bawah & Atas)Kampung Sedar  16200 Tumpat  Kelantan Darul Naim  MALAYSIA","Pusat Hemodialisis Paduka (Tumpat), HD Unit","09-7253003","011-55518700"
-"Pusat Rawatan Dialisis Mynephro Dialysis Sdn Bhd (Cawangan Tumpat), HD Unit","PRIVATE","TUAN ZAMANI AMIR BIN TUAN ZAKARIA;","","","",""
-"","","","Pusat Rawatan Dialisis Mynephro Dialysis Sdn Bhd (Cawangan Tumpat)Lot 38 (Tingkat Atas & Bawah) & 39 (Tingkat Atas & Bawah) Jalan Setia 4, Bandar Bentara Tumpat  16200 Tumpat  Kelantan Darul Naim  MALAYSIA","Pusat Rawatan Dialisis Mynephro Dialysis Sdn Bhd (Cawangan Tumpat), HD Unit","09-7254114",""
-"Tumpat Hospital, HD Unit","MOH","WAN HASNUL HALIMI BIN WAN HASSAN;","","","",""
-"","","","Haemodialysis UnitTumpat HospitalJalan Kelaboran  16200 Tumpat  Kelantan Darul Naim  MALAYSIA","Tumpat Hospital, HD Unit","( 09)72633043","( 09)72633041"

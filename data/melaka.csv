@@ -1,107 +1,0 @@
-"name","sector","drInCharge","address","addressWithUnit","tel","email"
-"Centres","","","","","",""
-"Alor Gajah","","","","","",""
-"Alor Gajah Dialysis Centre, HD Unit","PRIVATE","KHAIRUL AMIN BIN AWANG;","","","",""
-"","","","Alor Gajah Dialysis Centre(Embun Budiman Sdn Bhd)MP 54, Jalan Pengkalan Indah Utama Taman Pengkalan Indah Fasa II  78000 Alor Gajah  Melaka  MALAYSIA","Alor Gajah Dialysis Centre, HD Unit","( 06)5566272","( 06)5560584"
-"Alor Gajah Hospital, HD Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","Haemodialysis UnitAlor Gajah Hospital  78000 Alor Gajah  Melaka  MALAYSIA","Alor Gajah Hospital, HD Unit","( 06)552333  133","( 06)5565354"
-"Pusat Hemodialisis Sinar Haemodialysis, HD Unit","PRIVATE","RAMLI BIN HJ MAT;","","","",""
-"","","","Pusat Hemodialisis Sinar Haemodialysis Sdn Bhd(Cawangan Alor Gajah)No. 23 & 24, Jalan Sungai Petai Permai 1 UtamaTaman Sungai Petai Permai  78000 Alor Gajah  Melaka  MALAYSIA","Pusat Hemodialisis Sinar Haemodialysis, HD Unit","( 06)5564889","( 06)5564402"
-"Pusat Hemodialisis Suria (Tampin), HD Unit","PRIVATE","KUMARESAN A/L SELLAMUTHU;","","","",""
-"","","","Pusat Hemodialisis Suria (Tampin)PS-2 (Tingkat Bawah) & PS-3 (Tingkat Bawah),Jalan Bandar Satelit Sebang 2,Bandar Satelit Sebang  78000 Alor Gajah  Melaka  MALAYSIA","Pusat Hemodialisis Suria (Tampin), HD Unit","012-2563482","Mr. KUMARESAN A/L SELLAMUTHU"
-"Pusat Rawatan Hemodialisis Simpang Empat Dialysis Centre, HD Unit","PRIVATE","KHAIRUL AMIN BIN AWANG;","","","",""
-"","","","Pusat Rawatan Hemodialisis Simpang Empat Dialysis Centre, HD Unit65, 65-1, 66, 66-1 & 67, Jalan BBSE 3,Pusat Bandar Baru Simpang Empat,  78000 Alor Gajah  Melaka  MALAYSIA","Pusat Rawatan Hemodialisis Simpang Empat Dialysis Centre, HD Unit","06-5511919","Dr. KHAIRUL AMIN BIN AWANG"
-"SJAM-KPS Pusat Hemodialisis Pulau Sebang (Station 9), HD Unit","NGO","","","","",""
-"","","","SJAM-KPS Pusat Hemodialisis Pulau Sebang (Station 9)PS 100 & 100-1 (Ground Floor and First Floor) & 101 (Ground Floor)Jalan Bandar Satelit Sebang 4,Bandar Satelit Seksyen 1  78000 Alor Gajah  Melaka  MALAYSIA","SJAM-KPS Pusat Hemodialisis Pulau Sebang (Station 9), HD Unit","06-4416695","-"
-"Batu Berendam","","","","","",""
-"Pusat Dialisis Davita Batu Berendam, HD Unit","PRIVATE","TAN ZI JUN;","","","",""
-"","","","Pusat Dialisis Davita Batu BerendamLot 59, 61 & 63, Jalan MP1Taman Merdeka Permai  75350 Batu Berendam  Melaka  MALAYSIA","Pusat Dialisis Davita Batu Berendam, HD Unit","06-3340708","Dr. TAN ZI JUN"
-"Bukit Baru","","","","","",""
-"Pusat Hemodialysis Suria Melaka, HD Unit","PRIVATE","SELVA KUMARAN A/L PERUMAL;","","","",""
-"","","","Pusat Hemodialysis Suria MelakaNo. 37-G & 37-G, Kompleks Perniagaan Al-AzimJalan KPAA 2, Bandar Bukit Baru  75150 Bukit Baru  Melaka  MALAYSIA","Pusat Hemodialysis Suria Melaka, HD Unit","( 06)2813727","( 06)2813728"
-"Bukit Piatu","","","","","",""
-"Pusat Dialisis Nephrocare (Bukit Piatu), HD Unit","PRIVATE","YEW SHIONG SHIONG;","","","",""
-"","","","Pusat Dialisis Nephrocare (Bukit Piatu)No. 15 & 17, Jln BPM 14Taman Bukit Piatu Mutiara  75150 Bukit Piatu  Melaka  MALAYSIA","Pusat Dialisis Nephrocare (Bukit Piatu), HD Unit","06-2925517","06-2925534"
-"Jasin","","","","","",""
-"Jasin Hospital, HD Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","Haemodialysis UnitHospital Jasin  77000 Jasin  Melaka  MALAYSIA","Jasin Hospital, HD Unit","( 06)5294262  300 /301","( 06)5291652"
-"Nephcare Dialysis Centre (Selandar), HD Unit","PRIVATE","HANIF HILMAN BIN ROSLAN;","","","",""
-"","","","Nephcare Dialysis Centre (Selandar)JB 9730A & JB 9730B, Mukim Selandar  77500 Jasin  Melaka  MALAYSIA","Nephcare Dialysis Centre (Selandar), HD Unit","06-5302966","06-3124482"
-"Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Jasin), HD Unit","PRIVATE","","","","",""
-"","","","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Jasin)No. JC2369 & JC2369-1Jalan PPJ 3, Pusat Perniagaan Jasin  77000 Jasin  Melaka  MALAYSIA","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Jasin), HD Unit","06-5296812","019-6471804"
-"Sinar Haemodialysis Sdn Bhd (Jasin, Melaka), HD Unit","PRIVATE","NUR AFIKAH BTE MD SA'EE;","","","",""
-"","","","Sinar Haemodialysis Sdn Bhd (Jasin, Melaka)JC 2440 & JC 2441, Jalan BH 1Taman Bemban Height  77200 Jasin  Melaka  MALAYSIA","Sinar Haemodialysis Sdn Bhd (Jasin, Melaka), HD Unit","06-5341555","06-5341515"
-"Tenang Haemodialysis Jasin, HD Unit","PRIVATE","MOHAMAD SUHAIMI BIN MOHAMAD UDA TENANG;","","","",""
-"","","","Tenang Haemodialysis JasinJB 7767, Jalan Asia Selatan 1ATaman Asia Selatan  77200 Jasin  Melaka  MALAYSIA","Tenang Haemodialysis Jasin, HD Unit","( 06)5293118","06-5292117"
-"Kuala Sungai Baru","","","","","",""
-"Pusat Dialisis Davita Kuala Sungai Baru, HD Unit","PRIVATE","NUR FARHANA BINTI REZO;","","","",""
-"","","","Pusat Dialisis Davita Kuala Sungai BaruKS 1092, Jalan Kuala Jaya 2Taman Kuala Jaya  78200 Kuala Sungai Baru  Melaka  MALAYSIA","Pusat Dialisis Davita Kuala Sungai Baru, HD Unit","013-7795852","017-7499980"
-"Lubok China","","","","","",""
-"Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Lubok China), HD Unit","PRIVATE","TARMIZI THAYAPARAN BIN ABDULLAH;","","","",""
-"","","","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Lubok China)No.27 & 27-1, Jalan PLCPusat Perniagaan Lubok China  78100 Lubok China  Melaka  MALAYSIA","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Lubok China), HD Unit","018-7627723","Dato Dr. TARMIZI THAYAPARAN BIN ABDULLAH"
-"Malim","","","","","",""
-"Pusat Hemodialisis Sinar Haemodialysis Sdn Bhd, HD Unit","PRIVATE","RAMLI BIN HJ MAT;","","","",""
-"","","","Pusat Hemodialisis Sinar Haemodialysis Sdn BhdNo. 7 & 9, Jalan Wangi 2Taman Wangi  75250 Malim  Melaka  MALAYSIA","Pusat Hemodialisis Sinar Haemodialysis Sdn Bhd, HD Unit","06-3365242","06-3375242"
-"Masjid Tanah","","","","","",""
-"Damai Dialysis Sdn Bhd  (Masjid Tanah), HD Unit","PRIVATE","HAMZAH BIN AWANG;","","","",""
-"","","","Damai Dialysis Sdn Bhd Lot 23 SU64, Jalan 1 KSTaman Bandar Baru  78300 Masjid Tanah  Melaka  MALAYSIA","Damai Dialysis Sdn Bhd  (Masjid Tanah), HD Unit","( 06)3852336","( 06)3852336"
-"Pusat Dialisis Davita Masjid Tanah, HD Unit","PRIVATE","MOHAMMED ALI BIN ZAKARIA;","","","",""
-"","","","Pusat Dialisis Davita Masjid TanahSU 949 & 950, Jln Bandar Baru 6  78300 Masjid Tanah  Melaka  MALAYSIA","Pusat Dialisis Davita Masjid Tanah, HD Unit","06-3847122","011-28848497"
-"Pusat Dialisis Orion Consortium, HD Unit","PRIVATE","KHAIRUL AMIN BIN AWANG;","","","",""
-"","","","Pusat Dialisis Orion ConsortiumMT 1340 PT 1996, Kompleks Perniagaan  78300 Masjid Tanah  Melaka  MALAYSIA","Pusat Dialisis Orion Consortium, HD Unit","06-3844950","Dr. KHAIRUL AMIN BIN AWANG"
-"Melaka","","","","","",""
-"Melaka Hospital, CAPD Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","CAPD UnitHospital MelakaJalan Mufti Haji KhalilJalan Mufti Hj Khalil  75400 Melaka  Melaka  MALAYSIA","Melaka Hospital, CAPD Unit","( 06)2892338","( 06)2822348"
-"94 Hospital Angkatan Tentera (Terendak), HD Unit","ARMED FORCE","","","","",""
-"","","","Haemodialysis Unit94 Hospital Angkatan TenteraKem Terendak  76200 Melaka  Melaka  MALAYSIA","94 Hospital Angkatan Tentera (Terendak), HD Unit","( 06)3573201  1121","( 06)3572108"
-"AMS Haemodialysis Centre, HD Unit","PRIVATE","CHOW YOK WAI (EDWIN);","","","",""
-"","","","Pusat Dialisis AMS(Advance-Care Medical Services Sdn Bhd)No. 52A & 56, Jalan Saujana Permai 1Taman Saujana Permai  75450 Melaka  Melaka  MALAYSIA","AMS Haemodialysis Centre, HD Unit","( 06)2312590","(012)7336686"
-"Haemodialysis Centre Yayasan Toh Puan Zurina, HD Unit","NGO","","","","",""
-"","","","Haemodialysis Centre Yayasan Toh Puan ZurinaLot 149, Tingkat 3 & 4,Pantai Peringgit  75400 Melaka  Melaka  MALAYSIA","Haemodialysis Centre Yayasan Toh Puan Zurina, HD Unit","06-2846662","-"
-"Haemodialysis Yakin Prima Jaya, HD Unit","PRIVATE","HAMDAN BIN HASHIM;","","","",""
-"","","","Haemodialysis Yakin Prima Jaya385E, 385F, 385G, 385H, Jalan PeringgitTaman Peringgit Jaya  75400 Melaka  Melaka  MALAYSIA","Haemodialysis Yakin Prima Jaya, HD Unit","019-6896765","( 06)2835821"
-"Mahkota Medical Centre, HD Unit","PRIVATE","WEE TUAN HONG;","","","",""
-"","","","Haemodialysis CentreMahkota Medical Centre Sdn. BhdNo. 3, Mahkota Melaka, Jalan Merdeka  75000 Melaka  Melaka  MALAYSIA","Mahkota Medical Centre, HD Unit","( 06)2852823","( 06)2810560"
-"Melaka Hospital, HD Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","Haemodialysis UnitHospital MelakaJalan Musti Hj Khalil  75400 Melaka  Melaka  MALAYSIA","Melaka Hospital, HD Unit","( 06)2892344  2337","( 06)2822348"
-"Nephcare Dialysis Centre, HD Unit","PRIVATE","NANI ZALINDA BINTI ABDUL RAZAK;","","","",""
-"","","","Nephcare Dialysis CentreNo. 33 & 35, Jalan Seri 17,Taman Cheng Baru,  75250 Melaka  Melaka  MALAYSIA","Nephcare Dialysis Centre, HD Unit","( 06)3124482","(017)6554482"
-"Oriental Melaka Straits Medical Centre, HD Unit","PRIVATE","LIM LI HAN;","","","",""
-"","","","Oriental Melaka Straits Medical CentrePusat Perubatan Klebang  75200 Melaka  Melaka  MALAYSIA","Oriental Melaka Straits Medical Centre, HD Unit","06-3158888  8061","06-3158800"
-"Pantai Hospital Ayer Keroh, HD Unit","PRIVATE","LOW TICK SENG;","","","",""
-"","","","Haemodialysis UnitPantai Hospital Ayer Keroh No. 2418-1, KM8, Lebuh Raya Ayer Keroh  75450 Melaka  Melaka  MALAYSIA","Pantai Hospital Ayer Keroh, HD Unit","( 06)2319999  3300 /3302","( 06)2313299"
-"Pusat Dialysis Comfort, HD Unit","PRIVATE","PANG CHEE HIANG;","","","",""
-"","","","Pusat Dialysis Comfort(Goldfolio Sdn Bhd)No. 230, Jalan Gajah Berang  75200 Melaka  Melaka  MALAYSIA","Pusat Dialysis Comfort, HD Unit","( 06)2882904","(012)2191206"
-"Pusat Haemodialisis Bacang Melaka, HD Unit","NGO","GAN CHIA YING;","","","",""
-"","","","Pusat Haemodialisis Bacang Melaka421-G & H, Jalan Melor SatuTaman Peringgit Jaya  75400 Melaka  Melaka  MALAYSIA","Pusat Haemodialisis Bacang Melaka, HD Unit","06-2811007","06-2811008"
-"Pusat Hemodialisis Impian, HD Unit","PRIVATE","LOW TICK SENG;","","","",""
-"","","","Pusat Hemodialisis ImpianNo. 21 & 23, Jalan Takh 15Taman Ayer Keroh Height 1  75450 Melaka  Melaka  MALAYSIA","Pusat Hemodialisis Impian, HD Unit","( 06)2332228","(011)10872683"
-"Putra Specialist Hospital (Melaka), HD Unit","PRIVATE","K. PARAMESWARAN A/L KRISHNAN;","","","",""
-"","","","Putra Specialist Hospital (Melaka) Sdn BhdNo 169, Jala Bendahara  75100 Melaka  Melaka  MALAYSIA","Putra Specialist Hospital (Melaka), HD Unit","( 06)2835888  5403 /5404","( 06)2810518"
-"Tenang Haemodialysis Centre, HD Unit","PRIVATE","MOHAMAD SUHAIMI BIN MOHAMAD UDA TENANG;","","","",""
-"","","","Tenang Haemodialysis Centre(Tenang Specialist Clinic Sdn Bhd)No. 2345, Jalan Peringgit  75400 Melaka  Melaka  MALAYSIA","Tenang Haemodialysis Centre, HD Unit","( 06)2822345","( 06)2860076"
-"Mahkota Medical Centre, Tx Unit","PRIVATE","WEE TUAN HONG;","","","",""
-"","","","Mahkota Medical CentreNo 3, Mahkota MelakaJalan Merdeka  75000 Melaka  Melaka  MALAYSIA","Mahkota Medical Centre, Tx Unit","06-2852999  2823","06-2852823"
-"Melaka Hospital, Tx Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","Renal Transplant ClinicBlok D, Tingkat BawahHospital MelakaJalan Mufti Hj Khalil  75460 Melaka  Melaka  MALAYSIA","Melaka Hospital, Tx Unit","( 06)2892337","( 06)2892334"
-"Melaka Hospital, MRRB Unit","MOH","","","","",""
-"","","","Department of MedicineHospital Melaka Tingkat Bawah, Blok D  75400 Melaka  Melaka  MALAYSIA","Melaka Hospital, MRRB Unit","( 06)2822344","( 06)2822348"
-"Melaka Tengah","","","","","",""
-"Pusat Hemodialisis Komuniti Cheng, HD Unit","MOH","PENG BAN CHAI;","","","",""
-"","","","Pusat Hemodialisis Klinik Kesihatan ChengKlinik Kesihatan Cheng,Jalan Cheng  75260 Melaka Tengah  Melaka  MALAYSIA","Pusat Hemodialisis Komuniti Cheng, HD Unit","06-3121124","Dr. PENG BAN CHAI"
-"Merlimau","","","","","",""
-"Damai Dialysis (Merlimau), HD Unit","PRIVATE","HAMZAH BIN AWANG;","","","",""
-"","","","Damai Dialysis Sdn BdhJB 2860, Jalan Debunga 1Taman Debunga Merlimau  77300 Merlimau  Melaka  MALAYSIA","Damai Dialysis (Merlimau), HD Unit","( 06)2631845","( 06)2631845"
-"Nephcare Dialysis Centre (Cawangan Umbai), HD Unit","PRIVATE","NANI ZALINDA BINTI ABDUL RAZAK;","","","",""
-"","","","Nephcare Dialysis Centre (Cawangan Umbai)No. JC7732, JC7733, JC7733-1, Jalan Umbai Impian 1Taman Umbai Impian  77300 Merlimau  Melaka  MALAYSIA","Nephcare Dialysis Centre (Cawangan Umbai), HD Unit","011-53124482","017-6554482"
-"Pusat Hemodialisis Fomema Haemodialysis Merlimau, HD Unit","PRIVATE","TAJMUL RIZWAN BIN TAJUDIN;","","","",""
-"","","","Pusat Hemodialisis Fomema Haemodialysis MerlimauJC 146 & JC 147 Ground Floor, Jalan BMU 2Bandar Baru Merlimau Utara  77300 Merlimau  Melaka  MALAYSIA","Pusat Hemodialisis Fomema Haemodialysis Merlimau, HD Unit","06-2639533","010-9453177"
-"Sungai Rambai","","","","","",""
-"Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Sungai Rambai), HD Unit","PRIVATE","S. RAVIH A/L SUBRAMANIAM;","","","",""
-"","","","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Sungai Rambai)JC 1566-G & JC 1566-1, Jalan Putra 2Taman Sungai Rambai Putra  77400 Sungai Rambai  Melaka  MALAYSIA","Pusat Hemodialisis Harmoni Hemodialisis (Cawangan Sungai Rambai), HD Unit","06-2661526","011-63625040"
-"Sungai Udang","","","","","",""
-"Pusat Hemodialisis Krisda Jaya, HD Unit","PRIVATE","MOHD ASHRAF BIN MUHAMMAD SIDIK;","","","",""
-"","","","Pusat Hemodialisis Krisda JayaNo. 38, Jalan Keris Emas 1Taman Keris Emas  76300 Sungai Udang  Melaka  MALAYSIA","Pusat Hemodialisis Krisda Jaya, HD Unit","( 06)3510694","(012)3026968"
-"Tanjung Minyak","","","","","",""
-"Pusat Hemodialisis Krisda Jaya (Tanjung Minyak), HD Unit","PRIVATE","ABDUL MUZILL BIN MOHD YUSOF;","","","",""
-"","","","Pusat Hemodialisis Krisda Jaya (Tanjung Minyak)No.132 Jalan Kejora 2Taman Perindustrian Tanjung Minyak Perdana  75260 Tanjung Minyak  Melaka  MALAYSIA","Pusat Hemodialisis Krisda Jaya (Tanjung Minyak), HD Unit","011-10234329","06-3510694"
