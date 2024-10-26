@@ -78,27 +78,33 @@ export default async function DialysisCenterDirectory({
     <FilterLayout>
       <div className="min-h-screen bg-gray-100">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))] mb-8">
-          {data.map((item) => (
-            <Card
-              key={item.id}
-              className="shadow-sm hover:border-primary transition-shadow"
-            >
-              <CardHeader>
-                <CardTitle>{item.dialysisCenterName}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
-                <p className="text-primary mb-4">{item.address}</p>
-                <div className="flex gap-2 items-center">
-                  <PhoneCallIcon className="w-4 h-4" />
-                  <p className="text-primary">{item.tel}</p>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <MailIcon className="w-4 h-4" />
-                  <p className="text-primary">{item.email}</p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {data.map((item) => {
+            const units = item.units.split(",");
+            const isHemodialysis = units.includes("HD");
+
+            return (
+              <Card
+                key={item.id}
+                className="shadow-sm hover:border-primary transition-shadow"
+              >
+                <CardHeader className="flex items-center">
+                  <CardTitle>{item.title}</CardTitle>
+                  {/* <Badge>{item}</Badge> */}
+                </CardHeader>
+                <CardContent className="flex flex-col gap-2">
+                  {/* <p className="text-primary mb-4">{item.address}</p> */}
+                  <div className="flex gap-2 items-center">
+                    <PhoneCallIcon className="w-4 h-4" />
+                    <p className="text-primary">{item.tel}</p>
+                  </div>
+                  <div className="flex gap-2 items-center">
+                    <MailIcon className="w-4 h-4" />
+                    <p className="text-primary">{item.email}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         <Pagination className="mb-8">

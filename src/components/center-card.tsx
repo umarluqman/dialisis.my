@@ -5,9 +5,9 @@ import Link from "next/link";
 interface CenterCardProps {
   id: string;
   name: string;
-  address: string;
-  tel: string;
-  email: string;
+  address?: string;
+  tel?: string;
+  email?: string;
   state: string;
   city: string;
 }

@@ -13,48 +13,34 @@ async function main() {
     )
   );
 
-  // Filter out already processed states
-  const processedStates = ["johor", "kedah", "kelantan", "kuala-lumpur"];
-  const remainingStates = Object.entries(jsonData).filter(
-    ([stateName]) => !processedStates.includes(stateName)
-  );
+  const states = Object.entries(jsonData);
 
-  for (const [stateName, centers] of remainingStates) {
+  for (const [stateName, centers] of states) {
     try {
-      // Create or find the state
-      const state = await prisma.state.upsert({
+      // Get the state
+      const state = await prisma.state.findUnique({
         where: { name: stateName },
-        update: {},
-        create: { name: stateName },
       });
 
-      // Create dialysis centers for the state
+      if (!state) {
+        console.log(`State ${stateName} not found, skipping...`);
+        continue;
+      }
+
+      // Update dialysis centers for the state
       const centersArray = centers as any[];
       for (let i = 0; i < centersArray.length; i++) {
         const center = centersArray[i];
 
         try {
-          await prisma.dialysisCenter.create({
-            data: {
+          await prisma.dialysisCenter.updateMany({
+            where: {
               dialysisCenterName: center.dialysisCenterName,
-              sector: center.sector,
-              drInCharge: center.drInCharge,
-              address: center.address,
-              addressWithUnit: center.addressWithUnit,
-              tel: center.tel,
-              fax: center.fax || "",
-              panelNephrologist: center.panelNephrologist,
-              centreManager: center.centreManager,
-              centreCoordinator: center.centreCoordinator,
-              email: center.email,
-              hepatitisBay: center.hepatitisBay,
-              longitude: center.longitude,
-              latitude: center.latitude,
-              phoneNumber: center.phoneNumber,
-              website: center.website,
-              title: center.title,
-              units: center.units?.join(",") || "",
               stateId: state.id,
+            },
+            data: {
+              town: center.town || "",
+              address: center.address || "",
             },
           });
 
@@ -63,21 +49,19 @@ async function main() {
 
           if (i % 5 === 0) {
             console.log(
-              `Imported ${i + 1}/${
-                centersArray.length
-              } centers for ${stateName}`
+              `Updated ${i + 1}/${centersArray.length} centers for ${stateName}`
             );
           }
         } catch (error) {
           console.error(
-            `Error importing center ${center.dialysisCenterName}:`,
+            `Error updating center ${center.dialysisCenterName}:`,
             error
           );
           continue;
         }
       }
 
-      console.log(`Completed importing data for ${stateName}`);
+      console.log(`Completed updating data for ${stateName}`);
     } catch (error) {
       console.error(`Error processing state ${stateName}:`, error);
       continue;

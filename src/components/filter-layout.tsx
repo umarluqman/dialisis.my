@@ -46,30 +46,42 @@ export default function FilterLayout({
     if (value === "semua negeri / wilayah") {
       router.push("/");
     } else {
-      router.push(`/${value.replace(/\s+/g, "-").toLowerCase()}`);
+      router.push(`/${value?.toLowerCase().replace(/\s+/g, "-")}`);
     }
   };
 
   const handleCityChange = (value: string) => {
     if (state) {
       if (value === "semua bandar") {
-        router.push(`/${state?.toLowerCase()}`);
+        router.push(`/${state?.toLowerCase().replace(/\s+/g, "-")}`);
       } else {
-        router.push(`/${state?.toLowerCase()}/${value}`);
+        router.push(
+          `/${state?.toLowerCase().replace(/\s+/g, "-")}/${value.replace(
+            /\s+/g,
+            "-"
+          )}`
+        );
       }
     }
   };
-  const isHomepage = !state && !city;
-  const hasCity = state && Boolean(CITIES?.[state]);
-  console.log("hasCity", hasCity);
+  const [treatment, setTreatment] = useQueryState("treatment");
+  const handleTreatmentChange = (value: string) => {
+    if (value === "semua rawatan") {
+      setTreatment(null);
+    } else {
+      setTreatment(value);
+    }
+  };
+
+  console.log("state", state);
 
   // Add this near the top with other state declarations
   const [doctorName, setDoctorName] = useQueryState("doctor");
 
   return (
-    <div className="min-h-screen bg-foreground text-black">
-      <div className="p-4 md:p-8">
-        <div className="mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center">
+    <div className="min-h-screen bg-[foreground] text-black">
+      <div className="py-4 md:py-8">
+        <div className="mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center border-b-[1px] border-[#bcbab2]">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{title}</h1>
             <p className="text-gray-600">
@@ -88,7 +100,7 @@ export default function FilterLayout({
             />
           </div> */}
         </div>
-        <div className="mb-6 flex flex-col sm:flex-row gap-4">
+        <div className="mb-6 flex flex-col sm:flex-row justify-center gap-4">
           <div className="w-full sm:w-64">
             <Select
               defaultValue={state?.toLowerCase() || "semua negeri / wilayah"}
@@ -106,34 +118,34 @@ export default function FilterLayout({
               </SelectContent>
             </Select>
           </div>
-          {(isHomepage || hasCity) && (
-            <div className="w-full sm:w-64">
-              <Select
-                onValueChange={handleCityChange}
-                defaultValue={city?.toLowerCase() || "semua bandar"}
-              >
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem key={"all"} value={"semua bandar".toLowerCase()}>
-                    Semua bandar
-                  </SelectItem>
-                  {!isHomepage &&
-                    state &&
-                    CITIES?.[state]?.map((city: string) => (
-                      <SelectItem key={city} value={city.toLowerCase()}>
-                        {city}
-                      </SelectItem>
-                    ))}
-                </SelectContent>
-              </Select>
-            </div>
-          )}
+
           <div className="w-full sm:w-64">
             <Select
               onValueChange={handleCityChange}
-              defaultValue={city?.toLowerCase() || "semua rawatan"}
+              defaultValue={city?.toLowerCase() || "semua bandar"}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem key={"all"} value={"semua bandar".toLowerCase()}>
+                  Semua bandar
+                </SelectItem>
+                {state &&
+                  CITIES?.[state]?.map((city: string) => (
+                    <SelectItem key={city} value={city.toLowerCase()}>
+                      {city}
+                    </SelectItem>
+                  ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="w-full sm:w-64">
+            <Select
+              key="rawatan"
+              onValueChange={handleTreatmentChange}
+              defaultValue={treatment?.toLowerCase() || "semua rawatan"}
             >
               <SelectTrigger>
                 <SelectValue />

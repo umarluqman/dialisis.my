@@ -1,4 +1,13 @@
 import { CenterCard } from "@/components/center-card";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import { prisma } from "@/lib/db";
 
 // SEO metadata
@@ -27,32 +36,134 @@ export async function generateStaticParams() {
   }));
 }
 
-async function getDialysisCenters(state: string, city: string) {
-  const centers = await prisma.dialysisCenter.findMany({
-    where: {
-      state: {
-        name: state
-          .split(" ")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" "),
+const ITEMS_PER_PAGE = 10;
+
+async function getDialysisCenters(
+  state: string,
+  page: number = 1,
+  treatment?: string,
+  town?: string
+) {
+  console.log({ town });
+  const skip = (page - 1) * ITEMS_PER_PAGE;
+
+  // Capitalize each word in town and replace dashes with spaces
+  if (town) {
+    town = town
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
+  const whereClause: any = {
+    state: {
+      name: state,
+    },
+    town: town, // Add town filter
+  };
+
+  // Add treatment filter if specified
+  if (treatment === "hemodialysis") {
+    whereClause.units = {
+      contains: "HD",
+    };
+  } else if (treatment === "peritoneal dialysis") {
+    whereClause.units = {
+      contains: "PD",
+    };
+  }
+
+  const [centers, total] = await Promise.all([
+    prisma.dialysisCenter.findMany({
+      where: whereClause,
+      include: {
+        state: true,
       },
-      town: city,
+      take: ITEMS_PER_PAGE,
+      skip,
+      orderBy: {
+        dialysisCenterName: "asc",
+      },
+    }),
+    prisma.dialysisCenter.count({
+      where: whereClause,
+    }),
+  ]);
+
+  return {
+    centers,
+    totalPages: Math.ceil(total / ITEMS_PER_PAGE),
+    currentPage: page,
+  };
+}
+
+async function debugDatabase() {
+  // Get all unique towns
+  const towns = await prisma.dialysisCenter.findMany({
+    select: {
+      town: true,
+      state: {
+        select: {
+          name: true,
+        },
+      },
     },
-    include: {
-      state: true,
-    },
+    distinct: ["town", "stateId"],
   });
-  return centers;
+
+  console.log(
+    "Available towns in database:",
+    towns.map((t) => ({
+      town: t.town,
+      state: t.state.name,
+    }))
+  );
+}
+
+function getVisiblePages(currentPage: number, totalPages: number) {
+  const delta = 2;
+  const range = [];
+  const rangeWithDots = [];
+  let l;
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (
+      i === 1 ||
+      i === totalPages ||
+      (i >= currentPage - delta && i <= currentPage + delta)
+    ) {
+      range.push(i);
+    }
+  }
+
+  for (let i of range) {
+    if (l) {
+      if (i - l === 2) {
+        rangeWithDots.push(l + 1);
+      } else if (i - l !== 1) {
+        rangeWithDots.push("...");
+      }
+    }
+    rangeWithDots.push(i);
+    l = i;
+  }
+
+  return rangeWithDots;
 }
 
 const CityLayout = async ({
   params,
+  searchParams,
 }: {
   params: { state: string; city: string };
+  searchParams: { page?: string; treatment?: string };
 }) => {
-  const data = await getDialysisCenters(
+  const currentPage = Number(searchParams.page) || 1;
+  const { centers: data, totalPages } = await getDialysisCenters(
     params.state,
-    params.city.charAt(0).toUpperCase() + params.city.slice(1)
+    currentPage,
+    searchParams.treatment,
+    params.city // Add town parameter
   );
 
   if (!data || data.length === 0) {
@@ -70,15 +181,62 @@ const CityLayout = async ({
           <CenterCard
             key={item.id}
             id={item.id}
-            name={item.name}
+            name={item.title}
             address={item.address}
             tel={item.tel}
-            email={item.email}
+            email={item?.email || undefined}
             state={params.state}
             city={params.city}
           />
         ))}
       </div>
+
+      <Pagination className="mb-8">
+        <PaginationContent>
+          {currentPage > 1 && (
+            <PaginationItem>
+              <PaginationPrevious
+                href={`/${params.state}/${params.city}?page=${currentPage - 1}${
+                  searchParams.treatment
+                    ? `&treatment=${searchParams.treatment}`
+                    : ""
+                }`}
+              />
+            </PaginationItem>
+          )}
+
+          {getVisiblePages(currentPage, totalPages).map((page, index) => (
+            <PaginationItem key={index}>
+              {page === "..." ? (
+                <PaginationEllipsis />
+              ) : (
+                <PaginationLink
+                  href={`/${params.state}/${params.city}?page=${page}${
+                    searchParams.treatment
+                      ? `&treatment=${searchParams.treatment}`
+                      : ""
+                  }`}
+                  isActive={currentPage === page}
+                >
+                  {page}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          ))}
+
+          {currentPage < totalPages && (
+            <PaginationItem>
+              <PaginationNext
+                href={`/${params.state}/${params.city}?page=${currentPage + 1}${
+                  searchParams.treatment
+                    ? `&treatment=${searchParams.treatment}`
+                    : ""
+                }`}
+              />
+            </PaginationItem>
+          )}
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };

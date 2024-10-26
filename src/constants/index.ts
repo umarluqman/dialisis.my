@@ -61,6 +61,7 @@ export const CITIES: Record<string, string[]> = {
     "Kelapa Sawit",
     "Buloh Kasap",
     "Chaah",
+    "Gelang Patah",
   ],
   Kedah: [
     "Sungai Petani",
@@ -75,6 +76,7 @@ export const CITIES: Record<string, string[]> = {
     "Kuala Nerang",
     "Pokok Sena",
     "Bandar Baharu",
+    "Kuala Kedah",
   ],
   Kelantan: [
     "Kota Bharu",
@@ -103,6 +105,9 @@ export const CITIES: Record<string, string[]> = {
     "Kuala Sungai Baru",
     "Pulau Sebang",
     "Jasin",
+    "Bukit Piatu",
+    "Bukit Katil",
+    "Bacang",
   ],
   "Negeri Sembilan": [
     "Seremban",
@@ -111,6 +116,11 @@ export const CITIES: Record<string, string[]> = {
     "Bahau",
     "Tampin",
     "Kuala Pilah",
+    "Bandar Sri Jempol",
+    "Gemencheh",
+    "Gemas",
+    "Jelebu",
+    "Kuala Klawang",
   ],
   Pahang: [
     "Kuantan",
@@ -144,6 +154,7 @@ export const CITIES: Record<string, string[]> = {
     "Lawan Kuda Baharu",
     "Pantai Remis",
     "Kampar",
+    "Seri Manjung",
   ],
   Perlis: ["Kangar", "Kuala Perlis"],
   "Pulau Pinang": [
@@ -160,6 +171,7 @@ export const CITIES: Record<string, string[]> = {
     "Kepala Batas",
     "Tanjung Bungah",
     "Juru",
+    "Bayan Lepas",
   ],
   Sabah: [
     "Kota Kinabalu",
@@ -177,6 +189,10 @@ export const CITIES: Record<string, string[]> = {
     "Beaufort",
     "Kinarut",
     "Kota Belud",
+    "Beluran",
+    "Nabawan",
+    "Pitas",
+    "Tambunan",
   ],
   Sarawak: [
     "Kuching",
@@ -189,6 +205,8 @@ export const CITIES: Record<string, string[]> = {
     "Kapit",
     "Batu Delapan Bazaar",
     "Kota Samarahan",
+    "Mukah",
+    "Marudi",
   ],
   Selangor: [
     "Subang Jaya",
@@ -223,6 +241,9 @@ export const CITIES: Record<string, string[]> = {
     "Beranang",
     "Sungai Pelek",
     "Sepang",
+    "Telok Panglima Garang",
+    "Puchong",
+    "Bangi",
   ],
   Terengganu: [
     "Kuala Terengganu",
