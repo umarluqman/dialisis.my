@@ -37,6 +37,7 @@ async function getDialysisCenters(
   page: number = 1,
   treatment?: string
 ) {
+  console.log({ state, page, treatment });
   const skip = (page - 1) * ITEMS_PER_PAGE;
 
   const whereClause: any = {
@@ -46,13 +47,21 @@ async function getDialysisCenters(
   };
 
   // Add treatment filter if specified
-  if (treatment === "hemodialysis") {
+  if (treatment?.toLowerCase() === "hemodialysis") {
     whereClause.units = {
       contains: "HD",
     };
-  } else if (treatment === "peritoneal dialysis") {
+  } else if (treatment?.toLowerCase() === "peritoneal dialysis") {
     whereClause.units = {
       contains: "PD",
+    };
+  } else if (treatment?.toLowerCase() === "transplant") {
+    whereClause.units = {
+      contains: "TX",
+    };
+  } else if (treatment?.toLowerCase() === "mrrb") {
+    whereClause.units = {
+      contains: "MRRB",
     };
   }
 
@@ -118,6 +127,7 @@ const VariantLayout = async ({
   params: { state: string };
   searchParams: { page?: string; treatment?: string };
 }) => {
+  console.log({ searchParams });
   const currentPage = Number(searchParams.page) || 1;
   const { centers: data, totalPages } = await getDialysisCenters(
     params.state,

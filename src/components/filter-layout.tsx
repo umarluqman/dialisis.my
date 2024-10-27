@@ -73,8 +73,6 @@ export default function FilterLayout({
     }
   };
 
-  console.log("state", state);
-
   // Add this near the top with other state declarations
   const [doctorName, setDoctorName] = useQueryState("doctor");
 

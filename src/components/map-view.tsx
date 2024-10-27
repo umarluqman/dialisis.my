@@ -232,7 +232,9 @@ export default function MapView() {
           <div className="absolute inset-0 flex items-center justify-center bg-black/5">
             <div className="flex items-center gap-2 rounded-md bg-white px-4 py-2 shadow-lg">
               <Loader2 className="h-4 w-4 animate-spin" />
-              <span className="text-sm">Getting your location...</span>
+              <span className="text-sm text-zinc-500">
+                Getting your location...
+              </span>
             </div>
           </div>
         )}

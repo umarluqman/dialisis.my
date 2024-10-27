@@ -44,7 +44,6 @@ async function getDialysisCenters(
   treatment?: string,
   town?: string
 ) {
-  console.log({ town });
   const skip = (page - 1) * ITEMS_PER_PAGE;
 
   // Capitalize each word in town and replace dashes with spaces
