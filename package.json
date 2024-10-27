@@ -28,6 +28,7 @@
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.0",
+    "@types/mapbox-gl": "^3.4.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
@@ -43,6 +44,7 @@
     "framer-motion": "^11.5.4",
     "fs": "0.0.1-security",
     "lucide-react": "^0.427.0",
+    "mapbox-gl": "^3.7.0",
     "next": "14.2.11",
     "next-contentlayer": "^0.3.4",
     "next-sitemap": "^4.2.3",
@@ -58,6 +60,7 @@
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "4.9.5",
+    "vaul": "^1.1.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

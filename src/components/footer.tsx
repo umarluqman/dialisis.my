@@ -7,7 +7,7 @@ const boring = [
 ];
 
 const more = [
-  { label: "GunaBitcoin", href: "https://www.gunabitcoin.my" },
+  { label: "Guna Bitcoin", href: "https://www.gunabitcoin.my" },
   { label: "Semak Hadis", href: "https://www.semahadis.com" },
 ];
 

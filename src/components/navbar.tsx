@@ -24,10 +24,10 @@ export const Navbar = () => {
                 </div>
               </div>
             </Link>
-            {/* <Link className="flex items-center" href="/pro">
+            <Link className="flex items-center" href="/peta">
               {" "}
-              <span className="text-sm font-medium">PRO version</span>
-            </Link> */}
+              <span className="text-sm font-medium">Peta</span>
+            </Link>
           </div>
           {/* <Link
             href="https://chromewebstore.google.com/detail/focus-mode-stay-focused-b/ollmdedpknmlcdmpehclmgbogpifahdc"
