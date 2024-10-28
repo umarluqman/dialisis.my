@@ -18,6 +18,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "@libsql/client": "^0.14.0",
+    "@popicons/react": "^0.0.15",
     "@prisma/adapter-libsql": "^5.20.0",
     "@prisma/client": "^5.21.1",
     "@radix-ui/react-checkbox": "^1.1.1",
@@ -43,6 +44,7 @@
     "eslint-config-next": "13.2.4",
     "framer-motion": "^11.5.4",
     "fs": "0.0.1-security",
+    "geist": "^1.3.1",
     "lucide-react": "^0.427.0",
     "mapbox-gl": "^3.7.0",
     "next": "14.2.11",

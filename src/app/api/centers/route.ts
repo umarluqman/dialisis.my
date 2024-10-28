@@ -20,6 +20,12 @@ export async function GET() {
           },
         },
         town: true,
+        tel: true,
+        website: true,
+        email: true,
+        units: true,
+        hepatitisBay: true,
+        sector: true,
       },
     });
 
@@ -31,6 +37,12 @@ export async function GET() {
       address: center.addressWithUnit,
       state: center.state.name,
       city: center.town,
+      tel: center.tel,
+      website: center.website,
+      email: center.email,
+      units: center.units,
+      hepatitisBay: center.hepatitisBay,
+      sector: center.sector,
     }));
 
     return NextResponse.json(formattedCenters);

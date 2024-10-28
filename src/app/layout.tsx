@@ -2,6 +2,8 @@ import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
@@ -21,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased flex flex-col",
-          fontSans.variable
+          "min-h-screen bg-background font-sans antialiased flex flex-col"
+          // fontSans.variable
         )}
       >
         <Navbar />

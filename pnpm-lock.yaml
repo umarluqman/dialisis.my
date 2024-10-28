@@ -14,6 +14,9 @@ importers:
       '@libsql/client':
         specifier: ^0.14.0
         version: 0.14.0
+      '@popicons/react':
+        specifier: ^0.0.15
+        version: 0.0.15
       '@prisma/adapter-libsql':
         specifier: ^5.20.0
         version: 5.20.0(@libsql/client@0.14.0)
@@ -89,6 +92,9 @@ importers:
       fs:
         specifier: 0.0.1-security
         version: 0.0.1-security
+      geist:
+        specifier: ^1.3.1
+        version: 1.3.1(next@14.2.11(@opentelemetry/api@1.9.0)(@playwright/test@1.46.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       lucide-react:
         specifier: ^0.427.0
         version: 0.427.0(react@18.3.1)
@@ -759,6 +765,9 @@ packages:
     resolution: {integrity: sha512-/QYft5VArOrGRP5pgkrfKksqsKA6CEFyGQ/gjNe6q0y4tZ1aaPfq4gIjudr1s3D+pXyrPRdsy4opKDrjBabE5w==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@popicons/react@0.0.15':
+    resolution: {integrity: sha512-XgCzZW8aytpBkf6EX8gHYUsP0IuEh1KePyD6dYsBSF0YM9W1kdW20T8bVWrhWniFwdNDUsdYj89QCt03NbLrJQ==}
 
   '@prisma/adapter-libsql@5.20.0':
     resolution: {integrity: sha512-D1ZcCT4lckOHllTS3wIE8gTMfTj9UlryV9CbPrR/Wmmh+UQeBJMfs+2t6wmftBxCgXdH8h4cuVy3jnhlXh8MAQ==}
@@ -2185,6 +2194,11 @@ packages:
 
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  geist@1.3.1:
+    resolution: {integrity: sha512-Q4gC1pBVPN+D579pBaz0TRRnGA4p9UK6elDY/xizXdFk/g4EKR5g0I+4p/Kj6gM0SajDBZ/0FvDV9ey9ud7BWw==}
+    peerDependencies:
+      next: '>=13.2.0'
 
   geojson-vt@4.0.2:
     resolution: {integrity: sha512-AV9ROqlNqoZEIJGfm1ncNjEXfkz2hdFlZf0qkVfmkwdKa8vj7H16YUOT81rJw1rdFhyEDlN2Tds91p/glzbl5A==}
@@ -4346,6 +4360,8 @@ snapshots:
     dependencies:
       playwright: 1.46.0
 
+  '@popicons/react@0.0.15': {}
+
   '@prisma/adapter-libsql@5.20.0(@libsql/client@0.14.0)':
     dependencies:
       '@libsql/client': 0.14.0
@@ -5990,6 +6006,10 @@ snapshots:
       functions-have-names: 1.2.3
 
   functions-have-names@1.2.3: {}
+
+  geist@1.3.1(next@14.2.11(@opentelemetry/api@1.9.0)(@playwright/test@1.46.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)):
+    dependencies:
+      next: 14.2.11(@opentelemetry/api@1.9.0)(@playwright/test@1.46.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
   geojson-vt@4.0.2: {}
 

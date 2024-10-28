@@ -180,12 +180,16 @@ const CityLayout = async ({
           <CenterCard
             key={item.id}
             id={item.id}
-            name={item.title}
+            name={item.dialysisCenterName}
             address={item.address}
             tel={item.tel}
             email={item?.email || undefined}
             state={params.state}
             city={params.city}
+            units={item.units}
+            hepatitisBay={item.hepatitisBay}
+            sector={item.sector}
+            treatment={searchParams.treatment}
           />
         ))}
       </div>

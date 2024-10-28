@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { PopiconsBarsRightSolid } from "@popicons/react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
@@ -10,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <nav className="w-full bg-background p-4 md:px-20 text-black">
-      <div className="container px-2">
+      <div className="container px-0">
         {/* Desktop View */}
         <div className="hidden items-center justify-between md:flex">
           <div className="flex items-center space-x-12">
@@ -48,12 +49,18 @@ export const Navbar = () => {
 
         {/* Mobile View */}
         <div className="flex items-center justify-between md:hidden">
-          {/* <div className="flex items-center space-x-4">
-            <div className="text-xl font-bold">LOGO</div>
-            <span className="text-sm font-medium">PRO version</span>
-          </div> */}
+          <Link className="flex items-center" href="/">
+            <div className="flex space-x-3 items-center">
+              <Logo />
+              <span className="sr-only">Dialisis Malaysia</span>
+              <div className="tracking-wide font-medium leading-none">
+                <div>Dialisis Malaysia</div>
+                {/* <div>Mode</div> */}
+              </div>
+            </div>
+          </Link>
           <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
-            <Menu className="h-6 w-6" />
+            <PopiconsBarsRightSolid className="h-6 w-6" />
             <span className="sr-only">Open menu</span>
           </Button>
         </div>
@@ -72,8 +79,19 @@ export const Navbar = () => {
               </Button>
             </div>
             <div className="flex flex-col items-start space-y-6">
-              <div className="text-xl font-bold">LOGO</div>
-              <span className="text-sm font-medium">PRO version</span>
+              <Link className="flex items-center" href="/">
+                <div className="flex space-x-3 items-center">
+                  <Logo />
+                  <span className="sr-only">Dialisis Malaysia</span>
+                  <div className="tracking-wide font-medium leading-none">
+                    <div>Dialisis Malaysia</div>
+                    {/* <div>Mode</div> */}
+                  </div>
+                </div>
+              </Link>
+              <Link className="flex items-center" href="/peta">
+                <span className="font-medium px-4">Peta</span>
+              </Link>
               {/* <div className="w-full pt-4">
                 <Button className="w-full" variant="outline">
                   Add to Chrome

@@ -1,10 +1,18 @@
 "use client";
 
+import {
+  PopiconsGlobeDuotone,
+  PopiconsMailDuotone,
+  PopiconsPhoneSolid,
+} from "@popicons/react";
 import { Loader2 } from "lucide-react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 
 interface Center {
   id: string;
@@ -14,6 +22,12 @@ interface Center {
   address: string;
   state: string;
   city: string;
+  units: string;
+  hepatitisBay: string;
+  tel?: string;
+  website?: string;
+  email?: string;
+  sector?: string;
 }
 
 // Replace with your Mapbox access token
@@ -224,6 +238,25 @@ export default function MapView() {
     };
   }, []);
 
+  const unitsArray = selectedCenter?.units
+    ? selectedCenter.units.split(",")
+    : [];
+  const title = selectedCenter?.name.split(",")[0];
+  const hepatitisArray = selectedCenter?.hepatitisBay
+    ? selectedCenter.hepatitisBay.split(", ")
+    : [];
+  const treatmentArray = unitsArray.map((unit) => ({
+    name: unit,
+    value: unit.toLowerCase().includes("hd unit")
+      ? "Hemodialysis"
+      : unit.toLowerCase().includes("tx unit")
+      ? "Transplant"
+      : unit.toLowerCase().includes("mrrb unit")
+      ? "MRRB"
+      : "Peritoneal Dialysis",
+  }));
+  console.log({ hepatitisArray });
+
   return (
     <>
       <div className="relative h-[calc(100vh-4rem)] w-full">
@@ -245,8 +278,9 @@ export default function MapView() {
         onOpenChange={() => setSelectedCenter(null)}
       >
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[96%] flex-col rounded-t-[10px] bg-white">
+          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-10" />
+          {/* <Drawer.Title>{selectedCenter?.name}</Drawer.Title> */}
+          <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-t-[10px] bg-white z-20">
             <div className="flex-1 rounded-t-[10px] bg-white p-4">
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
@@ -254,10 +288,93 @@ export default function MapView() {
                   <h2 className="text-xl font-semibold">
                     {selectedCenter.name}
                   </h2>
-                  <p className="mt-2 text-zinc-600">{selectedCenter.address}</p>
-                  <p className="mt-1 text-zinc-600">
+                  <p className="text-primary-foreground mb-4">
+                    {selectedCenter?.sector === "MOH" ||
+                    selectedCenter?.sector === "NGO" ? (
+                      selectedCenter?.sector
+                    ) : (
+                      <span className="capitalize">
+                        {selectedCenter?.sector?.toLowerCase() ?? ""}
+                      </span>
+                    )}
+                  </p>
+                  <p className="mt-3 text-zinc-600">{selectedCenter.address}</p>
+                  <p className="mt-2 text-zinc-600">
                     {selectedCenter.city}, {selectedCenter.state}
                   </p>
+                  <div className="flex flex-wrap gap-2 mt-8">
+                    {treatmentArray.map((treatment) => (
+                      <Badge
+                        key={treatment.name}
+                        className="bg-[#a3bdffff]/50 text-[#375092ff] hover:bg-[#a3bdffff]/50 mb-4 shadow-none"
+                      >
+                        {treatment.value}
+                      </Badge>
+                    ))}{" "}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {hepatitisArray.map((hep) => (
+                      <Badge
+                        key={hep}
+                        className="bg-[#fff3d7ff] text-amber-600 mb-4 shadow-none hover:bg-[#fff3d7ff]"
+                      >
+                        {hep}
+                      </Badge>
+                    ))}{" "}
+                  </div>
+
+                  {selectedCenter?.website && (
+                    <Link
+                      href={
+                        selectedCenter?.website?.split("?")[0] +
+                          "ref=dialysis-my" ?? ""
+                      }
+                    >
+                      <Button
+                        size={"sm"}
+                        variant={"link"}
+                        className="px-0 text-primary-foreground mb-4"
+                      >
+                        <PopiconsGlobeDuotone className="w-4 h-4 text-primary-foreground" />
+                        {selectedCenter?.website?.split("?")[0]}
+                      </Button>
+                    </Link>
+                  )}
+
+                  <div className="flex gap-4 justify-end">
+                    <Link
+                      href={
+                        selectedCenter?.website?.split("?")[0] +
+                          "ref=dialysis-my" ?? ""
+                      }
+                    >
+                      <Button
+                        size={"sm"}
+                        variant={"secondary"}
+                        className="text-primary-foreground"
+                      >
+                        <PopiconsPhoneSolid className="w-4 h-4 text-primary-foreground" />
+                        Panggil
+                      </Button>
+                    </Link>
+
+                    <Link
+                      href={
+                        selectedCenter?.website?.split("?")[0] +
+                          "ref=dialysis-my" ?? ""
+                      }
+                    >
+                      <Button
+                        size={"sm"}
+                        variant={"secondary"}
+                        className="text-primary-foreground"
+                      >
+                        <PopiconsMailDuotone className="w-4 h-4 text-primary-foreground" />
+                        {/* {selectedCenter?.email} */}
+                        Emel
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>

@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Pagination,
   PaginationContent,
@@ -9,10 +8,10 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 import { prisma } from "@/lib/db";
-import { MailIcon, PhoneCallIcon } from "lucide-react";
 import Link from "next/link";
 
 // SEO metadata
+import { CenterCard } from "@/components/center-card";
 import type { Metadata } from "next";
 export async function generateMetadata({
   params,
@@ -144,22 +143,17 @@ const VariantLayout = async ({
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-screen-xl mx-auto">
         {data.map((item) => (
           <Link href={`/${encodeURIComponent(item.title)}`} key={item.id}>
-            <Card className="shadow-sm hover:border-primary transition-shadow">
-              <CardHeader>
-                <CardTitle>{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col gap-2">
-                <p className="text-primary mb-4">{item.address}</p>
-                <div className="flex gap-2 items-center">
-                  <PhoneCallIcon className="w-4 h-4" />
-                  <p className="text-primary">{item.tel}</p>
-                </div>
-                <div className="flex gap-2 items-center">
-                  <MailIcon className="w-4 h-4" />
-                  <p className="text-primary">{item.email}</p>
-                </div>
-              </CardContent>
-            </Card>
+            <CenterCard
+              name={item.dialysisCenterName}
+              city={item.town}
+              state={item.state.name}
+              website={item.website ?? ""}
+              units={item.units ?? []}
+              hepatitisBay={item.hepatitisBay ?? ""}
+              sector={item.sector ?? ""}
+              key={item.id}
+              id={item.id}
+            />
           </Link>
         ))}
       </div>

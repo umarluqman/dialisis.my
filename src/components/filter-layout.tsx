@@ -1,21 +1,15 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
-import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useQueryState } from "nuqs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { Button } from "./ui/button";
 
 export default function FilterLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   const router = useRouter();
 
@@ -79,13 +73,22 @@ export default function FilterLayout({
   return (
     <div className="min-h-screen bg-[foreground] text-black">
       <div className="py-4 md:py-8">
-        <div className="mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center border-b-[1px] border-[#bcbab2]">
-          <div className="flex flex-col items-center">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">{title}</h1>
-            <p className="text-gray-600">
-              {`Cari pusat dialisis yang berdekatan dengan anda`}
+        <div
+          className={cn(
+            "mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center"
+            // "border-b-[1px] border-[#bcbab2]"
+          )}
+        >
+          <div className={cn("flex flex-col items-center space-y-8")}>
+            <h1 className={cn("text-3xl md:text-5xl font-bold")}>{title}</h1>
+            <p className={cn("text-gray-600 leading-8 text-lg")}>
+              {`Cari pusat dialisis yang berdekatan dengan anda dengan satu klik.`}
             </p>
+            <Link href="/peta">
+              <Button size="lg">Cari Sekarang </Button>{" "}
+            </Link>
           </div>
+
           {/* <div className="w-full md:w-64 mt-4 md:mt-0 relative">
             <Input
               type="search"
@@ -98,8 +101,13 @@ export default function FilterLayout({
             />
           </div> */}
         </div>
-        <div className="mb-6 flex flex-col sm:flex-row justify-center gap-4">
-          <div className="w-full sm:w-64">
+        {/* <div className="w-full flex items-center gap-4 my-8">
+          <div className="flex-1 h-[1px] bg-[#bcbab2]"></div>
+          <span className="text-gray-600">atau cari secara manual</span>
+          <div className="flex-1 h-[1px] bg-[#bcbab2]"></div>
+        </div> */}
+        <div className="pt-4 mb-6 flex flex-col sm:flex-row justify-center gap-4">
+          {/* <div className="w-full sm:w-64">
             <Select
               defaultValue={state?.toLowerCase() || "semua negeri / wilayah"}
               onValueChange={handleStateChange}
@@ -137,9 +145,9 @@ export default function FilterLayout({
                   ))}
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
 
-          <div className="w-full sm:w-64">
+          {/* <div className="w-full sm:w-64">
             <Select
               key="rawatan"
               onValueChange={handleTreatmentChange}
@@ -187,7 +195,7 @@ export default function FilterLayout({
                 ))}
               </SelectContent>
             </Select>
-          </div>
+          </div> */}
         </div>
       </div>
       {children}

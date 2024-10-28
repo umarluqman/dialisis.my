@@ -1,16 +1,5 @@
 import FilterLayout from "@/components/filter-layout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "@/components/ui/pagination";
 import { prisma } from "@/lib/db";
-import { MailIcon, PhoneCallIcon } from "lucide-react";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -76,7 +65,7 @@ export default async function DialysisCenterDirectory({
 
   return (
     <FilterLayout>
-      <div className="min-h-screen bg-gray-100">
+      {/* <div className="min-h-screen bg-gray-100">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))] mb-8">
           {data.map((item) => {
             const units = item.units.split(",");
@@ -89,10 +78,9 @@ export default async function DialysisCenterDirectory({
               >
                 <CardHeader className="flex items-center">
                   <CardTitle>{item.title}</CardTitle>
-                  {/* <Badge>{item}</Badge> */}
                 </CardHeader>
                 <CardContent className="flex flex-col gap-2">
-                  {/* <p className="text-primary mb-4">{item.address}</p> */}
+                  <p className="text-primary mb-4">{item.address}</p>
                   <div className="flex gap-2 items-center">
                     <PhoneCallIcon className="w-4 h-4" />
                     <p className="text-primary">{item.tel}</p>
@@ -137,7 +125,7 @@ export default async function DialysisCenterDirectory({
             )}
           </PaginationContent>
         </Pagination>
-      </div>
+      </div> */}
     </FilterLayout>
   );
 }
