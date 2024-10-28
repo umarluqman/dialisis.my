@@ -187,7 +187,7 @@ const CityLayout = async ({
             state={params.state}
             city={params.city}
             units={item.units}
-            hepatitisBay={item.hepatitisBay}
+            hepatitisBay={item?.hepatitisBay || undefined}
             sector={item.sector}
             treatment={searchParams.treatment}
           />
