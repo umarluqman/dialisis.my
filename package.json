@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build",
     "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:deploy": "next build && npx @cloudflare/next-on-pages && wrangler pages deploy .vercel/output/static",
+"pages:deploy": "NEXT_PUBLIC_SITE_URL=$SITE_URL next build && npx @cloudflare/next-on-pages && wrangler pages deploy .vercel/output/static",
     "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01 --compatibility-flag=nodejs_compat",
     "start": "next start",
     "lint": "next lint",

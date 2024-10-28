@@ -12,6 +12,7 @@ import { prisma } from "@/lib/db";
 
 // SEO metadata
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 export async function generateMetadata({
   params,
 }: {
@@ -22,18 +23,26 @@ export async function generateMetadata({
 
 // Like getStaticPaths
 export async function generateStaticParams() {
-  const centers = await prisma.dialysisCenter.findMany({
-    select: {
-      state: { select: { name: true } },
-      town: true,
-    },
-    distinct: ["stateId", "town"],
-  });
+  try {
+    const centers = await prisma.dialysisCenter.findMany({
+      select: {
+        state: { select: { name: true } },
+        town: true,
+      },
+      distinct: ["stateId", "town"],
+    });
 
-  return centers.map((center) => ({
-    state: center.state.name.toLowerCase(),
-    city: center.town,
-  }));
+    // Filter out invalid entries and normalize the paths
+    return centers
+      .filter((center) => center.state.name && center.town)
+      .map((center) => ({
+        state: center.state.name.toLowerCase().replace(/\s+/g, "-"),
+        city: center.town.toLowerCase().replace(/\s+/g, "-"),
+      }));
+  } catch (error) {
+    console.error("Error generating static params:", error);
+    return [];
+  }
 }
 
 const ITEMS_PER_PAGE = 10;
@@ -157,91 +166,96 @@ const CityLayout = async ({
   params: { state: string; city: string };
   searchParams: { page?: string; treatment?: string };
 }) => {
-  const currentPage = Number(searchParams.page) || 1;
-  const { centers: data, totalPages } = await getDialysisCenters(
-    params.state,
-    currentPage,
-    searchParams.treatment,
-    params.city // Add town parameter
-  );
-
-  if (!data || data.length === 0) {
-    return (
-      <p>
-        No dialysis centers found in {params.city}, {params.state}
-      </p>
+  try {
+    const currentPage = Number(searchParams.page) || 1;
+    const { centers: data, totalPages } = await getDialysisCenters(
+      params.state,
+      currentPage,
+      searchParams.treatment,
+      params.city
     );
-  }
 
-  return (
-    <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-screen-xl mx-auto">
-        {data.map((item) => (
-          <CenterCard
-            key={item.id}
-            id={item.id}
-            name={item.dialysisCenterName}
-            address={item.address}
-            tel={item.tel}
-            email={item?.email || undefined}
-            state={params.state}
-            city={params.city}
-            units={item.units}
-            hepatitisBay={item?.hepatitisBay || undefined}
-            sector={item.sector}
-            treatment={searchParams.treatment}
-          />
-        ))}
-      </div>
+    if (!data || data.length === 0) {
+      notFound();
+    }
 
-      <Pagination className="mb-8">
-        <PaginationContent>
-          {currentPage > 1 && (
-            <PaginationItem>
-              <PaginationPrevious
-                href={`/${params.state}/${params.city}?page=${currentPage - 1}${
-                  searchParams.treatment
-                    ? `&treatment=${searchParams.treatment}`
-                    : ""
-                }`}
-              />
-            </PaginationItem>
-          )}
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-8 max-w-screen-xl mx-auto">
+          {data.map((item) => (
+            <CenterCard
+              key={item.id}
+              id={item.id}
+              name={item.dialysisCenterName}
+              address={item.address}
+              tel={item.tel}
+              email={item?.email || undefined}
+              state={params.state}
+              city={params.city}
+              units={item.units}
+              hepatitisBay={item?.hepatitisBay || undefined}
+              sector={item.sector}
+              treatment={searchParams.treatment}
+            />
+          ))}
+        </div>
 
-          {getVisiblePages(currentPage, totalPages).map((page, index) => (
-            <PaginationItem key={index}>
-              {page === "..." ? (
-                <PaginationEllipsis />
-              ) : (
-                <PaginationLink
-                  href={`/${params.state}/${params.city}?page=${page}${
+        <Pagination className="mb-8">
+          <PaginationContent>
+            {currentPage > 1 && (
+              <PaginationItem>
+                <PaginationPrevious
+                  href={`/${params.state}/${params.city}?page=${
+                    currentPage - 1
+                  }${
                     searchParams.treatment
                       ? `&treatment=${searchParams.treatment}`
                       : ""
                   }`}
-                  isActive={currentPage === page}
-                >
-                  {page}
-                </PaginationLink>
-              )}
-            </PaginationItem>
-          ))}
+                />
+              </PaginationItem>
+            )}
 
-          {currentPage < totalPages && (
-            <PaginationItem>
-              <PaginationNext
-                href={`/${params.state}/${params.city}?page=${currentPage + 1}${
-                  searchParams.treatment
-                    ? `&treatment=${searchParams.treatment}`
-                    : ""
-                }`}
-              />
-            </PaginationItem>
-          )}
-        </PaginationContent>
-      </Pagination>
-    </div>
-  );
+            {getVisiblePages(currentPage, totalPages).map((page, index) => (
+              <PaginationItem key={index}>
+                {page === "..." ? (
+                  <PaginationEllipsis />
+                ) : (
+                  <PaginationLink
+                    href={`/${params.state}/${params.city}?page=${page}${
+                      searchParams.treatment
+                        ? `&treatment=${searchParams.treatment}`
+                        : ""
+                    }`}
+                    isActive={currentPage === page}
+                  >
+                    {page}
+                  </PaginationLink>
+                )}
+              </PaginationItem>
+            ))}
+
+            {currentPage < totalPages && (
+              <PaginationItem>
+                <PaginationNext
+                  href={`/${params.state}/${params.city}?page=${
+                    currentPage + 1
+                  }${
+                    searchParams.treatment
+                      ? `&treatment=${searchParams.treatment}`
+                      : ""
+                  }`}
+                />
+              </PaginationItem>
+            )}
+          </PaginationContent>
+        </Pagination>
+      </div>
+    );
+  } catch (error) {
+    console.error("Error in CityLayout:", error);
+    return <div>Something went wrong. Please try again later.</div>;
+  }
 };
 
 export default CityLayout;
