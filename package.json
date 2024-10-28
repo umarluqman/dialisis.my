@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:deploy": "next build && npx @cloudflare/next-on-pages && wrangler pages deploy .vercel/output/static",
+    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01 --compatibility-flag=nodejs_compat",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
@@ -66,11 +69,13 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.13.5",
     "@playwright/test": "^1.31.2",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prisma": "^5.21.1",
     "tailwindcss": "^3.3.1",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "wrangler": "^3.83.0"
   }
 }
