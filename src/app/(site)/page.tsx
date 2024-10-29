@@ -3,6 +3,8 @@ import { prisma } from "@/lib/db";
 
 const ITEMS_PER_PAGE = 10;
 
+export const runtime = "edge";
+
 async function getDialysisCenters(page: number = 1) {
   const skip = (page - 1) * ITEMS_PER_PAGE;
 
