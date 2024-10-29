@@ -3,8 +3,8 @@ User-agent: *
 Disallow: /
 
 # Host
-Host: http://localhost:3000
+Host: https://dialisis.my
 
 # Sitemaps
-Sitemap: http://localhost:3000/sitemap.xml
-Sitemap: http://localhost:3000/server-sitemap-index.xml
+Sitemap: https://dialisis.my/sitemap.xml
+Sitemap: https://dialisis.my/server-sitemap-index.xml
