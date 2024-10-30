@@ -1,6 +1,6 @@
 import { createClient } from "@libsql/client/web";
 import { PrismaLibSQL } from "@prisma/adapter-libsql";
-import { PrismaClient } from "@prisma/client/edge";
+import { PrismaClient } from "@prisma/client";
 
 // Create a singleton instance
 const globalForPrisma = globalThis as unknown as {
