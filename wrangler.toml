@@ -1,8 +1,8 @@
 name = "dialisis-malaysia"
 compatibility_date = "2024-01-01"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = ["nodejs_compat_v2"]
 
 [build]
 command = "pnpm run pages:build"
 pages_build_output_dir = ".vercel/output/static"
-compatibility_flags = [ "nodejs_compat" ]
+
