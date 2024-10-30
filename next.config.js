@@ -3,7 +3,6 @@ const { withContentlayer } = require("next-contentlayer");
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  mdxRs: true,
   output: "standalone",
   images: {
     unoptimized: true,
@@ -27,6 +26,18 @@ const nextConfig = {
         ],
       },
     ];
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Don't bundle certain packages on the client
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        "mapbox-gl": false,
+        "@prisma/client": false,
+        contentlayer: false,
+      };
+    }
+    return config;
   },
 };
 
