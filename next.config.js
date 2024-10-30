@@ -27,9 +27,9 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      // Don't bundle certain packages on the client
+  webpack: (config, { isServer, dev }) => {
+    if (!isServer && !dev) {
+      // Don't bundle certain packages on the client in production
       config.resolve.alias = {
         ...config.resolve.alias,
         "mapbox-gl": false,

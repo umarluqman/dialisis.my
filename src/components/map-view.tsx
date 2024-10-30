@@ -41,6 +41,11 @@ const MALAYSIA_BOUNDS = {
 const DEFAULT_CENTER = [101.6869, 3.139]; // Malaysia center coordinates
 const DEFAULT_ZOOM = 5;
 
+// Move this outside the component
+if (typeof window !== "undefined") {
+  mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+}
+
 export default function MapView() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
