@@ -1,9 +1,11 @@
 "use client";
 
 import {
+  PopiconsArrowRightLine,
+  PopiconsCircleInfoLine,
   PopiconsGlobeDuotone,
-  PopiconsMailDuotone,
-  PopiconsPhoneSolid,
+  PopiconsMailLine,
+  PopiconsPhoneLine,
 } from "@popicons/react";
 import { Loader2 } from "lucide-react";
 import mapboxgl from "mapbox-gl";
@@ -16,12 +18,14 @@ import { Button } from "./ui/button";
 
 interface Center {
   id: string;
-  name: string;
+  dialysisCenterName: string;
   latitude: number;
+  addressWithUnit: string;
+  phoneNumber: string;
   longitude: number;
   address: string;
   state: string;
-  city: string;
+  town: string;
   units: string;
   hepatitisBay: string;
   tel?: string;
@@ -148,11 +152,11 @@ export default function MapView() {
             "circle-color": [
               "step",
               ["get", "point_count"],
-              "#003f5c", // color for points <= 50
+              "#012f54", // color for points <= 50
               50, // threshold
-              "#bc5090", // color for points <= 100
+              "#2bde80", // color for points <= 100
               100, // threshold
-              "#ffa600", // color for points > 100
+              "#a3bdff", // color for points > 100
             ],
             "circle-radius": [
               "step",
@@ -246,7 +250,8 @@ export default function MapView() {
   const unitsArray = selectedCenter?.units
     ? selectedCenter.units.split(",")
     : [];
-  const title = selectedCenter?.name.split(",")[0];
+  const title = selectedCenter?.dialysisCenterName?.split(",")[0];
+
   const hepatitisArray = selectedCenter?.hepatitisBay
     ? selectedCenter.hepatitisBay.split(", ")
     : [];
@@ -260,7 +265,7 @@ export default function MapView() {
       ? "MRRB"
       : "Peritoneal Dialysis",
   }));
-  console.log({ hepatitisArray });
+  console.log({ selectedCenter });
 
   return (
     <>
@@ -284,15 +289,13 @@ export default function MapView() {
       >
         <Drawer.Portal>
           <Drawer.Overlay className="fixed inset-0 bg-black/40 z-10" />
-          {/* <Drawer.Title>{selectedCenter?.name}</Drawer.Title> */}
+          {/* <Drawer.Title>{selectedCenter?.dialysisCenterName}</Drawer.Title> */}
           <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-t-[10px] bg-white z-20">
             <div className="flex-1 rounded-t-[10px] bg-white p-4">
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
                 <div className="mx-auto max-w-md">
-                  <h2 className="text-xl font-semibold">
-                    {selectedCenter.name}
-                  </h2>
+                  <h2 className="text-xl font-semibold">{title}</h2>
                   <p className="text-primary-foreground mb-4">
                     {selectedCenter?.sector === "MOH" ||
                     selectedCenter?.sector === "NGO" ? (
@@ -303,9 +306,19 @@ export default function MapView() {
                       </span>
                     )}
                   </p>
-                  <p className="mt-3 text-zinc-600">{selectedCenter.address}</p>
+                  <p className="mt-3 text-zinc-600">
+                    {selectedCenter.addressWithUnit}
+                  </p>
                   <p className="mt-2 text-zinc-600">
-                    {selectedCenter.city}, {selectedCenter.state}
+                    {selectedCenter.town ? selectedCenter.town + ", " : " "}
+                    {JSON.parse(selectedCenter.state)
+                      .name.split(" ")
+                      .map(
+                        (word: string) =>
+                          word.charAt(0).toUpperCase() +
+                          word.slice(1).toLowerCase()
+                      )
+                      .join(" ")}
                   </p>
                   <div className="flex flex-wrap gap-2 mt-8">
                     {treatmentArray.map((treatment) => (
@@ -317,15 +330,20 @@ export default function MapView() {
                       </Badge>
                     ))}{" "}
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {hepatitisArray.map((hep) => (
-                      <Badge
-                        key={hep}
-                        className="bg-[#fff3d7ff] text-amber-600 mb-4 shadow-none hover:bg-[#fff3d7ff]"
-                      >
-                        {hep}
-                      </Badge>
-                    ))}{" "}
+                  <div className="flex flex-wrap mb-4">
+                    {hepatitisArray.length > 0 ? (
+                      <div className="flex items-center gap-2">
+                        {hepatitisArray.map((hep) => (
+                          <Badge
+                            key={hep}
+                            className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200"
+                          >
+                            {hep}
+                          </Badge>
+                        ))}
+                        <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" />
+                      </div>
+                    ) : null}
                   </div>
 
                   {selectedCenter?.website && (
@@ -353,12 +371,8 @@ export default function MapView() {
                           "ref=dialysis-my" ?? ""
                       }
                     >
-                      <Button
-                        size={"sm"}
-                        variant={"secondary"}
-                        className="text-primary-foreground"
-                      >
-                        <PopiconsPhoneSolid className="w-4 h-4 text-primary-foreground" />
+                      <Button size={"sm"} variant={"outline"} className="px-4">
+                        <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
                         Panggil
                       </Button>
                     </Link>
@@ -369,17 +383,21 @@ export default function MapView() {
                           "ref=dialysis-my" ?? ""
                       }
                     >
-                      <Button
-                        size={"sm"}
-                        variant={"secondary"}
-                        className="text-primary-foreground"
-                      >
-                        <PopiconsMailDuotone className="w-4 h-4 text-primary-foreground" />
+                      <Button size={"sm"} variant={"outline"} className="px-4">
+                        <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
                         {/* {selectedCenter?.email} */}
                         Emel
                       </Button>
                     </Link>
                   </div>
+                  <Button
+                    variant={"secondary"}
+                    className="w-full md:w-auto mt-12 flex items-center justify-center md:justify-self-end"
+                  >
+                    {/* <PopiconsArrowRightLine className="w-4 h-4 mr-2 md:hidden" /> */}
+                    Info Lanjut
+                    <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
+                  </Button>
                 </div>
               )}
             </div>

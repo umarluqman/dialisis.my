@@ -15,6 +15,7 @@ export async function GET() {
         dialysisCenterName: true,
         latitude: true,
         longitude: true,
+        address: true,
         addressWithUnit: true,
         state: {
           select: {
@@ -23,6 +24,7 @@ export async function GET() {
         },
         town: true,
         tel: true,
+        phoneNumber: true,
         website: true,
         email: true,
         units: true,

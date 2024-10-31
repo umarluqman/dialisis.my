@@ -1,10 +1,18 @@
 "use client";
 
+import { CITIES, STATES } from "@/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useQueryState } from "nuqs";
 import { Button } from "./ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 export default function FilterLayout({
   children,
@@ -101,13 +109,13 @@ export default function FilterLayout({
             />
           </div> */}
         </div>
-        {/* <div className="w-full flex items-center gap-4 my-8">
+        <div className="w-full flex items-center gap-4 my-8">
           <div className="flex-1 h-[1px] bg-[#bcbab2]"></div>
           <span className="text-gray-600">atau cari secara manual</span>
           <div className="flex-1 h-[1px] bg-[#bcbab2]"></div>
-        </div> */}
+        </div>
         <div className="pt-4 mb-6 flex flex-col sm:flex-row justify-center gap-4">
-          {/* <div className="w-full sm:w-64">
+          <div className="w-full sm:w-64">
             <Select
               defaultValue={state?.toLowerCase() || "semua negeri / wilayah"}
               onValueChange={handleStateChange}
@@ -131,7 +139,7 @@ export default function FilterLayout({
               defaultValue={city?.toLowerCase() || "semua bandar"}
             >
               <SelectTrigger>
-                <SelectValue />
+                <SelectValue placeholder="Pilih bandar" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem key={"all"} value={"semua bandar".toLowerCase()}>
@@ -145,7 +153,7 @@ export default function FilterLayout({
                   ))}
               </SelectContent>
             </Select>
-          </div> */}
+          </div>
 
           {/* <div className="w-full sm:w-64">
             <Select
