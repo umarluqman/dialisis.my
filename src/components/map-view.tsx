@@ -258,12 +258,12 @@ export default function MapView() {
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
     value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialysis"
+      ? "Hemodialisis"
       : unit.toLowerCase().includes("tx unit")
       ? "Transplant"
       : unit.toLowerCase().includes("mrrb unit")
       ? "MRRB"
-      : "Peritoneal Dialysis",
+      : "Peritoneal Dialisis",
   }));
   console.log({ selectedCenter });
 
@@ -320,16 +320,20 @@ export default function MapView() {
                       )
                       .join(" ")}
                   </p>
-                  <div className="flex flex-wrap gap-2 mt-8">
-                    {treatmentArray.map((treatment) => (
-                      <Badge
-                        key={treatment.name}
-                        className="bg-[#a3bdffff]/50 text-[#375092ff] hover:bg-[#a3bdffff]/50 mb-4 shadow-none"
-                      >
-                        {treatment.value}
-                      </Badge>
-                    ))}{" "}
+                  <div className="flex flex-col gap-2 mt-8">
+                    <div className="text-sm text-zinc-500">Jenis Rawatan</div>
+                    <div className="flex flex-wrap gap-2">
+                      {treatmentArray.map((treatment) => (
+                        <Badge
+                          key={treatment.name}
+                          className="bg-[#a3bdffff]/50 text-[#375092ff] hover:bg-[#a3bdffff]/50 mb-4 shadow-none font-normal"
+                        >
+                          {treatment.value}
+                        </Badge>
+                      ))}{" "}
+                    </div>
                   </div>
+
                   <div className="flex flex-wrap mb-4">
                     {hepatitisArray.length > 0 ? (
                       <div className="flex items-center gap-2">
@@ -354,9 +358,8 @@ export default function MapView() {
                       }
                     >
                       <Button
-                        size={"sm"}
-                        variant={"link"}
-                        className="px-0 text-primary-foreground mb-4"
+                        variant={"ghost"}
+                        className="text-primary-foreground mb-4"
                       >
                         <PopiconsGlobeDuotone className="w-4 h-4 text-primary-foreground" />
                         {selectedCenter?.website?.split("?")[0]}
@@ -371,7 +374,12 @@ export default function MapView() {
                           "ref=dialysis-my" ?? ""
                       }
                     >
-                      <Button size={"sm"} variant={"outline"} className="px-4">
+                      <Button
+                        variant="outline"
+                        // size={"sm"}
+                        // variant={"outline"}
+                        className="px-4"
+                      >
                         <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
                         Panggil
                       </Button>
@@ -383,13 +391,14 @@ export default function MapView() {
                           "ref=dialysis-my" ?? ""
                       }
                     >
-                      <Button size={"sm"} variant={"outline"} className="px-4">
+                      <Button variant={"outline"} className="px-4">
                         <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
                         {/* {selectedCenter?.email} */}
                         Emel
                       </Button>
                     </Link>
                   </div>
+
                   <Button
                     variant={"secondary"}
                     className="w-full md:w-auto mt-12 flex items-center justify-center md:justify-self-end"

@@ -3,10 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npx prisma generate && next build",
-    "pages:build": "npx prisma generate && next build && npx @cloudflare/next-on-pages",
-    "pages:deploy": "NEXT_PUBLIC_SITE_URL=$SITE_URL npx prisma generate && next build && npx @cloudflare/next-on-pages",
-    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01",
+    "build": "npx prisma generate && next build && next-sitemap",
+    "amplify:build": "npx prisma generate && next build && next-sitemap",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
