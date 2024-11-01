@@ -80,7 +80,7 @@ export default function MapView() {
       positionOptions: {
         enableHighAccuracy: true,
       },
-      trackUserLocation: true,
+      trackUserLocation: false,
       showUserHeading: true,
     });
 
@@ -88,7 +88,7 @@ export default function MapView() {
 
     // Request location when map loads
     map.current.on("load", () => {
-      geolocate.trigger(); // Automatically trigger location request
+      geolocate.trigger(); // This will only trigger once
     });
 
     // Handle location events
