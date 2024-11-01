@@ -7,9 +7,23 @@ import { GeistSans } from "geist/font/sans";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
-export const metadata = {
-  title: "Dialisis Malaysia",
-  description: "Cari pusat dialisis yang berdekatan dengan anda",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dialisis MY",
+  description: "Cari sekitar 900+ pusat dialisis di Malaysia dengan mudah.",
+  openGraph: {
+    title: "Dialisis MY",
+    description: "Cari sekitar 900+ pusat dialisis di Malaysia dengan mudah.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Dialisis MY",
+      },
+    ],
+  },
 };
 
 const fontSans = FontSans({
