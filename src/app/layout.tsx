@@ -1,4 +1,4 @@
-import { CookieBanner } from "@/components/CookieBanner";
+// import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
@@ -75,7 +75,7 @@ export default function RootLayout({
           </div>
         </footer> */}
         <Footer />
-        <CookieBanner />
+        {/* <CookieBanner /> */}
       </body>
     </html>
   );
