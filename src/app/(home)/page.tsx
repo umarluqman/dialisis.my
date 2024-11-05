@@ -12,7 +12,7 @@ async function getInitialCenters(
   doctor?: string,
   name?: string
 ) {
-  const take = 10;
+  const take = 12;
   const skip = (page - 1) * take;
 
   const treatmentMap = {
