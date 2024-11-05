@@ -10,19 +10,62 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Dialisis MY",
-  description: "Cari sekitar 900+ pusat dialisis di Malaysia dengan mudah.",
+  metadataBase: new URL("https://dialisis.my"),
+  title: {
+    default: "Dialisis MY | Cari Pusat Dialisis di Malaysia",
+    template: "%s | Dialisis MY",
+  },
+  description:
+    "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia. Maklumat lengkap tentang lokasi, info kontak, doktor bertugas, sektor, dan perkhidmatan dialisis.",
+  keywords: [
+    "dialisis malaysia",
+    "dialysis malaysia",
+    "pusat dialisis",
+    "hemodialisis",
+    "hemodialysis",
+    "rawatan buah pinggang",
+    "kidney treatment malaysia",
+  ],
+  authors: [{ name: "Dialisis MY" }],
+  creator: "Dialisis MY",
+  publisher: "Dialisis MY",
   openGraph: {
-    title: "Dialisis MY",
-    description: "Cari sekitar 900+ pusat dialisis di Malaysia dengan mudah.",
+    type: "website",
+    locale: "ms_MY",
+    title: "Dialisis MY | Cari Pusat Dialisis Malaysia",
+    description:
+      "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia. Maklumat lengkap tentang lokasi, info kontak, doktor bertugas, sektor, dan perkhidmatan dialisis.",
+    siteName: "Dialisis MY",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dialisis MY",
+        alt: "Dialisis MY - Cari Pusat Dialisis Malaysia",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dialisis MY | Cari Pusat Dialisis Malaysia",
+    description: "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia.",
+    images: ["/og-image.png"],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
