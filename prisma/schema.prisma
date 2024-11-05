@@ -9,7 +9,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("TURSO_DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model DialysisCenter {
@@ -43,6 +43,9 @@ model DialysisCenter {
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([addressWithUnit])
+  @@index([address])
+  @@index([dialysisCenterName])
 }
 
 model State {

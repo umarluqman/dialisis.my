@@ -27,7 +27,7 @@ export const Navbar = () => {
             </Link>
             <Link className="flex items-center" href="/peta">
               {" "}
-              <span className="text-sm font-medium">Peta</span>
+              <span className="text-sm font-medium">Lihat Peta</span>
             </Link>
           </div>
           {/* <Link
@@ -90,7 +90,7 @@ export const Navbar = () => {
                 </div>
               </Link>
               <Link className="flex items-center" href="/peta">
-                <span className="font-medium px-4">Peta</span>
+                <span className="font-medium px-4">Lihat Peta</span>
               </Link>
               {/* <div className="w-full pt-4">
                 <Button className="w-full" variant="outline">

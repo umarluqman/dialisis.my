@@ -4,11 +4,11 @@ import { Navbar } from "@/components/navbar";
 import { cn } from "@/lib/utils";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Inter as FontSans } from "next/font/google";
-import "./globals.css";
-
 import { Metadata } from "next";
+import { Inter as FontSans } from "next/font/google";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
+import "./globals.css";
 export const metadata: Metadata = {
   title: "Dialisis MY",
   description: "Cari sekitar 900+ pusat dialisis di Malaysia dengan mudah.",
@@ -61,10 +61,11 @@ export default function RootLayout({
           // fontSans.variable
         )}
       >
-        <Navbar />
+        <NuqsAdapter>
+          <Navbar />
 
-        <main className="flex-grow">{children}</main>
-        {/* <footer className="bg-primary text-primary-foreground py-4 px-6">
+          <main className="flex-grow">{children}</main>
+          {/* <footer className="bg-primary text-primary-foreground py-4 px-6">
           <div className="container mx-auto flex justify-between items-center">
             <p>&copy; 2024 Dialisis Malaysia. All rights reserved.</p>
             <nav className="flex gap-4">
@@ -74,8 +75,9 @@ export default function RootLayout({
             </nav>
           </div>
         </footer> */}
-        <Footer />
-        {/* <CookieBanner /> */}
+          <Footer />
+          {/* <CookieBanner /> */}
+        </NuqsAdapter>
       </body>
     </html>
   );

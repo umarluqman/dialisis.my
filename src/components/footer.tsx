@@ -8,7 +8,10 @@ const boring = [
 
 const more = [
   { label: "Guna Bitcoin", href: "https://www.gunabitcoin.my" },
+  { label: "Cara Sihat Sebenar", href: "https://senjihouse.com.my/kmssmula/" },
   { label: "Semak Hadis", href: "https://www.semahadis.com" },
+  { label: "Baca Hadis", href: "https://www.youtube.com/@bacahadis" },
+  { label: "Faham Al-Quran", href: "https://www.youtube.com/c/GhulamAlDakwah" },
 ];
 
 const relatedLinks = [
@@ -20,7 +23,7 @@ const relatedLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-transparent py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-transparent py-12 px-4 sm:px-6 lg:px-8 border-t border-zinc-200 rounded-t-3xl border-dashed">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="col-span-1 md:col-span-2 lg:col-span-1">

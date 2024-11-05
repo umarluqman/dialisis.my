@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  PopiconsArrowRightLine,
   PopiconsCircleInfoLine,
   PopiconsGlobeDuotone,
   PopiconsMailLine,
@@ -120,7 +119,7 @@ export default function MapView() {
     // Load centers data
     const loadCenters = async () => {
       try {
-        const response = await fetch("/api/centers");
+        const response = await fetch("/api/centers-map");
         const centers: Center[] = await response.json();
 
         // Add a source with cluster configuration
@@ -399,14 +398,13 @@ export default function MapView() {
                     </Link>
                   </div>
 
-                  <Button
+                  {/* <Button
                     variant={"secondary"}
                     className="w-full md:w-auto mt-12 flex items-center justify-center md:justify-self-end"
                   >
-                    {/* <PopiconsArrowRightLine className="w-4 h-4 mr-2 md:hidden" /> */}
                     Info Lanjut
                     <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
-                  </Button>
+                  </Button> */}
                 </div>
               )}
             </div>

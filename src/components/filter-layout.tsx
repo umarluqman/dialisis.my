@@ -1,74 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useQueryState } from "nuqs";
-import { Button } from "./ui/button";
 
 export default function FilterLayout({
   children,
 }: {
   children?: React.ReactNode;
 }) {
-  const router = useRouter();
-
-  const pathname = usePathname();
-  const [_, encodedState, encodedCity] = pathname.split("/");
-
-  const state = encodedState
-    ? decodeURIComponent(encodedState)
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-    : undefined;
-
-  const city = encodedCity
-    ? decodeURIComponent(encodedCity)
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-    : undefined;
-
-  const title = city
-    ? `Pusat Dialisis di ${city}, ${state}`
-    : state
-    ? `Pusat Dialisis di ${state}`
-    : "Pusat Dialisis di Malaysia";
-
-  const handleStateChange = (value: string) => {
-    if (value === "semua negeri / wilayah") {
-      router.push("/");
-    } else {
-      router.push(`/${value?.toLowerCase().replace(/\s+/g, "-")}`);
-    }
-  };
-
-  const handleCityChange = (value: string) => {
-    if (state) {
-      if (value === "semua bandar") {
-        router.push(`/${state?.toLowerCase().replace(/\s+/g, "-")}`);
-      } else {
-        router.push(
-          `/${state?.toLowerCase().replace(/\s+/g, "-")}/${value.replace(
-            /\s+/g,
-            "-"
-          )}`
-        );
-      }
-    }
-  };
-  const [treatment, setTreatment] = useQueryState("treatment");
-  const handleTreatmentChange = (value: string) => {
-    if (value === "semua rawatan") {
-      setTreatment(null);
-    } else {
-      setTreatment(value);
-    }
-  };
-
-  // Add this near the top with other state declarations
-  const [doctorName, setDoctorName] = useQueryState("doctor");
+  const title = "Pusat Dialisis di Malaysia";
 
   return (
     <div className="min-h-screen bg-[foreground] text-black">
@@ -82,11 +21,11 @@ export default function FilterLayout({
           <div className={cn("flex flex-col items-center space-y-8")}>
             <h1 className={cn("text-3xl md:text-5xl font-bold")}>{title}</h1>
             <p className={cn("text-gray-600 leading-8 text-lg")}>
-              {`Cari pusat dialisis yang berdekatan dengan anda dengan satu klik.`}
+              {`Cari sekitar 900+ pusat dialisis yang berdekatan dengan anda dengan mudah.`}
             </p>
-            <Link href="/peta">
+            {/* <Link href="/peta">
               <Button size="lg">Cari Sekarang </Button>{" "}
-            </Link>
+            </Link> */}
           </div>
 
           {/* <div className="w-full md:w-64 mt-4 md:mt-0 relative">
@@ -106,97 +45,6 @@ export default function FilterLayout({
           <span className="text-gray-600">atau cari secara manual</span>
           <div className="flex-1 h-[1px] bg-[#bcbab2]"></div>
         </div> */}
-        <div className="pt-4 mb-6 flex flex-col sm:flex-row justify-center gap-4">
-          {/* <div className="w-full sm:w-64">
-            <Select
-              defaultValue={state?.toLowerCase() || "semua negeri / wilayah"}
-              onValueChange={handleStateChange}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Pilih negeri / wilayah" />
-              </SelectTrigger>
-              <SelectContent>
-                {STATES.map((state) => (
-                  <SelectItem key={state} value={state.toLowerCase()}>
-                    {state}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="w-full sm:w-64">
-            <Select
-              onValueChange={handleCityChange}
-              defaultValue={city?.toLowerCase() || "semua bandar"}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Pilih bandar" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem key={"all"} value={"semua bandar".toLowerCase()}>
-                  Semua bandar
-                </SelectItem>
-                {state &&
-                  CITIES?.[state]?.map((city: string) => (
-                    <SelectItem key={city} value={city.toLowerCase()}>
-                      {city}
-                    </SelectItem>
-                  ))}
-              </SelectContent>
-            </Select>
-          </div> */}
-
-          {/* <div className="w-full sm:w-64">
-            <Select
-              key="rawatan"
-              onValueChange={handleTreatmentChange}
-              defaultValue={treatment?.toLowerCase() || "semua rawatan"}
-            >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem key={"all"} value={"semua rawatan".toLowerCase()}>
-                  Semua rawatan
-                </SelectItem>
-                {TREATMENT_TYPES?.map((treatment: string) => (
-                  <SelectItem key={treatment} value={treatment.toLowerCase()}>
-                    {treatment}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-          <div className="w-full sm:w-64">
-            <Input
-              type="text"
-              placeholder="Nama doktor yang bertugas"
-              value={doctorName || ""}
-              onChange={(e) => setDoctorName(e.target.value)}
-            />
-          </div>
-          <div className="w-full sm:w-64">
-            <Select
-              onValueChange={handleCityChange}
-              defaultValue={city?.toLowerCase() || "semua rawatan"}
-            >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem key={"all"} value={"semua rawatan".toLowerCase()}>
-                  Semua sektor
-                </SelectItem>
-                {SECTOR?.map((sector: string) => (
-                  <SelectItem key={sector} value={sector.toLowerCase()}>
-                    {sector}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div> */}
-        </div>
       </div>
       {children}
       {/* <div className="flex">
