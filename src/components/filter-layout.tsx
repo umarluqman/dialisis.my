@@ -18,10 +18,10 @@ export default function FilterLayout({
             // "border-b-[1px] border-[#bcbab2]"
           )}
         >
-          <div className={cn("flex flex-col items-center space-y-8")}>
+          <div className={cn("flex flex-col md:items-center space-y-8")}>
             <h1 className={cn("text-3xl md:text-5xl font-bold")}>{title}</h1>
             <p className={cn("text-gray-600 leading-8 text-lg")}>
-              {`Cari sekitar 900+ pusat dialisis yang berdekatan dengan anda dengan mudah.`}
+              {`Cari sekitar lebih 900+ pusat dialisis yang berdekatan dengan anda dengan mudah.`}
             </p>
             {/* <Link href="/peta">
               <Button size="lg">Cari Sekarang </Button>{" "}

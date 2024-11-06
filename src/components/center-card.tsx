@@ -60,23 +60,25 @@ export function CenterCard({
       ? "MRRB"
       : "Peritoneal Dialisis",
   }));
-  console.log(state);
   return (
     <Card className="shadow-sm transition-shadow flex flex-col min-h-fit">
       <CardHeader>
-        <CardTitle className="text-lg font-semibold text-foreground">
+        <CardTitle className="text-lg font-bold text-foreground">
           {title}
         </CardTitle>
-        <p className="text-primary-foreground mb-4 text-sm">
-          {sector === "MOH" || sector === "NGO" ? (
-            sector
-          ) : (
-            <span className="capitalize">{sector?.toLowerCase() ?? ""}</span>
-          )}
-        </p>
-        <CardTitle className="text-zinc-600 font-medium capitalize text-sm">{`${
-          town ? town + ", " : ""
-        }${state.name}`}</CardTitle>
+        <div className="flex justify-between w-full">
+          <CardTitle className="text-zinc-500 font-medium capitalize text-base">{`${
+            town ? town + ", " : ""
+          }${state.name}`}</CardTitle>
+
+          <p className="text-primary-foreground mb-4 text-sm">
+            {sector === "MOH" || sector === "NGO" ? (
+              sector
+            ) : (
+              <span className="capitalize">{sector?.toLowerCase() ?? ""}</span>
+            )}
+          </p>
+        </div>
       </CardHeader>
       <CardContent className="flex flex-col flex-1">
         <div className="flex-1 rounded-t-[10px] bg-white flex flex-col">
@@ -87,7 +89,7 @@ export function CenterCard({
               {treatmentArray.map((treatment) => (
                 <Badge
                   key={treatment.name}
-                  className="bg-[#a3bdffff]/50 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal text-base"
+                  className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal text-base"
                 >
                   {treatment.value}
                 </Badge>
@@ -101,7 +103,7 @@ export function CenterCard({
                 {hepatitisArray.map((hep) => (
                   <Badge
                     key={hep}
-                    className="bg-amber-200 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                    className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
                   >
                     {hep}
                   </Badge>
@@ -157,13 +159,15 @@ export function CenterCard({
           </div>
 
           <div className="mt-auto pt-6">
-            <Button
-              variant={"secondary"}
-              className="w-full md:w-auto flex items-center justify-center md:justify-self-end"
-            >
-              Info Lanjut
-              <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
-            </Button>
+            <Link href={`/${id}`}>
+              <Button
+                variant={"secondary"}
+                className="w-full md:w-auto flex items-center justify-center md:justify-self-end"
+              >
+                Info Lanjut
+                <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </CardContent>

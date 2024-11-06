@@ -264,7 +264,6 @@ export default function MapView() {
       ? "MRRB"
       : "Peritoneal Dialisis",
   }));
-  console.log({ selectedCenter });
 
   return (
     <>
