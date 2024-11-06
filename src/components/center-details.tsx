@@ -82,7 +82,9 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
         {center.phoneNumber && (
           <p className="flex items-center gap-2">
             <Phone className="w-4 h-4" />
-            {center.phoneNumber}
+            <a href={`tel:${center.phoneNumber}`} className="hover:underline">
+              {center.phoneNumber}
+            </a>
           </p>
         )}
         {center.email && (
