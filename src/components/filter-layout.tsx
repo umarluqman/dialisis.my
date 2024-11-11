@@ -10,8 +10,9 @@ export default function FilterLayout({
   const title = "Pusat Dialisis di Malaysia";
 
   return (
-    <div className="min-h-screen bg-[foreground] text-black">
+    <div className="min-h-screen bg-[foreground] text-black relative">
       <div className="py-4 md:py-8">
+        {/* <div className="absolute top-0 right-0 bg-shade bg-contain bg-right-top bg-no-repeat h-[80%] w-[80%] z-0"></div> */}
         <div
           className={cn(
             "mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center"

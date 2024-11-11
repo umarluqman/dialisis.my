@@ -138,7 +138,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
   return (
     <FilterLayout>
       {/* Add the filter section here */}
-      <div className="flex flex-col border-[1px] bg-white lg:w-fit md:mx-auto py-8 md:p-8 border-dashed border-b-0">
+      <div className="flex flex-col border-[2px] bg-white lg:w-fit md:mx-auto py-8 md:p-8 border-dashed border-b-0">
         <div className="pt-4 mb-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1fr_1fr_150px] justify-items-center gap-3 max-w-7xl md:mx-auto px-4">
           <div className="w-full">
             <Input
@@ -242,7 +242,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
           </div>
         </div>
         <div className="flex justify-center gap-4">
-          <Button size="lg" className="mt-6" onClick={handleSearch}>
+          <Button size="lg" className="mb-8 mt-2 " onClick={handleSearch}>
             Cari Pusat Dialisis
             <ArrowRight className="w-4 h-4" />
           </Button>
