@@ -29,6 +29,7 @@ interface CenterCardProps {
   website?: string;
   latitude?: number;
   longitude?: number;
+  showService?: boolean;
 }
 
 export function CenterCard({
@@ -44,6 +45,7 @@ export function CenterCard({
   units,
   website,
   latitude,
+  showService = true,
   longitude,
 }: CenterCardProps) {
   const unitsArray = units ? units.split(",") : [];
@@ -62,7 +64,7 @@ export function CenterCard({
   }));
   return (
     <Card className="shadow-sm transition-shadow flex flex-col min-h-fit">
-      <CardHeader>
+      <CardHeader className="pb-0">
         <CardTitle className="text-lg font-bold text-foreground">
           {title}
         </CardTitle>
@@ -73,9 +75,17 @@ export function CenterCard({
 
           <p className="text-primary-foreground mb-4 text-sm">
             {sector === "MOH" || sector === "NGO" ? (
-              sector
+              sector === "MOH" ? (
+                "Kerajaan"
+              ) : (
+                sector
+              )
             ) : (
-              <span className="capitalize">{sector?.toLowerCase() ?? ""}</span>
+              <span className="capitalize">
+                {sector?.toLowerCase() === "private"
+                  ? "Swasta"
+                  : sector?.toLowerCase()}
+              </span>
             )}
           </p>
         </div>
@@ -83,35 +93,39 @@ export function CenterCard({
       <CardContent className="flex flex-col flex-1">
         <div className="flex-1 rounded-t-[10px] bg-white flex flex-col">
           {/* <p className="mt-3 text-zinc-600">{address}</p> */}
-          <div className="flex flex-col gap-2 my-2">
-            <div className="text-sm text-zinc-600">Servis Rawatan</div>
-            <div className="flex flex-wrap gap-2">
-              {treatmentArray.map((treatment) => (
-                <Badge
-                  key={treatment.name}
-                  className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal text-base"
-                >
-                  {treatment.value}
-                </Badge>
-              ))}{" "}
-            </div>
-          </div>
-
-          <div className="flex flex-wrap mb-4">
-            {hepatitisArray.length > 0 ? (
-              <div className="flex items-center gap-2">
-                {hepatitisArray.map((hep) => (
+          {showService && (
+            <div className="flex flex-col gap-2 my-2">
+              <div className="text-sm text-zinc-600">Servis Rawatan</div>
+              <div className="flex flex-wrap gap-2">
+                {treatmentArray.map((treatment) => (
                   <Badge
-                    key={hep}
-                    className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                    key={treatment.name}
+                    className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal text-base"
                   >
-                    {hep}
+                    {treatment.value}
                   </Badge>
-                ))}
-                {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
+                ))}{" "}
               </div>
-            ) : null}
-          </div>
+            </div>
+          )}
+
+          {showService && (
+            <div className="flex flex-wrap mb-4">
+              {hepatitisArray.length > 0 ? (
+                <div className="flex items-center gap-2">
+                  {hepatitisArray.map((hep) => (
+                    <Badge
+                      key={hep}
+                      className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                    >
+                      {hep}
+                    </Badge>
+                  ))}
+                  {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
+                </div>
+              ) : null}
+            </div>
+          )}
 
           <div className="flex flex-wrap gap-3 justify-end mt-4">
             <Button
@@ -159,7 +173,12 @@ export function CenterCard({
           </div>
 
           <div className="mt-auto pt-6">
-            <Link href={`/${id}`}>
+            <Link
+              href={{
+                pathname: `/${id}`,
+                query: window.location.search, // Preserve current search params
+              }}
+            >
               <Button
                 variant={"secondary"}
                 className="w-full md:w-auto flex items-center justify-center md:justify-self-end"

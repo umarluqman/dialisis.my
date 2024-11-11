@@ -51,11 +51,6 @@ export const metadata: Metadata = {
     description: "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia.",
     images: ["/og-image.png"],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
   robots: {
     index: true,
     follow: true,

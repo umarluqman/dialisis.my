@@ -1,11 +1,13 @@
 import { DialysisCenterDetails } from "@/components/center-details";
 import { prisma } from "@/lib/db";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface Props {
   params: {
     id: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 async function getCenter(id: string) {
@@ -31,7 +33,10 @@ async function getCenter(id: string) {
   };
 }
 
-export default async function DialysisCenterPage({ params }: Props) {
+export default async function DialysisCenterPage({
+  params,
+  searchParams,
+}: Props) {
   const center = await getCenter(params.id);
 
   if (!center) {
@@ -40,14 +45,23 @@ export default async function DialysisCenterPage({ params }: Props) {
 
   return (
     <main className="w-full mb-14">
-      <nav className="container mt-4 flex items-center space-x-2 text-sm text-muted-foreground">
-        <a href="/" className="hover:text-foreground transition-colors">
-          Senarai Pusat Dialisis
-        </a>
+      <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
+        <Link
+          href={{
+            pathname: "/",
+            search: new URLSearchParams(
+              searchParams as Record<string, string>
+            ).toString(),
+          }}
+          className="hover:text-foreground transition-colors"
+        >
+          Senarai
+        </Link>
         <span>/</span>
-        <span className="text-foreground">{center.dialysisCenterName}</span>
+        <span className="text-foreground">
+          {center.dialysisCenterName.split(",")[0]}
+        </span>
       </nav>
-      <div className="max-w-5xl pb-6 pt-5 w-full"></div>
       <div className="container max-w-5xl py-6">
         <DialysisCenterDetails center={center} />
       </div>

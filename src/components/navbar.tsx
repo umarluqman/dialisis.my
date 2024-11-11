@@ -1,11 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { PopiconsBarsRightSolid } from "@popicons/react";
-import { X } from "lucide-react";
+import { PopiconsMapDuotone } from "@popicons/react";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
+import { Button } from "./ui/button";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,26 +24,13 @@ export const Navbar = () => {
                 </div>
               </div>
             </Link>
-            <Link className="flex items-center" href="/peta">
-              {" "}
-              <span className="text-sm font-medium">Lihat Peta</span>
+            <Link className="flex items-center space-x-2" href="/peta">
+              <Button variant="outline" size="sm">
+                <PopiconsMapDuotone className="h-5 w-5 text-primary" />
+                <span className="text-sm font-medium">Lihat Peta</span>
+              </Button>
             </Link>
           </div>
-          {/* <Link
-            href="https://chromewebstore.google.com/detail/focus-mode-stay-focused-b/ollmdedpknmlcdmpehclmgbogpifahdc"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button variant="outline" className="flex items-center gap-2">
-              <Image
-                src="/chrome.png"
-                alt="chrome logo"
-                width={24}
-                height={24}
-              />
-              Add to Chrome
-            </Button>
-          </Link> */}
         </div>
 
         {/* Mobile View */}
@@ -55,18 +41,23 @@ export const Navbar = () => {
               <span className="sr-only">Dialisis Malaysia</span>
               <div className="tracking-wide font-medium leading-none">
                 <div>Dialisis Malaysia</div>
-                {/* <div>Mode</div> */}
               </div>
             </div>
           </Link>
-          <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
+          <Link className="flex items-cente space-x-2" href="/peta">
+            <Button variant="outline" size="sm">
+              <PopiconsMapDuotone className="h-5 w-5 text-primary" />
+              <span className="text-sm font-medium">Lihat Peta</span>
+            </Button>
+          </Link>
+          {/* <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
             <PopiconsBarsRightSolid className="h-6 w-6" />
             <span className="sr-only">Open menu</span>
-          </Button>
+          </Button> */}
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
+        {/* {isOpen && (
           <div className="fixed inset-0 z-50 bg-white p-4 md:hidden">
             <div className="flex justify-end">
               <Button
@@ -85,21 +76,15 @@ export const Navbar = () => {
                   <span className="sr-only">Dialisis Malaysia</span>
                   <div className="tracking-wide font-medium leading-none">
                     <div>Dialisis Malaysia</div>
-                    {/* <div>Mode</div> */}
                   </div>
                 </div>
               </Link>
               <Link className="flex items-center" href="/peta">
                 <span className="font-medium px-4">Lihat Peta</span>
               </Link>
-              {/* <div className="w-full pt-4">
-                <Button className="w-full" variant="outline">
-                  Add to Chrome
-                </Button>
-              </div> */}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </nav>
   );

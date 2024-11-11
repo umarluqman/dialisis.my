@@ -1,25 +1,26 @@
 import { prisma } from "@/lib/db";
 import { Loader2 } from "lucide-react";
 import { Suspense } from "react";
-import { DialysisCenterList } from "./dialysis-center-list";
+import { DialysisQuiz } from "./dialysis-quiz";
 
 async function getInitialCenters(
   page: number = 1,
   sector?: string,
   state?: string,
   treatment?: string,
-  town?: string,
+  city?: string,
   doctor?: string,
-  name?: string
+  name?: string,
+  hepatitis?: string
 ) {
   const take = 12;
   const skip = (page - 1) * take;
 
   const treatmentMap = {
-    hemodialysis: "HD Unit",
+    hemodialisis: "HD Unit",
     transplant: "TX Unit",
     mrrb: "MRRB Unit",
-    "peritoneal dialysis": "PD Unit",
+    "peritoneal dialisis": "PD Unit",
   };
 
   const where = {
@@ -40,11 +41,11 @@ async function getInitialCenters(
         contains: treatmentMap[treatment as keyof typeof treatmentMap],
       },
     }),
-    ...(town && {
+    ...(city && {
       OR: [
-        { town: { contains: town } },
-        { address: { contains: town } },
-        { addressWithUnit: { contains: town } },
+        { town: { contains: city } },
+        { address: { contains: city } },
+        { addressWithUnit: { contains: city } },
       ],
     }),
     ...(doctor && {
@@ -57,6 +58,12 @@ async function getInitialCenters(
         contains: name,
       },
     }),
+    ...(hepatitis &&
+      hepatitis !== "tiada hepatitis" && {
+        hepatitisBay: {
+          equals: hepatitis === "b" ? "Hep B" : "Hep C",
+        },
+      }),
   };
 
   const [rawCenters, total] = await Promise.all([
@@ -106,10 +113,12 @@ export default async function DialysisCenterDirectory({
     city?: string;
     doctor?: string;
     name?: string;
+    hepatitis?: string;
   };
 }) {
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const { sector, state, treatment, city, doctor, name } = searchParams;
+  const { sector, state, treatment, city, doctor, name, hepatitis } =
+    searchParams;
   const initialData = await getInitialCenters(
     page,
     sector,
@@ -117,8 +126,10 @@ export default async function DialysisCenterDirectory({
     treatment,
     city,
     doctor,
-    name
+    name,
+    hepatitis
   );
+  console.log("initialData", initialData);
 
   return (
     <Suspense
@@ -128,7 +139,8 @@ export default async function DialysisCenterDirectory({
         </div>
       }
     >
-      <DialysisCenterList initialData={initialData} />
+      <DialysisQuiz initialData={initialData} />
+      {/* <DialysisCenterList initialData={initialData} /> */}
     </Suspense>
   );
 }

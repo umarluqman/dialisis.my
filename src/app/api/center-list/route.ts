@@ -5,10 +5,10 @@ const ITEMS_PER_PAGE = 20;
 
 // Map treatment params to DB unit values
 const TREATMENT_TO_UNIT_MAP = {
-  hemodialysis: "HD unit",
+  hemodialisis: "HD unit",
   MRRB: "MRRB unit",
   transplant: "TX Unit",
-  "peritoneal dialysis": "PD Unit",
+  "peritoneal dialisis": "PD Unit",
 } as const;
 
 export async function GET(request: NextRequest) {

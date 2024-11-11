@@ -1,6 +1,6 @@
 export const TREATMENT_TYPES = [
-  "Hemodialysis",
-  "Peritoneal Dialysis",
+  "Hemodialisis",
+  "Peritoneal Dialisis",
   "Transplant",
   "MRRB",
 ];

@@ -41,7 +41,6 @@ export default async function DialysisCenterModal({ params }: Props) {
   if (!center) {
     return null;
   }
-  console.log("is in modal");
 
   return (
     <Dialog open onOpenChange={() => router.back()}>

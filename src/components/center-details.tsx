@@ -16,9 +16,8 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
-  const shortAddress = `${center.town}, ${stateName}`;
+  const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
 
-  // console.log("outside modal");
   const hepatitisArray = center.hepatitisBay
     ? center.hepatitisBay.split(", ")
     : [];
@@ -38,7 +37,9 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
   return (
     <div className="">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold">{center.dialysisCenterName}</h1>
+        <h1 className="text-2xl md:text-4xl font-bold">
+          {center.dialysisCenterName}
+        </h1>
         <p className="text-muted-foreground">{shortAddress}</p>
       </div>
 
@@ -47,7 +48,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
           <div className="flex-1">{center.addressWithUnit}</div>
           <div className="flex gap-2">
             <Button
-              variant="ghost"
+              variant="outline"
               size="sm"
               className="flex items-center gap-2"
               asChild
@@ -58,11 +59,10 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
-                <ExternalLink className="w-4 h-4" />
-                Waze
+                Waze <ExternalLink className="w-4 h-4" />
               </a>
             </Button>
-            <Button variant="ghost" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
                   center.addressWithUnit
@@ -71,8 +71,8 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
               >
-                <ExternalLink className="w-4 h-4" />
                 Google Maps
+                <ExternalLink className="w-4 h-4" />
               </a>
             </Button>
           </div>
@@ -81,31 +81,37 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
       <div className="space-y-2 text-sm mt-12">
         {center.phoneNumber && (
           <p className="flex items-center gap-2">
-            <Phone className="w-4 h-4" />
-            <a href={`tel:${center.phoneNumber}`} className="hover:underline">
-              {center.phoneNumber}
-            </a>
+            <Button variant="secondary" size="sm">
+              <Phone className="w-4 h-4" />
+              <a href={`tel:${center.phoneNumber}`} className="hover:underline">
+                {center.phoneNumber}
+              </a>
+            </Button>
           </p>
         )}
         {center.email && (
           <p className="flex items-center gap-2">
-            <Mail className="w-4 h-4" />
-            <a href={`mailto:${center.email}`} className="hover:underline">
-              {center.email}
-            </a>
+            <Button variant="secondary" size="sm">
+              <Mail className="w-4 h-4" />
+              <a href={`mailto:${center.email}`} className="hover:underline">
+                {center.email}
+              </a>
+            </Button>
           </p>
         )}
         {center.website && (
           <p className="flex items-center gap-2">
-            <Globe className="w-4 h-4" />
-            <a
-              href={center.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:underline"
-            >
-              Laman Web
-            </a>
+            <Button variant="secondary" size="sm">
+              <Globe className="w-4 h-4" />
+              <a
+                href={center.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                Laman Web
+              </a>
+            </Button>
           </p>
         )}
       </div>

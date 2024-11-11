@@ -257,7 +257,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
               Tiada Pusat Dialisis
             </h3>
             <p className="mt-1 text-sm text-zinc-600">
-              Tiada pusat dialisis yang memenuhi kriteria carian anda.
+              Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda.
             </p>
           </div>
         ) : (
