@@ -9,7 +9,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="w-full bg-background p-4 md:px-20 text-black">
+    <nav className="w-full bg-background py-2 px-4 md:py-4 md:px-20 text-black">
       <div className="container px-0">
         {/* Desktop View */}
         <div className="hidden items-center justify-between md:flex">

@@ -100,7 +100,7 @@ export function CenterCard({
                 {treatmentArray.map((treatment) => (
                   <Badge
                     key={treatment.name}
-                    className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal text-base"
+                    className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal"
                   >
                     {treatment.value}
                   </Badge>
