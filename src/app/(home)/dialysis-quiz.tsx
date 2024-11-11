@@ -137,8 +137,15 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
     return 4;
   };
 
-  // Replace the currentStep state with a computed value
-  const [currentStep, setCurrentStep] = useState(determineCurrentStep());
+  // Add currentStep as query state
+  const [currentStepParam, setCurrentStepParam] = useQueryState("step", {
+    shallow: false,
+    parse: (value) => (value ? parseInt(value) : 0),
+    serialize: (value) => value.toString(),
+  });
+
+  // Remove currentStep useState and use the query param value
+  const currentStep = currentStepParam ?? determineCurrentStep();
 
   const handleOptionSelect = async (value: string) => {
     switch (currentStep) {
@@ -149,10 +156,10 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
 
         // If no cities available, clear city param and skip to treatment step
         if (citiesForState.length === 0) {
-          await setCityParam(null); // Clear any existing city param
-          setCurrentStep(2);
+          await setCityParam(null);
+          await setCurrentStepParam(2); // Update to use setCurrentStepParam
         } else {
-          setCurrentStep(1);
+          await setCurrentStepParam(1); // Update to use setCurrentStepParam
         }
         break;
 
@@ -172,7 +179,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
     }
 
     if (currentStep < steps.length - 1 && currentStep !== 0) {
-      setCurrentStep(currentStep + 1);
+      await setCurrentStepParam(currentStep + 1); // Update to use setCurrentStepParam
     }
   };
 
@@ -182,7 +189,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
     await setTreatmentParam(null);
     await setHepatitisParam(null);
     await setSectorParam(null);
-    setCurrentStep(0);
+    await setCurrentStepParam(null); // Update to use setCurrentStepParam
     setShowResults(false);
   };
 
@@ -203,7 +210,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
           await setHepatitisParam(null);
           break;
       }
-      setCurrentStep(currentStep - 1);
+      await setCurrentStepParam(currentStep - 1); // Update to use setCurrentStepParam
     }
   };
 
@@ -239,10 +246,10 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
           const city = place.text;
           setTimeout(async () => {
             await setCityParam(city.toLowerCase());
-            setCurrentStep(2); // Skip to treatment step
+            await setCurrentStepParam(2); // Update to use setCurrentStepParam
           }, 100);
         } else {
-          setCurrentStep(1); // Go to city selection if we couldn't determine it
+          await setCurrentStepParam(1); // Update to use setCurrentStepParam
         }
       }
     } catch (error) {
