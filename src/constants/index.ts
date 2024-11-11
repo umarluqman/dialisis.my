@@ -7,10 +7,10 @@ export const TREATMENT_TYPES = [
 
 export const SECTOR = [
   "MOH",
-  "NGO",
-  "Armed Force",
   "Private",
+  "NGO",
   "University",
+  "Armed Force",
   "Others",
 ];
 

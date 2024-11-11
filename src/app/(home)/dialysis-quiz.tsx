@@ -417,7 +417,11 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                 )}
                 {sectorParam && (
                   <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(sectorParam)}
+                    {getFormattedValue(sectorParam) === "MOH"
+                      ? "Kerajaan"
+                      : getFormattedValue(sectorParam) === "PRIVATE"
+                      ? "Swasta"
+                      : getFormattedValue(sectorParam)}
                   </Badge>
                 )}
               </div>

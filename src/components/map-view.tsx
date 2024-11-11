@@ -215,13 +215,19 @@ export default function MapView() {
               "centers"
             ) as mapboxgl.GeoJSONSource;
             source.getClusterExpansionZoom(clusterId, (err, zoom) => {
-              if (err || !features?.[0]?.geometry) return;
+              if (err || !features?.[0]?.geometry || !zoom) return;
 
               const coordinates = (features[0].geometry as any).coordinates;
+              const currentZoom = map.current?.getZoom() || DEFAULT_ZOOM;
+
+              // Increase zoom level more aggressively
+              const newZoom = Math.min(Math.max(zoom + 2, currentZoom + 3), 18); // Changed from 16 to 18 and adjusted zoom increments
+
               map.current?.easeTo({
                 center: coordinates,
-                zoom: zoom || DEFAULT_ZOOM,
-                duration: 500,
+                zoom: newZoom,
+                duration: 1000,
+                easing: (t) => t * (2 - t),
               });
             });
           }
