@@ -1,5 +1,7 @@
 import { DialysisCenterDetails } from "@/components/center-details";
+import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -55,7 +57,9 @@ export default async function DialysisCenterPage({
           }}
           className="hover:text-foreground transition-colors"
         >
-          Senarai
+          <Button variant="outline" size={"sm"}>
+            <ChevronLeft className="w-4 h-4" /> Senarai
+          </Button>
         </Link>
         <span>/</span>
         <span className="text-foreground">

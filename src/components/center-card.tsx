@@ -9,6 +9,7 @@ import {
   PopiconsPhoneLine,
 } from "@popicons/react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -62,6 +63,8 @@ export function CenterCard({
       ? "MRRB"
       : "Peritoneal Dialisis",
   }));
+
+  const searchParams = useSearchParams();
   return (
     <Card className="shadow-sm transition-shadow flex flex-col min-h-fit">
       <CardHeader className="pb-0">
@@ -176,7 +179,7 @@ export function CenterCard({
             <Link
               href={{
                 pathname: `/${id}`,
-                query: window.location.search, // Preserve current search params
+                query: searchParams.toString(),
               }}
             >
               <Button
