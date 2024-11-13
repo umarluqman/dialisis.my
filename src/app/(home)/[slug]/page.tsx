@@ -7,14 +7,14 @@ import { notFound } from "next/navigation";
 
 interface Props {
   params: {
-    id: string;
+    slug: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-async function getCenter(id: string) {
+async function getCenter(slug: string) {
   const center = await prisma.dialysisCenter.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       state: {
         select: {
@@ -39,7 +39,7 @@ export default async function DialysisCenterPage({
   params,
   searchParams,
 }: Props) {
-  const center = await getCenter(params.id);
+  const center = await getCenter(params.slug);
 
   if (!center) {
     notFound();

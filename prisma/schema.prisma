@@ -14,6 +14,7 @@ datasource db {
 
 model DialysisCenter {
   id                 String   @id @default(cuid())
+  slug               String   @unique @default("")
   dialysisCenterName String   @default("")
   sector             String   @default("")
   drInCharge         String   @default("")
@@ -31,12 +32,16 @@ model DialysisCenter {
   phoneNumber        String   @default("")
   website            String?
   title              String   @default("")
-  units              String   @default("") // Will store as comma-separated string e.g. "HD Unit,CAPD Unit"
-  state              State    @relation(fields: [stateId], references: [id])
-  stateId            String
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-  town               String   @default("")
+  units              String   @default("")
+  description        String?
+  benefits          String?
+  photos            String?
+  videos            String?
+  state             State    @relation(fields: [stateId], references: [id])
+  stateId           String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  town              String   @default("")
 
   @@index([sector])
   @@index([title])
@@ -46,6 +51,7 @@ model DialysisCenter {
   @@index([addressWithUnit])
   @@index([address])
   @@index([dialysisCenterName])
+  @@index([slug])
 }
 
 model State {

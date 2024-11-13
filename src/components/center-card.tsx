@@ -14,6 +14,7 @@ import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 interface CenterCardProps {
+  slug: string;
   id: string;
   dialysisCenterName: string;
   address?: string;
@@ -34,6 +35,7 @@ interface CenterCardProps {
 }
 
 export function CenterCard({
+  slug,
   id,
   dialysisCenterName,
   address,
@@ -178,7 +180,7 @@ export function CenterCard({
           <div className="mt-auto pt-6">
             <Link
               href={{
-                pathname: `/${id}`,
+                pathname: `/${slug}`,
                 query: searchParams.toString(),
               }}
             >
