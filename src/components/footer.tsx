@@ -6,26 +6,62 @@ const boring = [
   { label: "Polisi Privasi", href: "/privacy" },
 ];
 
+const lawatiJuga = [
+  {
+    label: "Tidur Lebih Nyenyak",
+    href: "https://nyenyak.orderla.co/?ref=dialisis.my",
+  },
+  {
+    label: "Ayam Tak Cucuk",
+    href: "https://ayamlepaslenggeng.orderla.my/ayam-lepas-bebas?ref=dialisis.my",
+  },
+  {
+    label: "Kembali ke Fitrah",
+    href: "https://senjihouse.com.my/?ref=dialisis.my",
+  },
+];
+
 const more = [
-  { label: "Guna Bitcoin", href: "https://www.gunabitcoin.my" },
-  { label: "Semak Hadis", href: "https://www.semahadis.com" },
-  { label: "Baca Hadis", href: "https://www.youtube.com/@bacahadis" },
-  { label: "Faham Al-Quran", href: "https://www.youtube.com/c/GhulamAlDakwah" },
+  {
+    label: "Faham & Amal Al-Quran",
+    href: "https://www.youtube.com/c/GhulamAlDakwah?ref=dialisis.my",
+  },
+  { label: "Guna Bitcoin", href: "https://gunabitcoin.my/?ref=dialisis.my" },
+  {
+    label: "Bitcoin Majlis",
+    href: "https://bitcoinmajlis.org/?ref=dialisis.my",
+  },
+  { label: "Semak Hadis", href: "https://semakhadis.com/?ref=dialisis.my" },
+  {
+    label: "Baca Hadis",
+    href: "https://www.youtube.com/@bacahadis?ref=dialisis.my",
+  },
+  {
+    label: "Sedekah Online ke Masjid",
+    href: "https://sedekahje.com/?ref=dialisis.my",
+  },
+  {
+    label: "Aplikasi Waktu Solat di Masjid",
+    href: "https://masjid.org.my/?ref=dialisis.my",
+  },
 ];
 
 const relatedLinks = [
   {
+    label: "Cara Sihat Sebenar",
+    href: "https://senjihouse.com.my/kmssmula/?ref=dialisis.my",
+  },
+  {
     label: "National Renal Registry (NRR)",
     href: "https://app.msn.org.my/nrr_dir/page.jsp?pageId=centre_directory",
   },
-  { label: "Cara Sihat Sebenar", href: "https://senjihouse.com.my/kmssmula/" },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-transparent py-12 px-4 sm:px-6 lg:px-8 border-t border-zinc-200 rounded-t-3xl border-dashed">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
               <Logo />
@@ -83,6 +119,8 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
+                    target="_blank"
+                    rel="follow"
                   >
                     {label}
                   </Link>
@@ -100,6 +138,27 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
+                    target="_blank"
+                    rel="follow"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Lawati Juga
+            </h3>
+            <ul className="mt-4 space-y-4">
+              {lawatiJuga.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                    target="_blank"
+                    rel="follow"
                   >
                     {label}
                   </Link>
