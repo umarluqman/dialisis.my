@@ -307,7 +307,7 @@ export default function MapView() {
         <Drawer.Portal>
           <Drawer.Overlay className="fixed inset-0 bg-black/40 z-10" />
           {/* <Drawer.Title>{selectedCenter?.dialysisCenterName}</Drawer.Title> */}
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 mt-24 flex h-[75vh] flex-col rounded-t-[10px] bg-white z-20">
+          <Drawer.Content className="fixed bottom-0 left-0 right-0 mb-24 flex h-[85vh] flex-col rounded-t-[10px] bg-white z-20">
             <div className="flex-1 rounded-t-[10px] bg-white p-4">
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
