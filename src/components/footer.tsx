@@ -52,6 +52,10 @@ const relatedLinks = [
     href: "https://senjihouse.com.my/kmssmula/?ref=dialisis.my",
   },
   {
+    label: "Kesihatan Mengikut Fitrah",
+    href: "https://kmss.netlify.app/?ref=dialisis.my",
+  },
+  {
     label: "National Renal Registry (NRR)",
     href: "https://app.msn.org.my/nrr_dir/page.jsp?pageId=centre_directory",
   },
