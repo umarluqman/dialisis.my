@@ -209,6 +209,7 @@ export const CITIES: Record<string, string[]> = {
     "Marudi",
   ],
   "Kuala Lumpur": [
+    "Cheras",
     "Bukit Bintang",
     "Titiwangsa",
     "Setiawangsa",
@@ -219,7 +220,6 @@ export const CITIES: Record<string, string[]> = {
     "Lembah Pantai",
     "Seputeh",
     "Bandar Tun Razak",
-    "Cheras",
   ],
   Selangor: [
     "Subang Jaya",
