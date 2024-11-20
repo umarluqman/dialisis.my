@@ -151,21 +151,25 @@ export default function MapView() {
             "circle-color": [
               "step",
               ["get", "point_count"],
-              "#012f54", // color for points <= 50
-              50, // threshold
-              "#2bde80", // color for points <= 100
-              100, // threshold
-              "#a3bdff", // color for points > 100
+              "#012f54", // Dark blue for small clusters
+              50,
+              "#2bde80", // Green for medium clusters
+              100,
+              "#a3bdff", // Light blue for large clusters
             ],
             "circle-radius": [
               "step",
               ["get", "point_count"],
-              20, // radius for points <= 10
-              10, // threshold
-              30, // radius for points > 10
-              50, // threshold
-              40, // radius for points > 50
+              25, // Base size for small clusters
+              50,
+              35, // Medium size
+              100,
+              45, // Large size
             ],
+            "circle-opacity": 0.9,
+            "circle-stroke-width": 3,
+            "circle-stroke-color": "#ffffff",
+            "circle-stroke-opacity": 0.5,
           },
         });
 
@@ -177,10 +181,11 @@ export default function MapView() {
           filter: ["has", "point_count"],
           layout: {
             "text-field": "{point_count_abbreviated}",
-            "text-size": 12,
+            "text-font": ["DIN Offc Pro Medium", "Arial Unicode MS Bold"],
+            "text-size": 14,
           },
           paint: {
-            "text-color": "#ffffff",
+            "text-color": "#ffffff", // White text for better contrast
           },
         });
 
@@ -191,9 +196,25 @@ export default function MapView() {
           source: "centers",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": "#012f54",
-            "circle-radius": 8,
+            "circle-color": "#012f54", // Dark blue for individual points
+            "circle-radius": 12,
+            "circle-stroke-width": 3,
+            "circle-stroke-color": "#ffffff",
+            "circle-stroke-opacity": 0.5,
           },
+        });
+
+        // Add hover effects for clusters and points
+        map.current?.on("mouseenter", ["clusters", "unclustered-point"], () => {
+          if (map.current) {
+            map.current.getCanvas().style.cursor = "pointer";
+          }
+        });
+
+        map.current?.on("mouseleave", ["clusters", "unclustered-point"], () => {
+          if (map.current) {
+            map.current.getCanvas().style.cursor = "";
+          }
         });
 
         // Handle click events on individual points
@@ -231,14 +252,6 @@ export default function MapView() {
               });
             });
           }
-        });
-
-        // Change cursor on hover
-        map.current?.on("mouseenter", "clusters", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "pointer";
-        });
-        map.current?.on("mouseleave", "clusters", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "";
         });
       } catch (error) {
         console.error("Error loading centers:", error);
