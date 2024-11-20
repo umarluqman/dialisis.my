@@ -49,6 +49,8 @@ async function getInitialCenters(
         { town: { contains: city } },
         { address: { contains: city } },
         { addressWithUnit: { contains: city } },
+        { dialysisCenterName: { contains: city } },
+        { title: { contains: city } },
       ],
     }),
     ...(doctor && {
