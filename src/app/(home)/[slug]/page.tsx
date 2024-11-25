@@ -35,6 +35,68 @@ async function getCenter(slug: string) {
   };
 }
 
+function generateJsonLd(center: any): any {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": `https://dialisis.my/${center.slug}`,
+    name: center.dialysisCenterName,
+    description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+    url: `https://dialisis.my/${center.slug}`,
+    telephone: center.phoneNumber || center.tel,
+    email: center.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: center.addressWithUnit || center.address,
+      addressLocality: center.town,
+      addressRegion: center.state.name,
+      addressCountry: "MY",
+    },
+    geo:
+      center.latitude && center.longitude
+        ? {
+            "@type": "GeoCoordinates",
+            latitude: center.latitude,
+            longitude: center.longitude,
+          }
+        : undefined,
+    medicalSpecialty: ["Nephrology", "Dialysis"],
+    availableService: center.units?.split(",").map((unit: string) => ({
+      "@type": "MedicalProcedure",
+      name: unit.trim(),
+      procedureType: unit.toLowerCase().includes("hd")
+        ? "Hemodialysis"
+        : unit.toLowerCase().includes("pd")
+        ? "Peritoneal Dialysis"
+        : "Dialysis Treatment",
+    })),
+    healthcareType: [
+      center.sector === "MOH"
+        ? "Public Hospital Department"
+        : center.sector === "NGO"
+        ? "Nonprofit Organization"
+        : "Private Medical Center",
+    ],
+    medicalConditionsTreated: [
+      "Chronic Kidney Disease",
+      "End-Stage Renal Disease",
+      "Kidney Failure",
+    ],
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Hepatitis Treatment",
+        value: center.hepatitisBay || "Not Available",
+      },
+      {
+        "@type": "PropertyValue",
+        name: "Sector",
+        value: center.sector,
+      },
+    ],
+  };
+}
+
 export default async function DialysisCenterPage({
   params,
   searchParams,
@@ -45,8 +107,14 @@ export default async function DialysisCenterPage({
     notFound();
   }
 
+  const jsonLd = generateJsonLd(center);
+
   return (
     <main className="w-full mb-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
         <Link
           href={{

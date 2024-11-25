@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { jsonLdHome } from "@/lib/json-ld";
 import { getUserAgent } from "@/lib/user-agent";
 import { Loader2 } from "lucide-react";
 import { headers } from "next/headers";
@@ -142,18 +143,24 @@ export default async function DialysisCenterDirectory({
   const isMobile = getUserAgent(userAgent).isMobile;
 
   return (
-    <Suspense
-      fallback={
-        <div className="flex items-center justify-center min-h-screen">
-          <Loader2 className="w-6 h-6 animate-spin" />
-        </div>
-      }
-    >
-      {isMobile ? (
-        <DialysisQuiz initialData={initialData} />
-      ) : (
-        <DialysisCenterList initialData={initialData} />
-      )}
-    </Suspense>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHome) }}
+      />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center min-h-screen">
+            <Loader2 className="w-6 h-6 animate-spin" />
+          </div>
+        }
+      >
+        {isMobile ? (
+          <DialysisQuiz initialData={initialData} />
+        ) : (
+          <DialysisCenterList initialData={initialData} />
+        )}
+      </Suspense>
+    </>
   );
 }
