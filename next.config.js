@@ -1,3 +1,10 @@
+const withPWA = require("next-pwa")({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+  register: true,
+  skipWaiting: true,
+});
+
 const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
@@ -12,7 +19,6 @@ const nextConfig = {
       },
     ],
   },
-  // Required for AWS Amplify
   generateBuildId: async () => {
     return "build-id";
   },
@@ -22,4 +28,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = withContentlayer(withPWA(nextConfig));
