@@ -1,8 +1,6 @@
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
-import { getUserAgent } from "@/lib/user-agent";
 import { Loader2 } from "lucide-react";
-import { headers } from "next/headers";
 import { Suspense } from "react";
 import { DialysisCenterList } from "./dialysis-center-list";
 import { DialysisQuiz } from "./dialysis-quiz";
@@ -137,11 +135,6 @@ export default async function DialysisCenterDirectory({
   );
   console.log("initialData", initialData);
 
-  // Get user agent to determine device type
-  const headersList = headers();
-  const userAgent = headersList.get("user-agent") || "";
-  const isMobile = getUserAgent(userAgent).isMobile;
-
   return (
     <>
       <script
@@ -155,11 +148,12 @@ export default async function DialysisCenterDirectory({
           </div>
         }
       >
-        {isMobile ? (
+        <div className="block md:hidden">
           <DialysisQuiz initialData={initialData} />
-        ) : (
+        </div>
+        <div className="hidden md:block">
           <DialysisCenterList initialData={initialData} />
-        )}
+        </div>
       </Suspense>
     </>
   );
