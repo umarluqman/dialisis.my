@@ -1,5 +1,3 @@
-// export const revalidate = 86400; // FIXME: uncomment this in prod
-
 import { sitemapSize, siteUrl } from "../../next-sitemap.config";
 
 export function generateSitemapArray(itemCount: number): string[] {

@@ -39,16 +39,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Not Found",
       description: "The page you're looking for doesn't exist.",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
   const canonicalUrl = `${process.env.NEXT_PUBLIC_APP_URL}/${params.slug}`;
+  const ogImageUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/og/${params.slug}`;
 
   return {
     title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
-    description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`,
+    description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}. Termasuk nombor telefon, alamat, dan perkhidmatan yang ditawarkan.`,
     alternates: {
       canonical: canonicalUrl,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
     openGraph: {
       url: canonicalUrl,
@@ -59,8 +71,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       images: [
         {
-          // We'll generate this URL dynamically
-          url: `${process.env.NEXT_PUBLIC_APP_URL}/api/og/${params.slug}`,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: center.dialysisCenterName,
@@ -71,7 +82,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
       description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`,
-      images: [`${process.env.NEXT_PUBLIC_APP_URL}/api/og/${params.slug}`],
+      images: [ogImageUrl],
     },
   };
 }
