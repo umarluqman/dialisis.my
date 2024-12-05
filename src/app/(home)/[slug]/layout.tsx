@@ -42,16 +42,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`;
-  const description = `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`;
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_APP_URL}/${params.slug}`;
 
   return {
-    title,
-    description,
+    title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
+    description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
-      title,
-      description,
-      url: `${process.env.NEXT_PUBLIC_APP_URL}/center/${params.slug}`,
+      url: canonicalUrl,
+      title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
+      description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`,
       siteName: "Cari Pusat Dialisis Malaysia",
       locale: "ms_MY",
       type: "article",
@@ -67,8 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
+      description: `Dapatkan maklumat lengkap tentang ${center.title} di ${center.town}, ${center.state.name}.`,
       images: [`${process.env.NEXT_PUBLIC_APP_URL}/api/og/${params.slug}`],
     },
   };

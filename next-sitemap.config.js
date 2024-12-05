@@ -15,7 +15,7 @@ module.exports = {
     policies: [
       {
         userAgent: "*",
-        allow: "/", // FIXME: when in production
+        allow: "/",
       },
     ],
     additionalSitemaps: [
