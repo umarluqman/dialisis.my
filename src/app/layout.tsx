@@ -100,6 +100,11 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "e7aa2ad119454fe7a4795156dc70c6e6"}'
+        ></script>
       </head>
       <body
         className={cn(
