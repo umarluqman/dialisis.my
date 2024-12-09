@@ -2,7 +2,8 @@ import { DialysisCenterDetails } from "@/components/center-details";
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
 import { ChevronLeft } from "lucide-react";
-import { notFound, useRouter } from "next/navigation";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: {
@@ -100,7 +101,6 @@ export default async function DialysisCenterPage({
   params,
   searchParams,
 }: Props) {
-  const router = useRouter();
   const center = await getCenter(params.slug);
 
   if (!center) {
@@ -109,10 +109,6 @@ export default async function DialysisCenterPage({
 
   const jsonLd = generateJsonLd(center);
 
-  const handleBack = () => {
-    router.back();
-  };
-
   return (
     <main className="w-full mb-14">
       <script
@@ -120,14 +116,15 @@ export default async function DialysisCenterPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={handleBack}
-          className="hover:text-foreground transition-colors"
-        >
-          <ChevronLeft className="w-4 h-4" /> Senarai
-        </Button>
+        <Link href="/" className="inline-flex">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hover:text-foreground transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" /> Senarai
+          </Button>
+        </Link>
         <span>/</span>
         <span className="text-foreground">
           {center.dialysisCenterName.split(",")[0]}
