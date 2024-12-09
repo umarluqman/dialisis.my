@@ -36,17 +36,6 @@ interface Center {
 // Replace with your Mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 
-if (typeof window !== "undefined") {
-  const offlineStorage = {
-    getItem: (key: string) => localStorage.getItem(key),
-    setItem: (key: string, value: string) => localStorage.setItem(key, value),
-    removeItem: (key: string) => localStorage.removeItem(key),
-  };
-
-  // @ts-ignore
-  mapboxgl.setOfflineStorage(offlineStorage);
-}
-
 const MALAYSIA_BOUNDS = {
   sw: [99.6435, 0.8527], // Southwest coordinates
   ne: [119.2678, 7.3529], // Northeast coordinates
@@ -317,7 +306,8 @@ export default function MapView() {
           <div className="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-sm">
             <div className="rounded-lg bg-white p-4 shadow-lg">
               <p className="text-sm text-zinc-600">
-                Mod luar talian. Peta mungkin tidak tersedia.
+                Peta memerlukan sambungan internet untuk berfungsi. Sila periksa
+                sambungan anda.
               </p>
             </div>
           </div>
