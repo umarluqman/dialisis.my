@@ -22,7 +22,9 @@ import {
 } from "@/components/ui/select";
 import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
 import { ArrowRight, SearchX } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import { parseAsInteger, useQueryState } from "nuqs";
+import { useEffect } from "react";
 
 interface DialysisCenterListProps {
   initialData: {
@@ -64,6 +66,7 @@ function getVisiblePages(currentPage: number, totalPages: number) {
 }
 
 export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
+  const searchParams = useSearchParams();
   const [stateParam, setStateParam] = useQueryState("state", {
     shallow: true,
   });
@@ -92,6 +95,33 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ")
     : undefined;
+
+  useEffect(() => {
+    // Get stored scroll position for this URL
+    const scrollPosition = sessionStorage.getItem(
+      `scroll-${searchParams.toString()}`
+    );
+
+    if (scrollPosition) {
+      // Restore scroll position
+      window.scrollTo(0, parseInt(scrollPosition));
+      // Clear the stored position
+      sessionStorage.removeItem(`scroll-${searchParams.toString()}`);
+    }
+  }, [searchParams]);
+
+  // Store scroll position before navigation
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      sessionStorage.setItem(
+        `scroll-${searchParams.toString()}`,
+        window.scrollY.toString()
+      );
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [searchParams]);
 
   const handleStateChange = async (value: string) => {
     setPage(1);
