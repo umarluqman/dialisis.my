@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { OnlineStatusHandler } from "@/components/online-status";
 import { cn } from "@/lib/utils";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
@@ -100,6 +101,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/site.webmanifest" />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
