@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  PopiconsCircleInfoLine,
   PopiconsGlobeDuotone,
   PopiconsMailLine,
   PopiconsPhoneLine,
@@ -317,7 +316,7 @@ export default function MapView() {
             <div className="flex items-center gap-2 rounded-md bg-white px-4 py-2 shadow-lg">
               <Loader2 className="h-4 w-4 animate-spin" />
               <span className="text-sm text-zinc-500">
-                Getting your location...
+                Mendapatkan lokasi anda...
               </span>
             </div>
           </div>
@@ -381,12 +380,12 @@ export default function MapView() {
                         {hepatitisArray.map((hep) => (
                           <Badge
                             key={hep}
-                            className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200"
+                            className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200 font-normal"
                           >
                             {hep}
                           </Badge>
                         ))}
-                        <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" />
+                        {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
                       </div>
                     ) : null}
                   </div>
