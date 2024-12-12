@@ -1,6 +1,7 @@
 // import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -79,6 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
+        <NextPathsMeta />
         <link
           rel="icon"
           type="image/png"
