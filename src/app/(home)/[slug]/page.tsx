@@ -1,8 +1,6 @@
+import { BackButton } from "@/components/back-button";
 import { DialysisCenterDetails } from "@/components/center-details";
-import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/db";
-import { ChevronLeft } from "lucide-react";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -116,15 +114,7 @@ export default async function DialysisCenterPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
-        <Link href="/" className="inline-flex">
-          <Button
-            variant="outline"
-            size="sm"
-            className="hover:text-foreground transition-colors"
-          >
-            <ChevronLeft className="w-4 h-4" /> Senarai
-          </Button>
-        </Link>
+        <BackButton />
         <span>/</span>
         <span className="text-foreground">
           {center.dialysisCenterName.split(",")[0]}
