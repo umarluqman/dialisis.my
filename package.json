@@ -11,7 +11,7 @@
     "test:e2e": "playwright test",
     "db": "npx dotenv -e .env.local -- prisma migrate dev",
     "studio": "npx dotenv -e .env.local -- prisma studio",
-    "dev": "next dev",
+    "dev": "next dev --port 3003",
     "db:push": "dotenv -e .env -- prisma db push",
     "prod:build": "npx prisma generate && npx prisma migrate deploy && next build",
     "populate-db": "node scripts/populate-db.js"

@@ -24,7 +24,11 @@ import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
 import { ArrowRight, SearchX } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { parseAsInteger, useQueryState } from "nuqs";
-import { useEffect } from "react";
+import { memo, useCallback, useEffect, useMemo, useTransition } from "react";
+
+// Memoize components that don't need frequent updates
+const MemoizedCenterCard = memo(CenterCard);
+const MemoizedPaginationItem = memo(PaginationItem);
 
 interface DialysisCenterListProps {
   initialData: {
@@ -35,7 +39,7 @@ interface DialysisCenterListProps {
 }
 
 function getVisiblePages(currentPage: number, totalPages: number) {
-  const delta = 2; // Number of pages to show before and after current page
+  const delta = 2;
   const range = [];
   const rangeWithDots = [];
   let l;
@@ -67,6 +71,9 @@ function getVisiblePages(currentPage: number, totalPages: number) {
 
 export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
   const searchParams = useSearchParams();
+  const [isPending, startTransition] = useTransition();
+
+  // Memoize state setters
   const [stateParam, setStateParam] = useQueryState("state", {
     shallow: true,
   });
@@ -89,28 +96,30 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
     parse: (value) => value.toUpperCase(),
   });
 
-  const state = stateParam
-    ? decodeURIComponent(stateParam)
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-    : undefined;
+  // Memoize derived state
+  const state = useMemo(
+    () =>
+      stateParam
+        ? decodeURIComponent(stateParam)
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+        : undefined,
+    [stateParam]
+  );
 
+  // Scroll position management
   useEffect(() => {
-    // Get stored scroll position for this URL
     const scrollPosition = sessionStorage.getItem(
       `scroll-${searchParams.toString()}`
     );
 
     if (scrollPosition) {
-      // Restore scroll position
       window.scrollTo(0, parseInt(scrollPosition));
-      // Clear the stored position
       sessionStorage.removeItem(`scroll-${searchParams.toString()}`);
     }
   }, [searchParams]);
 
-  // Store scroll position before navigation
   useEffect(() => {
     const handleBeforeUnload = () => {
       sessionStorage.setItem(
@@ -123,51 +132,96 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [searchParams]);
 
-  const handleStateChange = async (value: string) => {
-    setPage(1);
-    if (value === "semua negeri / wilayah") {
-      await setStateParam(null);
-      await setCityParam(null);
-    } else {
-      await setStateParam(value.toLowerCase());
-      await setCityParam(null);
-    }
-  };
+  // Memoize handlers with synchronous transitions
+  const handleStateChange = useCallback(
+    (value: string) => {
+      startTransition(() => {
+        setPage(1);
+        if (value === "semua negeri / wilayah") {
+          setStateParam(null);
+          setCityParam(null);
+        } else {
+          setStateParam(value.toLowerCase());
+          setCityParam(null);
+        }
+      });
+    },
+    [setPage, setStateParam, setCityParam]
+  );
 
-  const handleCityChange = async (value: string) => {
-    setPage(1);
-    if (value === "semua bandar") {
-      await setCityParam(null);
-    } else {
-      await setCityParam(value.toLowerCase());
-    }
-  };
+  const handleCityChange = useCallback(
+    (value: string) => {
+      startTransition(() => {
+        setPage(1);
+        if (value === "semua bandar") {
+          setCityParam(null);
+        } else {
+          setCityParam(value.toLowerCase());
+        }
+      });
+    },
+    [setPage, setCityParam]
+  );
 
-  const handleTreatmentChange = (value: string) => {
-    setPage(1);
-    if (value === "semua rawatan") {
-      setTreatmentParam(null);
-    } else {
-      setTreatmentParam(value);
-    }
-  };
+  const handleTreatmentChange = useCallback(
+    (value: string) => {
+      startTransition(() => {
+        setPage(1);
+        if (value === "semua rawatan") {
+          setTreatmentParam(null);
+        } else {
+          setTreatmentParam(value);
+        }
+      });
+    },
+    [setPage, setTreatmentParam]
+  );
 
-  const handleSectorChange = (value: string) => {
-    setPage(1);
-    if (value === "semua sektor") {
-      setSector(null);
-    } else {
-      setSector(value.toUpperCase());
-    }
-  };
+  const handleSectorChange = useCallback(
+    (value: string) => {
+      startTransition(() => {
+        setPage(1);
+        if (value === "semua sektor") {
+          setSector(null);
+        } else {
+          setSector(value.toUpperCase());
+        }
+      });
+    },
+    [setPage, setSector]
+  );
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     window.location.href = window.location.pathname + window.location.search;
-  };
+  }, []);
+
+  // Memoize centers grid to prevent unnecessary re-renders
+  const centersGrid = useMemo(() => {
+    if (initialData.centers.length === 0) {
+      return (
+        <div className="col-span-full flex flex-col items-center justify-center py-12">
+          <SearchX className="w-12 h-12 text-zinc-400" />
+          <h3 className="mt-4 text-lg font-semibold text-zinc-950">
+            Tiada Pusat Dialisis
+          </h3>
+          <p className="mt-1 text-sm text-zinc-600">
+            Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda.
+          </p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {initialData.centers.map((center) => (
+          <MemoizedCenterCard key={center.id} {...center} />
+        ))}
+      </div>
+    );
+  }, [initialData.centers]);
 
   return (
     <FilterLayout>
-      {/* Add the filter section here */}
       <div className="flex flex-col border-[2px] bg-white lg:w-fit md:mx-auto py-8 md:p-8 border-dashed border-b-0">
         <div className="pt-4 mb-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1fr_1fr_150px] justify-items-center gap-3 max-w-7xl md:mx-auto px-4">
           <div className="w-full">
@@ -272,65 +326,53 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
           </div>
         </div>
         <div className="flex justify-center gap-4">
-          <Button size="lg" className="mb-8 mt-2 " onClick={handleSearch}>
-            Cari Pusat Dialisis
-            <ArrowRight className="w-4 h-4" />
+          <Button
+            size="lg"
+            className="mb-8 mt-2"
+            onClick={handleSearch}
+            disabled={isPending}
+          >
+            {isPending ? "Mencari..." : "Cari Pusat Dialisis"}
+            <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </div>
-      {/* Centers Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {initialData.centers.length === 0 ? (
-          <div className="col-span-full flex flex-col items-center justify-center py-12">
-            <SearchX className="w-12 h-12 text-zinc-400" />
-            <h3 className="mt-4 text-lg font-semibold text-zinc-950">
-              Tiada Pusat Dialisis
-            </h3>
-            <p className="mt-1 text-sm text-zinc-600">
-              Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda.
-            </p>
-          </div>
-        ) : (
-          initialData.centers.map((item) => (
-            <CenterCard key={item.id} {...item} />
-          ))
-        )}
-      </div>
 
-      {/* Pagination */}
+      {centersGrid}
+
       <Pagination className="my-16 cursor-pointer">
         <PaginationContent>
           {initialData.currentPage > 1 && (
-            <PaginationItem>
+            <MemoizedPaginationItem>
               <PaginationPrevious
                 onClick={() => setPage(initialData.currentPage - 1)}
               />
-            </PaginationItem>
+            </MemoizedPaginationItem>
           )}
 
           {getVisiblePages(initialData.currentPage, initialData.totalPages).map(
-            (page, index) => (
-              <PaginationItem key={index}>
-                {page === "..." ? (
+            (pageNum, index) => (
+              <MemoizedPaginationItem key={index}>
+                {pageNum === "..." ? (
                   <PaginationEllipsis />
                 ) : (
                   <PaginationLink
-                    onClick={() => setPage(Number(page))}
-                    isActive={initialData.currentPage === page}
+                    onClick={() => setPage(Number(pageNum))}
+                    isActive={initialData.currentPage === pageNum}
                   >
-                    {page}
+                    {pageNum}
                   </PaginationLink>
                 )}
-              </PaginationItem>
+              </MemoizedPaginationItem>
             )
           )}
 
           {initialData.currentPage < initialData.totalPages && (
-            <PaginationItem>
+            <MemoizedPaginationItem>
               <PaginationNext
                 onClick={() => setPage(initialData.currentPage + 1)}
               />
-            </PaginationItem>
+            </MemoizedPaginationItem>
           )}
         </PaginationContent>
       </Pagination>

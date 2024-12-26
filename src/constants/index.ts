@@ -6,6 +6,7 @@ export const TREATMENT_TYPES = [
 ];
 
 export const SECTOR = [
+  "MOH_PRIVATE",
   "MOH",
   "Private",
   "NGO",

@@ -4,7 +4,6 @@ import { CenterCard } from "@/components/center-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
-import { PopiconsPinDuotone } from "@popicons/react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -310,6 +309,8 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                         ? "Kerajaan"
                         : getFormattedValue(sectorParam) === "PRIVATE"
                         ? "Swasta"
+                        : getFormattedValue(sectorParam) === "MOH_PRIVATE"
+                        ? "Kerajaan & Swasta"
                         : getFormattedValue(sectorParam)}
                     </Badge>
                   )}
@@ -323,7 +324,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                   variant="outline"
                   size="icon"
                   onClick={handleBack}
-                  className="shrink-0"
+                  className="shrink-0 border border-primary transition-colors"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </Button>
@@ -344,7 +345,8 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                     {isLocating ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
                     ) : (
-                      <PopiconsPinDuotone className="h-4 w-4 text-primary" />
+                      <div className="h-4 w-4">📍</div>
+                      // <PopiconsPinDuotone className="h-4 w-4 text-primary" />
                     )}
                     {isLocating
                       ? "Mencari lokasi anda..."
@@ -365,6 +367,8 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                       ? "Kerajaan"
                       : option === "Private"
                       ? "Swasta"
+                      : option === "MOH_PRIVATE"
+                      ? "Kerajaan & Swasta"
                       : option}
                   </span>
                   <ChevronRight className="h-4 w-4" />
@@ -381,9 +385,23 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
           >
             <div className="mb-6">
               <div className="flex justify-between items-center mb-2">
-                <h2 className="text-xl md:text-2xl font-bold">
-                  Pusat Dialisis Yang Sesuai
-                </h2>
+                <div className="flex items-center gap-4">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={() => {
+                      setSectorParam(null);
+                      setShowResults(false);
+                      setCurrentStepParam(4);
+                    }}
+                    className="shrink-0 border border-primary transition-colors"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                  <h2 className="text-xl md:text-2xl font-bold">
+                    Pusat Dialisis Yang Sesuai
+                  </h2>
+                </div>
                 <Button
                   variant="outline"
                   size="sm"
@@ -421,6 +439,8 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                       ? "Kerajaan"
                       : getFormattedValue(sectorParam) === "PRIVATE"
                       ? "Swasta"
+                      : getFormattedValue(sectorParam) === "MOH_PRIVATE"
+                      ? "Kerajaan & Swasta"
                       : getFormattedValue(sectorParam)}
                   </Badge>
                 )}

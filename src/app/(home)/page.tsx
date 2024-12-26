@@ -1,10 +1,35 @@
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
 import { Loader2 } from "lucide-react";
+import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { DialysisCenterList } from "./dialysis-center-list";
-import { DialysisQuiz } from "./dialysis-quiz";
 
+// Dynamically import components with loading fallbacks
+const DialysisQuiz = dynamic(
+  () => import("./dialysis-quiz").then((mod) => mod.DialysisQuiz),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-6 h-6 animate-spin" />
+      </div>
+    ),
+    ssr: false, // Only load on client since it's mobile-only
+  }
+);
+
+const DialysisCenterList = dynamic(
+  () => import("./dialysis-center-list").then((mod) => mod.DialysisCenterList),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center min-h-screen">
+        <Loader2 className="w-6 h-6 animate-spin" />
+      </div>
+    ),
+  }
+);
+
+// Preload data function
 async function getInitialCenters(
   page: number = 1,
   sector?: string,
@@ -27,9 +52,14 @@ async function getInitialCenters(
 
   const where = {
     ...(sector && {
-      sector: {
-        equals: sector.toUpperCase(),
-      },
+      sector:
+        sector === "MOH_PRIVATE"
+          ? {
+              in: ["MOH", "PRIVATE"],
+            }
+          : {
+              equals: sector.toUpperCase(),
+            },
     }),
     ...(state && {
       state: {
@@ -70,41 +100,63 @@ async function getInitialCenters(
       }),
   };
 
-  const [rawCenters, total] = await Promise.all([
-    prisma.dialysisCenter.findMany({
-      take,
-      skip,
-      where,
-      include: {
-        state: {
-          select: {
-            name: true,
+  try {
+    const [rawCenters, total] = await Promise.all([
+      prisma.dialysisCenter.findMany({
+        take,
+        skip,
+        where,
+        include: {
+          state: {
+            select: {
+              name: true,
+            },
           },
         },
-      },
-      orderBy: {
-        dialysisCenterName: "asc",
-      },
-    }),
-    prisma.dialysisCenter.count({
-      where,
-    }),
-  ]);
+        orderBy: {
+          dialysisCenterName: "asc",
+        },
+      }),
+      prisma.dialysisCenter.count({
+        where,
+      }),
+    ]);
 
-  const centers = rawCenters.map((center) => ({
-    ...center,
-    state: {
-      ...center.state,
-      name: center.state.name.replace(/-/g, " "),
-    },
-  }));
+    const centers = rawCenters.map((center) => ({
+      ...center,
+      state: {
+        ...center.state,
+        name: center.state.name.replace(/-/g, " "),
+      },
+    }));
 
-  return {
-    centers,
-    totalPages: Math.ceil(total / take),
-    currentPage: page,
-  };
+    return {
+      centers,
+      totalPages: Math.ceil(total / take),
+      currentPage: page,
+    };
+  } catch (error) {
+    console.error("Error fetching centers:", error);
+    return {
+      centers: [],
+      totalPages: 0,
+      currentPage: page,
+    };
+  }
 }
+
+// Generate metadata
+export const metadata: Metadata = {
+  title: "Cari Pusat Dialisis | Dialisis.my",
+  description:
+    "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+  openGraph: {
+    title: "Cari Pusat Dialisis | Dialisis.my",
+    description:
+      "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+    type: "website",
+  },
+};
 
 export default async function DialysisCenterDirectory({
   searchParams,
@@ -123,6 +175,8 @@ export default async function DialysisCenterDirectory({
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const { sector, state, treatment, city, doctor, name, hepatitis } =
     searchParams;
+
+  // Preload data in parallel
   const initialData = await getInitialCenters(
     page,
     sector,
@@ -133,28 +187,54 @@ export default async function DialysisCenterDirectory({
     name,
     hepatitis
   );
-  console.log("initialData", initialData);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHome) }}
+      {/* Add resource hints */}
+      <link
+        rel="preconnect"
+        href={process.env.NEXT_PUBLIC_SUPABASE_URL || ""}
+        crossOrigin="anonymous"
       />
-      <Suspense
-        fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <Loader2 className="w-6 h-6 animate-spin" />
-          </div>
-        }
-      >
-        <div className="block md:hidden">
-          <DialysisQuiz initialData={initialData} />
-        </div>
-        <div className="hidden md:block">
-          <DialysisCenterList initialData={initialData} />
-        </div>
+      <link
+        rel="preload"
+        href="/fonts/your-font.woff2"
+        as="font"
+        type="font/woff2"
+        crossOrigin="anonymous"
+      />
+
+      {/* Add JSON-LD with streaming */}
+      <Suspense>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdHome) }}
+        />
       </Suspense>
+
+      {/* Use client-side detection instead */}
+      <div className="block md:hidden">
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <Loader2 className="w-6 h-6 animate-spin" />
+            </div>
+          }
+        >
+          <DialysisQuiz initialData={initialData} />
+        </Suspense>
+      </div>
+      <div className="hidden md:block">
+        <Suspense
+          fallback={
+            <div className="flex items-center justify-center min-h-screen">
+              <Loader2 className="w-6 h-6 animate-spin" />
+            </div>
+          }
+        >
+          <DialysisCenterList initialData={initialData} />
+        </Suspense>
+      </div>
     </>
   );
 }

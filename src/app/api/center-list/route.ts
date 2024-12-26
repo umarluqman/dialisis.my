@@ -69,10 +69,16 @@ export async function GET(request: NextRequest) {
     }
 
     if (sector) {
-      where.sector = {
-        contains: sector,
-        mode: "insensitive",
-      };
+      where.sector =
+        sector === "MOH_PRIVATE"
+          ? {
+              in: ["MOH", "PRIVATE"],
+              mode: "insensitive",
+            }
+          : {
+              contains: sector,
+              mode: "insensitive",
+            };
     }
 
     // Fetch data with pagination

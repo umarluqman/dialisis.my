@@ -79,9 +79,13 @@ export function CenterCard({
           }${state.name}`}</CardTitle>
 
           <p className="text-primary-foreground mb-4 text-sm">
-            {sector === "MOH" || sector === "NGO" ? (
+            {sector === "MOH" ||
+            sector === "NGO" ||
+            sector === "MOH_PRIVATE" ? (
               sector === "MOH" ? (
                 "Kerajaan"
+              ) : sector === "MOH_PRIVATE" ? (
+                "Kerajaan & Swasta"
               ) : (
                 sector
               )
