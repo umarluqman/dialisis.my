@@ -147,6 +147,8 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
   const currentStep = currentStepParam ?? determineCurrentStep();
 
   const handleOptionSelect = async (value: string) => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     switch (currentStep) {
       case 0:
         await setStateParam(value.toLowerCase());
