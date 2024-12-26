@@ -243,6 +243,8 @@ export const CITIES: Record<string, string[]> = {
     "Pengkalan Kundang",
     "Jenjarom",
     "Sungai Besar",
+    "Dengkil",
+    "Sungai Buloh",
     "Batu Arang",
     "Tanjung Sepat",
     "Kuang",
