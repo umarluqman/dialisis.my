@@ -4,8 +4,8 @@ import Logo from "./logo";
 const boring = [
   { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Hubungi Kami", href: "/hubungi-kami" },
-  { label: "Terma & Syarat", href: "/terms" },
-  { label: "Polisi Privasi", href: "/privacy" },
+  { label: "Terma & Syarat", href: "/terma-dan-syarat" },
+  { label: "Polisi Privasi", href: "/polisi-privasi" },
 ];
 
 const lawatiJuga = [
