@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
 import { Button } from "./ui/button";
+
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,21 +14,30 @@ export const Navbar = () => {
       <div className="container px-0">
         {/* Desktop View */}
         <div className="hidden items-center justify-between md:flex">
-          <div className="flex items-center space-x-12">
+          <div className="flex items-center space-x-6">
             <Link className="flex items-center" href="/">
               <div className="flex space-x-3 items-center">
                 <Logo />
                 <span className="sr-only">Dialisis Malaysia</span>
                 <div className="tracking-wide font-medium leading-none">
                   <div>Dialisis Malaysia</div>
-                  {/* <div>Mode</div> */}
                 </div>
               </div>
             </Link>
-            <Link className="flex items-center space-x-2" href="/peta">
+            <Link className="flex items-center" href="/peta">
               <Button variant="outline" size="sm">
                 <PopiconsMapDuotone className="h-5 w-5 text-primary" />
                 <span className="text-sm font-medium">Lihat Peta</span>
+              </Button>
+            </Link>
+            <Link href="/tentang-kami">
+              <Button variant="ghost" size="sm">
+                <span className="text-sm font-medium">Tentang Kami</span>
+              </Button>
+            </Link>
+            <Link href="/hubungi-kami">
+              <Button variant="ghost" size="sm">
+                <span className="text-sm font-medium">Hubungi Kami</span>
               </Button>
             </Link>
           </div>
@@ -44,16 +54,24 @@ export const Navbar = () => {
               </div>
             </div>
           </Link>
-          <Link className="flex items-cente space-x-2" href="/peta">
-            <Button variant="outline" size="sm">
-              <PopiconsMapDuotone className="h-5 w-5 text-primary" />
-              <span className="text-sm font-medium">Lihat Peta</span>
-            </Button>
-          </Link>
-          {/* <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
-            <PopiconsBarsRightSolid className="h-6 w-6" />
-            <span className="sr-only">Open menu</span>
-          </Button> */}
+          <div className="flex items-center space-x-2">
+            <Link href="/peta">
+              <Button variant="outline" size="sm">
+                <PopiconsMapDuotone className="h-5 w-5 text-primary" />
+                <span className="text-sm font-medium">Lihat Peta</span>
+              </Button>
+            </Link>
+            <Link href="/tentang-kami">
+              <Button variant="ghost" size="sm">
+                <span className="text-sm font-medium">Tentang</span>
+              </Button>
+            </Link>
+            <Link href="/hubungi-kami">
+              <Button variant="ghost" size="sm">
+                <span className="text-sm font-medium">Hubungi</span>
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Mobile Menu */}

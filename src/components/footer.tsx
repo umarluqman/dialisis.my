@@ -2,6 +2,8 @@ import Link from "next/link";
 import Logo from "./logo";
 
 const boring = [
+  { label: "Tentang Kami", href: "/tentang-kami" },
+  { label: "Hubungi Kami", href: "/hubungi-kami" },
   { label: "Terma & Syarat", href: "/terms" },
   { label: "Polisi Privasi", href: "/privacy" },
 ];
@@ -175,19 +177,16 @@ export default function Footer() {
           <p className="text-base text-gray-400">
             &copy; 2024 Dialysis.MY - All rights reserved.
           </p>
-          <div className="mt-4 sm:mt-0 flex space-x-6">
-            <Link
-              href="#"
-              className="text-sm text-gray-500 hover:text-gray-900"
-            >
-              Terma & Syarat
-            </Link>
-            <Link
-              href="#"
-              className="text-sm text-gray-500 hover:text-gray-900"
-            >
-              Polisi Privasi
-            </Link>
+          <div className="mt-4 sm:mt-0 flex flex-wrap gap-6">
+            {boring.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className="text-sm text-gray-500 hover:text-gray-900"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
