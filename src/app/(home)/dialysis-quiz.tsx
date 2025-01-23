@@ -4,7 +4,12 @@ import { CenterCard } from "@/components/center-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
-import { AnimatePresence, motion } from "framer-motion";
+import {
+  AnimatePresence,
+  LazyMotion,
+  domAnimation,
+  motion,
+} from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,7 +18,10 @@ import {
   SearchX,
 } from "lucide-react";
 import { useQueryState } from "nuqs";
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
+
+// Memoize CenterCard component
+const MemoizedCenterCard = memo(CenterCard);
 
 interface QuizStep {
   question: string;
@@ -33,7 +41,7 @@ const MALAYSIA_BOUNDS = {
 const getFormattedValue = (param: string | null) => {
   if (!param) return null;
   const decoded = decodeURIComponent(param);
-  const v = decoded.includes("-")
+  return decoded.includes("-")
     ? decoded
         .split("-")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -42,30 +50,38 @@ const getFormattedValue = (param: string | null) => {
         .split(" ")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
-  return v;
 };
 
 export function DialysisQuiz({ initialData }: { initialData: any }) {
   const [showResults, setShowResults] = useState(false);
   const [isLocating, setIsLocating] = useState(false);
 
+  // Memoize query state setters
   const [stateParam, setStateParam] = useQueryState("state", {
     shallow: false,
+    history: "push",
   });
   const [cityParam, setCityParam] = useQueryState("city", {
     shallow: false,
+    history: "push",
   });
   const [treatmentParam, setTreatmentParam] = useQueryState("treatment", {
     shallow: false,
+    history: "push",
   });
   const [hepatitisParam, setHepatitisParam] = useQueryState("hepatitis", {
     shallow: false,
+    history: "push",
   });
   const [sectorParam, setSectorParam] = useQueryState("sector", {
     shallow: false,
+    history: "push",
   });
 
-  const state = getFormattedValue(stateParam);
+  const state = useMemo(
+    () => (stateParam ? getFormattedValue(stateParam) : null),
+    [stateParam]
+  );
 
   const steps: QuizStep[] = useMemo(
     () => [
@@ -261,33 +277,166 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 px-4 pt-4 pb-24">
-      <AnimatePresence mode="wait">
-        {!showResults ? (
-          <motion.div
-            key="quiz"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -50 }}
-            className="max-w-md mx-auto"
-          >
-            <div className="mb-6">
-              <div className="h-2 w-full bg-zinc-200 rounded-full">
-                <div
-                  className="h-full bg-primary rounded-full transition-all duration-300"
-                  style={{
-                    width: `${(currentStep / (steps.length - 1)) * 100}%`,
-                  }}
-                />
+    <LazyMotion features={domAnimation}>
+      <div className="min-h-screen bg-zinc-50 px-4 pt-4 pb-24">
+        <AnimatePresence mode="wait">
+          {!showResults ? (
+            <motion.div
+              key="quiz"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              className="max-w-md mx-auto"
+              transition={{ duration: 0.2 }}
+            >
+              <div className="mb-6">
+                <div className="h-2 w-full bg-zinc-200 rounded-full">
+                  <div
+                    className="h-full bg-primary rounded-full transition-all duration-300"
+                    style={{
+                      width: `${(currentStep / (steps.length - 1)) * 100}%`,
+                    }}
+                  />
+                </div>
+                <div className="mt-2 space-y-1">
+                  <p className="text-sm text-zinc-500">
+                    Langkah {currentStep + 1} dari {steps.length}
+                  </p>
+                  <div className="flex flex-row gap-2 flex-wrap">
+                    {state && (
+                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                        {state}
+                      </Badge>
+                    )}
+                    {cityParam && (
+                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                        {getFormattedValue(cityParam)}
+                      </Badge>
+                    )}
+                    {treatmentParam && (
+                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                        {getFormattedValue(treatmentParam)}
+                      </Badge>
+                    )}
+                    {hepatitisParam && (
+                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                        {getFormattedValue(hepatitisParam)}
+                      </Badge>
+                    )}
+                    {sectorParam && (
+                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                        {getFormattedValue(sectorParam) === "MOH"
+                          ? "Kerajaan"
+                          : getFormattedValue(sectorParam) === "PRIVATE"
+                          ? "Swasta"
+                          : getFormattedValue(sectorParam) === "MOH_PRIVATE"
+                          ? "Kerajaan & Swasta"
+                          : getFormattedValue(sectorParam)}
+                      </Badge>
+                    )}
+                  </div>
+                </div>
               </div>
-              <div className="mt-2 space-y-1">
-                <p className="text-sm text-zinc-500">
-                  Langkah {currentStep + 1} dari {steps.length}
-                </p>
+
+              <div className="flex items-center gap-4 mb-6">
+                {currentStep > 0 && (
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    onClick={handleBack}
+                    className="shrink-0 border border-primary transition-colors"
+                  >
+                    <ChevronLeft className="h-4 w-4" />
+                  </Button>
+                )}
+                <h2 className="text-2xl font-bold">
+                  {steps[currentStep].question}
+                </h2>
+              </div>
+              <div className="space-y-3">
+                {currentStep === 0 && (
+                  <Button
+                    variant="outline"
+                    className="w-full justify-between text-left h-auto py-4 px-6 shadow-md"
+                    onClick={handleLocation}
+                    disabled={isLocating}
+                  >
+                    <span className="flex items-center gap-2">
+                      {isLocating ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <div className="h-4 w-4">📍</div>
+                        // <PopiconsPinDuotone className="h-4 w-4 text-primary" />
+                      )}
+                      {isLocating
+                        ? "Mencari lokasi anda..."
+                        : "Gunakan lokasi semasa"}
+                    </span>
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                )}
+                {steps[currentStep]?.options?.map((option) => (
+                  <Button
+                    key={option}
+                    variant="outline"
+                    className="w-full justify-between text-left h-auto py-4 px-6"
+                    onClick={() => handleOptionSelect(option)}
+                  >
+                    <span>
+                      {option === "MOH"
+                        ? "Kerajaan"
+                        : option === "Private"
+                        ? "Swasta"
+                        : option === "MOH_PRIVATE"
+                        ? "Kerajaan & Swasta"
+                        : option}
+                    </span>
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="results"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-7xl mx-auto"
+              transition={{ duration: 0.2 }}
+            >
+              <div className="mb-6">
+                <div className="flex justify-between items-center mb-2">
+                  <div className="flex items-center gap-4">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => {
+                        setSectorParam(null);
+                        setShowResults(false);
+                        setCurrentStepParam(4);
+                      }}
+                      className="shrink-0 border border-primary transition-colors"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <h2 className="text-xl md:text-2xl font-bold">
+                      Pusat Dialisis Yang Sesuai
+                    </h2>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={resetQuiz}
+                    className="flex items-center gap-2"
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                    Mula Semula
+                  </Button>
+                </div>
                 <div className="flex flex-row gap-2 flex-wrap">
-                  {stateParam && (
+                  {state && (
                     <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                      {getFormattedValue(stateParam)}
+                      {state}
                     </Badge>
                   )}
                   {cityParam && (
@@ -318,157 +467,32 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                   )}
                 </div>
               </div>
-            </div>
-
-            <div className="flex items-center gap-4 mb-6">
-              {currentStep > 0 && (
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleBack}
-                  className="shrink-0 border border-primary transition-colors"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-              )}
-              <h2 className="text-2xl font-bold">
-                {steps[currentStep].question}
-              </h2>
-            </div>
-            <div className="space-y-3">
-              {currentStep === 0 && (
-                <Button
-                  variant="outline"
-                  className="w-full justify-between text-left h-auto py-4 px-6 shadow-md"
-                  onClick={handleLocation}
-                  disabled={isLocating}
-                >
-                  <span className="flex items-center gap-2">
-                    {isLocating ? (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    ) : (
-                      <div className="h-4 w-4">📍</div>
-                      // <PopiconsPinDuotone className="h-4 w-4 text-primary" />
-                    )}
-                    {isLocating
-                      ? "Mencari lokasi anda..."
-                      : "Gunakan lokasi semasa"}
-                  </span>
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              )}
-              {steps[currentStep]?.options?.map((option) => (
-                <Button
-                  key={option}
-                  variant="outline"
-                  className="w-full justify-between text-left h-auto py-4 px-6"
-                  onClick={() => handleOptionSelect(option)}
-                >
-                  <span>
-                    {option === "MOH"
-                      ? "Kerajaan"
-                      : option === "Private"
-                      ? "Swasta"
-                      : option === "MOH_PRIVATE"
-                      ? "Kerajaan & Swasta"
-                      : option}
-                  </span>
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-              ))}
-            </div>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="results"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-7xl mx-auto"
-          >
-            <div className="mb-6">
-              <div className="flex justify-between items-center mb-2">
-                <div className="flex items-center gap-4">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    onClick={() => {
-                      setSectorParam(null);
-                      setShowResults(false);
-                      setCurrentStepParam(4);
-                    }}
-                    className="shrink-0 border border-primary transition-colors"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </Button>
-                  <h2 className="text-xl md:text-2xl font-bold">
-                    Pusat Dialisis Yang Sesuai
-                  </h2>
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={resetQuiz}
-                  className="flex items-center gap-2"
-                >
-                  <RotateCcw className="h-4 w-4" />
-                  Mula Semula
-                </Button>
-              </div>
-              <div className="flex flex-row gap-2 flex-wrap">
-                {stateParam && (
-                  <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(stateParam)}
-                  </Badge>
-                )}
-                {cityParam && (
-                  <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(cityParam)}
-                  </Badge>
-                )}
-                {treatmentParam && (
-                  <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(treatmentParam)}
-                  </Badge>
-                )}
-                {hepatitisParam && (
-                  <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(hepatitisParam)}
-                  </Badge>
-                )}
-                {sectorParam && (
-                  <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
-                    {getFormattedValue(sectorParam) === "MOH"
-                      ? "Kerajaan"
-                      : getFormattedValue(sectorParam) === "PRIVATE"
-                      ? "Swasta"
-                      : getFormattedValue(sectorParam) === "MOH_PRIVATE"
-                      ? "Kerajaan & Swasta"
-                      : getFormattedValue(sectorParam)}
-                  </Badge>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {initialData.centers.length === 0 ? (
+                  <div className="col-span-full flex flex-col items-center justify-center py-12">
+                    <SearchX className="w-12 h-12 text-zinc-400" />
+                    <h3 className="mt-4 text-lg font-semibold text-zinc-950">
+                      Tiada Pusat Dialisis
+                    </h3>
+                    <p className="mt-1 text-sm text-zinc-600">
+                      Maaf, tiada pusat dialisis yang memenuhi kriteria carian
+                      anda.
+                    </p>
+                  </div>
+                ) : (
+                  initialData.centers.map((center: any) => (
+                    <MemoizedCenterCard
+                      key={center.id}
+                      {...center}
+                      showService={false}
+                    />
+                  ))
                 )}
               </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {initialData.centers.length === 0 ? (
-                <div className="col-span-full flex flex-col items-center justify-center py-12">
-                  <SearchX className="w-12 h-12 text-zinc-400" />
-                  <h3 className="mt-4 text-lg font-semibold text-zinc-950">
-                    Tiada Pusat Dialisis
-                  </h3>
-                  <p className="mt-1 text-sm text-zinc-600">
-                    Maaf, tiada pusat dialisis yang memenuhi kriteria carian
-                    anda.
-                  </p>
-                </div>
-              ) : (
-                initialData.centers.map((center: any) => (
-                  <CenterCard key={center.id} {...center} showService={false} />
-                ))
-              )}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </LazyMotion>
   );
 }

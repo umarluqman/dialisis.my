@@ -145,6 +145,12 @@ async function getInitialCenters(
   }
 }
 
+// Add preload hints for critical resources
+const preloadResources = [
+  { href: "/fonts/your-font.woff2", as: "font", type: "font/woff2" },
+  { href: process.env.NEXT_PUBLIC_SUPABASE_URL || "", as: "fetch" },
+];
+
 // Generate metadata
 export const metadata: Metadata = {
   title: "Cari Pusat Dialisis | Dialisis.my",
@@ -177,7 +183,7 @@ export default async function DialysisCenterDirectory({
     searchParams;
 
   // Preload data in parallel
-  const initialData = await getInitialCenters(
+  const initialDataPromise = getInitialCenters(
     page,
     sector,
     state,
@@ -188,21 +194,22 @@ export default async function DialysisCenterDirectory({
     hepatitis
   );
 
+  // Preload critical resources
+  const initialData = await initialDataPromise;
+
   return (
     <>
       {/* Add resource hints */}
-      <link
-        rel="preconnect"
-        href={process.env.NEXT_PUBLIC_SUPABASE_URL || ""}
-        crossOrigin="anonymous"
-      />
-      <link
-        rel="preload"
-        href="/fonts/your-font.woff2"
-        as="font"
-        type="font/woff2"
-        crossOrigin="anonymous"
-      />
+      {preloadResources.map((resource) => (
+        <link
+          key={resource.href}
+          rel="preload"
+          href={resource.href}
+          as={resource.as}
+          type={resource.type}
+          crossOrigin="anonymous"
+        />
+      ))}
 
       {/* Add JSON-LD with streaming */}
       <Suspense>
@@ -212,12 +219,22 @@ export default async function DialysisCenterDirectory({
         />
       </Suspense>
 
-      {/* Use client-side detection instead */}
+      {/* Use client-side detection with optimized loading */}
       <div className="block md:hidden">
         <Suspense
           fallback={
-            <div className="flex items-center justify-center min-h-screen">
-              <Loader2 className="w-6 h-6 animate-spin" />
+            <div className="flex items-center justify-center min-h-[50vh]">
+              <div className="space-y-4 w-full max-w-md mx-auto px-4">
+                <div className="h-8 bg-zinc-100 rounded animate-pulse" />
+                <div className="space-y-2">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="h-12 bg-zinc-100 rounded animate-pulse"
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           }
         >
@@ -227,8 +244,15 @@ export default async function DialysisCenterDirectory({
       <div className="hidden md:block">
         <Suspense
           fallback={
-            <div className="flex items-center justify-center min-h-screen">
-              <Loader2 className="w-6 h-6 animate-spin" />
+            <div className="flex items-center justify-center min-h-[50vh]">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-w-7xl mx-auto p-4">
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-48 bg-zinc-100 rounded animate-pulse"
+                  />
+                ))}
+              </div>
             </div>
           }
         >
