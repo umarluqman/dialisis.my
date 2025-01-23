@@ -182,12 +182,7 @@ export function CenterCard({
           </div>
 
           <div className="mt-auto pt-6">
-            <Link
-              href={{
-                pathname: `/${slug}`,
-                query: searchParams.toString(),
-              }}
-            >
+            <Link href={`/${slug}?modal=true`}>
               <Button
                 variant={"secondary"}
                 className="w-full md:w-auto flex items-center justify-center md:justify-self-end"

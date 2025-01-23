@@ -121,18 +121,7 @@ export default function RootLayout({
           <Navbar />
 
           <main className="flex-grow">{children}</main>
-          {/* <footer className="bg-primary text-primary-foreground py-4 px-6">
-          <div className="container mx-auto flex justify-between items-center">
-            <p>&copy; 2024 Dialisis Malaysia. All rights reserved.</p>
-            <nav className="flex gap-4">
-              <Link href="#" className="hover:underline" prefetch={false}>
-                Polisi Privasi
-              </Link>
-            </nav>
-          </div>
-        </footer> */}
           <Footer />
-          {/* <CookieBanner /> */}
         </NuqsAdapter>
       </body>
     </html>

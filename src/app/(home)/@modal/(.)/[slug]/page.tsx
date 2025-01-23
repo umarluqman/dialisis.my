@@ -7,13 +7,13 @@ import { useRouter } from "next/navigation";
 
 interface Props {
   params: {
-    id: string;
+    slug: string;
   };
 }
 
-async function getCenter(id: string) {
+async function getCenter(slug: string) {
   const center = await prisma.dialysisCenter.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       state: {
         select: {
@@ -36,7 +36,7 @@ async function getCenter(id: string) {
 
 export default async function DialysisCenterModal({ params }: Props) {
   const router = useRouter();
-  const center = await getCenter(params.id);
+  const center = await getCenter(params.slug);
 
   if (!center) {
     return null;
