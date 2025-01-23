@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terma dan Syarat | Dialisis.my",
+  title: "Terma dan Syarat",
   description:
     "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
 };

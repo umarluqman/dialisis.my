@@ -6,7 +6,7 @@ import { Suspense } from "react";
 
 // Metadata export
 export const metadata: Metadata = {
-  title: "Peta Pusat Dialisis Malaysia | Dialisis MY",
+  title: "Peta Pusat Dialisis Malaysia",
   description:
     "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan oleh pusat dialisis di seluruh Malaysia.",
   openGraph: {

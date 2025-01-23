@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Hubungi Kami | Dialisis.my",
+  title: "Hubungi Kami",
   description:
     "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
 };
@@ -33,7 +33,7 @@ export default function HubungiKamiPage() {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-muted-foreground" />
                 <span className="text-muted-foreground">
-                  Kuala Lumpur, Malaysia
+                  Putrajaya, Malaysia
                 </span>
               </div>
               <Button variant="default" asChild>

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Polisi Privasi | Dialisis.my",
+  title: "Polisi Privasi",
   description:
     "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
 };

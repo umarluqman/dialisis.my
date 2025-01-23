@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami | Dialisis.my",
+  title: "Tentang Kami",
   description:
     "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
 };
