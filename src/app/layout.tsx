@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Dialisis MY",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://dialisis.my/og-image.png",
         width: 1200,
         height: 630,
         alt: "Dialisis MY - Cari Pusat Dialisis Malaysia",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dialisis MY | Cari Pusat Dialisis Malaysia",
     description: "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia.",
-    images: ["/og-image.png"],
+    images: ["https://dialisis.my/og-image.png"],
   },
   robots: {
     index: true,
