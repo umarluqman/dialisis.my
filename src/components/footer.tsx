@@ -175,7 +175,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between">
           <p className="text-base text-gray-400">
-            &copy; 2024 Dialysis.MY - All rights reserved.
+            &copy; {new Date().getFullYear()} Dialysis.MY
           </p>
           <div className="mt-4 sm:mt-0 flex flex-wrap gap-6">
             {boring.map(({ label, href }) => (
