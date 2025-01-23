@@ -10,6 +10,7 @@ import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Suspense } from "react";
 
 import "./globals.css";
 export const metadata: Metadata = {
@@ -104,11 +105,6 @@ export default function RootLayout({
         <meta name="theme-color" content="#ffffff" />
         <link rel="manifest" href="/site.webmanifest" />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
-        <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN}"}`}
-        ></script>
       </head>
       <body
         className={cn(
@@ -120,7 +116,9 @@ export default function RootLayout({
         <NuqsAdapter>
           <Navbar />
 
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow">
+            <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+          </main>
           <Footer />
         </NuqsAdapter>
       </body>

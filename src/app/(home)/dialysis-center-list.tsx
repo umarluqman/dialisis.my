@@ -1,6 +1,7 @@
 "use client";
 
 import { CenterCard } from "@/components/center-card";
+import { CenterCardSkeleton } from "@/components/center-card-skeleton";
 import FilterLayout from "@/components/filter-layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -24,7 +25,14 @@ import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
 import { ArrowRight, SearchX } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { parseAsInteger, useQueryState } from "nuqs";
-import { memo, useCallback, useEffect, useMemo, useTransition } from "react";
+import {
+  memo,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useTransition,
+} from "react";
 
 // Memoize components that don't need frequent updates
 const MemoizedCenterCard = memo(CenterCard);
@@ -214,7 +222,9 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {initialData.centers.map((center) => (
-          <MemoizedCenterCard key={center.id} {...center} />
+          <Suspense key={center.id} fallback={<CenterCardSkeleton />}>
+            <MemoizedCenterCard {...center} />
+          </Suspense>
         ))}
       </div>
     );
