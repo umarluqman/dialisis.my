@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "Dialisis MY",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://dialisis.my/og-image.png",
         width: 1200,
         height: 630,
         alt: "Dialisis MY - Cari Pusat Dialisis Malaysia",
