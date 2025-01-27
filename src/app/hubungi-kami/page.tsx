@@ -51,7 +51,7 @@ export default function HubungiKamiPage() {
                     rel="noopener noreferrer"
                     className="text-foreground hover:underline"
                   >
-                    WhatsApp +60 11727 5599
+                    WhatsApp +60 11727 55299
                   </a>{" "}
                 </div>
               </Button>
