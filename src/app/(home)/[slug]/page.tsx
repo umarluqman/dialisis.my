@@ -95,6 +95,22 @@ function generateJsonLd(center: any): any {
   };
 }
 
+export const generateMetadata = async ({ params }: Props) => {
+  const center = await getCenter(params.slug);
+
+  if (!center) {
+    return {};
+  }
+
+  return {
+    title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.town}, ${center.state.name}`,
+    description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+    alternates: {
+      canonical: `/${params.slug}`,
+    },
+  };
+};
+
 export default async function DialysisCenterPage({
   params,
   searchParams,
