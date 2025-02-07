@@ -106,7 +106,7 @@ export const generateMetadata = async ({ params }: Props) => {
     title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.town}, ${center.state.name}`,
     description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
     alternates: {
-      canonical: `/${params.slug}`,
+      canonical: `https://dialisis.my/${params.slug}`,
     },
   };
 };

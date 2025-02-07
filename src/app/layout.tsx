@@ -14,7 +14,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   alternates: {
-    canonical: '/',
+    canonical: 'https://dialisis.my',
   },
   title: {
     default: "Dialisis MY | Cari Pusat Dialisis di Malaysia",

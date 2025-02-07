@@ -6,7 +6,13 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: ["/", "/favicon.ico", "/site.webmanifest"],
-        disallow: ["/api/*", "/_next/*", "/404", "/500"],
+        disallow: [
+          "/api/*", 
+          "/_next/*", 
+          "/404", 
+          "/500",
+          "/[slug]", 
+        ],
       },
     ],
     sitemap: "https://dialisis.my/sitemap.xml",
