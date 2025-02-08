@@ -5,13 +5,20 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/favicon.ico", "/site.webmanifest"],
+        allow: [
+          "/",
+          "/favicon.ico",
+          "/site.webmanifest",
+          // Explicitly allow these centers
+          "/anson-bay-medical-center",
+          "/fomema-haemodialysis-cyberjaya",
+        ],
         disallow: [
-          "/api/*", 
-          "/_next/*", 
-          "/404", 
+          "/api/*",
+          "/_next/*",
+          "/404",
           "/500",
-          "/[slug]", 
+          "/[slug]", // Disallow the dynamic route pattern
         ],
       },
     ],
