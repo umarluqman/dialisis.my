@@ -242,6 +242,7 @@ export const CITIES: Record<string, string[]> = {
     "Bukit Beruntung",
     "Pengkalan Kundang",
     "Jenjarom",
+    "Cyberjaya",
     "Sungai Besar",
     "Dengkil",
     "Sungai Buloh",
