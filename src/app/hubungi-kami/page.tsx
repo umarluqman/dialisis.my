@@ -17,10 +17,13 @@ export default function HubungiKamiPage() {
 
         <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-6">
-            <p className="text-muted-foreground">
-              Kami sedia membantu anda. Sila isi borang di bawah atau hubungi
-              kami melalui maklumat yang disediakan.
-            </p>
+            <div>
+              <h2 className="text-xl font-bold">Kolaborasi</h2>
+              <p className="text-muted-foreground">
+                Untuk sebarang kolaborasi. Hubungi kami melalui maklumat
+                dibawah.
+              </p>
+            </div>
 
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
@@ -36,7 +39,7 @@ export default function HubungiKamiPage() {
                   Putrajaya, Malaysia
                 </span>
               </div>
-              <Button variant="default" asChild>
+              <Button variant="default" className="text-white" asChild>
                 <div className="flex items-center space-x-1">
                   <Image
                     src="/whatsapp.svg"
@@ -55,6 +58,33 @@ export default function HubungiKamiPage() {
                   </a>{" "}
                 </div>
               </Button>
+              <div>
+                <h2 className="text-xl font-bold mt-8 mb-2">
+                  Perlukan bantuan membina laman web pusat dialisis?
+                </h2>
+                <p className="text-muted-foreground mb-4">
+                  Hubungi kami melalui WhatsApp dibawah.
+                </p>
+                <Button asChild className="my-3">
+                  <div className="flex items-center space-x-1">
+                    <Image
+                      src="/whatsapp.svg"
+                      alt="WhatsApp"
+                      width={20}
+                      height={20}
+                      className="text-white"
+                    />
+                    <a
+                      href="https://wa.me/+601137902425"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:underline"
+                    >
+                      WhatsApp +60 113790 2425
+                    </a>{" "}
+                  </div>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
