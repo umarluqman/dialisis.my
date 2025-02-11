@@ -99,14 +99,31 @@ export const generateMetadata = async ({ params }: Props) => {
   const center = await getCenter(params.slug);
 
   if (!center) {
-    return {};
+    return {
+      title: "Not Found",
+      description: "The page you're looking for doesn't exist.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
   }
+
+  const canonicalUrl = `https://dialisis.my/${params.slug}`;
 
   return {
     title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.town}, ${center.state.name}`,
     description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
     alternates: {
-      canonical: `https://dialisis.my/${params.slug}`,
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      url: canonicalUrl,
+      title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
+      description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+      siteName: "Dialisis MY",
+      locale: "ms_MY",
+      type: "article",
     },
   };
 };

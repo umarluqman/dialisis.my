@@ -5,6 +5,7 @@ interface GenerateMetadataProps {
   description?: string;
   image?: string;
   noIndex?: boolean;
+  canonicalUrl?: string;
 }
 
 export function generateMetadata({
@@ -12,6 +13,7 @@ export function generateMetadata({
   description,
   image,
   noIndex,
+  canonicalUrl,
 }: GenerateMetadataProps): Metadata {
   const siteURL = process.env.SITE_URL || "https://dialisis.my";
 
@@ -29,7 +31,7 @@ export function generateMetadata({
       description:
         description ||
         "Cari pusat dialisis terdekat di Malaysia. Informasi lengkap mengenai rawatan dialisis dan pusat hemodialisis.",
-      url: siteURL,
+      url: canonicalUrl || siteURL,
       siteName: "Dialisis.my",
       images: [
         {
@@ -60,9 +62,11 @@ export function generateMetadata({
         "Cari pusat dialisis terdekat di Malaysia. Informasi lengkap mengenai rawatan dialisis dan pusat hemodialisis.",
       images: [image || `${siteURL}/og-image.jpg`],
     },
-    alternates: {
-      canonical: siteURL,
-    },
+    ...(canonicalUrl && {
+      alternates: {
+        canonical: canonicalUrl,
+      },
+    }),
   };
 
   return metadata;

@@ -13,9 +13,6 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
-  alternates: {
-    canonical: 'https://dialisis.my',
-  },
   title: {
     default: "Dialisis MY | Cari Pusat Dialisis di Malaysia",
     template: "%s | Dialisis MY",
