@@ -6,6 +6,15 @@ const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
+  // Handle old URL pattern redirects
+  const oldPatternMatch = path.match(/^\/undefined\/(.+)$/);
+  if (oldPatternMatch) {
+    const [, slug] = oldPatternMatch;
+    return NextResponse.redirect(new URL(`/${slug}`, request.url), {
+      status: 301, // Permanent redirect
+    });
+  }
+
   // Check if the path starts with /_next or is a public file
   if (path.startsWith("/_next") || PUBLIC_FILE.test(path)) {
     const response = NextResponse.next();
@@ -18,10 +27,11 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configure matcher for /_next paths and public files
+// Configure matcher for /_next paths, public files, and old URL patterns
 export const config = {
   matcher: [
     "/_next/:path*",
     "/:path*.:ext*", // matches files like favicon.ico, manifest.json, etc.
+    "/undefined/:path*", // match old URL pattern
   ],
 };
