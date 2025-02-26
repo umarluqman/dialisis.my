@@ -58,7 +58,7 @@ export default function HubungiKamiPage() {
                   </a>{" "}
                 </div>
               </Button>
-              <div>
+              {/* <div>
                 <h2 className="text-xl font-bold mt-8 mb-2">
                   Perlukan bantuan membina laman web pusat dialisis?
                 </h2>
@@ -84,7 +84,7 @@ export default function HubungiKamiPage() {
                     </a>{" "}
                   </div>
                 </Button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
