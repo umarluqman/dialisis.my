@@ -49,7 +49,7 @@ export default function HubungiKamiPage() {
                     className="text-muted-foreground"
                   />
                   <a
-                    href="https://wa.me/+60117275599"
+                    href="https://wa.me/+601172755299"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground hover:underline"
