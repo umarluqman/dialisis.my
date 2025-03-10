@@ -150,6 +150,7 @@ export const CITIES: Record<string, string[]> = {
     "Bidor",
     "Parit Buntar",
     "Ayer Tawar",
+    "Chemor",
     "Bagan Serai",
     "Tanjung Malim",
     "Lawan Kuda Baharu",
