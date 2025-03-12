@@ -29,7 +29,7 @@ const newCenter = {
   hepatitisBay: "",
   longitude: 103.09977369781,
   latitude: 5.361901698018788,
-  phoneNumber: "09-667 4462, 019-8336196",
+  phoneNumber: "09-667 4462",
   website: "",
   title: "Pusat Dialisis Kokitab",
   town: "Kuala Nerus",

@@ -18,6 +18,7 @@ model DialysisCenter {
   dialysisCenterName String   @default("")
   sector             String   @default("")
   drInCharge         String   @default("")
+  drInChargeTel      String   @default("")
   address            String   @default("")
   addressWithUnit    String   @default("")
   tel                String   @default("")

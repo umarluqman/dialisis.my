@@ -15,6 +15,23 @@ const prisma = new PrismaClient({ adapter });
 
 async function verifyCenter() {
   try {
+    // First, verify the column exists in the schema
+    console.log("Verifying schema includes drInChargeTel column...");
+    const tableInfo = await libsql.execute(`
+      SELECT name FROM pragma_table_info('DialysisCenter')
+      ORDER BY cid
+    `);
+
+    const columns = tableInfo.rows.map((row) => row.name);
+    console.log("DialysisCenter columns:", columns);
+
+    if (columns.includes("drInChargeTel")) {
+      console.log("✅ drInChargeTel column exists in the schema");
+    } else {
+      console.log("❌ drInChargeTel column does NOT exist in the schema");
+    }
+
+    // Now retrieve the center to check the data
     const center = await prisma.dialysisCenter.findUnique({
       where: { slug: "pusat-dialisis-kokitab" },
       include: {
@@ -26,7 +43,7 @@ async function verifyCenter() {
       },
     });
 
-    console.log("Retrieved dialysis center:");
+    console.log("\nRetrieved dialysis center:");
     console.log(JSON.stringify(center, null, 2));
   } catch (error) {
     console.error("Error retrieving dialysis center:", error);
