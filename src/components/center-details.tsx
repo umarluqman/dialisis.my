@@ -118,10 +118,23 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
 
       <div className="mt-12">
         <h2 className="font-semibold">Doktor & Kakitangan Perubatan</h2>
-        <div className="space-y-4 text-sm mt-3">
+        <div className="space-y-4 text-sm mt-4">
           <p className="flex flex-col gap-1">
             <span className="font-medium text-zinc-500">Doktor bertugas</span>{" "}
             {center.drInCharge}
+            {center.drInChargeTel && (
+              <p className="flex items-center gap-2">
+                <Button variant="secondary" size="sm" className="mb-4 mt-2">
+                  <Phone className="w-4 h-4" />
+                  <a
+                    href={`tel:${center.drInChargeTel}`}
+                    className="hover:underline"
+                  >
+                    {center.drInChargeTel}
+                  </a>
+                </Button>
+              </p>
+            )}
           </p>
           {center.panelNephrologist && (
             <p className="flex flex-col gap-1">
