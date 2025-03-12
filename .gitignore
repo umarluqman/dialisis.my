@@ -42,7 +42,6 @@ next-env.d.ts
 .contentlayer
 .env
 /data
-/scripts
 .turso
 later-todo
 
