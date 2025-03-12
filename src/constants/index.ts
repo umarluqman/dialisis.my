@@ -268,6 +268,7 @@ export const CITIES: Record<string, string[]> = {
     "Chukai",
     "Dungun",
     "Kerteh",
+    "Kuala Nerus",
     "Kuala Berang",
     "Marang",
     "Paka",
