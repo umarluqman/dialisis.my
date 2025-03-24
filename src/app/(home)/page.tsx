@@ -113,21 +113,28 @@ async function getInitialCenters(
             },
           },
         },
-        orderBy: {
-          dialysisCenterName: "asc",
-        },
+        orderBy: [
+          {
+            featured: "desc",
+          },
+          {
+            dialysisCenterName: "asc",
+          },
+        ],
       }),
       prisma.dialysisCenter.count({
         where,
       }),
     ]);
 
-    const centers = rawCenters.map((center) => ({
+    const centers = rawCenters.map((center: any) => ({
       ...center,
-      state: {
-        ...center.state,
-        name: center.state.name.replace(/-/g, " "),
-      },
+      state: center.state
+        ? {
+            ...center.state,
+            name: center.state.name.replace(/-/g, " "),
+          }
+        : null,
     }));
 
     return {
