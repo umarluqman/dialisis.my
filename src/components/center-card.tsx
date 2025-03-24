@@ -8,8 +8,8 @@ import {
   PopiconsMapLine,
   PopiconsPhoneLine,
 } from "@popicons/react";
+import clsx from "clsx";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -32,6 +32,7 @@ interface CenterCardProps {
   latitude?: number;
   longitude?: number;
   showService?: boolean;
+  featured: boolean;
 }
 
 export function CenterCard({
@@ -39,6 +40,7 @@ export function CenterCard({
   id,
   dialysisCenterName,
   address,
+  featured,
   phoneNumber,
   email,
   state,
@@ -66,9 +68,16 @@ export function CenterCard({
       : "Peritoneal Dialisis",
   }));
 
-  const searchParams = useSearchParams();
+  const isFeatured = featured;
+  console.log({ isFeatured, dialysisCenterName });
   return (
-    <Card className="shadow-sm transition-shadow flex flex-col min-h-fit">
+    <Card
+      className={`shadow-sm transition-shadow flex flex-col min-h-fit ${
+        isFeatured
+          ? "shadow-primary/25 bg-gradient-to-br from-primary/5 to-primary/10 shadow-lg border-primary border-2"
+          : ""
+      }`}
+    >
       <CardHeader className="pb-0">
         <CardTitle className="text-lg font-bold text-foreground">
           {title}
@@ -100,7 +109,11 @@ export function CenterCard({
         </div>
       </CardHeader>
       <CardContent className="flex flex-col flex-1">
-        <div className="flex-1 rounded-t-[10px] bg-white flex flex-col">
+        <div
+          className={`flex-1 rounded-t-[10px] flex flex-col ${
+            isFeatured ? "transparent" : "bg-white"
+          }`}
+        >
           {/* <p className="mt-3 text-zinc-600">{address}</p> */}
           {showService && (
             <div className="flex flex-col gap-2 my-2">
@@ -109,7 +122,7 @@ export function CenterCard({
                 {treatmentArray.map((treatment) => (
                   <Badge
                     key={treatment.name}
-                    className="bg-[#a3bdffff]/20 text-[#375092ff] hover:bg-[#a3bdffff]/50 shadow-none font-normal"
+                    className="bg-[#a3bdffff]/20 text-[#375092ff] shadow-none font-normal border- border-primary-foreground/25"
                   >
                     {treatment.value}
                   </Badge>
@@ -139,7 +152,7 @@ export function CenterCard({
           <div className="flex flex-wrap gap-3 justify-end mt-4">
             <Button
               variant="outline"
-              className="px-4"
+              className="px-4 border-primary-foreground/30"
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
               <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
@@ -148,7 +161,7 @@ export function CenterCard({
 
             <Button
               variant={"outline"}
-              className="px-4"
+              className="px-4 border-primary-foreground/30"
               onClick={() => (window.location.href = `mailto:${email}`)}
             >
               <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
@@ -159,20 +172,23 @@ export function CenterCard({
               href={`https://www.google.com/maps?q=${latitude},${longitude}`}
               target="_blank"
             >
-              <Button variant="outline" className="px-4">
+              <Button
+                variant="outline"
+                className="px-4 border-primary-foreground/30"
+              >
                 <PopiconsMapLine className="w-4 h-4 text-primary-foreground" />
                 Lokasi
               </Button>
             </Link>
             {website && (
               <Link
-                href={website?.split("?")[0] + "?ref=dialisis.my" ?? ""}
+                href={website.split("?")[0] + "?ref=dialisis.my"}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
               >
                 <Button
                   variant={"outline"}
-                  className="text-primary-foreground mb-4"
+                  className="border-primary-foreground/30 mb-4"
                 >
                   <PopiconsGlobeLine className="w-4 h-4 text-primary-foreground" />
                   Laman Web
@@ -184,8 +200,14 @@ export function CenterCard({
           <div className="mt-auto pt-6">
             <Link href={`/${slug}?modal=true`}>
               <Button
-                variant={"secondary"}
-                className="w-full md:w-auto flex items-center justify-center md:justify-self-end"
+                variant={isFeatured ? "default" : "secondary"}
+                className={clsx(
+                  "w-full md:w-auto flex items-center justify-center md:justify-self-end",
+                  {
+                    "bg-primary/80 shadow-primary/25 hover:shadow-lg hover:shadow-primary/25 transition-all":
+                      isFeatured,
+                  }
+                )}
               >
                 Info Lanjut
                 <PopiconsArrowRightLine className="w-4 h-4 ml-2" />

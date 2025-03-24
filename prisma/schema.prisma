@@ -43,6 +43,7 @@ model DialysisCenter {
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   town              String   @default("")
+  featured          Boolean  @default(false)
 
   @@index([sector])
   @@index([title])
