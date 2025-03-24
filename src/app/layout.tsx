@@ -1,5 +1,6 @@
 // import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
+import { LeadButton } from "@/components/LeadForm/LeadButton";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
@@ -110,6 +111,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow">{children}</main>
           <Footer />
+          <LeadButton />
         </NuqsAdapter>
       </body>
     </html>
