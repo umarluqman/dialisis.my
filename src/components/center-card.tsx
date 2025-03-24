@@ -72,12 +72,17 @@ export function CenterCard({
   console.log({ isFeatured, dialysisCenterName });
   return (
     <Card
-      className={`shadow-sm transition-shadow flex flex-col min-h-fit ${
+      className={`shadow-sm transition-shadow flex flex-col min-h-fit relative ${
         isFeatured
-          ? "shadow-primary/25 bg-gradient-to-br from-primary/5 to-primary/10 shadow-lg border-primary border-2"
+          ? "shadow-primary/25 bg-gradient-to-br from-primary/5 to-primary/5 shadow-lg border-primary border-2"
           : ""
       }`}
     >
+      {isFeatured && (
+        <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none">
+          Featured
+        </Badge>
+      )}
       <CardHeader className="pb-0">
         <CardTitle className="text-lg font-bold text-foreground">
           {title}
@@ -204,7 +209,7 @@ export function CenterCard({
                 className={clsx(
                   "w-full md:w-auto flex items-center justify-center md:justify-self-end",
                   {
-                    "bg-primary/80 shadow-primary/25 hover:shadow-lg hover:shadow-primary/25 transition-all":
+                    "bg-[#0565f2] hover:bg-[#0565f2]/95 text-secondary shadow-primary/25 hover:shadow-lg hover:shadow-primary-foreground/25 transition-all":
                       isFeatured,
                   }
                 )}
