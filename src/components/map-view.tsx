@@ -48,7 +48,7 @@ if (typeof window !== "undefined") {
   mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 }
 
-export default function MapView() {
+export default function MapView({ center }: { center?: [number, number] }) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [selectedCenter, setSelectedCenter] = useState<Center | null>(null);
@@ -75,8 +75,8 @@ export default function MapView() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: DEFAULT_CENTER as [number, number],
-      zoom: DEFAULT_ZOOM,
+      center: center || (DEFAULT_CENTER as [number, number]),
+      zoom: center ? 15 : DEFAULT_ZOOM,
       bounds: [MALAYSIA_BOUNDS.sw, MALAYSIA_BOUNDS.ne] as [
         mapboxgl.LngLatLike,
         mapboxgl.LngLatLike
@@ -86,6 +86,11 @@ export default function MapView() {
         [123.2678, 10.3529], // Northeast coordinates
       ] as [[number, number], [number, number]],
     });
+
+    // Add marker if center coordinates are provided
+    if (center) {
+      new mapboxgl.Marker().setLngLat(center).addTo(map.current);
+    }
 
     // Add geolocate control
     const geolocate = new mapboxgl.GeolocateControl({
@@ -100,7 +105,11 @@ export default function MapView() {
 
     // Request location when map loads
     map.current.on("load", () => {
-      geolocate.trigger(); // This will only trigger once
+      if (!center) {
+        geolocate.trigger(); // Only trigger if no center coordinates provided
+      } else {
+        setIsLocating(false);
+      }
     });
 
     // Handle location events
@@ -276,7 +285,7 @@ export default function MapView() {
     return () => {
       map.current?.remove();
     };
-  }, []);
+  }, [center]);
 
   const unitsArray = selectedCenter?.units
     ? selectedCenter.units.split(",")

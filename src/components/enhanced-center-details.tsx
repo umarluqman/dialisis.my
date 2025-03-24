@@ -28,14 +28,17 @@ import { useState } from "react";
 import { Badge } from "./ui/badge";
 
 // Import map component dynamically to avoid SSR issues
-const MapView = dynamic(() => import("@/components/map-view"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-80 items-center justify-center bg-gray-100 rounded-lg">
-      <Loader2 className="h-8 w-8 animate-spin text-primary" />
-    </div>
-  ),
-});
+const SingleCenterMap = dynamic(
+  () => import("@/components/single-center-map"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-80 items-center justify-center bg-gray-100 rounded-lg">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    ),
+  }
+);
 
 // Dummy gallery images
 const GALLERY_IMAGES = [
@@ -394,7 +397,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
           <div className="h-96 md:h-full min-h-[400px] bg-gray-100 rounded-lg overflow-hidden">
             {center.latitude && center.longitude && (
               <div className="h-full w-full">
-                <MapView />
+                <SingleCenterMap
+                  center={
+                    [center.longitude, center.latitude] as [number, number]
+                  }
+                  name={center.dialysisCenterName}
+                />
               </div>
             )}
           </div>

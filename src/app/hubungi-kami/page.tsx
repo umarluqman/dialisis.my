@@ -18,10 +18,12 @@ export default function HubungiKamiPage() {
         <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl font-bold">Kolaborasi</h2>
+              <h2 className="text-xl font-bold">
+                Perubahan Maklumat Pusat Dialisis
+              </h2>
               <p className="text-muted-foreground">
-                Untuk sebarang kolaborasi. Hubungi kami melalui maklumat
-                dibawah.
+                Untuk sebarang perubahan maklumat dalam laman web ini. Hubungi
+                kami melalui maklumat dibawah.
               </p>
             </div>
 
