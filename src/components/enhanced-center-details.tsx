@@ -160,11 +160,11 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 {GALLERY_IMAGES.map((image, index) => (
                   <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-1/3"
+                    className="md:basis-1/2 lg:basis-1/3 relative"
                   >
                     <div className="p-1">
                       <div
-                        className="overflow-hidden rounded-lg cursor-pointer"
+                        className="overflow-hidden rounded-lg cursor-pointer relative"
                         onClick={() => setSelectedImage(image.src)}
                       >
                         <Image
@@ -174,14 +174,32 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                           height={300}
                           className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
                         />
+                        {index === 0 && (
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: [0, 0.7, 0] }}
+                            transition={{
+                              repeat: 3,
+                              duration: 2,
+                              delay: 1,
+                            }}
+                            className="absolute inset-0 md:hidden bg-gradient-to-l from-black/20 to-transparent pointer-events-none"
+                          />
+                        )}
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              {/* Desktop Navigation */}
               <div className="hidden md:block">
                 <CarouselPrevious className="-left-4 lg:-left-6" />
                 <CarouselNext className="-right-4 lg:-right-6" />
+              </div>
+              {/* Mobile Navigation */}
+              <div className="md:hidden">
+                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 -translate-x-1/2 shadow-md" />
+                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 translate-x-1/2 shadow-md" />
               </div>
             </Carousel>
           </div>
