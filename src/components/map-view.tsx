@@ -30,6 +30,7 @@ interface Center {
   website?: string;
   email?: string;
   sector?: string;
+  featured?: boolean;
 }
 
 // Replace with your Mapbox access token
@@ -54,6 +55,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const [selectedCenter, setSelectedCenter] = useState<Center | null>(null);
   const [isLocating, setIsLocating] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const handleOnline = () => setIsOffline(false);
@@ -65,6 +67,74 @@ export default function MapView({ center }: { center?: [number, number] }) {
     return () => {
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
+    };
+  }, []);
+
+  // Animation function for pulsing featured centers
+  useEffect(() => {
+    let size = 24;
+    let opacity = 0.3;
+    let time = 0;
+
+    const animatePulse = () => {
+      if (!map.current || !map.current.getLayer("featured-point-halo")) {
+        return;
+      }
+
+      // Create a smoother pulse effect using sine wave
+      time += 0.008; // Slower speed for smoother animation
+
+      // Use easeInOutSine for smoother transitions
+      const easeInOutSine = (1 - Math.cos(time)) / 2;
+
+      // Larger size range for more noticeable pulse (20-32)
+      size = 20 + 12 * easeInOutSine;
+
+      // More pronounced opacity changes (0.15-0.4)
+      opacity = 0.15 + 0.25 * easeInOutSine;
+
+      map.current.setPaintProperty(
+        "featured-point-halo",
+        "circle-radius",
+        size
+      );
+
+      map.current.setPaintProperty(
+        "featured-point-halo",
+        "circle-opacity",
+        opacity
+      );
+
+      animationRef.current = requestAnimationFrame(animatePulse);
+    };
+
+    if (
+      map.current &&
+      map.current.loaded() &&
+      map.current.getLayer("featured-point-halo")
+    ) {
+      animationRef.current = requestAnimationFrame(animatePulse);
+    } else {
+      // Wait for map to be fully loaded
+      const checkMapLoaded = () => {
+        if (
+          map.current &&
+          map.current.loaded() &&
+          map.current.getLayer("featured-point-halo")
+        ) {
+          animationRef.current = requestAnimationFrame(animatePulse);
+        } else {
+          setTimeout(checkMapLoaded, 100);
+        }
+      };
+
+      checkMapLoaded();
+    }
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
 
@@ -218,11 +288,38 @@ export default function MapView({ center }: { center?: [number, number] }) {
           source: "centers",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": "#012f54", // Dark blue for individual points
-            "circle-radius": 12,
+            "circle-color": [
+              "case",
+              ["==", ["get", "featured"], true],
+              "#f59e0b", // Amber color for featured centers
+              "#012f54", // Default dark blue for other centers
+            ],
+            "circle-radius": [
+              "case",
+              ["==", ["get", "featured"], true],
+              14, // Slightly smaller for better proportion with halo
+              12, // Default size for other centers
+            ],
             "circle-stroke-width": 3,
             "circle-stroke-color": "#ffffff",
             "circle-stroke-opacity": 0.5,
+          },
+        });
+
+        // Add a special layer just for featured centers that adds a pulsing effect
+        map.current?.addLayer({
+          id: "featured-point-halo",
+          type: "circle",
+          source: "centers",
+          filter: ["==", ["get", "featured"], true],
+          paint: {
+            "circle-color": "#fbbf24", // Amber color
+            "circle-radius": 20, // Start from smaller size
+            "circle-opacity": 0.15, // Start from lower opacity
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-opacity": 0.3,
+            "circle-blur": 0.8, // Increased blur for softer edges
           },
         });
 
@@ -283,6 +380,9 @@ export default function MapView({ center }: { center?: [number, number] }) {
     map.current.on("load", loadCenters);
 
     return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
       map.current?.remove();
     };
   }, [center]);
@@ -344,17 +444,26 @@ export default function MapView({ center }: { center?: [number, number] }) {
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
                 <div className="mx-auto max-w-md">
+                  {selectedCenter.featured && (
+                    <div className="flex items-center gap-1 ml-auto mb-2">
+                      <Badge className="bg-amber-50 text-amber-600 hover:bg-amber-50 shadow-none font-normal border border-amber-400">
+                        Pusat Pilihan 👍
+                      </Badge>
+                    </div>
+                  )}
                   <h2 className="text-xl font-semibold">{title}</h2>
-                  <p className="text-primary-foreground mb-4">
-                    {selectedCenter?.sector === "MOH" ||
-                    selectedCenter?.sector === "NGO" ? (
-                      selectedCenter?.sector
-                    ) : (
-                      <span className="capitalize">
-                        {selectedCenter?.sector?.toLowerCase() ?? ""}
-                      </span>
-                    )}
-                  </p>
+                  <div className="flex items-center gap-2">
+                    <p className="text-primary-foreground mb-4">
+                      {selectedCenter?.sector === "MOH" ||
+                      selectedCenter?.sector === "NGO" ? (
+                        selectedCenter?.sector
+                      ) : (
+                        <span className="capitalize">
+                          {selectedCenter?.sector?.toLowerCase() ?? ""}
+                        </span>
+                      )}
+                    </p>
+                  </div>
                   <p className="mt-3 text-zinc-600">
                     {selectedCenter.addressWithUnit}
                   </p>
@@ -402,8 +511,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                   {selectedCenter?.website && (
                     <Link
                       href={
-                        selectedCenter?.website?.split("?")[0] +
-                          "ref=dialysis-my" ?? ""
+                        selectedCenter.website.split("?")[0] + "ref=dialysis-my"
                       }
                     >
                       <Button
@@ -411,41 +519,27 @@ export default function MapView({ center }: { center?: [number, number] }) {
                         className="text-primary-foreground mb-4"
                       >
                         <PopiconsGlobeDuotone className="w-4 h-4 text-primary-foreground" />
-                        {selectedCenter?.website?.split("?")[0]}
+                        {selectedCenter.website.split("?")[0]}
                       </Button>
                     </Link>
                   )}
 
                   <div className="flex gap-4 justify-end">
-                    <Link
-                      href={
-                        selectedCenter?.website?.split("?")[0] +
-                          "ref=dialysis-my" ?? ""
-                      }
-                    >
-                      <Button
-                        variant="outline"
-                        // size={"sm"}
-                        // variant={"outline"}
-                        className="px-4"
-                      >
+                    <Link href={`tel:${selectedCenter.phoneNumber}`}>
+                      <Button variant="outline" className="px-4">
                         <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
                         Panggil
                       </Button>
                     </Link>
 
-                    <Link
-                      href={
-                        selectedCenter?.website?.split("?")[0] +
-                          "ref=dialysis-my" ?? ""
-                      }
-                    >
-                      <Button variant={"outline"} className="px-4">
-                        <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
-                        {/* {selectedCenter?.email} */}
-                        Emel
-                      </Button>
-                    </Link>
+                    {selectedCenter.email && (
+                      <Link href={`mailto:${selectedCenter.email}`}>
+                        <Button variant={"outline"} className="px-4">
+                          <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
+                          Emel
+                        </Button>
+                      </Link>
+                    )}
                   </div>
 
                   {/* <Button

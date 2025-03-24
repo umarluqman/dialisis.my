@@ -28,6 +28,7 @@ export async function GET() {
         units: true,
         hepatitisBay: true,
         sector: true,
+        featured: true,
       },
     });
 
