@@ -1,6 +1,8 @@
 import { BackButton } from "@/components/back-button";
 import { DialysisCenterDetails } from "@/components/center-details";
+import { EnhancedDialysisCenterDetails } from "@/components/enhanced-center-details";
 import { prisma } from "@/lib/db";
+import { DialysisCenter, State } from "@prisma/client";
 import { notFound } from "next/navigation";
 
 interface Props {
@@ -10,7 +12,13 @@ interface Props {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-async function getCenter(slug: string) {
+type CenterWithState = {
+  featured: boolean;
+} & DialysisCenter & {
+    state: Pick<State, "name">;
+  };
+
+async function getCenter(slug: string): Promise<CenterWithState | null> {
   const center = await prisma.dialysisCenter.findUnique({
     where: { slug },
     include: {
@@ -24,16 +32,10 @@ async function getCenter(slug: string) {
 
   if (!center) return null;
 
-  return {
-    ...center,
-    state: {
-      ...center.state,
-      name: center.state.name.replace(/-/g, " "),
-    },
-  };
+  return center as CenterWithState;
 }
 
-function generateJsonLd(center: any): any {
+function generateJsonLd(center: CenterWithState): any {
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
@@ -140,22 +142,30 @@ export default async function DialysisCenterPage({
 
   const jsonLd = generateJsonLd(center);
 
+  const isFeatured = !!center?.featured;
+
   return (
     <main className="w-full mb-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
-        <BackButton />
-        <span>/</span>
-        <span className="text-foreground">
-          {center.dialysisCenterName.split(",")[0]}
-        </span>
-      </nav>
-      <div className="container max-w-5xl py-6">
-        <DialysisCenterDetails center={center} />
-      </div>
+      {isFeatured ? (
+        <EnhancedDialysisCenterDetails center={center} />
+      ) : (
+        <>
+          <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
+            <BackButton />
+            <span>/</span>
+            <span className="text-foreground">
+              {center.dialysisCenterName.split(",")[0]}
+            </span>
+          </nav>
+          <div className="container max-w-5xl py-6">
+            <DialysisCenterDetails center={center} />
+          </div>
+        </>
+      )}
     </main>
   );
 }

@@ -70,6 +70,7 @@ export function CenterCard({
 
   const isFeatured = featured;
   console.log({ isFeatured, dialysisCenterName });
+
   return (
     <Card
       className={`shadow-sm transition-shadow flex flex-col min-h-fit relative ${

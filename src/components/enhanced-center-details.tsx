@@ -40,24 +40,20 @@ const MapView = dynamic(() => import("@/components/map-view"), {
 // Dummy gallery images
 const GALLERY_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    alt: "Modern dialysis facility with clean equipment",
+    src: "/contoh/satu.webp",
+    alt: "pusat-hemodialisis-as-salam",
   },
   {
-    src: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    alt: "Comfortable treatment area",
+    src: "/contoh/tiga.webp",
+    alt: "pasukan-pusat-hemodialisis-as-salam",
   },
   {
-    src: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    alt: "Patient care area",
+    src: "/contoh/empat.webp",
+    alt: "lokasi-pusat-hemodialisis-as-salam",
   },
   {
-    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    alt: "Medical equipment",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    alt: "Reception area",
+    src: "/contoh/dua.webp",
+    alt: "ruang-pusat-hemodialisis-as-salam",
   },
 ];
 
