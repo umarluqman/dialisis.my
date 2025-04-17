@@ -14,11 +14,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
-    default: "Dialisis MY | Cari Pusat Dialisis di Malaysia",
-    template: "%s | Dialisis MY",
+    default: "Dialisis MY | Cari Pusat Dialisis di Malaysia | Direktori Lengkap",
+    template: "%s | Dialisis MY - Direktori Pusat Dialisis Malaysia",
   },
   description:
-    "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia. Maklumat lengkap tentang lokasi, info kontak, doktor bertugas, sektor, dan perkhidmatan dialisis.",
+    "Direktori lengkap dengan lebih 900 pusat dialisis di seluruh Malaysia. Maklumat tentang lokasi, kontak, doktor, sektor, dan perkhidmatan hemodialisis dan CAPD.",
   keywords: [
     "dialisis malaysia",
     "dialysis malaysia",
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "hemodialysis",
     "rawatan buah pinggang",
     "kidney treatment malaysia",
+    "pusat hemodialisis",
+    "pusat rawatan dialisis",
   ],
   authors: [{ name: "Dialisis MY" }],
   creator: "Dialisis MY",
@@ -34,9 +36,9 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ms_MY",
-    title: "Dialisis MY | Cari Pusat Dialisis Malaysia",
+    title: "Dialisis MY | Cari Pusat Dialisis Malaysia | Direktori Lengkap",
     description:
-      "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia. Maklumat lengkap tentang lokasi, info kontak, doktor bertugas, sektor, dan perkhidmatan dialisis.",
+      "Direktori lengkap dengan lebih 900 pusat dialisis di seluruh Malaysia. Maklumat tentang lokasi, kontak, doktor, sektor, dan perkhidmatan dialisis.",
     siteName: "Dialisis MY",
     images: [
       {
@@ -72,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="ms" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <NextPathsMeta />
         <link

@@ -11,10 +11,13 @@ export default function robots(): MetadataRoute.Robots {
           "/_next/*",
           "/404",
           "/500",
-          "/undefined/*", // Explicitly disallow the old URL pattern
+          "/undefined/*",
+          "/*.json$",
+          "/search?*", // Don't index search result pages
         ],
       },
     ],
-    sitemap: "https://dialisis.my/sitemap.xml",
+    sitemap: "https://dialisis.my/sitemap-index.xml", // Point to index
+    host: "https://dialisis.my",
   };
 }

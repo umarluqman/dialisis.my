@@ -94,6 +94,14 @@ function generateJsonLd(center: CenterWithState): any {
         value: center.sector,
       },
     ],
+    // Enhanced structured data
+    // openingHours: center.operatingHours || "Mo-Fr 08:00-17:00",
+    // priceRange: "$$",
+    sameAs: center.website ? [center.website] : undefined,
+    hasMap:
+      center.latitude && center.longitude
+        ? `https://www.google.com/maps?q=${center.latitude},${center.longitude}`
+        : undefined,
   };
 }
 
@@ -113,22 +121,73 @@ export const generateMetadata = async ({ params }: Props) => {
 
   const canonicalUrl = `https://dialisis.my/${params.slug}`;
 
+  // Optimize town/state names for better SEO
+  const location = `${center.town}, ${center.state.name}`;
+
+  // Get service types for more descriptive metadata
+  const services = center.units
+    ? center.units.toLowerCase().includes("hd") &&
+      center.units.toLowerCase().includes("pd")
+      ? "Hemodialisis dan Peritoneal Dialisis"
+      : center.units.toLowerCase().includes("hd")
+      ? "Hemodialisis"
+      : center.units.toLowerCase().includes("pd")
+      ? "Peritoneal Dialisis"
+      : "Perkhidmatan Dialisis"
+    : "Perkhidmatan Dialisis";
+
   return {
-    title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.town}, ${center.state.name}`,
-    description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+    title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+    description: `Pusat dialisis ${
+      center.dialysisCenterName
+    } di ${location}. Menyediakan ${services} untuk pesakit buah pinggang. ${
+      center.sector === "MOH"
+        ? "Hospital kerajaan"
+        : center.sector === "NGO"
+        ? "Pusat NGO"
+        : "Pusat swasta"
+    }.`,
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
       url: canonicalUrl,
-      title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
-      description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      description: `Pusat dialisis ${center.dialysisCenterName} di ${location}. Menyediakan ${services} untuk pesakit buah pinggang.`,
       siteName: "Dialisis MY",
       locale: "ms_MY",
       type: "article",
+      images: [
+        {
+          url: "https://dialisis.my/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: `Pusat Dialisis ${center.dialysisCenterName} di ${location}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      description: `Pusat dialisis di ${location}. Menyediakan ${services}.`,
+      images: ["/og-image.png"],
     },
   };
 };
+
+// Add static generation for better performance and SEO
+export async function generateStaticParams() {
+  // Get all centers for static generation
+  const centers = await prisma.dialysisCenter.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return centers.map((center) => ({
+    slug: center.slug,
+  }));
+}
 
 export default async function DialysisCenterPage({
   params,
@@ -141,14 +200,48 @@ export default async function DialysisCenterPage({
   }
 
   const jsonLd = generateJsonLd(center);
-
   const isFeatured = !!center?.featured;
+
+  // Format location for breadcrumbs structured data
+  const locationParts = [
+    { name: "Dialisis MY", item: "https://dialisis.my" },
+    {
+      name: center.state.name,
+      item: `https://dialisis.my/peta?state=${encodeURIComponent(
+        center.state.name
+      )}`,
+    },
+    {
+      name: center.town,
+      item: `https://dialisis.my/peta?town=${encodeURIComponent(center.town)}`,
+    },
+    {
+      name: center.dialysisCenterName,
+      item: `https://dialisis.my/${center.slug}`,
+    },
+  ];
+
+  // Create breadcrumbs structured data
+  const breadcrumbsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: locationParts.map((part, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: part.name,
+      item: part.item,
+    })),
+  };
 
   return (
     <main className="w-full mb-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
       {isFeatured ? (
         <EnhancedDialysisCenterDetails center={center} />

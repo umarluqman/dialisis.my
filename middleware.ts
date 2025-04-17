@@ -6,10 +6,10 @@ const PUBLIC_FILE = /\.(.*)$/;
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  // Handle old URL pattern redirects
-  const oldPatternMatch = path.match(/^\/undefined\/(.+)$/);
-  if (oldPatternMatch) {
-    const [, slug] = oldPatternMatch;
+  // Enhanced URL pattern matching for redirects
+  // Handles both /undefined/ and /dialysis-center/ legacy paths
+  if (path.match(/^\/undefined\/(.+)$/) || path.match(/^\/dialysis-center\/(.+)$/)) {
+    const slug = path.replace(/^\/undefined\/|^\/dialysis-center\//, '');
     return NextResponse.redirect(new URL(`/${slug}`, request.url), {
       status: 301, // Permanent redirect
     });
@@ -33,5 +33,6 @@ export const config = {
     "/_next/:path*",
     "/:path*.:ext*", // matches files like favicon.ico, manifest.json, etc.
     "/undefined/:path*", // match old URL pattern
+    "/dialysis-center/:path*", // match alternative URL pattern
   ],
 };
