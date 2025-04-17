@@ -51,10 +51,10 @@ const nextConfig = {
         destination: '/:slug',
         permanent: true,
       },
-      // Normalize trailing slashes
+      // Normalize trailing slashes - more specific to avoid refresh loops
       {
-        source: '/:path*/',
-        destination: '/:path*',
+        source: '/((?!api|_next).+)/$',
+        destination: '/$1',
         permanent: true,
       },
       // Redirect old paths if they existed in your app

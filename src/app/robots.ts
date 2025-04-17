@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
+  
   return {
     rules: [
       {
@@ -17,7 +19,7 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: "https://dialisis.my/sitemap-index.xml", // Point to index
-    host: "https://dialisis.my",
+    sitemap: `${baseUrl}/sitemap-index.xml`, // Point to index
+    host: baseUrl,
   };
 }

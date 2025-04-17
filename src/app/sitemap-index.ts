@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db";
 import { MetadataRoute } from "next";
 
+// A sitemap index file is just a special type of sitemap
 export default async function sitemapIndex(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
 
@@ -9,7 +10,7 @@ export default async function sitemapIndex(): Promise<MetadataRoute.Sitemap> {
   const CENTERS_PER_SITEMAP = 1000;
   const totalSitemaps = Math.ceil(totalCenters / CENTERS_PER_SITEMAP) || 1;
 
-  // Create the main sitemap for static pages
+  // Create the sitemap index entries
   const sitemaps = [
     {
       url: `${baseUrl}/sitemap.xml`,
