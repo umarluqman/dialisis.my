@@ -31,7 +31,7 @@ export default function HubungiKamiPage() {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-muted-foreground" />
                 <span className="text-muted-foreground">
-                  johari.workk@gmail.com
+                  joharidialisis.my@gmail.com
                 </span>
               </div>
 
