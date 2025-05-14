@@ -14,7 +14,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
-    default: "Dialisis MY | Cari Pusat Dialisis di Malaysia | Direktori Lengkap",
+    default:
+      "Dialisis MY | Cari Pusat Dialisis di Malaysia | Direktori Lengkap",
     template: "%s | Dialisis MY - Direktori Pusat Dialisis Malaysia",
   },
   description:
@@ -90,6 +91,10 @@ export default function RootLayout({
           sizes="180x180"
           href="/apple-touch-icon.png"
         />
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-6347723914725237"
+        ></meta>
         <meta name="apple-mobile-web-app-title" content="Dialisis MY" />
         <meta name="application-name" content="Dialisis MY" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
