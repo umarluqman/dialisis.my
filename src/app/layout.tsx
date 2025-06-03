@@ -119,6 +119,11 @@ export default function RootLayout({
           <Footer />
         </NuqsAdapter>
       </body>
+      <script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6347723914725237"
+        crossOrigin="anonymous"
+      ></script>
     </html>
   );
 }
