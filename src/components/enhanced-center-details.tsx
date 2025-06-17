@@ -431,25 +431,48 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
       {/* Fixed CTA Section */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center gap-4">
             <div className="flex-1">
               <h3 className="font-semibold text-lg">
                 {center.dialysisCenterName}
               </h3>
               <p className="text-sm text-muted-foreground">{shortAddress}</p>
             </div>
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-              asChild
-            >
-              <a href={`tel:${center.phoneNumber}`}>
-                <Phone className="w-5 h-5 text-primary-foreground" />
-                <span className="text-primary-foreground">
-                  Hubungi Sekarang
-                </span>
-              </a>
-            </Button>
+            <div className="flex flex-col gap-2 sm:flex-row">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
+                asChild
+              >
+                <a href={`tel:${center.phoneNumber}`}>
+                  <Phone className="w-5 h-5 text-primary-foreground" />
+                  <span className="text-primary-foreground">
+                    Hubungi Sekarang
+                  </span>
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
+                asChild
+                onClick={() =>
+                  (window.location.href = `https://wa.me/+6${center.phoneNumber.replace(
+                    /[\s-]/g,
+                    ""
+                  )}`)
+                }
+              >
+                <div>
+                  <Image
+                    src="/whatsapp.svg"
+                    alt="WhatsApp"
+                    width={20}
+                    height={20}
+                  />
+                  <span className="text-primary-foreground">WhatsApp</span>
+                </div>
+              </Button>
+            </div>
           </div>
         </div>
       </div>

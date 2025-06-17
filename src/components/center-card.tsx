@@ -9,10 +9,10 @@ import {
   PopiconsPhoneLine,
 } from "@popicons/react";
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-
 interface CenterCardProps {
   slug: string;
   id: string;
@@ -55,6 +55,7 @@ export function CenterCard({
 }: CenterCardProps) {
   const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
+  console.log({ phoneNumber, title });
 
   const hepatitisArray = hepatitisBay ? hepatitisBay.split(", ") : [];
   const treatmentArray = unitsArray.map((unit) => ({
@@ -164,6 +165,26 @@ export function CenterCard({
               <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
               Panggil
             </Button>
+            {isFeatured && phoneNumber ? (
+              <Button
+                variant="outline"
+                className="px-4 border-primary-foreground/30"
+                onClick={() =>
+                  (window.location.href = `https://wa.me/+6${phoneNumber.replace(
+                    /[\s-]/g,
+                    ""
+                  )}`)
+                }
+              >
+                <Image
+                  src="/whatsapp.svg"
+                  alt="WhatsApp"
+                  width={20}
+                  height={20}
+                />
+                WhatsApp
+              </Button>
+            ) : null}
 
             <Button
               variant={"outline"}

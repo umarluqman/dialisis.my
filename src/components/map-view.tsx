@@ -77,7 +77,11 @@ export default function MapView({ center }: { center?: [number, number] }) {
     let time = 0;
 
     const animatePulse = () => {
-      if (!map.current || !map.current.getLayer("featured-point-halo")) {
+      if (
+        !map.current ||
+        (!map.current.getLayer("featured-point-halo") &&
+          !map.current.getLayer("featured-cluster-halo"))
+      ) {
         return;
       }
 
@@ -93,17 +97,46 @@ export default function MapView({ center }: { center?: [number, number] }) {
       // More pronounced opacity changes (0.15-0.4)
       opacity = 0.15 + 0.25 * easeInOutSine;
 
-      map.current.setPaintProperty(
-        "featured-point-halo",
-        "circle-radius",
-        size
-      );
+      // Update featured point halo if it exists
+      if (map.current.getLayer("featured-point-halo")) {
+        map.current.setPaintProperty(
+          "featured-point-halo",
+          "circle-radius",
+          size
+        );
 
-      map.current.setPaintProperty(
-        "featured-point-halo",
-        "circle-opacity",
-        opacity
-      );
+        map.current.setPaintProperty(
+          "featured-point-halo",
+          "circle-opacity",
+          opacity
+        );
+      }
+
+      // Update featured cluster halo if it exists
+      if (map.current.getLayer("featured-cluster-halo")) {
+        // Calculate cluster halo sizes based on cluster size
+        const clusterSizes = [
+          35 + 12 * easeInOutSine, // Small clusters
+          45 + 12 * easeInOutSine, // Medium clusters
+          55 + 12 * easeInOutSine, // Large clusters
+        ];
+
+        map.current.setPaintProperty("featured-cluster-halo", "circle-radius", [
+          "step",
+          ["get", "point_count"],
+          clusterSizes[0], // Base size + halo for small clusters
+          50,
+          clusterSizes[1], // Medium size + halo
+          100,
+          clusterSizes[2], // Large size + halo
+        ]);
+
+        map.current.setPaintProperty(
+          "featured-cluster-halo",
+          "circle-opacity",
+          opacity
+        );
+      }
 
       animationRef.current = requestAnimationFrame(animatePulse);
     };
@@ -111,7 +144,8 @@ export default function MapView({ center }: { center?: [number, number] }) {
     if (
       map.current &&
       map.current.loaded() &&
-      map.current.getLayer("featured-point-halo")
+      (map.current.getLayer("featured-point-halo") ||
+        map.current.getLayer("featured-cluster-halo"))
     ) {
       animationRef.current = requestAnimationFrame(animatePulse);
     } else {
@@ -120,7 +154,8 @@ export default function MapView({ center }: { center?: [number, number] }) {
         if (
           map.current &&
           map.current.loaded() &&
-          map.current.getLayer("featured-point-halo")
+          (map.current.getLayer("featured-point-halo") ||
+            map.current.getLayer("featured-cluster-halo"))
         ) {
           animationRef.current = requestAnimationFrame(animatePulse);
         } else {
@@ -231,9 +266,13 @@ export default function MapView({ center }: { center?: [number, number] }) {
           cluster: true,
           clusterMaxZoom: 14,
           clusterRadius: 50,
+          clusterProperties: {
+            // Add cluster property to track if any point in cluster is featured
+            hasFeatured: ["any", ["get", "featured"]],
+          },
         });
 
-        // Add cluster layer
+        // Add cluster layer with featured center detection
         map.current?.addLayer({
           id: "clusters",
           type: "circle",
@@ -241,13 +280,19 @@ export default function MapView({ center }: { center?: [number, number] }) {
           filter: ["has", "point_count"],
           paint: {
             "circle-color": [
-              "step",
-              ["get", "point_count"],
-              "#012f54", // Dark blue for small clusters
-              50,
-              "#2bde80", // Green for medium clusters
-              100,
-              "#a3bdff", // Light blue for large clusters
+              "case",
+              ["get", "hasFeatured"], // If cluster has featured centers
+              "#f59e0b", // Use amber/yellow for featured clusters
+              [
+                // Otherwise use the original step-based coloring
+                "step",
+                ["get", "point_count"],
+                "#012f54", // Dark blue for small clusters
+                50,
+                "#2bde80", // Green for medium clusters
+                100,
+                "#a3bdff", // Light blue for large clusters
+              ],
             ],
             "circle-radius": [
               "step",
@@ -262,6 +307,31 @@ export default function MapView({ center }: { center?: [number, number] }) {
             "circle-stroke-width": 3,
             "circle-stroke-color": "#ffffff",
             "circle-stroke-opacity": 0.5,
+          },
+        });
+
+        // Add pulsing halo layer for featured clusters
+        map.current?.addLayer({
+          id: "featured-cluster-halo",
+          type: "circle",
+          source: "centers",
+          filter: ["all", ["has", "point_count"], ["get", "hasFeatured"]],
+          paint: {
+            "circle-color": "#fbbf24", // Amber color
+            "circle-radius": [
+              "step",
+              ["get", "point_count"],
+              35, // Base size + halo for small clusters
+              50,
+              45, // Medium size + halo
+              100,
+              55, // Large size + halo
+            ],
+            "circle-opacity": 0.15, // Start from lower opacity
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-opacity": 0.3,
+            "circle-blur": 0.8, // Increased blur for softer edges
           },
         });
 
@@ -324,17 +394,25 @@ export default function MapView({ center }: { center?: [number, number] }) {
         });
 
         // Add hover effects for clusters and points
-        map.current?.on("mouseenter", ["clusters", "unclustered-point"], () => {
-          if (map.current) {
-            map.current.getCanvas().style.cursor = "pointer";
+        map.current?.on(
+          "mouseenter",
+          ["clusters", "featured-cluster-halo", "unclustered-point"],
+          () => {
+            if (map.current) {
+              map.current.getCanvas().style.cursor = "pointer";
+            }
           }
-        });
+        );
 
-        map.current?.on("mouseleave", ["clusters", "unclustered-point"], () => {
-          if (map.current) {
-            map.current.getCanvas().style.cursor = "";
+        map.current?.on(
+          "mouseleave",
+          ["clusters", "featured-cluster-halo", "unclustered-point"],
+          () => {
+            if (map.current) {
+              map.current.getCanvas().style.cursor = "";
+            }
           }
-        });
+        );
 
         // Handle click events on individual points
         map.current?.on("click", "unclustered-point", (e) => {
@@ -383,7 +461,26 @@ export default function MapView({ center }: { center?: [number, number] }) {
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }
-      map.current?.remove();
+
+      // Graceful cleanup to prevent AbortError
+      if (map.current) {
+        try {
+          // Stop any ongoing animations or requests
+          if (map.current.loaded()) {
+            map.current.stop();
+          }
+
+          // Remove the map instance
+          map.current.remove();
+        } catch (error) {
+          // Silently handle abort errors during cleanup
+          if (error instanceof Error && error.name !== "AbortError") {
+            console.warn("Error during map cleanup:", error);
+          }
+        } finally {
+          map.current = null;
+        }
+      }
     };
   }, [center]);
 
