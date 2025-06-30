@@ -40,26 +40,6 @@ const SingleCenterMap = dynamic(
   }
 );
 
-// Dummy gallery images
-const GALLERY_IMAGES = [
-  {
-    src: "/contoh/satu.webp",
-    alt: "pusat-hemodialisis-as-salam",
-  },
-  {
-    src: "/contoh/tiga.webp",
-    alt: "pasukan-pusat-hemodialisis-as-salam",
-  },
-  {
-    src: "/contoh/empat.webp",
-    alt: "lokasi-pusat-hemodialisis-as-salam",
-  },
-  {
-    src: "/contoh/dua.webp",
-    alt: "ruang-pusat-hemodialisis-as-salam",
-  },
-];
-
 // Dummy benefits data
 const BENEFITS = [
   {
@@ -96,6 +76,46 @@ interface Props {
 
 export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const isInBachok = center.town === "Bachok";
+  // Dummy gallery images
+  const GALLERY_IMAGES = isInBachok
+    ? [
+        {
+          src: "/contoh/as-salam-bachok/satu.webp",
+          alt: "pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/as-salam-bachok/tiga.webp",
+          alt: "pasukan-pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/as-salam-bachok/empat.webp",
+          alt: "lokasi-pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/as-salam-bachok/dua.webp",
+          alt: "ruang-pusat-hemodialisis-as-salam",
+        },
+      ]
+    : [
+        {
+          src: "/contoh/satu.webp",
+          alt: "pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/tiga.webp",
+          alt: "pasukan-pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/empat.webp",
+          alt: "lokasi-pusat-hemodialisis-as-salam",
+        },
+        {
+          src: "/contoh/dua.webp",
+          alt: "ruang-pusat-hemodialisis-as-salam",
+        },
+      ];
 
   const stateName = center.state.name
     .split(" ")

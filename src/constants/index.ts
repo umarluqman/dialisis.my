@@ -90,6 +90,8 @@ export const CITIES: Record<string, string[]> = {
     "Gua Musang",
     "Kuala Krai",
     "Tumpat",
+    "Bachok",
+    "Jeli",
   ],
   Melaka: [
     "Bandaraya Melaka",
