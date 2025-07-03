@@ -81,11 +81,7 @@ export const CITIES: Record<string, string[]> = {
   ],
   Kelantan: [
     "Kota Bharu",
-    "Pangkal Kalong",
     "Tanah Merah",
-    "Peringat",
-    "Wakaf Baru",
-    "Kadok",
     "Pasir Mas",
     "Gua Musang",
     "Kuala Krai",
