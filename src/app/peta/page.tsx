@@ -18,9 +18,6 @@ export const metadata: Metadata = {
     locale: "ms_MY",
     type: "website",
   },
-  alternates: {
-    canonical: "https://dialisis.my/peta",
-  },
 };
 
 // Import map component dynamically to avoid SSR issues
