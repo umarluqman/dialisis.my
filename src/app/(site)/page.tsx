@@ -1,3 +1,4 @@
+import { FeaturedDialysisSection } from "@/components/featured-dialysis-section";
 import FilterLayout from "@/components/filter-layout";
 import { prisma } from "@/lib/db";
 
@@ -24,6 +25,23 @@ async function getDialysisCenters(page: number = 1) {
     totalPages: Math.ceil(total / ITEMS_PER_PAGE),
     currentPage: page,
   };
+}
+
+async function getFeaturedDialysisCenters() {
+  const centers = await prisma.dialysisCenter.findMany({
+    where: {
+      isFeatured: true,
+    },
+    include: {
+      state: true,
+    },
+    take: 6, // Limit to 6 featured centers
+    orderBy: {
+      dialysisCenterName: "asc",
+    },
+  });
+
+  return centers;
 }
 
 function getVisiblePages(currentPage: number, totalPages: number) {
@@ -64,9 +82,11 @@ export default async function DialysisCenterDirectory({
 }) {
   const currentPage = Number(searchParams.page) || 1;
   const { centers: data, totalPages } = await getDialysisCenters(currentPage);
+  const featuredCenters = await getFeaturedDialysisCenters();
 
   return (
     <FilterLayout>
+      <FeaturedDialysisSection centers={featuredCenters} />
       {/* <div className="min-h-screen bg-gray-100">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 grid-rows-[repeat(auto-fill,minmax(0,auto))] mb-8">
           {data.map((item) => {

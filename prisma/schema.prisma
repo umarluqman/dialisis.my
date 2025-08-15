@@ -31,6 +31,8 @@ model DialysisCenter {
   website            String?
   title              String   @default("")
   units              String   @default("") // Will store as comma-separated string e.g. "HD Unit,CAPD Unit"
+  photos             String   @default("") // Will store as JSON array of photo URLs
+  isFeatured         Boolean  @default(false)
   state              State    @relation(fields: [stateId], references: [id])
   stateId            String
   createdAt          DateTime @default(now())
@@ -42,6 +44,7 @@ model DialysisCenter {
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([isFeatured])
 }
 
 model State {
