@@ -3,8 +3,6 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export const runtime = "edge";
-
 // Schema for center updates
 const updateCenterSchema = z.object({
   dialysisCenterName: z.string().optional(),

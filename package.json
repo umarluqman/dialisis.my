@@ -3,19 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev": "next dev",
     "build": "npx prisma generate && next build",
-    "pages:build": "npx prisma generate && next build && npx @cloudflare/next-on-pages",
-    "pages:deploy": "NEXT_PUBLIC_SITE_URL=$SITE_URL npx prisma generate && next build && npx @cloudflare/next-on-pages",
-    "pages:dev": "npx wrangler pages dev .vercel/output/static --compatibility-date=2024-01-01",
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
     "test:e2e": "playwright test",
     "db": "npx dotenv -e .env.local -- prisma migrate dev",
     "studio": "npx dotenv -e .env.local -- prisma studio",
-    "dev": "next dev",
-    "db:push": "dotenv -e .env -- prisma db push",
-    "prod:build": "npx prisma generate && npx prisma migrate deploy && next build",
+    "db:push": "dotenv -e .env.local -- prisma db push",
+    "db:migrate": "npx dotenv -e .env.local -- prisma migrate deploy",
     "populate-db": "node scripts/populate-db.js",
     "seed:states": "node scripts/seed-states.js"
   },
@@ -63,7 +60,6 @@
     "zod": "^4.0.17"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.13.5",
     "@playwright/test": "^1.31.2",
     "@types/bcryptjs": "^3.0.0",
     "@types/jsonwebtoken": "^9.0.10",
@@ -74,7 +70,6 @@
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prisma": "^5.21.1",
-    "tailwindcss": "^3.3.1",
-    "wrangler": "^3.83.0"
+    "tailwindcss": "^3.3.1"
   }
 }

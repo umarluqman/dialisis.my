@@ -3,8 +3,6 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 
-export const runtime = "edge";
-
 // Validation schema for registration
 const registerSchema = z.object({
   email: z.string().email(),
