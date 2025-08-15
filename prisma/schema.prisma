@@ -11,6 +11,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String
+  name          String?
+  role          String    @default("business_owner") // "admin", "business_owner", "viewer"
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relationship with BusinessOwner
+  businessOwner BusinessOwner?
+  
+  @@index([email])
+}
+
+model BusinessOwner {
+  id              String           @id @default(cuid())
+  userId          String           @unique
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  // Business details
+  businessName    String?
+  phoneNumber     String?
+  address         String?
+  
+  // Relationship with DialysisCenters - one owner can have multiple centers
+  dialysisCenters DialysisCenter[]
+  
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  
+  @@index([userId])
+}
+
 model DialysisCenter {
   id                 String   @id @default(cuid())
   dialysisCenterName String   @default("")
@@ -36,12 +70,17 @@ model DialysisCenter {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   town               String   @default("")
+  
+  // Relationship with BusinessOwner
+  ownerId            String?
+  owner              BusinessOwner? @relation(fields: [ownerId], references: [id], onDelete: SetNull)
 
   @@index([sector])
   @@index([title])
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([ownerId])
 }
 
 model State {
@@ -50,4 +89,24 @@ model State {
   dialysisCenters DialysisCenter[]
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
+}
+
+// NextAuth.js models for session management
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
