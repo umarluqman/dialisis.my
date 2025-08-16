@@ -3,6 +3,7 @@ import Footer from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
+import { SessionProvider } from "@/components/auth/session-provider";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GeistMono } from "geist/font/mono";
@@ -112,12 +113,14 @@ export default function RootLayout({
           // fontSans.variable
         )}
       >
-        <OnlineStatusHandler />
-        <NuqsAdapter>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </NuqsAdapter>
+        <SessionProvider>
+          <OnlineStatusHandler />
+          <NuqsAdapter>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </NuqsAdapter>
+        </SessionProvider>
       </body>
       <script
         async

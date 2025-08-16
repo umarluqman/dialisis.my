@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
 import { Button } from "./ui/button";
+import { UserMenu } from "./auth/user-menu";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,6 +42,7 @@ export const Navbar = () => {
               </Button>
             </Link>
           </div>
+          <UserMenu />
         </div>
 
         {/* Mobile View */}
@@ -71,6 +73,7 @@ export const Navbar = () => {
                 <span className="text-sm font-medium">Hubungi Kami</span>
               </Button>
             </Link>
+            <UserMenu />
           </div>
         </div>
 
