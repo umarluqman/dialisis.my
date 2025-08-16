@@ -13,6 +13,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { CenterCardGallery } from "./center-card-gallery";
+
 interface CenterCardProps {
   slug: string;
   id: string;
@@ -33,6 +35,29 @@ interface CenterCardProps {
   longitude?: number;
   showService?: boolean;
   featured: boolean;
+  photos?: string;
+}
+
+// Helper function to parse photos string into array
+function parsePhotos(photosString?: string) {
+  if (!photosString) return [];
+  
+  try {
+    const parsed = JSON.parse(photosString);
+    if (Array.isArray(parsed)) {
+      return parsed.map((photo, index) => ({
+        src: photo.src || photo,
+        alt: photo.alt || `Image ${index + 1}`,
+      }));
+    }
+    return [];
+  } catch {
+    // If parsing fails, treat as comma-separated URLs
+    return photosString.split(',').filter(Boolean).map((url, index) => ({
+      src: url.trim(),
+      alt: `Image ${index + 1}`,
+    }));
+  }
 }
 
 export function CenterCard({
@@ -52,6 +77,7 @@ export function CenterCard({
   latitude,
   showService = true,
   longitude,
+  photos,
 }: CenterCardProps) {
   const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
@@ -72,6 +98,9 @@ export function CenterCard({
   const isFeatured = featured;
   console.log({ isFeatured, dialysisCenterName });
 
+  // Get sample images for featured centers (temporary until real data is available)
+  const galleryImages = isFeatured ? getSampleImages(town, dialysisCenterName) : parsePhotos(photos);
+
   return (
     <Card
       className={`shadow-sm transition-shadow flex flex-col min-h-fit relative ${
@@ -81,10 +110,21 @@ export function CenterCard({
       }`}
     >
       {isFeatured && (
-        <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none">
+        <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none z-10">
           Featured
         </Badge>
       )}
+      
+      {/* Photo Gallery for Featured Centers */}
+      {isFeatured && galleryImages.length > 0 && (
+        <div className="p-4 pb-0">
+          <CenterCardGallery 
+            images={galleryImages} 
+            centerName={title}
+          />
+        </div>
+      )}
+
       <CardHeader className="pb-0">
         <CardTitle className="text-lg font-bold text-foreground">
           {title}
@@ -245,4 +285,31 @@ export function CenterCard({
       </CardContent>
     </Card>
   );
+}
+
+// Temporary function to provide sample images for featured centers
+function getSampleImages(town: string, centerName: string) {
+  // Sample images for demonstration
+  const sampleSets = [
+    [
+      { src: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800", alt: "Ruang rawatan dialisis" },
+      { src: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800", alt: "Peralatan dialisis moden" },
+      { src: "https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800", alt: "Bilik rawatan" },
+      { src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800", alt: "Kakitangan perubatan" },
+    ],
+    [
+      { src: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800", alt: "Kaunter pendaftaran" },
+      { src: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800", alt: "Ruang menunggu" },
+      { src: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800", alt: "Doktor bertugas" },
+    ],
+    [
+      { src: "https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=800", alt: "Bangunan pusat dialisis" },
+      { src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800", alt: "Ruang rawatan bersih" },
+      { src: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800", alt: "Peralatan perubatan" },
+    ],
+  ];
+
+  // Use a consistent set based on center name hash
+  const hash = centerName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  return sampleSets[hash % sampleSets.length];
 }
