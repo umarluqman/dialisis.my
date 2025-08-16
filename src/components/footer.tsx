@@ -23,31 +23,6 @@ const lawatiJuga = [
   },
 ];
 
-const more = [
-  {
-    label: "Faham & Amal Al-Quran",
-    href: "https://www.youtube.com/c/GhulamAlDakwah?ref=dialisis.my",
-  },
-  // { label: "Guna Bitcoin", href: "https://gunabitcoin.my/?ref=dialisis.my" },
-  // {
-  //   label: "Bitcoin Majlis",
-  //   href: "https://bitcoinmajlis.org/?ref=dialisis.my",
-  // },
-  // { label: "Semak Hadis", href: "https://semakhadis.com/?ref=dialisis.my" },
-  // {
-  //   label: "Baca Hadis",
-  //   href: "https://www.youtube.com/@bacahadis?ref=dialisis.my",
-  // },
-  // {
-  //   label: "Sedekah Online ke Masjid",
-  //   href: "https://sedekahje.com/?ref=dialisis.my",
-  // },
-  // {
-  //   label: "Aplikasi Waktu Solat di Masjid",
-  //   href: "https://masjid.org.my/?ref=dialisis.my",
-  // },
-];
-
 const relatedLinks = [
   {
     label: "National Renal Registry (NRR)",
@@ -121,25 +96,6 @@ export default function Footer() {
             </h3>
             <ul className="mt-4 space-y-4">
               {relatedLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <Link
-                    href={href}
-                    className="text-base text-gray-500 hover:text-gray-900"
-                    target="_blank"
-                    rel="follow"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Tambahan
-            </h3>
-            <ul className="mt-4 space-y-4">
-              {more.map(({ label, href }) => (
                 <li key={label}>
                   <Link
                     href={href}
