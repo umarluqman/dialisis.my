@@ -4,6 +4,24 @@ export const metadata: Metadata = {
   title: "Terma dan Syarat",
   description:
     "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
+  alternates: {
+    canonical: "https://dialisis.my/terma-dan-syarat",
+  },
+  openGraph: {
+    title: "Terma dan Syarat | Dialisis MY",
+    description:
+      "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
+    url: "https://dialisis.my/terma-dan-syarat",
+    type: "website",
+    siteName: "Dialisis.my",
+    locale: "ms_MY",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terma dan Syarat | Dialisis.my",
+    description:
+      "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
+  },
 };
 
 export default function TermaPage() {

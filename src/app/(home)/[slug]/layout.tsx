@@ -46,8 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const canonicalUrl = `${process.env.NEXT_PUBLIC_APP_URL}/${params.slug}`;
-  const ogImageUrl = `${process.env.NEXT_PUBLIC_APP_URL}/api/og/${params.slug}`;
+  const canonicalUrl = `https://dialisis.my/${params.slug}`;
+  const ogImageUrl = `https://dialisis.my/api/og/${params.slug}`;
 
   return {
     title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,

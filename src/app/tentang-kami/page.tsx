@@ -1,9 +1,27 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tentang Kami",
+  title: "Ketahui Lebih Lanjut Tentang Dialisis MY",
   description:
     "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
+  alternates: {
+    canonical: "https://dialisis.my/tentang-kami",
+  },
+  openGraph: {
+    title: "Tentang Kami | Dialisis MY",
+    description:
+      "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
+    url: "https://dialisis.my/tentang-kami",
+    type: "website",
+    siteName: "Dialisis.my",
+    locale: "ms_MY",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tentang Kami | Dialisis.my",
+    description:
+      "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
+  },
 };
 
 export default function TentangKamiPage() {
