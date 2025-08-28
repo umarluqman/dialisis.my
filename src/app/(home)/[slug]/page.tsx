@@ -105,6 +105,64 @@ function generateJsonLd(center: CenterWithState): any {
   };
 }
 
+function generateFAQJsonLd(center: CenterWithState): any {
+  const faqItems = [
+    {
+      question: "Apakah jenis rawatan dialisis yang disediakan?",
+      answer: `${center.dialysisCenterName} menyediakan perkhidmatan hemodialisis (HD) berkualiti tinggi dengan menggunakan peralatan moden dan teknologi terkini. Kami juga menawarkan rawatan untuk pesakit Hepatitis B dan C di ruang khas yang berasingan untuk memastikan keselamatan semua pesakit.`,
+    },
+    {
+      question: "Berapa kos rawatan dialisis di pusat ini?",
+      answer: "Kos rawatan bergantung kepada jenis rawatan dan keperluan pesakit. Kami menerima pembayaran melalui panel insurans, SOCSO, dan pembayaran sendiri. Sila hubungi kami untuk maklumat terperinci mengenai pakej rawatan dan kaedah pembayaran yang tersedia.",
+    },
+    {
+      question: "Bagaimana untuk membuat temujanji rawatan?",
+      answer: `Untuk membuat temujanji, anda boleh menghubungi kami di ${center.phoneNumber || center.tel || "nombor telefon kami"} atau datang terus ke pusat kami. Pasukan kami akan membantu mengatur jadual rawatan yang sesuai dengan keperluan anda.`,
+    },
+    {
+      question: "Apakah waktu operasi pusat dialisis ini?",
+      answer: "Pusat kami beroperasi dari Isnin hingga Sabtu dengan tiga sesi harian: Sesi Pagi (7:00 pagi - 12:00 tengahari), Sesi Tengahari (12:30 - 5:30 petang), dan Sesi Malam (6:00 - 11:00 malam).",
+    },
+    {
+      question: "Adakah pusat ini menerima pesakit baru?",
+      answer: `Ya, ${center.dialysisCenterName} menerima pesakit baru. Pesakit perlu membawa surat rujukan dari doktor, laporan perubatan terkini, dan dokumen berkaitan.`,
+    },
+    {
+      question: "Apakah kemudahan yang disediakan untuk pesakit?",
+      answer: `Kami menyediakan ruang rawatan yang selesa dengan penghawa dingin, katil yang boleh dilaras, TV untuk hiburan, dan makanan ringan. Terdapat juga kemudahan parkir yang mencukupi untuk pesakit dan pelawat di ${center.town}.`,
+    },
+    {
+      question: "Bolehkah keluarga menemani semasa rawatan?",
+      answer: "Ya, ahli keluarga dibenarkan menemani pesakit semasa rawatan. Kami menyediakan kerusi untuk peneman di sebelah setiap katil rawatan.",
+    },
+    {
+      question: "Adakah pusat ini mempunyai doktor pakar?",
+      answer: "Pusat kami mempunyai doktor bertugas yang berpengalaman dan pakar nefrologi panel yang membuat lawatan berkala.",
+    },
+    {
+      question: "Apakah langkah keselamatan COVID-19 yang diambil?",
+      answer: "Kami mengamalkan SOP ketat termasuk pemeriksaan suhu, pemakaian pelitup muka, penjarakan sosial, dan sanitasi berkala.",
+    },
+    {
+      question: "Bagaimana untuk mendapatkan bantuan kewangan untuk rawatan?",
+      answer: "Terdapat beberapa pilihan bantuan kewangan termasuk Skim Bantuan Dialisis Kerajaan, bantuan Zakat, SOCSO, dan NGO. Pasukan kami boleh membantu anda memohon bantuan yang sesuai.",
+    },
+  ];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 export const generateMetadata = async ({ params }: Props) => {
   const center = await getCenter(params.slug);
 
@@ -201,6 +259,7 @@ export default async function DialysisCenterPage({
 
   const jsonLd = generateJsonLd(center);
   const isFeatured = !!center?.featured;
+  const faqJsonLd = isFeatured ? generateFAQJsonLd(center) : null;
 
   // Format location for breadcrumbs structured data
   const locationParts = [
@@ -243,6 +302,12 @@ export default async function DialysisCenterPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {isFeatured ? (
         <EnhancedDialysisCenterDetails center={center} />
       ) : (

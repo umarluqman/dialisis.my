@@ -8,6 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { FAQSection } from "@/components/faq-section";
 import { DialysisCenter, State } from "@prisma/client";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -446,6 +447,13 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             ))}
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <FAQSection 
+          centerName={center.dialysisCenterName}
+          phoneNumber={center.phoneNumber}
+          town={center.town}
+        />
       </div>
 
       {/* Fixed CTA Section */}
