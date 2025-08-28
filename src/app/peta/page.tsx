@@ -6,17 +6,26 @@ import { Suspense } from "react";
 
 // Metadata export
 export const metadata: Metadata = {
-  title: "Peta Pusat Dialisis Malaysia",
+  title: "Peta Pusat Dialisis di Malaysia",
   description:
-    "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan oleh pusat dialisis di seluruh Malaysia.",
+    "Cari pusat dialisis berdekatan dengan anda melalui peta interaktif. Lihat maklumat lengkap perkhidmatan pusat dialisis di Malaysia.",
+  alternates: {
+    canonical: "https://dialisis.my/peta",
+  },
   openGraph: {
-    title: "Peta Pusat Dialisis Malaysia | Dialisis MY",
+    title: "Peta Pusat Dialisis di Malaysia | Dialisis MY",
     description:
       "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan.",
     url: "https://dialisis.my/peta",
     siteName: "Dialisis MY",
     locale: "ms_MY",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Peta Pusat Dialisis di Malaysia | Dialisis MY",
+    description:
+      "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan.",
   },
 };
 

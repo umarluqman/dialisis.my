@@ -63,15 +63,15 @@
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.5",
-    "@playwright/test": "^1.31.2",
+    "@playwright/test": "^1.46.0",
     "@types/mapbox-gl": "^3.4.0",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
-    "prisma": "^6.14.0",
-    "tailwindcss": "^3.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "prisma": "^5.21.1",
+    "tailwindcss": "^3.4.10",
     "wrangler": "^3.83.0"
   }
 }

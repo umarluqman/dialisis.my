@@ -4,6 +4,24 @@ export const metadata: Metadata = {
   title: "Polisi Privasi",
   description:
     "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
+  alternates: {
+    canonical: "https://dialisis.my/polisi-privasi",
+  },
+  openGraph: {
+    title: "Polisi Privasi | Dialisis MY",
+    description:
+      "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
+    url: "https://dialisis.my/polisi-privasi",
+    type: "website",
+    siteName: "Dialisis.my",
+    locale: "ms_MY",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Polisi Privasi | Dialisis.my",
+    description:
+      "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
+  },
 };
 
 export default function PrivacyPage() {

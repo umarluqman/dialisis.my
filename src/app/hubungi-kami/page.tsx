@@ -4,9 +4,27 @@ import { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Hubungi Kami",
+  title: "Hubungi Kami untuk Perubahan Maklumat Pusat Dialisis Anda",
   description:
     "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
+  alternates: {
+    canonical: "https://dialisis.my/hubungi-kami",
+  },
+  openGraph: {
+    title: "Hubungi Kami | Dialisis MY",
+    description:
+      "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
+    url: "https://dialisis.my/hubungi-kami",
+    type: "website",
+    siteName: "Dialisis.my",
+    locale: "ms_MY",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hubungi Kami | Dialisis.my",
+    description:
+      "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
+  },
 };
 
 export default function HubungiKamiPage() {

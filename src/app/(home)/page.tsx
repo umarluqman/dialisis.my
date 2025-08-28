@@ -155,21 +155,36 @@ async function getInitialCenters(
 // Add preload hints for critical resources
 const preloadResources = [
   { href: "/fonts/your-font.woff2", as: "font", type: "font/woff2" },
-  { href: process.env.NEXT_PUBLIC_SUPABASE_URL || "", as: "fetch" },
 ];
 
 // Generate metadata
-export const metadata: Metadata = {
-  title: "Cari Pusat Dialisis | Dialisis.my",
-  description:
-    "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
-  openGraph: {
-    title: "Cari Pusat Dialisis | Dialisis.my",
+export async function generateMetadata(): Promise<Metadata> {
+  const canonicalUrl = "https://dialisis.my";
+
+  return {
+    title: "Cari Pusat Dialisis Berdekatan Dengan Mudah",
     description:
-      "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
-    type: "website",
-  },
-};
+      "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: "Cari Pusat Dialisis | Dialisis.my",
+      description:
+        "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+      url: canonicalUrl,
+      type: "website",
+      siteName: "dialisis.my",
+      locale: "ms_MY",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Cari Pusat Dialisis | Dialisis.my",
+      description:
+        "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+    },
+  };
+}
 
 export default async function DialysisCenterDirectory({
   searchParams,

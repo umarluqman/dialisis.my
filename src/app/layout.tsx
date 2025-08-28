@@ -14,12 +14,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
-    default:
-      "Dialisis MY | Cari Pusat Dialisis di Malaysia | Direktori Lengkap",
-    template: "%s | Dialisis MY - Direktori Pusat Dialisis Malaysia",
+    default: "Cari Pusat Dialisis Berdekatan Dengan Mudah",
+    template: "%s | Dialisis MY",
   },
   description:
-    "Direktori lengkap dengan lebih 900 pusat dialisis di seluruh Malaysia. Maklumat tentang lokasi, kontak, doktor, sektor, dan perkhidmatan hemodialisis dan CAPD.",
+    "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+  alternates: {
+    canonical: "https://dialisis.my",
+  },
   keywords: [
     "dialisis malaysia",
     "dialysis malaysia",
@@ -40,6 +42,7 @@ export const metadata: Metadata = {
     title: "Dialisis MY | Cari Pusat Dialisis Malaysia | Direktori Lengkap",
     description:
       "Direktori lengkap dengan lebih 900 pusat dialisis di seluruh Malaysia. Maklumat tentang lokasi, kontak, doktor, sektor, dan perkhidmatan dialisis.",
+    url: "https://dialisis.my",
     siteName: "Dialisis MY",
     images: [
       {

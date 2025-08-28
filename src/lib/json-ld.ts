@@ -34,7 +34,7 @@ export const jsonLdHome = {
 export const jsonLdMap = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Peta Pusat Dialisis Malaysia",
+  name: "Peta Pusat Dialisis di Malaysia",
   description: "Peta interaktif pusat dialisis di Malaysia",
   publisher: {
     "@type": "Organization",
@@ -43,7 +43,7 @@ export const jsonLdMap = {
   },
   mainEntity: {
     "@type": "Map",
-    name: "Peta Pusat Dialisis Malaysia",
+    name: "Peta Pusat Dialisis di Malaysia",
     description:
       "Peta interaktif yang menunjukkan lokasi pusat-pusat dialisis di seluruh Malaysia",
     about: {
