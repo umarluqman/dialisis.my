@@ -40,6 +40,7 @@ model DialysisCenter {
   videos            String?
   state             State    @relation(fields: [stateId], references: [id])
   stateId           String
+  images            CenterImage[]
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   town              String   @default("")
@@ -62,6 +63,24 @@ model State {
   dialysisCenters DialysisCenter[]
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
+}
+
+model CenterImage {
+  id               String         @id @default(cuid())
+  url              String         // Public URL of the image
+  s3Key            String         // S3 object key for deletion
+  altText          String         @default("")
+  description      String?
+  displayOrder     Int            @default(0)
+  isActive         Boolean        @default(true)
+  dialysisCenter   DialysisCenter @relation(fields: [dialysisCenterId], references: [id], onDelete: Cascade)
+  dialysisCenterId String
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([dialysisCenterId])
+  @@index([displayOrder])
+  @@index([isActive])
 }
 
 model Contact {

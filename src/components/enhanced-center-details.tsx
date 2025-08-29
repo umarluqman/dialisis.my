@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { DialysisCenter, State } from "@prisma/client";
+import { ImagesResponse } from "@/types/center-image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Car,
@@ -25,6 +25,7 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
+import useSWR from "swr";
 import { Badge } from "./ui/badge";
 
 // Import map component dynamically to avoid SSR issues
@@ -69,17 +70,57 @@ const BENEFITS = [
 ];
 
 interface Props {
-  center: DialysisCenter & {
-    state: Pick<State, "name">;
+  center: {
+    id: string;
+    slug: string;
+    dialysisCenterName: string;
+    sector: string;
+    drInCharge: string;
+    drInChargeTel: string;
+    address: string;
+    addressWithUnit: string;
+    tel: string;
+    fax?: string;
+    panelNephrologist?: string;
+    centreManager?: string;
+    centreCoordinator?: string;
+    email?: string;
+    hepatitisBay?: string;
+    longitude?: number;
+    latitude?: number;
+    phoneNumber: string;
+    website?: string;
+    title: string;
+    units: string;
+    description?: string;
+    benefits?: string;
+    photos?: string;
+    videos?: string;
+    stateId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    town: string;
+    featured: boolean;
+    state: {
+      name: string;
+    };
   };
 }
 
 export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  // Fetch center images from API
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const {
+    data: imagesData,
+    error,
+    isLoading,
+  } = useSWR<ImagesResponse>(`/api/centers/${center.id}/images`, fetcher);
+
+  // Fallback images for centers without uploaded images
   const isInBachok = center.town === "Bachok";
-  // Dummy gallery images
-  const GALLERY_IMAGES = isInBachok
+  const FALLBACK_IMAGES = isInBachok
     ? [
         {
           src: "/contoh/as-salam-bachok/satu.webp",
@@ -116,6 +157,15 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
           alt: "ruang-pusat-hemodialisis-as-salam",
         },
       ];
+
+  // Use uploaded images if available, otherwise fallback to default images
+  const GALLERY_IMAGES =
+    imagesData?.images && imagesData.images.length > 0
+      ? imagesData.images.map((img) => ({
+          src: img.url,
+          alt: img.altText,
+        }))
+      : FALLBACK_IMAGES;
 
   const stateName = center.state.name
     .split(" ")
@@ -174,53 +224,64 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         <div className="mt-12">
           <h2 className="text-2xl font-semibold mb-6">Galeri</h2>
           <div className="relative">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {GALLERY_IMAGES.map((image, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="md:basis-1/2 lg:basis-1/3 relative"
-                  >
-                    <div className="p-1">
-                      <div
-                        className="overflow-hidden rounded-lg cursor-pointer relative"
-                        onClick={() => setSelectedImage(image.src)}
-                      >
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          width={400}
-                          height={300}
-                          className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
-                        />
-                        {index === 0 && (
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: [0, 0.7, 0] }}
-                            transition={{
-                              repeat: 3,
-                              duration: 2,
-                              delay: 1,
-                            }}
-                            className="absolute inset-0 md:hidden bg-gradient-to-l from-black/20 to-transparent pointer-events-none"
+            {isLoading ? (
+              <div className="flex h-64 items-center justify-center bg-gray-100 rounded-lg">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <span className="ml-2 text-gray-600">Memuatkan galeri...</span>
+              </div>
+            ) : error ? (
+              <div className="flex h-64 items-center justify-center bg-gray-100 rounded-lg">
+                <p className="text-gray-600">Menggunakan gambar contoh</p>
+              </div>
+            ) : (
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {GALLERY_IMAGES.map((image, index) => (
+                    <CarouselItem
+                      key={index}
+                      className="md:basis-1/2 lg:basis-1/3 relative"
+                    >
+                      <div className="p-1">
+                        <div
+                          className="overflow-hidden rounded-lg cursor-pointer relative"
+                          onClick={() => setSelectedImage(image.src)}
+                        >
+                          <Image
+                            src={image.src}
+                            alt={image.alt}
+                            width={400}
+                            height={300}
+                            className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
                           />
-                        )}
+                          {index === 0 && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: [0, 0.7, 0] }}
+                              transition={{
+                                repeat: 3,
+                                duration: 2,
+                                delay: 1,
+                              }}
+                              className="absolute inset-0 md:hidden bg-gradient-to-l from-black/20 to-transparent pointer-events-none"
+                            />
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              {/* Desktop Navigation */}
-              <div className="hidden md:block">
-                <CarouselPrevious className="-left-4 lg:-left-6" />
-                <CarouselNext className="-right-4 lg:-right-6" />
-              </div>
-              {/* Mobile Navigation */}
-              <div className="md:hidden">
-                <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 -translate-x-1/2 shadow-md" />
-                <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 translate-x-1/2 shadow-md" />
-              </div>
-            </Carousel>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {/* Desktop Navigation */}
+                <div className="hidden md:block">
+                  <CarouselPrevious className="-left-4 lg:-left-6" />
+                  <CarouselNext className="-right-4 lg:-right-6" />
+                </div>
+                {/* Mobile Navigation */}
+                <div className="md:hidden">
+                  <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 -translate-x-1/2 shadow-md" />
+                  <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white/90 translate-x-1/2 shadow-md" />
+                </div>
+              </Carousel>
+            )}
           </div>
         </div>
 
