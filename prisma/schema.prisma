@@ -36,12 +36,23 @@ model DialysisCenter {
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
   town               String   @default("")
+  
+  // New premium features
+  featured           Boolean  @default(false)
+  isPremium          Boolean  @default(false)
+  
+  // New relationships
+  ownership          CenterOwnership[]
+  analytics          CenterAnalytics[]
+  images             CenterImage[]
 
   @@index([sector])
   @@index([title])
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([isPremium])
+  @@index([featured])
 }
 
 model State {
@@ -51,3 +62,223 @@ model State {
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
 }
+
+// === AUTHENTICATION & USER MANAGEMENT ===
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  emailVerified Boolean  @default(false)
+  name          String
+  image         String?
+  role          String @default("BUSINESS_OWNER")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // BetterAuth fields
+  sessions      Session[]
+  accounts      Account[]
+  
+  // Business relationships
+  ownedCenters  CenterOwnership[]
+  subscriptions UserSubscription[]
+  
+  @@index([email])
+  @@index([role])
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  sessionToken String @unique
+  userId    String
+  expires   DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@index([userId])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model CenterOwnership {
+  id               String         @id @default(cuid())
+  userId           String
+  dialysisCenterId String
+  isActive         Boolean        @default(true)
+  assignedAt       DateTime       @default(now())
+  assignedBy       String         // Admin user ID
+  
+  user             User           @relation(fields: [userId], references: [id])
+  dialysisCenter   DialysisCenter @relation(fields: [dialysisCenterId], references: [id])
+  
+  @@unique([userId, dialysisCenterId])
+  @@index([userId])
+  @@index([dialysisCenterId])
+}
+
+// === SUBSCRIPTION & PAYMENT ===
+
+model UserSubscription {
+  id                String            @id @default(cuid())
+  userId            String
+  tier              String // FREE, PREMIUM
+  status            String @default("ACTIVE") // ACTIVE, INACTIVE, PAST_DUE, CANCELED, TRIALING
+  billingCycle      String      @default("MONTHLY") // MONTHLY, QUARTERLY, BIANNUAL, ANNUAL
+  centerCount       Int               @default(0)
+  basePrice         Int               // Price per center in cents
+  bulkDiscount      Int               @default(0) // Percentage discount applied
+  finalPrice        Int               // Final price after discount in cents
+  customPricing     Boolean           @default(false) // If admin set custom pricing
+  
+  currentPeriodStart DateTime
+  currentPeriodEnd   DateTime
+  cancelAtPeriodEnd Boolean           @default(false)
+  chipSubscriptionId String?
+  
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  user              User              @relation(fields: [userId], references: [id])
+  payments          Payment[]
+  
+  @@index([userId])
+  @@index([status])
+  @@index([tier])
+  @@index([currentPeriodEnd])
+}
+
+model Payment {
+  id               String        @id @default(cuid())
+  subscriptionId   String
+  chipPaymentId    String        @unique
+  amount           Int           // Amount in cents
+  currency         String        @default("MYR")
+  status           String @default("PENDING") // PENDING, COMPLETED, FAILED, CANCELED, REFUNDED
+  paymentMethod    String        // "duitnow_qr", "card", etc.
+  billingCycle     String // MONTHLY, QUARTERLY, BIANNUAL, ANNUAL
+  
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  
+  subscription     UserSubscription @relation(fields: [subscriptionId], references: [id])
+  
+  @@index([subscriptionId])
+  @@index([status])
+  @@index([chipPaymentId])
+}
+
+model PricingTier {
+  id           String       @id @default(cuid())
+  tier         String // FREE, PREMIUM
+  billingCycle String // MONTHLY, QUARTERLY, BIANNUAL, ANNUAL
+  basePrice    Int          // Price in cents per center
+  isActive     Boolean      @default(true)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  
+  @@unique([tier, billingCycle])
+  @@index([tier])
+  @@index([isActive])
+}
+
+model BulkDiscount {
+  id          String   @id @default(cuid())
+  minCenters  Int
+  maxCenters  Int
+  discount    Int      // Percentage discount (0-100)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([minCenters, maxCenters])
+  @@index([isActive])
+}
+
+// === ANALYTICS ===
+
+model CenterAnalytics {
+  id               String         @id @default(cuid())
+  dialysisCenterId String
+  date             DateTime
+  views            Int            @default(0)
+  phoneClicks      Int            @default(0)
+  whatsappClicks   Int            @default(0)
+  emailClicks      Int            @default(0)
+  websiteClicks    Int            @default(0)
+  mapClicks        Int            @default(0)
+  
+  dialysisCenter   DialysisCenter @relation(fields: [dialysisCenterId], references: [id])
+  
+  @@unique([dialysisCenterId, date])
+  @@index([dialysisCenterId])
+  @@index([date])
+}
+
+// === IMAGE MANAGEMENT ===
+
+model CenterImage {
+  id               String         @id @default(cuid())
+  url              String         // S3 public URL
+  s3Key            String         // S3 object key for deletion
+  altText          String         @default("")
+  description      String?
+  displayOrder     Int            @default(0)
+  isActive         Boolean        @default(true)
+  imageType        String      @default("CUSTOM") // CUSTOM, DEFAULT, TEMPLATE
+  fileSize         Int?           // File size in bytes
+  dimensions       String?        // "1200x800" format
+  uploadedBy       String?        // User ID who uploaded
+  
+  dialysisCenter   DialysisCenter @relation(fields: [dialysisCenterId], references: [id], onDelete: Cascade)
+  dialysisCenterId String
+  
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([dialysisCenterId])
+  @@index([displayOrder])
+  @@index([isActive])
+  @@index([imageType])
+}
+
+model DefaultImage {
+  id          String    @id @default(cuid())
+  s3Key       String    @unique
+  url         String    // S3 public URL
+  altText     String
+  category    String    // "general", "hemodialysis", "peritoneal", "pediatric"
+  isActive    Boolean   @default(true)
+  displayOrder Int      @default(0)
+  
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  @@index([category])
+  @@index([isActive])
+  @@index([displayOrder])
+}
+
+// === CONSTANTS (SQLite doesn't support enums) ===
+// UserRole: SUPER_ADMIN, BUSINESS_OWNER
+// SubscriptionTier: FREE, PREMIUM
+// SubscriptionStatus: ACTIVE, INACTIVE, PAST_DUE, CANCELED, TRIALING
+// BillingCycle: MONTHLY, QUARTERLY, BIANNUAL, ANNUAL
+// PaymentStatus: PENDING, COMPLETED, FAILED, CANCELED, REFUNDED
+// ImageType: CUSTOM, DEFAULT, TEMPLATE
