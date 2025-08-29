@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/db";
+import { prisma } from "@/lib/prisma";
 import { MetadataRoute } from "next";
 
 // A sitemap index file is just a special type of sitemap

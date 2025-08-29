@@ -1,9 +1,6 @@
-"use client";
-
-import { DialysisCenterDetails } from "@/components/center-details";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { prisma } from "@/lib/db";
-import { useRouter } from "next/navigation";
+import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+import { DialysisCenterModalClient } from "./dialysis-center-modal-client";
 
 interface Props {
   params: {
@@ -35,18 +32,11 @@ async function getCenter(slug: string) {
 }
 
 export default async function DialysisCenterModal({ params }: Props) {
-  const router = useRouter();
   const center = await getCenter(params.slug);
 
   if (!center) {
-    return null;
+    redirect("/");
   }
 
-  return (
-    <Dialog open onOpenChange={() => router.back()}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-        <DialysisCenterDetails center={center} isModal />
-      </DialogContent>
-    </Dialog>
-  );
+  return <DialysisCenterModalClient center={center} />;
 }

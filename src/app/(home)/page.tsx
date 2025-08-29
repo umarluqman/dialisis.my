@@ -1,5 +1,5 @@
-import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
+import { prisma } from "@/lib/prisma";
 import { Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";

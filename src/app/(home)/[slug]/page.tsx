@@ -1,7 +1,7 @@
 import { BackButton } from "@/components/back-button";
 import { DialysisCenterDetails } from "@/components/center-details";
 import { EnhancedDialysisCenterDetails } from "@/components/enhanced-center-details";
-import { prisma } from "@/lib/db";
+import { prisma } from "@/lib/prisma";
 import { DialysisCenter, State } from "@prisma/client";
 import { notFound } from "next/navigation";
 
