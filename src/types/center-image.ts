@@ -19,3 +19,4 @@ export interface ImageUploadResponse {
 export interface ImagesResponse {
   images: CenterImage[];
 }
+

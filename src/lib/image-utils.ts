@@ -111,3 +111,4 @@ export function supportsDragAndDrop(): boolean {
     "FileReader" in window
   );
 }
+
