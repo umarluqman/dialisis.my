@@ -1,1 +1,0 @@
-ALTER TABLE DialysisCenter ADD COLUMN featured BOOLEAN NOT NULL DEFAULT false;

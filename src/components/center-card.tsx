@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useCenterImages } from "@/hooks/use-center-images";
 import {
   PopiconsArrowRightLine,
   PopiconsGlobeLine,
@@ -84,7 +85,6 @@ export function CenterCard({
 }: CenterCardProps) {
   const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
-  console.log({ phoneNumber, title });
 
   const hepatitisArray = hepatitisBay ? hepatitisBay.split(", ") : [];
   const treatmentArray = unitsArray.map((unit) => ({
@@ -99,11 +99,21 @@ export function CenterCard({
   }));
 
   const isFeatured = featured;
-  console.log({ isFeatured, dialysisCenterName });
 
-  // Get sample images for featured centers (temporary until real data is available)
+  // Fetch images from API for featured centers
+  const { images: apiImages, isLoading: imagesLoading } = useCenterImages(
+    id,
+    isFeatured
+  );
+
+  // Get images based on whether it's featured or not
   const galleryImages = isFeatured
-    ? getSampleImages(town, dialysisCenterName)
+    ? apiImages.length > 0
+      ? apiImages.map((img) => ({
+          src: img.url,
+          alt: img.altText || `${dialysisCenterName} - Gallery Image`,
+        }))
+      : getSampleImages(town, dialysisCenterName) // Fallback to sample images if no API images
     : parsePhotos(photos);
 
   return (
@@ -121,9 +131,15 @@ export function CenterCard({
       )}
 
       {/* Photo Gallery for Featured Centers */}
-      {isFeatured && galleryImages.length > 0 && (
+      {isFeatured && (
         <div className="p-4 pb-0">
-          <CenterCardGallery images={galleryImages} centerName={title} />
+          {imagesLoading ? (
+            <div className="relative aspect-[4/3] rounded-lg bg-zinc-100 animate-pulse flex items-center justify-center">
+              <div className="text-zinc-400 text-sm">Loading images...</div>
+            </div>
+          ) : galleryImages.length > 0 ? (
+            <CenterCardGallery images={galleryImages} centerName={title} />
+          ) : null}
         </div>
       )}
 

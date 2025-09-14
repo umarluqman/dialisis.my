@@ -1,9 +1,11 @@
-import { deleteImageFromS3, uploadImageToS3 } from "@/lib/s3";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "@/lib/db";
+import {
+  deleteImageFromS3,
+  getSignedImageUrl,
+  uploadImageToS3,
+} from "@/lib/s3";
 import { NextRequest, NextResponse } from "next/server";
 import sharp from "sharp";
-
-const prisma = new PrismaClient();
 
 // GET - Fetch all images for a dialysis center
 export async function GET(
@@ -16,14 +18,34 @@ export async function GET(
     const images = await prisma.centerImage.findMany({
       where: {
         dialysisCenterId: id,
-        isActive: true,
       },
       orderBy: {
         displayOrder: "asc",
       },
     });
+    console.log({ id, images });
 
-    return NextResponse.json({ images });
+    // Generate signed URLs for each image to avoid SSL certificate issues
+    const imagesWithSignedUrls = await Promise.all(
+      images.map(async (image) => {
+        try {
+          const signedUrl = await getSignedImageUrl(image.s3Key, 3600); // 1 hour expiry
+          return {
+            ...image,
+            url: signedUrl,
+          };
+        } catch (error) {
+          console.error(
+            `Error generating signed URL for image ${image.id}:`,
+            error
+          );
+          // Fallback to original URL if signed URL generation fails
+          return image;
+        }
+      })
+    );
+
+    return NextResponse.json({ images: imagesWithSignedUrls });
   } catch (error) {
     console.error("Error fetching center images:", error);
     return NextResponse.json(

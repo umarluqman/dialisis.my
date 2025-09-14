@@ -14,6 +14,7 @@ const s3Client = new S3Client({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
   },
+  forcePathStyle: true, // Use path-style URLs to avoid SSL certificate issues
 });
 
 const BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME!;
@@ -63,7 +64,9 @@ export async function uploadImageToS3(
     const result = await upload.done();
 
     return {
-      url: `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`,
+      url: `https://s3.${
+        process.env.AWS_REGION || "ap-southeast-1"
+      }.amazonaws.com/${BUCKET_NAME}/${key}`,
       key,
     };
   } catch (error) {
@@ -124,7 +127,9 @@ export async function listCenterImages(centerId: string): Promise<string[]> {
     return (
       response.Contents?.map(
         (obj) =>
-          `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${obj.Key}`
+          `https://s3.${
+            process.env.AWS_REGION || "ap-southeast-1"
+          }.amazonaws.com/${BUCKET_NAME}/${obj.Key}`
       ) || []
     );
   } catch (error) {
@@ -156,5 +161,7 @@ export async function uploadCenterImages(
  * Get the public URL for an image (for public buckets)
  */
 export function getPublicImageUrl(key: string): string {
-  return `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+  return `https://s3.${
+    process.env.AWS_REGION || "ap-southeast-1"
+  }.amazonaws.com/${BUCKET_NAME}/${key}`;
 }

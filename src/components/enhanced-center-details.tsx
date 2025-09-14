@@ -109,6 +109,7 @@ interface Props {
 
 export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   // Fetch center images from API
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -116,7 +117,17 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
     data: imagesData,
     error,
     isLoading,
-  } = useSWR<ImagesResponse>(`/api/centers/${center.id}/images`, fetcher);
+  } = useSWR<ImagesResponse>(
+    `db
+    `,
+    fetcher
+  );
+
+  // Debug logging
+  console.log("Center ID:", center.id);
+  console.log("Images API Response:", imagesData);
+  console.log("Images API Error:", error);
+  console.log("Images Loading:", isLoading);
 
   // Fallback images for centers without uploaded images
   const isInBachok = center.town === "Bachok";
@@ -161,11 +172,33 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
   // Use uploaded images if available, otherwise fallback to default images
   const GALLERY_IMAGES =
     imagesData?.images && imagesData.images.length > 0
-      ? imagesData.images.map((img) => ({
-          src: img.url,
+      ? imagesData.images.map((img, index) => ({
+          src: failedImages.has(img.url)
+            ? FALLBACK_IMAGES[index % FALLBACK_IMAGES.length].src
+            : img.url,
           alt: img.altText,
+          originalSrc: img.url,
         }))
-      : FALLBACK_IMAGES;
+      : FALLBACK_IMAGES.map((img) => ({
+          src: img.src,
+          alt: img.alt,
+          originalSrc: null,
+        }));
+
+  // Handle image loading errors
+  const handleImageError = (imageSrc: string) => {
+    console.error("Image failed to load:", imageSrc);
+    setFailedImages((prev) => new Set(prev).add(imageSrc));
+  };
+
+  const handleImageLoad = (imageSrc: string) => {
+    console.log("Image loaded successfully:", imageSrc);
+    setFailedImages((prev) => {
+      const newSet = new Set(prev);
+      newSet.delete(imageSrc);
+      return newSet;
+    });
+  };
 
   const stateName = center.state.name
     .split(" ")
@@ -252,6 +285,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                             width={400}
                             height={300}
                             className="w-full h-64 object-cover transition-transform duration-300 hover:scale-105"
+                            onError={() =>
+                              handleImageError(image.originalSrc || image.src)
+                            }
+                            onLoad={() =>
+                              handleImageLoad(image.originalSrc || image.src)
+                            }
                           />
                           {index === 0 && (
                             <motion.div
@@ -308,6 +347,8 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   width={1200}
                   height={800}
                   className="max-h-[85vh] w-auto object-contain rounded-lg"
+                  onError={() => handleImageError(selectedImage)}
+                  onLoad={() => handleImageLoad(selectedImage)}
                 />
                 <button
                   className="absolute top-4 right-4 bg-black/50 text-white rounded-full p-2"

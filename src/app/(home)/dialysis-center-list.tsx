@@ -78,6 +78,7 @@ function getVisiblePages(currentPage: number, totalPages: number) {
 }
 
 export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
+  console.log({ initialData });
   const searchParams = useSearchParams();
   const [isPending, startTransition] = useTransition();
 
