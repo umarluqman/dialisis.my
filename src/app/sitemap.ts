@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/db";
+import { generateAllLocationParams } from "@/lib/location-utils";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
   const currentDate = new Date();
-  
+
   // Core pages that rarely change
   const staticPages = [
     {
@@ -57,20 +58,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   });
 
+  // Generate location pages (states and cities)
+  const locationParams = generateAllLocationParams();
+  const locationPages = locationParams.map((param) => {
+    const url = param.city
+      ? `${baseUrl}/lokasi/${param.state}/${param.city}`
+      : `${baseUrl}/lokasi/${param.state}`;
+
+    return {
+      url,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: param.city ? 0.7 : 0.8, // State pages slightly higher priority than city pages
+    };
+  });
+
   const dynamicPages = centers.map((center) => ({
     url: `${baseUrl}/${center.slug}`,
     lastModified: center.updatedAt,
-    changeFrequency: determineChangeFrequency(center.createdAt, center.updatedAt),
+    changeFrequency: determineChangeFrequency(
+      center.createdAt,
+      center.updatedAt
+    ),
     priority: 0.9,
   }));
 
-  return [...staticPages, ...dynamicPages];
+  return [...staticPages, ...locationPages, ...dynamicPages];
 }
 
 // Helper function to determine change frequency based on update patterns
-function determineChangeFrequency(created: Date, updated: Date): "daily" | "weekly" | "monthly" | "yearly" {
-  const daysSinceUpdate = Math.floor((Date.now() - updated.getTime()) / (1000 * 60 * 60 * 24));
-  
+function determineChangeFrequency(
+  created: Date,
+  updated: Date
+): "daily" | "weekly" | "monthly" | "yearly" {
+  const daysSinceUpdate = Math.floor(
+    (Date.now() - updated.getTime()) / (1000 * 60 * 60 * 24)
+  );
+
   if (daysSinceUpdate < 7) return "daily";
   if (daysSinceUpdate < 30) return "weekly";
   if (daysSinceUpdate < 365) return "monthly";

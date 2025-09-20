@@ -23,7 +23,6 @@ export async function GET(
         displayOrder: "asc",
       },
     });
-    console.log({ id, images });
 
     // Generate signed URLs for each image to avoid SSL certificate issues
     const imagesWithSignedUrls = await Promise.all(

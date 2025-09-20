@@ -4,8 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
 import {
   PopiconsArrowRightLine,
-  PopiconsGlobeLine,
-  PopiconsMailLine,
   PopiconsMapLine,
   PopiconsPhoneLine,
 } from "@popicons/react";
@@ -244,14 +242,14 @@ export function CenterCard({
               </Button>
             ) : null}
 
-            <Button
+            {/* <Button
               variant={"outline"}
               className="px-4 border-primary-foreground/30"
               onClick={() => (window.location.href = `mailto:${email}`)}
             >
               <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
               Emel
-            </Button>
+            </Button> */}
 
             <Link
               href={`https://www.google.com/maps?q=${latitude},${longitude}`}
@@ -265,24 +263,6 @@ export function CenterCard({
                 Lokasi
               </Button>
             </Link>
-            {website && (
-              <Link
-                href={website.split("?")[0] + "?ref=dialisis.my"}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-              >
-                <Button
-                  variant={"outline"}
-                  className="border-primary-foreground/30 mb-4"
-                >
-                  <PopiconsGlobeLine className="w-4 h-4 text-primary-foreground" />
-                  Laman Web
-                </Button>
-              </Link>
-            )}
-          </div>
-
-          <div className="mt-auto pt-6">
             <Link href={`/${slug}?modal=true`}>
               <Button
                 variant={isFeatured ? "default" : "secondary"}
@@ -298,7 +278,26 @@ export function CenterCard({
                 <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
               </Button>
             </Link>
+            {/* {website && (
+              <Link
+                href={website.split("?")[0] + "?ref=dialisis.my"}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+              >
+                <Button
+                  variant={"outline"}
+                  className="border-primary-foreground/30 mb-4"
+                >
+                  <PopiconsGlobeLine className="w-4 h-4 text-primary-foreground" />
+                  Laman Web
+                </Button>
+              </Link>
+            )} */}
           </div>
+
+          {/* <div className="mt-auto pt-6">
+            
+          </div> */}
         </div>
       </CardContent>
     </Card>

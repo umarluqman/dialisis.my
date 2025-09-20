@@ -21,7 +21,6 @@ export function useCenterImages(centerId: string, enabled: boolean = true) {
       dedupingInterval: 300000, // 5 minutes
     }
   );
-  console.log({ [centerId]: data, error });
 
   return {
     images: data?.images || [],
