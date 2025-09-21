@@ -41,20 +41,24 @@ export function StateCenterList({
     }
 
     // Fetch filtered data when town changes
-    startTransition(async () => {
-      try {
-        const response = await fetch(
-          `/api/centers-by-state?state=${encodeURIComponent(
-            stateName
-          )}&town=${encodeURIComponent(town)}`
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setCenterData(data);
+    startTransition(() => {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `/api/centers-by-state?state=${encodeURIComponent(
+              stateName
+            )}&town=${encodeURIComponent(town)}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            setCenterData(data);
+          }
+        } catch (error) {
+          console.error("Error fetching filtered centers:", error);
         }
-      } catch (error) {
-        console.error("Error fetching filtered centers:", error);
-      }
+      };
+
+      fetchData();
     });
   }, [town, stateName, initialData]);
 
