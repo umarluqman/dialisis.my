@@ -1,9 +1,8 @@
-"use client";
-
 import { DialysisCenterDetails } from "@/components/center-details";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { prisma } from "@/lib/db";
-import { useRouter } from "next/navigation";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { ModalDialog } from "./modal-dialog";
 
 interface Props {
   params: {
@@ -34,19 +33,41 @@ async function getCenter(slug: string) {
   };
 }
 
-export default async function DialysisCenterModal({ params }: Props) {
-  const router = useRouter();
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const center = await getCenter(params.slug);
 
   if (!center) {
-    return null;
+    return {
+      title: "Not Found",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  return {
+    title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
+    robots: {
+      index: false,
+      follow: false,
+    },
+    alternates: {
+      canonical: `https://dialisis.my/${params.slug}`,
+    },
+  };
+}
+
+export default async function DialysisCenterModal({ params }: Props) {
+  const center = await getCenter(params.slug);
+
+  if (!center) {
+    notFound();
   }
 
   return (
-    <Dialog open onOpenChange={() => router.back()}>
-      <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
-        <DialysisCenterDetails center={center} isModal />
-      </DialogContent>
-    </Dialog>
+    <ModalDialog>
+      <DialysisCenterDetails center={center} isModal />
+    </ModalDialog>
   );
 }

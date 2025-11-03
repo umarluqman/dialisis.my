@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
-  
+
   return {
     rules: [
       {
@@ -16,6 +16,8 @@ export default function robots(): MetadataRoute.Robots {
           "/undefined/*",
           "/*.json$",
           "/search?*", // Don't index search result pages
+          "/*?modal=true", // Don't index modal URLs
+          "/peta?*", // Don't index filtered map URLs
         ],
       },
     ],
