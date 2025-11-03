@@ -263,7 +263,7 @@ export function CenterCard({
                 Lokasi
               </Button>
             </Link>
-            <Link href={`/${slug}?modal=true`}>
+            <Link href={`/${slug}`} scroll={false}>
               <Button
                 variant={isFeatured ? "default" : "secondary"}
                 className={clsx(

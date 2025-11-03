@@ -12,7 +12,7 @@ export function ModalDialog({ children }: ModalDialogProps) {
 
   return (
     <Dialog open onOpenChange={() => router.back()}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {children}
       </DialogContent>
     </Dialog>
