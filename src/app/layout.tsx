@@ -19,9 +19,6 @@ export const metadata: Metadata = {
   },
   description:
     "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
-  alternates: {
-    canonical: "https://dialisis.my",
-  },
   keywords: [
     "dialisis malaysia",
     "dialysis malaysia",
