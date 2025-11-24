@@ -16,7 +16,6 @@ export default function robots(): MetadataRoute.Robots {
           "/undefined/*",
           "/*.json$",
           "/search?*", // Don't index search result pages
-          "/*?modal=true", // Don't index modal URLs
           "/peta?*", // Don't index filtered map URLs
         ],
       },
