@@ -49,8 +49,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${center.dialysisCenterName} - Pusat Dialisis di ${center.state.name}`,
     robots: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
     alternates: {
       canonical: `https://dialisis.my/${params.slug}`,
