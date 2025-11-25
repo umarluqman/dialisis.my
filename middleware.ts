@@ -31,6 +31,16 @@ function getLocationSlugs(): Set<string> {
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
+  const hostname = request.headers.get("host") || "";
+
+  // Redirect www to non-www
+  if (hostname.startsWith("www.")) {
+    const newUrl = new URL(request.url);
+    newUrl.hostname = hostname.replace("www.", "");
+    return NextResponse.redirect(newUrl, {
+      status: 301, // Permanent redirect
+    });
+  }
 
   // Enhanced URL pattern matching for redirects
   // Handles both /undefined/ and /dialysis-center/ legacy paths
@@ -68,12 +78,16 @@ export function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configure matcher for /_next paths, public files, and old URL patterns
+// Configure matcher for all paths except static files
 export const config = {
   matcher: [
-    "/_next/:path*",
-    "/:path*.:ext*", // matches files like favicon.ico, manifest.json, etc.
-    "/undefined/:path*", // match old URL pattern
-    "/dialysis-center/:path*", // match alternative URL pattern
+    /*
+     * Match all request paths except for the ones starting with:
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     * - public folder files
+     */
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|js|css|woff|woff2|ttf|otf)$).*)",
   ],
 };
