@@ -29,6 +29,18 @@ const nextConfig = {
   // Added redirects for SEO improvements
   async redirects() {
     return [
+      // Enforce non-www canonical host
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.dialisis.my',
+          },
+        ],
+        destination: 'https://dialisis.my/:path*',
+        permanent: true,
+      },
       // Redirect old URL patterns
       {
         source: '/dialysis-center/:slug',
