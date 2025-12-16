@@ -2,20 +2,23 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
+  binaryTargets   = ["native", "rhel-openssl-1.0.x"]
 }
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model DialysisCenter {
   id                 String   @id @default(cuid())
+  slug               String   @unique @default("")
   dialysisCenterName String   @default("")
   sector             String   @default("")
   drInCharge         String   @default("")
+  drInChargeTel      String   @default("")
   address            String   @default("")
   addressWithUnit    String   @default("")
   tel                String   @default("")
@@ -30,18 +33,28 @@ model DialysisCenter {
   phoneNumber        String   @default("")
   website            String?
   title              String   @default("")
-  units              String   @default("") // Will store as comma-separated string e.g. "HD Unit,CAPD Unit"
-  state              State    @relation(fields: [stateId], references: [id])
-  stateId            String
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
-  town               String   @default("")
+  units              String   @default("")
+  description        String?
+  benefits          String?
+  photos            String?
+  videos            String?
+  state             State    @relation(fields: [stateId], references: [id])
+  stateId           String
+  images            CenterImage[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  town              String   @default("")
+  featured          Boolean  @default(false)
 
   @@index([sector])
   @@index([title])
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([addressWithUnit])
+  @@index([address])
+  @@index([dialysisCenterName])
+  @@index([slug])
 }
 
 model State {
@@ -50,4 +63,35 @@ model State {
   dialysisCenters DialysisCenter[]
   createdAt       DateTime         @default(now())
   updatedAt       DateTime         @updatedAt
+}
+
+model CenterImage {
+  id               String         @id @default(cuid())
+  url              String         // Public URL of the image
+  s3Key            String         // S3 object key for deletion
+  altText          String         @default("")
+  description      String?
+  displayOrder     Int            @default(0)
+  isActive         Boolean        @default(true)
+  dialysisCenter   DialysisCenter @relation(fields: [dialysisCenterId], references: [id], onDelete: Cascade)
+  dialysisCenterId String
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([dialysisCenterId])
+  @@index([displayOrder])
+  @@index([isActive])
+}
+
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  ipAddress String   // For rate limiting
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([email])
+  @@index([ipAddress])
 }
