@@ -11,12 +11,14 @@ const { withContentlayer } = require("next-contentlayer");
 const nextConfig = {
   output: "standalone",
   images: {
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "**",
-      },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 's3.ap-southeast-1.amazonaws.com' },
+      { protocol: 'https', hostname: '*.amazonaws.com' },
     ],
   },
   generateBuildId: async () => {
@@ -148,6 +150,16 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=86400, stale-while-revalidate=604800',
+          },
+        ],
+      },
+      {
+        // Cache optimized images for 1 year
+        source: '/_next/image',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
