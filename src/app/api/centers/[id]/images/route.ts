@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 import {
   deleteImageFromS3,
-  getSignedImageUrl,
+  getPublicImageUrl,
   uploadImageToS3,
 } from "@/lib/s3";
 import { NextRequest, NextResponse } from "next/server";
@@ -24,27 +24,20 @@ export async function GET(
       },
     });
 
-    // Generate signed URLs for each image to avoid SSL certificate issues
-    const imagesWithSignedUrls = await Promise.all(
-      images.map(async (image) => {
-        try {
-          const signedUrl = await getSignedImageUrl(image.s3Key, 3600); // 1 hour expiry
-          return {
-            ...image,
-            url: signedUrl,
-          };
-        } catch (error) {
-          console.error(
-            `Error generating signed URL for image ${image.id}:`,
-            error
-          );
-          // Fallback to original URL if signed URL generation fails
-          return image;
-        }
-      })
-    );
+    // Use public URLs for caching (S3 bucket must have public read policy)
+    const imagesWithPublicUrls = images.map((image) => ({
+      ...image,
+      url: getPublicImageUrl(image.s3Key),
+    }));
 
-    return NextResponse.json({ images: imagesWithSignedUrls });
+    return NextResponse.json(
+      { images: imagesWithPublicUrls },
+      {
+        headers: {
+          'Cache-Control': 'public, max-age=3600, stale-while-revalidate=86400',
+        },
+      }
+    );
   } catch (error) {
     console.error("Error fetching center images:", error);
     return NextResponse.json(

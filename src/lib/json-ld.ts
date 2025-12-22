@@ -54,3 +54,71 @@ export const jsonLdMap = {
     },
   },
 };
+
+interface BlogPost {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  image?: string;
+  author?: string;
+  locale?: string;
+  category?: string;
+  tags?: string[];
+  body: { raw: string };
+}
+
+export function generateArticleJsonLd(post: BlogPost, baseUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${baseUrl}/blog/${post.slug}`,
+    headline: post.title,
+    description: post.description,
+    image: post.image || `${baseUrl}/og-image.png`,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: post.author || "Dialisis MY",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Dialisis MY",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${baseUrl}/blog/${post.slug}`,
+    },
+    inLanguage: post.locale === "en" ? "en-MY" : "ms-MY",
+    articleSection: post.category || "Kesihatan",
+    keywords: post.tags?.join(", "),
+    wordCount: post.body.raw.split(/\s+/).length,
+  };
+}
+
+export function generateBlogListJsonLd(baseUrl: string, locale: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${baseUrl}/blog`,
+    name: locale === "en" ? "Dialisis MY Blog" : "Blog Dialisis MY",
+    description:
+      locale === "en"
+        ? "Health articles about dialysis and kidney care in Malaysia"
+        : "Artikel kesihatan tentang dialisis dan penjagaan buah pinggang di Malaysia",
+    url: `${baseUrl}/blog`,
+    publisher: {
+      "@type": "Organization",
+      name: "Dialisis MY",
+      url: baseUrl,
+    },
+    inLanguage: locale === "en" ? "en-MY" : "ms-MY",
+  };
+}
