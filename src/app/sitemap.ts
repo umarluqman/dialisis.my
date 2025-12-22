@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { generateAllLocationParams } from "@/lib/location-utils";
+import { allPosts } from "contentlayer/generated";
 import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -44,7 +45,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly" as const,
       priority: 0.3,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
   ];
+
+  const blogPages = allPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: post.featured ? 0.8 : 0.6,
+  }));
 
   // Get all dialysis centers
   const centers = await prisma.dialysisCenter.findMany({
@@ -83,7 +97,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  return [...staticPages, ...locationPages, ...dynamicPages];
+  return [...staticPages, ...blogPages, ...locationPages, ...dynamicPages];
 }
 
 // Helper function to determine change frequency based on update patterns
