@@ -30,9 +30,9 @@ export const Navbar = () => {
                 <span className="text-sm font-medium">Lihat Peta</span>
               </Button>
             </Link>
-            <Link href="/tentang-kami">
+            <Link href="/blog">
               <Button variant="ghost" size="sm">
-                <span className="text-sm font-medium">Tentang Kami</span>
+                <span className="text-sm font-medium">Blog</span>
               </Button>
             </Link>
             <Link href="/hubungi-kami">
