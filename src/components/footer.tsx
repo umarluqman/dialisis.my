@@ -2,6 +2,7 @@ import Link from "next/link";
 import Logo from "./logo";
 
 const boring = [
+  { label: "Blog", href: "/blog" },
   { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Hubungi Kami", href: "/hubungi-kami" },
   { label: "Terma & Syarat", href: "/terma-dan-syarat" },
