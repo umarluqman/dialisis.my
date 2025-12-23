@@ -6,7 +6,10 @@ import { LocationPageHeader } from "@/components/location-page-header";
 import { LocationSeoContent } from "@/components/location-seo-content";
 import { StateCenterList } from "@/components/state-center-list";
 import { getCentersByState, getLocationStats } from "@/lib/location-queries";
-import { generateLocationJsonLd } from "@/lib/location-seo";
+import {
+  generateLocationJsonLd,
+  generateLocationFaqJsonLd,
+} from "@/lib/location-seo";
 import {
   generateAllLocationParams,
   getLocationDisplayNames,
@@ -128,11 +131,17 @@ export default async function StatePage({ params }: Props) {
     url: `https://dialisis.my/lokasi/${params.state}`,
   });
 
+  const faqJsonLd = generateLocationFaqJsonLd(stateName);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="container mx-auto px-4 py-8">

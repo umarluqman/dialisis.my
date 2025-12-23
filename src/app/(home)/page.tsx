@@ -152,11 +152,6 @@ async function getInitialCenters(
   }
 }
 
-// Add preload hints for critical resources
-const preloadResources = [
-  { href: "/fonts/your-font.woff2", as: "font", type: "font/woff2" },
-];
-
 // Generate metadata
 export async function generateMetadata(): Promise<Metadata> {
   const canonicalUrl = "https://dialisis.my";
@@ -221,17 +216,10 @@ export default async function DialysisCenterDirectory({
 
   return (
     <>
-      {/* Add resource hints */}
-      {preloadResources.map((resource) => (
-        <link
-          key={resource.href}
-          rel="preload"
-          href={resource.href}
-          as={resource.as}
-          type={resource.type}
-          crossOrigin="anonymous"
-        />
-      ))}
+      {/* SEO: Main heading for the page (visually hidden but accessible) */}
+      <h1 className="sr-only">
+        Cari Pusat Dialisis di Malaysia - Direktori Lengkap Lebih 900 Pusat
+      </h1>
 
       {/* Add JSON-LD with streaming */}
       <Suspense>
