@@ -17,7 +17,7 @@ const s3Client = new S3Client({
   forcePathStyle: true, // Use path-style URLs to avoid SSL certificate issues
 });
 
-const BUCKET_NAME = process.env.AWS_S3_BUCKET_NAME!;
+const BUCKET_NAME = process.env.S3_BUCKET_NAME || process.env.AWS_S3_BUCKET_NAME!;
 
 export interface UploadResult {
   url: string;
