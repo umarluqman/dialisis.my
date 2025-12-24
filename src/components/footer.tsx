@@ -102,7 +102,7 @@ export default function Footer() {
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
                     target="_blank"
-                    rel="follow"
+                    rel="noopener noreferrer"
                   >
                     {label}
                   </Link>
@@ -121,7 +121,7 @@ export default function Footer() {
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
                     target="_blank"
-                    rel="follow"
+                    rel="noopener noreferrer"
                   >
                     {label}
                   </Link>

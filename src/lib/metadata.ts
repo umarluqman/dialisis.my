@@ -35,7 +35,7 @@ export function generateMetadata({
       siteName: "Dialisis.my",
       images: [
         {
-          url: image || `${siteURL}/og-image.jpg`,
+          url: image || `${siteURL}/og-image.png`,
           width: 1200,
           height: 630,
           alt: title || "Dialisis.my",
@@ -60,7 +60,7 @@ export function generateMetadata({
       description:
         description ||
         "Cari pusat dialisis terdekat di Malaysia. Informasi lengkap mengenai rawatan dialisis dan pusat hemodialisis.",
-      images: [image || `${siteURL}/og-image.jpg`],
+      images: [image || `${siteURL}/og-image.png`],
     },
     ...(canonicalUrl && {
       alternates: {
