@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import useSWR from "swr";
 import { Badge } from "./ui/badge";
@@ -40,34 +41,6 @@ const SingleCenterMap = dynamic(
     ),
   }
 );
-
-// Dummy benefits data
-const BENEFITS = [
-  {
-    icon: <Heart className="h-8 w-8 text-rose-500" />,
-    title: "Rawatan Hemodialisis Berkualiti",
-    description:
-      "Pusat kami menawarkan perawatan dialisis berkualiti tinggi dengan peralatan moden dan kakitangan yang berpengalaman.",
-  },
-  {
-    icon: <Star className="h-8 w-8 text-purple-500" />,
-    title: "Pasukan Rawatan Berpengalaman & Mesra",
-    description:
-      "Pasukan perubatan kami terdiri daripada pakar yang berpengalaman dan mesra dalam memberikan penjagaan terbaik kepada pesakit.",
-  },
-  {
-    icon: <Car className="h-8 w-8 text-blue-500" />,
-    title: "⁠Mudah diakses dengan kemudahan parkir",
-    description:
-      "Lokasi strategik dengan tempat letak kereta yang mencukupi untuk kemudahan pesakit dan pelawat.",
-  },
-  {
-    icon: <Shield className="h-8 w-8 text-green-500" />,
-    title: "⁠Ruang rawatan bersih dan berhawa dingin",
-    description:
-      "Ruang rawatan yang bersih dan selesa dengan sistem penghawa dingin untuk keselesaan pesakit semasa rawatan.",
-  },
-];
 
 interface Props {
   center: {
@@ -110,6 +83,33 @@ interface Props {
 export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const t = useTranslations("enhancedCenter");
+  const tDetails = useTranslations("centerDetails");
+  const tTreatments = useTranslations("common.treatments");
+  const tHepatitis = useTranslations("common.hepatitis");
+
+  const benefits = [
+    {
+      icon: <Heart className="h-8 w-8 text-rose-500" />,
+      title: t("benefits.quality.title"),
+      description: t("benefits.quality.description"),
+    },
+    {
+      icon: <Star className="h-8 w-8 text-purple-500" />,
+      title: t("benefits.team.title"),
+      description: t("benefits.team.description"),
+    },
+    {
+      icon: <Car className="h-8 w-8 text-blue-500" />,
+      title: t("benefits.access.title"),
+      description: t("benefits.access.description"),
+    },
+    {
+      icon: <Shield className="h-8 w-8 text-green-500" />,
+      title: t("benefits.comfort.title"),
+      description: t("benefits.comfort.description"),
+    },
+  ];
 
   // Fetch center images from API
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -213,12 +213,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
     ? center.units.split(", ").map((unit) => ({
         name: unit,
         value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
+          ? tTreatments("hd")
           : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
+          ? tTreatments("tx")
           : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
+          ? tTreatments("mrrb")
+          : tTreatments("pd"),
       }))
     : [];
 
@@ -247,7 +247,11 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 key={hep}
                 className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
               >
-                {hep}
+                {hep.toLowerCase().includes("hep b")
+                  ? tHepatitis("b")
+                  : hep.toLowerCase().includes("hep c")
+                  ? tHepatitis("c")
+                  : tHepatitis("none")}
               </Badge>
             ))}
           </div>
@@ -255,16 +259,20 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
         {/* Gallery Section */}
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6">Galeri</h2>
+          <h2 className="text-2xl font-semibold mb-6">
+            {t("gallery.title")}
+          </h2>
           <div className="relative">
             {isLoading ? (
               <div className="flex h-64 items-center justify-center bg-gray-100 rounded-lg">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                <span className="ml-2 text-gray-600">Memuatkan galeri...</span>
+                <span className="ml-2 text-gray-600">
+                  {t("gallery.loading")}
+                </span>
               </div>
             ) : error ? (
               <div className="flex h-64 items-center justify-center bg-gray-100 rounded-lg">
-                <p className="text-gray-600">Menggunakan gambar contoh</p>
+                <p className="text-gray-600">{t("gallery.fallback")}</p>
               </div>
             ) : (
               <Carousel className="w-full">
@@ -343,7 +351,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               >
                 <Image
                   src={selectedImage}
-                  alt="Expanded gallery image"
+                  alt={t("gallery.expandedAlt")}
                   width={1200}
                   height={800}
                   className="max-h-[85vh] w-auto object-contain rounded-lg"
@@ -377,13 +385,15 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         {/* Location & Contact */}
         <div className="mt-16 grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-semibold mb-6">Lokasi & Hubungi</h2>
+            <h2 className="text-2xl font-semibold mb-6">
+              {t("locationHeading")}
+            </h2>
             <div className="space-y-6">
               <div className="space-y-2">
                 <div className="flex gap-2 items-start">
                   <MapPin className="w-5 h-5 text-primary-foreground mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Alamat:</p>
+                    <p className="font-medium">{t("address")}</p>
                     <p className="text-muted-foreground">
                       {center.addressWithUnit}
                     </p>
@@ -426,7 +436,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   <div className="flex gap-2 items-center">
                     <Phone className="w-5 h-5 text-primary-foreground flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Telefon:</p>
+                      <p className="font-medium">{t("phone")}</p>
                       <a
                         href={`tel:${center.phoneNumber}`}
                         className="text-primary-foreground hover:underline"
@@ -441,7 +451,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   <div className="flex gap-2 items-center">
                     <Mail className="w-5 h-5 text-primary-foreground flex-shrink-0" />
                     <div>
-                      <p className="font-medium">E-mel:</p>
+                      <p className="font-medium">{t("email")}</p>
                       <a
                         href={`mailto:${center.email}`}
                         className="text-primary-foreground hover:underline"
@@ -456,7 +466,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   <div className="flex gap-2 items-center">
                     <Globe className="w-5 h-5 text-primary-foreground flex-shrink-0" />
                     <div>
-                      <p className="font-medium">Laman Web:</p>
+                      <p className="font-medium">{tDetails("website")}</p>
                       <a
                         href={center.website}
                         target="_blank"
@@ -474,11 +484,13 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             {/* Medical Staff Section */}
             <div className="mt-8">
               <h2 className="text-2xl font-semibold mb-6">
-                Doktor & Kakitangan Perubatan
+                {tDetails("medicalStaff")}
               </h2>
               <div className="space-y-4">
                 <div>
-                  <p className="font-medium text-zinc-500">Doktor bertugas</p>
+                  <p className="font-medium text-zinc-500">
+                    {tDetails("doctorOnDuty")}
+                  </p>
                   <p className="text-lg">{center.drInCharge}</p>
                   {center.drInChargeTel && (
                     <a
@@ -493,21 +505,27 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
                 {center.panelNephrologist && (
                   <div>
-                    <p className="font-medium text-zinc-500">Nephrologi</p>
+                    <p className="font-medium text-zinc-500">
+                      {tDetails("nephrology")}
+                    </p>
                     <p className="text-lg">{center.panelNephrologist}</p>
                   </div>
                 )}
 
                 {center.centreManager && (
                   <div>
-                    <p className="font-medium text-zinc-500">Pengurusan</p>
+                    <p className="font-medium text-zinc-500">
+                      {tDetails("management")}
+                    </p>
                     <p className="text-lg">{center.centreManager}</p>
                   </div>
                 )}
 
                 {center.centreCoordinator && (
                   <div>
-                    <p className="font-medium text-zinc-500">Koordinator</p>
+                    <p className="font-medium text-zinc-500">
+                      {tDetails("coordinator")}
+                    </p>
                     <p className="text-lg">{center.centreCoordinator}</p>
                   </div>
                 )}
@@ -533,10 +551,10 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         {/* Benefits Section */}
         <div className="mt-16">
           <h2 className="text-2xl font-semibold mb-6">
-            Kelebihan {center.title}
+            {t("benefits.heading", { name: center.title })}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BENEFITS.map((benefit, index) => (
+            {benefits.map((benefit, index) => (
               <div
                 key={index}
                 className="border p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow"
@@ -569,7 +587,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 <a href={`tel:${center.phoneNumber}`}>
                   <Phone className="w-5 h-5 text-primary-foreground" />
                   <span className="text-primary-foreground">
-                    Hubungi Sekarang
+                    {t("cta.callNow")}
                   </span>
                 </a>
               </Button>

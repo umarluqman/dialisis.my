@@ -8,6 +8,7 @@ import {
   PopiconsPhoneLine,
 } from "@popicons/react";
 import clsx from "clsx";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { CenterCardGallery } from "./center-card-gallery";
@@ -81,6 +82,12 @@ export function CenterCard({
   longitude,
   photos,
 }: CenterCardProps) {
+  const t = useTranslations("centerCard");
+  const tCommon = useTranslations("common");
+  const tSector = useTranslations("common.sector");
+  const tTreatments = useTranslations("common.treatments");
+  const tHepatitis = useTranslations("common.hepatitis");
+
   const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
 
@@ -88,12 +95,12 @@ export function CenterCard({
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
     value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialisis"
+      ? tTreatments("hd")
       : unit.toLowerCase().includes("tx unit")
-      ? "Transplant"
+      ? tTreatments("tx")
       : unit.toLowerCase().includes("mrrb unit")
-      ? "MRRB"
-      : "Peritoneal Dialisis",
+      ? tTreatments("mrrb")
+      : tTreatments("pd"),
   }));
 
   const isFeatured = featured;
@@ -124,7 +131,7 @@ export function CenterCard({
     >
       {isFeatured && (
         <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none z-10">
-          Featured
+          {t("featuredBadge")}
         </Badge>
       )}
 
@@ -133,7 +140,9 @@ export function CenterCard({
         <div className="p-4 pb-0">
           {imagesLoading ? (
             <div className="relative aspect-[4/3] rounded-lg bg-zinc-100 animate-pulse flex items-center justify-center">
-              <div className="text-zinc-400 text-sm">Loading images...</div>
+              <div className="text-zinc-400 text-sm">
+                {t("loadingImages")}
+              </div>
             </div>
           ) : galleryImages.length > 0 ? (
             <CenterCardGallery images={galleryImages} centerName={title} />
@@ -155,16 +164,16 @@ export function CenterCard({
             sector === "NGO" ||
             sector === "MOH_PRIVATE" ? (
               sector === "MOH" ? (
-                "Kerajaan"
+                tSector("moh")
               ) : sector === "MOH_PRIVATE" ? (
-                "Kerajaan & Swasta"
+                tSector("mohPrivate")
               ) : (
-                sector
+                tSector("ngo")
               )
             ) : (
               <span className="capitalize">
                 {sector?.toLowerCase() === "private"
-                  ? "Swasta"
+                  ? tSector("private")
                   : sector?.toLowerCase()}
               </span>
             )}
@@ -180,7 +189,9 @@ export function CenterCard({
           {/* <p className="mt-3 text-zinc-600">{address}</p> */}
           {showService && (
             <div className="flex flex-col gap-2 my-2">
-              <div className="text-sm text-zinc-600">Servis Rawatan</div>
+              <div className="text-sm text-zinc-600">
+                {t("treatmentHeading")}
+              </div>
               <div className="flex flex-wrap gap-2">
                 {treatmentArray.map((treatment) => (
                   <Badge
@@ -203,7 +214,11 @@ export function CenterCard({
                       key={hep}
                       className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
                     >
-                      {hep}
+                      {hep.toLowerCase().includes("hep b")
+                        ? tHepatitis("b")
+                        : hep.toLowerCase().includes("hep c")
+                        ? tHepatitis("c")
+                        : tHepatitis("none")}
                     </Badge>
                   ))}
                   {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
@@ -219,7 +234,7 @@ export function CenterCard({
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
               <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
-              Panggil
+              {tCommon("actions.call")}
             </Button>
             {isFeatured && phoneNumber ? (
               <Button
@@ -260,7 +275,7 @@ export function CenterCard({
                 className="px-4 border-primary-foreground/30"
               >
                 <PopiconsMapLine className="w-4 h-4 text-primary-foreground" />
-                Lokasi
+                {tCommon("actions.location")}
               </Button>
             </Link>
             <Link href={`/${slug}`} scroll={false}>
@@ -274,7 +289,7 @@ export function CenterCard({
                   }
                 )}
               >
-                Info Lanjut
+                {tCommon("actions.details")}
                 <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
               </Button>
             </Link>

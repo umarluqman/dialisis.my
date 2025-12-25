@@ -5,6 +5,7 @@ const withPWA = require("next-pwa")({
   skipWaiting: true,
 });
 
+const withNextIntl = require("next-intl/plugin")("./src/i18n/request.ts");
 const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
@@ -167,4 +168,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(withPWA(nextConfig));
+module.exports = withNextIntl(withContentlayer(withPWA(nextConfig)));

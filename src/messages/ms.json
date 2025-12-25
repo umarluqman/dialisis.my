@@ -1,0 +1,425 @@
+{
+  "layout": {
+    "titleDefault": "Cari Pusat Dialisis Berdekatan Dengan Mudah",
+    "titleTemplate": "%s | Dialisis MY",
+    "description": "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+    "ogTitle": "Dialisis MY | Cari Pusat Dialisis Malaysia | Direktori Lengkap",
+    "ogDescription": "Direktori lengkap dengan lebih 900 pusat dialisis di seluruh Malaysia. Maklumat tentang lokasi, kontak, doktor, sektor, dan perkhidmatan dialisis.",
+    "ogImageAlt": "Dialisis MY - Cari Pusat Dialisis Malaysia",
+    "twitterTitle": "Dialisis MY | Cari Pusat Dialisis Malaysia",
+    "twitterDescription": "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia.",
+    "siteName": "Dialisis MY"
+  },
+  "navbar": {
+    "brand": "Dialisis Malaysia",
+    "map": "Lihat Peta",
+    "about": "Tentang Kami",
+    "contact": "Hubungi Kami",
+    "languageLabel": "Bahasa",
+    "malay": "Bahasa Melayu",
+    "english": "English"
+  },
+  "footer": {
+    "brand": "Dialisis Malaysia",
+    "tagline": "Dialisis.MY ialah platform yang membantu anda mencari pusat dialisis di Malaysia.",
+    "related": "Berkaitan",
+    "copyright": "Dialysis.MY",
+    "about": "Tentang Kami",
+    "contact": "Hubungi Kami",
+    "terms": "Terma & Syarat",
+    "privacy": "Polisi Privasi"
+  },
+  "common": {
+    "actions": {
+      "call": "Panggil",
+      "location": "Lokasi",
+      "details": "Info Lanjut",
+      "search": "Cari Pusat Dialisis",
+      "loading": "Memuatkan...",
+      "backToList": "Senarai",
+      "email": "Emel"
+    },
+    "sector": {
+      "moh": "Kerajaan",
+      "private": "Swasta",
+      "mohPrivate": "Kerajaan & Swasta",
+      "ngo": "NGO",
+      "university": "Universiti",
+      "armedForce": "Angkatan Tentera",
+      "others": "Lain-lain"
+    },
+    "hepatitis": {
+      "none": "Tiada Hepatitis",
+      "b": "Hepatitis B",
+      "c": "Hepatitis C"
+    },
+    "treatments": {
+      "hd": "Hemodialisis",
+      "pd": "Peritoneal Dialisis",
+      "tx": "Transplant",
+      "mrrb": "MRRB"
+    },
+    "status": {
+      "noCentersTitle": "Tiada Pusat Dialisis",
+      "noCentersDescription": "Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda."
+    }
+  },
+  "onlineStatus": {
+    "onlineTitle": "Sambungan internet dipulihkan",
+    "onlineDescription": "Anda kini boleh menggunakan semua ciri aplikasi.",
+    "offlineTitle": "Tiada sambungan internet",
+    "offlineDescription": "Beberapa ciri mungkin tidak tersedia."
+  },
+  "centerCard": {
+    "featuredBadge": "Pilihan",
+    "loadingImages": "Memuatkan gambar...",
+    "treatmentHeading": "Servis Rawatan"
+  },
+  "centerDetails": {
+    "website": "Laman Web",
+    "medicalStaff": "Doktor & Kakitangan Perubatan",
+    "doctorOnDuty": "Doktor bertugas",
+    "nephrology": "Nephrologi",
+    "management": "Pengurusan",
+    "coordinator": "Koordinator",
+    "services": "Servis Rawatan"
+  },
+  "enhancedCenter": {
+    "gallery": {
+      "title": "Galeri",
+      "loading": "Memuatkan galeri...",
+      "fallback": "Menggunakan gambar contoh",
+      "expandedAlt": "Imej galeri diperbesarkan"
+    },
+    "locationHeading": "Lokasi & Hubungi",
+    "address": "Alamat:",
+    "phone": "Telefon:",
+    "email": "E-mel:",
+    "benefits": {
+      "heading": "Kelebihan {name}",
+      "quality": {
+        "title": "Rawatan Hemodialisis Berkualiti",
+        "description": "Pusat kami menawarkan perawatan dialisis berkualiti tinggi dengan peralatan moden dan kakitangan yang berpengalaman."
+      },
+      "team": {
+        "title": "Pasukan Rawatan Berpengalaman & Mesra",
+        "description": "Pasukan perubatan kami terdiri daripada pakar yang berpengalaman dan mesra dalam memberikan penjagaan terbaik kepada pesakit."
+      },
+      "access": {
+        "title": "Mudah diakses dengan kemudahan parkir",
+        "description": "Lokasi strategik dengan tempat letak kereta yang mencukupi untuk kemudahan pesakit dan pelawat."
+      },
+      "comfort": {
+        "title": "Ruang rawatan bersih dan berhawa dingin",
+        "description": "Ruang rawatan yang bersih dan selesa dengan sistem penghawa dingin untuk keselesaan pesakit semasa rawatan."
+      }
+    },
+    "cta": {
+      "callNow": "Hubungi Sekarang"
+    }
+  },
+  "location": {
+    "townFilter": {
+      "placeholder": "Pilih bandar",
+      "allTowns": "Semua Bandar di {state}"
+    },
+    "stateList": {
+      "townFilterLabel": "Tapis mengikut bandar:",
+      "listTitle": "Senarai Pusat Dialisis",
+      "listTitleTown": "Senarai Pusat Dialisis di {town}",
+      "empty": "Tiada pusat dialisis dijumpai di {state}{town, select( '' '' other ' untuk bandar {town}')}"
+    },
+    "header": {
+      "title": "Pusat Dialisis di {location}",
+      "summary": "Terdapat {totalCenters} pusat dialisis di {locationName}.{totalCenters, plural, =0 { } other { Termasuk {moh} pusat MOH, {private} pusat swasta, {hepB} pusat dengan kemudahan hepatitis B, dan {hepC} pusat dengan kemudahan hepatitis C.}}",
+      "home": "Laman Utama",
+      "stats": {
+        "total": "Jumlah Pusat",
+        "moh": "Pusat MOH",
+        "private": "Pusat Swasta",
+        "hepB": "Hepatitis B",
+        "hepC": "Hepatitis C"
+      }
+    },
+    "seo": {
+      "title": "Tentang Perkhidmatan Dialisis di {location}",
+      "overview": "{locationName} mempunyai {totalCenters} pusat dialisis yang menyediakan perkhidmatan rawatan buah pinggang untuk pesakit yang memerlukan. Pusat-pusat ini terdiri daripada {moh} pusat di bawah Kementerian Kesihatan Malaysia (MOH) dan {private} pusat swasta.",
+      "services": "Kebanyakan pusat menyediakan perkhidmatan hemodialisis ({hemodialysisCenters} pusat){peritonealCenters, plural, =0 {, manakala beberapa pusat juga menawarkan peritoneal dialisis dan rawatan lain.} other {, manakala {peritonealCenters} pusat menawarkan peritoneal dialisis dan rawatan lain.}}{hepatitisBCenters, plural, =0 {} other { Terdapat juga {hepatitisBCenters} pusat yang mempunyai kemudahan khas untuk pesakit Hepatitis B dan C.}}",
+      "access": "Pesakit yang memerlukan rawatan dialisis di {location} boleh memilih antara pusat-pusat MOH yang menawarkan rawatan bersubsidi atau pusat-pusat swasta yang menyediakan kemudahan dan perkhidmatan tambahan. Semua pusat dialisis di Malaysia perlu mematuhi piawaian kualiti yang ditetapkan oleh Kementerian Kesihatan.",
+      "none": "Pada masa ini, tiada pusat dialisis yang direkodkan di {locationName}. Pesakit dari kawasan ini mungkin perlu mendapatkan rawatan di pusat dialisis yang terdekat di kawasan lain dalam {stateName}. Sila hubungi hospital atau klinik terdekat untuk mendapatkan rujukan kepada pusat dialisis yang sesuai.",
+      "treatmentHeading": "Jenis-jenis Rawatan Dialisis",
+      "treatments": {
+        "hemodialysis": "<strong>Hemodialisis:</strong> Rawatan yang menggunakan mesin dialisis untuk membersihkan darah dari toksin dan cecair berlebihan. Biasanya dilakukan 3 kali seminggu, setiap sesi mengambil masa 3-4 jam.",
+        "peritoneal": "<strong>Peritoneal Dialisis:</strong> Rawatan yang menggunakan selaput perut (peritoneum) sebagai penapis semula jadi. Boleh dilakukan di rumah dan memberikan fleksibiliti yang lebih kepada pesakit.",
+        "transplant": "<strong>Transplantasi Buah Pinggang:</strong> Rawatan terbaik untuk pesakit yang sesuai, di mana buah pinggang yang sihat daripada penderma ditransplant kepada pesakit."
+      }
+    },
+    "metadata": {
+      "state": {
+        "title": "Pusat Dialisis di {stateName} - {total} Pusat Tersedia",
+        "description": "Cari pusat dialisis di {stateName}. Terdapat {total} pusat dialisis termasuk {moh} pusat MOH dan {private} pusat swasta. Maklumat lengkap lokasi, telefon dan perkhidmatan.",
+        "ogTitle": "Pusat Dialisis di {stateName} - {total} Pusat Tersedia",
+        "ogDescription": "Cari pusat dialisis di {stateName}. Terdapat {total} pusat dialisis dengan maklumat lengkap lokasi, telefon dan perkhidmatan.",
+        "twitterTitle": "Pusat Dialisis di {stateName} - {total} Pusat Tersedia",
+        "twitterDescription": "Cari pusat dialisis di {stateName} dengan maklumat lengkap.",
+        "ogImageAlt": "Pusat Dialisis di {stateName}",
+        "siteName": "Dialisis MY",
+        "notFoundTitle": "Tidak Dijumpai",
+        "notFoundDescription": "Halaman yang anda cari tidak wujud."
+      },
+      "city": {
+        "title": "Pusat Dialisis di {cityName}, {stateName} - {total} Pusat Tersedia",
+        "description": "Cari pusat dialisis di {cityName}, {stateName}. Terdapat {total} pusat dialisis termasuk {moh} pusat MOH dan {private} pusat swasta. Maklumat lengkap lokasi, telefon dan perkhidmatan.",
+        "ogTitle": "Pusat Dialisis di {cityName}, {stateName} - {total} Pusat Tersedia",
+        "ogDescription": "Cari pusat dialisis di {cityName}, {stateName}. Terdapat {total} pusat dialisis dengan maklumat lengkap lokasi, telefon dan perkhidmatan.",
+        "twitterTitle": "Pusat Dialisis di {cityName}, {stateName} - {total} Pusat Tersedia",
+        "twitterDescription": "Cari pusat dialisis di {cityName}, {stateName} dengan maklumat lengkap.",
+        "ogImageAlt": "Pusat Dialisis di {cityName}, {stateName}",
+        "siteName": "Dialisis MY",
+        "notFoundTitle": "Tidak Dijumpai",
+        "notFoundDescription": "Halaman yang anda cari tidak wujud."
+      }
+    },
+    "cityPage": {
+      "empty": "Tiada pusat dialisis dijumpai di {cityName}",
+      "viewState": "Lihat semua pusat dialisis di {stateName}"
+    }
+  },
+  "map": {
+    "offline": "Peta memerlukan sambungan internet untuk berfungsi. Sila periksa sambungan anda.",
+    "locating": "Mendapatkan lokasi anda...",
+    "featuredBadge": "Pusat Pilihan 👍",
+    "treatmentHeading": "Jenis Rawatan",
+    "metadata": {
+      "title": "Peta Pusat Dialisis di Malaysia",
+      "description": "Cari pusat dialisis berdekatan dengan anda melalui peta interaktif. Lihat maklumat lengkap perkhidmatan pusat dialisis di Malaysia.",
+      "ogTitle": "Peta Pusat Dialisis di Malaysia | Dialisis MY",
+      "ogDescription": "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan.",
+      "twitterTitle": "Peta Pusat Dialisis di Malaysia | Dialisis MY",
+      "twitterDescription": "Cari pusat dialisis berdekatan anda melalui peta interaktif. Lihat lokasi, maklumat perhubungan dan perkhidmatan yang ditawarkan."
+    }
+  },
+  "center": {
+    "metadata": {
+      "siteName": "Dialisis MY",
+      "services": {
+        "both": "Hemodialisis dan Peritoneal Dialisis",
+        "hd": "Hemodialisis",
+        "pd": "Peritoneal Dialisis",
+        "default": "Perkhidmatan Dialisis"
+      },
+      "sector": {
+        "moh": "Hospital kerajaan",
+        "ngo": "Pusat NGO",
+        "private": "Pusat swasta"
+      },
+      "title": "{centerName} - Pusat Dialisis di {location}",
+      "description": "Pusat dialisis {centerName} di {location}. Menyediakan {services} untuk pesakit buah pinggang. {sectorDescription}.",
+      "ogTitle": "{centerName} - Pusat Dialisis di {location}",
+      "ogDescription": "Pusat dialisis {centerName} di {location}. Menyediakan {services} untuk pesakit buah pinggang.",
+      "ogImageAlt": "Pusat Dialisis {centerName}",
+      "twitterTitle": "{centerName} - Pusat Dialisis di {location}",
+      "twitterDescription": "Pusat dialisis di {location}. Menyediakan {services}.",
+      "notFoundTitle": "Tidak Dijumpai",
+      "notFoundDescription": "Halaman yang anda cari tidak wujud."
+    }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Hubungi Kami untuk Perubahan Maklumat Pusat Dialisis Anda",
+      "description": "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
+      "ogTitle": "Hubungi Kami | Dialisis MY",
+      "ogDescription": "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia.",
+      "twitterTitle": "Hubungi Kami | Dialisis.my",
+      "twitterDescription": "Hubungi kami untuk sebarang pertanyaan mengenai pusat dialisis di Malaysia."
+    },
+    "content": {
+      "title": "Hubungi Kami",
+      "updateHeading": "Perubahan Maklumat Pusat Dialisis",
+      "updateDescription": "Untuk sebarang perubahan maklumat dalam laman web ini. Hubungi kami melalui maklumat di bawah.",
+      "email": "joharidialisis.my@gmail.com",
+      "address": "Putrajaya, Malaysia",
+      "whatsapp": "WhatsApp +60 11727 55299"
+    }
+  },
+  "about": {
+    "metadata": {
+      "title": "Ketahui Lebih Lanjut Tentang Dialisis MY",
+      "description": "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
+      "ogTitle": "Tentang Kami | Dialisis MY",
+      "ogDescription": "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai.",
+      "twitterTitle": "Tentang Kami | Dialisis.my",
+      "twitterDescription": "Ketahui lebih lanjut mengenai misi kami untuk membantu pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai."
+    },
+    "content": {
+      "title": "Tentang Kami",
+      "missionTitle": "Misi Kami",
+      "missionDescription": "Dialisis.MY ditubuhkan dengan misi untuk memudahkan pesakit buah pinggang di Malaysia mencari pusat dialisis yang sesuai dengan keperluan mereka. Kami percaya bahawa akses kepada maklumat yang tepat dan lengkap adalah penting dalam membuat keputusan berkaitan kesihatan.",
+      "offeringsTitle": "Apa Yang Kami Tawarkan",
+      "offerings": {
+        "directory": "Direktori pusat dialisis yang komprehensif di seluruh Malaysia",
+        "details": "Maklumat terperinci tentang setiap pusat termasuk lokasi, kemudahan, dan perkhidmatan",
+        "search": "Carian mudah mengikut lokasi dan keperluan khusus",
+        "guide": "Panduan berguna untuk pesakit dialisis"
+      },
+      "commitmentTitle": "Komitmen Kami",
+      "commitmentIntro": "Kami komited untuk:",
+      "commitments": {
+        "accurate": "Menyediakan maklumat yang tepat dan terkini",
+        "informed": "Membantu pesakit membuat keputusan termaklum",
+        "access": "Meningkatkan akses kepada perkhidmatan dialisis berkualiti",
+        "support": "Menyokong komuniti pesakit buah pinggang di Malaysia"
+      }
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Polisi Privasi",
+      "description": "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
+      "ogTitle": "Polisi Privasi | Dialisis MY",
+      "ogDescription": "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda.",
+      "twitterTitle": "Polisi Privasi | Dialisis.my",
+      "twitterDescription": "Polisi privasi Dialisis.my menjelaskan bagaimana kami mengumpul, menggunakan dan melindungi maklumat peribadi anda."
+    },
+    "content": {
+      "title": "Polisi Privasi",
+      "updated": "Dikemas kini terakhir: {date}",
+      "intro": "Dialisis.my komited untuk melindungi privasi anda. Polisi privasi ini menerangkan bagaimana kami mengumpul, menggunakan, dan melindungi maklumat peribadi anda apabila anda menggunakan laman web kami.",
+      "sections": {
+        "collection": {
+          "title": "1. Pengumpulan Maklumat",
+          "description": "Kami mengumpul maklumat yang anda berikan secara langsung kepada kami melalui:",
+          "items": {
+            "form": "Borang hubungi",
+            "email": "Pertanyaan melalui e-mel",
+            "usage": "Maklumat penggunaan laman web"
+          }
+        },
+        "usage": {
+          "title": "2. Penggunaan Maklumat",
+          "description": "Kami menggunakan maklumat yang dikumpul untuk:",
+          "items": {
+            "info": "Memberikan maklumat tentang pusat dialisis",
+            "respond": "Menjawab pertanyaan anda",
+            "improve": "Menambah baik laman web dan perkhidmatan kami",
+            "updates": "Menghantar kemas kini dan maklumat berkaitan"
+          }
+        },
+        "protection": {
+          "title": "3. Perlindungan Data",
+          "description": "Kami mengambil langkah-langkah keselamatan yang sesuai untuk melindungi maklumat anda daripada akses, pengubahan, atau pendedahan yang tidak dibenarkan."
+        },
+        "sharing": {
+          "title": "4. Perkongsian Maklumat",
+          "description": "Kami tidak akan menjual, menyewa, atau menukar maklumat peribadi anda dengan pihak ketiga tanpa kebenaran anda, kecuali apabila diperlukan oleh undang-undang."
+        },
+        "cookies": {
+          "title": "5. Kuki dan Teknologi Penjejakan",
+          "description": "Kami menggunakan kuki dan teknologi penjejakan yang serupa untuk mengumpul maklumat tentang penggunaan laman web kami dan untuk meningkatkan pengalaman pengguna."
+        },
+        "rights": {
+          "title": "6. Hak Pengguna",
+          "description": "Anda mempunyai hak untuk:",
+          "items": {
+            "access": "Mengakses maklumat peribadi anda",
+            "correct": "Membetulkan maklumat yang tidak tepat",
+            "delete": "Meminta penghapusan maklumat anda",
+            "object": "Membantah pemprosesan maklumat anda"
+          }
+        },
+        "changes": {
+          "title": "7. Perubahan pada Polisi Privasi",
+          "description": "Kami berhak untuk mengubah polisi privasi ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan melalui laman web ini."
+        },
+        "contact": {
+          "title": "8. Hubungi Kami",
+          "description": "Jika anda mempunyai sebarang pertanyaan mengenai polisi privasi ini atau amalan privasi kami, sila hubungi kami melalui halaman Hubungi Kami."
+        }
+      }
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "Terma dan Syarat",
+      "description": "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
+      "ogTitle": "Terma dan Syarat | Dialisis MY",
+      "ogDescription": "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami.",
+      "twitterTitle": "Terma dan Syarat | Dialisis.my",
+      "twitterDescription": "Terma dan syarat penggunaan platform Dialisis.my. Sila baca dengan teliti sebelum menggunakan perkhidmatan kami."
+    },
+    "content": {
+      "title": "Terma dan Syarat",
+      "sections": {
+        "intro": {
+          "title": "1. Pengenalan",
+          "description": "Selamat datang ke Dialisis.my. Dengan mengakses dan menggunakan laman web ini, anda bersetuju untuk terikat dengan terma dan syarat yang dinyatakan di bawah."
+        },
+        "usage": {
+          "title": "2. Penggunaan Kandungan",
+          "description": "Semua kandungan yang terdapat di Dialisis.my adalah dilindungi oleh hak cipta. Anda dibenarkan untuk melihat dan memuat turun kandungan untuk kegunaan peribadi dan bukan komersial sahaja."
+        },
+        "info": {
+          "title": "3. Maklumat Pusat Dialisis",
+          "description": "Maklumat mengenai pusat dialisis yang dipaparkan di laman web ini adalah untuk tujuan informasi sahaja. Kami berusaha untuk memastikan ketepatan maklumat, tetapi tidak menjamin kesempurnaan atau ketepatannya."
+        },
+        "disclaimer": {
+          "title": "4. Penafian",
+          "description": "Dialisis.my tidak bertanggungjawab atas sebarang kerugian atau kerosakan yang timbul daripada penggunaan maklumat yang terdapat di laman web ini. Pengguna disarankan untuk mengesahkan maklumat secara langsung dengan pusat dialisis yang berkenaan."
+        },
+        "changes": {
+          "title": "5. Perubahan pada Terma",
+          "description": "Kami berhak untuk mengubah terma dan syarat ini pada bila-bila masa. Perubahan akan berkuat kuasa serta-merta selepas dipaparkan di laman web ini."
+        },
+        "law": {
+          "title": "6. Undang-undang yang Terpakai",
+          "description": "Terma dan syarat ini tertakluk kepada undang-undang Malaysia dan sebarang pertikaian akan diselesaikan di mahkamah Malaysia."
+        },
+        "contact": {
+          "title": "7. Hubungi Kami",
+          "description": "Jika anda mempunyai sebarang pertanyaan mengenai terma dan syarat ini, sila hubungi kami melalui halaman Hubungi Kami."
+        }
+      }
+    }
+  },
+  "home": {
+    "filter": {
+      "title": "Pusat Dialisis di Malaysia",
+      "description": "Cari sekitar lebih 900+ pusat dialisis yang berdekatan dengan anda dengan mudah."
+    },
+    "list": {
+      "namePlaceholder": "Nama Pusat Dialisis",
+      "statePlaceholder": "Pilih negeri / wilayah",
+      "allStates": "Semua Negeri / Wilayah",
+      "cityPlaceholder": "Pilih bandar",
+      "allCities": "Semua Bandar",
+      "treatmentPlaceholder": "Pilih rawatan",
+      "allTreatments": "Semua Rawatan",
+      "doctorPlaceholder": "Nama Doktor Bertugas",
+      "sectorPlaceholder": "Pilih sektor",
+      "allSectors": "Semua Sektor",
+      "searching": "Mencari..."
+    },
+    "quiz": {
+      "questions": {
+        "state": "Di manakah lokasi anda?",
+        "city": "Di bandar manakah anda?",
+        "treatment": "Apakah jenis rawatan yang anda perlukan?",
+        "hepatitis": "Adakah anda menghidap Hepatitis?",
+        "sector": "Pilih sektor yang anda mahukan:"
+      },
+      "stepLabel": "Langkah {current} dari {total}",
+      "useLocation": "Gunakan lokasi semasa",
+      "locating": "Mencari lokasi anda...",
+      "resultsTitle": "Pusat Dialisis Yang Sesuai",
+      "restart": "Mula Semula"
+    },
+    "metadata": {
+      "title": "Cari Pusat Dialisis Berdekatan Dengan Mudah",
+      "description": "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+      "ogTitle": "Cari Pusat Dialisis | Dialisis.my",
+      "ogDescription": "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+      "twitterTitle": "Cari Pusat Dialisis | Dialisis.my",
+      "twitterDescription": "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan."
+    }
+  }
+}

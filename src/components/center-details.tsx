@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DialysisCenter, State } from "@prisma/client";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Badge } from "./ui/badge";
 
 interface Props {
@@ -11,6 +12,10 @@ interface Props {
 }
 
 export function DialysisCenterDetails({ center, isModal }: Props) {
+  const t = useTranslations("centerDetails");
+  const tTreatments = useTranslations("common.treatments");
+  const tHepatitis = useTranslations("common.hepatitis");
+
   // const units = center.units.split(",").filter(Boolean);
   const stateName = center.state.name
     .split(" ")
@@ -25,12 +30,12 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
     ? center.units.split(", ").map((unit) => ({
         name: unit,
         value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
+          ? tTreatments("hd")
           : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
+          ? tTreatments("tx")
           : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
+          ? tTreatments("mrrb")
+          : tTreatments("pd"),
       }))
     : [];
 
@@ -109,7 +114,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
                 rel="noopener noreferrer"
                 className="hover:underline"
               >
-                Laman Web
+                {t("website")}
               </a>
             </Button>
           </p>
@@ -117,10 +122,12 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
       </div>
 
       <div className="mt-12">
-        <h2 className="font-semibold">Doktor & Kakitangan Perubatan</h2>
+        <h2 className="font-semibold">{t("medicalStaff")}</h2>
         <div className="space-y-4 text-sm mt-4">
           <p className="flex flex-col gap-1">
-            <span className="font-medium text-zinc-500">Doktor bertugas</span>{" "}
+            <span className="font-medium text-zinc-500">
+              {t("doctorOnDuty")}
+            </span>{" "}
             {center.drInCharge}
             {center.drInChargeTel && (
               <p className="flex items-center gap-2">
@@ -138,19 +145,25 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
           </p>
           {center.panelNephrologist && (
             <p className="flex flex-col gap-1">
-              <span className="font-medium text-zinc-500">Nephrologi</span>{" "}
+              <span className="font-medium text-zinc-500">
+                {t("nephrology")}
+              </span>{" "}
               {center.panelNephrologist}
             </p>
           )}
           {center.centreManager && (
             <p className="flex flex-col gap-1">
-              <span className="font-medium text-zinc-500">Pengurusan</span>{" "}
+              <span className="font-medium text-zinc-500">
+                {t("management")}
+              </span>{" "}
               {center.centreManager}
             </p>
           )}
           {center.centreCoordinator && (
             <p className="flex flex-col gap-1">
-              <span className="font-medium text-zinc-500">Koordinator</span>{" "}
+              <span className="font-medium text-zinc-500">
+                {t("coordinator")}
+              </span>{" "}
               {center.centreCoordinator}
             </p>
           )}
@@ -158,7 +171,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
       </div>
 
       <div className="flex flex-col gap-2 my-2 mt-12">
-        <h2 className="font-semibold">Servis Rawatan</h2>
+        <h2 className="font-semibold">{t("services")}</h2>
         <div className="flex flex-wrap gap-2">
           {treatmentArray.map((treatment) => (
             <Badge
@@ -179,7 +192,11 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
                 key={hep}
                 className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
               >
-                {hep}
+                {hep.toLowerCase().includes("hep b")
+                  ? tHepatitis("b")
+                  : hep.toLowerCase().includes("hep c")
+                  ? tHepatitis("c")
+                  : tHepatitis("none")}
               </Badge>
             ))}
             {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}

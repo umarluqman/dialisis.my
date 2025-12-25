@@ -10,6 +10,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
 import { Badge } from "./ui/badge";
@@ -57,6 +58,39 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const [isLocating, setIsLocating] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const animationRef = useRef<number | null>(null);
+  const t = useTranslations("map");
+  const tCommon = useTranslations("common");
+  const tSector = useTranslations("common.sector");
+  const tTreatments = useTranslations("common.treatments");
+  const tHepatitis = useTranslations("common.hepatitis");
+
+  const formatTreatment = (unit: string) => {
+    const lower = unit.toLowerCase();
+    if (lower.includes("hd unit")) return tTreatments("hd");
+    if (lower.includes("tx unit")) return tTreatments("tx");
+    if (lower.includes("mrrb unit")) return tTreatments("mrrb");
+    if (lower.includes("pd")) return tTreatments("pd");
+    return unit;
+  };
+
+  const formatSector = (sector?: string) => {
+    const value = sector?.toLowerCase();
+    if (value === "moh") return tSector("moh");
+    if (value === "moh_private") return tSector("mohPrivate");
+    if (value === "private") return tSector("private");
+    if (value === "ngo") return tSector("ngo");
+    if (value === "university") return tSector("university");
+    if (value === "armed force") return tSector("armedForce");
+    if (value === "others") return tSector("others");
+    return sector || "";
+  };
+
+  const formatHepatitis = (value: string) => {
+    const lower = value.toLowerCase();
+    if (lower.includes("hep b")) return tHepatitis("b");
+    if (lower.includes("hep c")) return tHepatitis("c");
+    return tHepatitis("none");
+  };
 
   useEffect(() => {
     const handleOnline = () => setIsOffline(false);
@@ -495,13 +529,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
     : [];
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
-    value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialisis"
-      : unit.toLowerCase().includes("tx unit")
-      ? "Transplant"
-      : unit.toLowerCase().includes("mrrb unit")
-      ? "MRRB"
-      : "Peritoneal Dialisis",
+    value: formatTreatment(unit),
   }));
 
   return (
@@ -512,8 +540,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
           <div className="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-sm">
             <div className="rounded-lg bg-white p-4 shadow-lg">
               <p className="text-sm text-zinc-600">
-                Peta memerlukan sambungan internet untuk berfungsi. Sila periksa
-                sambungan anda.
+                {t("offline")}
               </p>
             </div>
           </div>
@@ -522,9 +549,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
           <div className="absolute inset-0 flex items-center justify-center bg-black/5">
             <div className="flex items-center gap-2 rounded-md bg-white px-4 py-2 shadow-lg">
               <Loader2 className="h-4 w-4 animate-spin" />
-              <span className="text-sm text-zinc-500">
-                Mendapatkan lokasi anda...
-              </span>
+              <span className="text-sm text-zinc-500">{t("locating")}</span>
             </div>
           </div>
         )}
@@ -545,21 +570,14 @@ export default function MapView({ center }: { center?: [number, number] }) {
                   {selectedCenter.featured && (
                     <div className="flex items-center gap-1 ml-auto mb-2">
                       <Badge className="bg-amber-50 text-amber-600 hover:bg-amber-50 shadow-none font-normal border border-amber-400">
-                        Pusat Pilihan 👍
+                        {t("featuredBadge")}
                       </Badge>
                     </div>
                   )}
                   <h2 className="text-xl font-semibold">{title}</h2>
                   <div className="flex items-center gap-2">
                     <p className="text-primary-foreground mb-4">
-                      {selectedCenter?.sector === "MOH" ||
-                      selectedCenter?.sector === "NGO" ? (
-                        selectedCenter?.sector
-                      ) : (
-                        <span className="capitalize">
-                          {selectedCenter?.sector?.toLowerCase() ?? ""}
-                        </span>
-                      )}
+                      {formatSector(selectedCenter?.sector)}
                     </p>
                   </div>
                   <p className="mt-3 text-zinc-600">
@@ -577,7 +595,9 @@ export default function MapView({ center }: { center?: [number, number] }) {
                       .join(" ")}
                   </p>
                   <div className="flex flex-col gap-2 mt-8">
-                    <div className="text-sm text-zinc-500">Jenis Rawatan</div>
+                    <div className="text-sm text-zinc-500">
+                      {t("treatmentHeading")}
+                    </div>
                     <div className="flex flex-wrap gap-2">
                       {treatmentArray.map((treatment) => (
                         <Badge
@@ -598,7 +618,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                             key={hep}
                             className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200 font-normal"
                           >
-                            {hep}
+                            {formatHepatitis(hep)}
                           </Badge>
                         ))}
                         {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
@@ -626,7 +646,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     <Link href={`tel:${selectedCenter.phoneNumber}`}>
                       <Button variant="outline" className="px-4">
                         <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
-                        Panggil
+                        {tCommon("actions.call")}
                       </Button>
                     </Link>
                     {selectedCenter.featured ? (
@@ -659,7 +679,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                       <Link href={`mailto:${selectedCenter.email}`}>
                         <Button variant={"outline"} className="px-4">
                           <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
-                          Emel
+                          {tCommon("actions.email")}
                         </Button>
                       </Link>
                     )}

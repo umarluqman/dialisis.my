@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 interface LocationSeoContentProps {
   stateName: string;
   cityName?: string;
@@ -16,77 +18,65 @@ export function LocationSeoContent({
   cityName,
   stats,
 }: LocationSeoContentProps) {
+  const t = useTranslations("location.seo");
   const locationName = cityName ? cityName : stateName;
   const fullLocationName = cityName ? `${cityName}, ${stateName}` : stateName;
+  const hasCenters = stats.totalCenters > 0;
 
   return (
     <div className="mt-12 prose max-w-none">
       <h2 className="text-xl font-semibold text-gray-900 mb-4">
-        Tentang Perkhidmatan Dialisis di {locationName}
+        {t("title", { location: locationName })}
       </h2>
       <div className="text-gray-600 space-y-4">
-        {stats.totalCenters > 0 ? (
+        {hasCenters ? (
           <>
             <p>
-              {fullLocationName} mempunyai {stats.totalCenters} pusat dialisis
-              yang menyediakan perkhidmatan rawatan buah pinggang untuk pesakit
-              yang memerlukan. Pusat-pusat ini terdiri daripada{" "}
-              {stats.mohCenters} pusat di bawah Kementerian Kesihatan Malaysia
-              (MOH) dan {stats.privateCenters} pusat swasta.
+              {t("overview", {
+                locationName: fullLocationName,
+                totalCenters: stats.totalCenters,
+                moh: stats.mohCenters,
+                private: stats.privateCenters,
+              })}
             </p>
             <p>
-              Kebanyakan pusat menyediakan perkhidmatan hemodialisis (
-              {stats.hemodialysisCenters} pusat),
-              {stats.peritonealCenters > 0 &&
-                ` manakala ${stats.peritonealCenters} pusat menawarkan peritoneal dialisis`}
-              {stats.peritonealCenters > 0
-                ? " dan rawatan lain."
-                : " manakala beberapa pusat juga menawarkan peritoneal dialisis dan rawatan lain."}
-              {stats.hepatitisBCenters > 0 &&
-                ` Terdapat juga ${stats.hepatitisBCenters} pusat yang mempunyai kemudahan khas untuk pesakit Hepatitis B dan C.`}
+              {t("services", {
+                hemodialysisCenters: stats.hemodialysisCenters,
+                peritonealCenters: stats.peritonealCenters,
+                hepatitisBCenters: stats.hepatitisBCenters,
+              })}
             </p>
             <p>
-              Pesakit yang memerlukan rawatan dialisis di {locationName} boleh
-              memilih antara pusat-pusat MOH yang menawarkan rawatan bersubsidi
-              atau pusat-pusat swasta yang menyediakan kemudahan dan
-              perkhidmatan tambahan. Semua pusat dialisis di Malaysia perlu
-              mematuhi piawaian kualiti yang ditetapkan oleh Kementerian
-              Kesihatan.
+              {t("access", { location: locationName, stateName })}
             </p>
           </>
         ) : (
           <p>
-            Pada masa ini, tiada pusat dialisis yang direkodkan di{" "}
-            {locationName}. Pesakit dari kawasan ini mungkin perlu mendapatkan
-            rawatan di pusat dialisis yang terdekat di kawasan lain dalam{" "}
-            {stateName}. Sila hubungi hospital atau klinik terdekat untuk
-            mendapatkan rujukan kepada pusat dialisis yang sesuai.
+            {t("none", { locationName, stateName })}
           </p>
         )}
       </div>
 
-      {stats.totalCenters > 0 && (
+      {hasCenters && (
         <>
           <h3 className="text-lg font-semibold text-gray-900 mt-8 mb-4">
-            Jenis-jenis Rawatan Dialisis
+            {t("treatmentHeading")}
           </h3>
           <div className="text-gray-600 space-y-3">
             <p>
-              <strong>Hemodialisis:</strong> Rawatan yang menggunakan mesin
-              dialisis untuk membersihkan darah dari toksin dan cecair
-              berlebihan. Biasanya dilakukan 3 kali seminggu, setiap sesi
-              mengambil masa 3-4 jam.
+              {t.rich("treatments.hemodialysis", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <p>
-              <strong>Peritoneal Dialisis:</strong> Rawatan yang menggunakan
-              selaput perut (peritoneum) sebagai penapis semula jadi. Boleh
-              dilakukan di rumah dan memberikan fleksibiliti yang lebih kepada
-              pesakit.
+              {t.rich("treatments.peritoneal", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <p>
-              <strong>Transplantasi Buah Pinggang:</strong> Rawatan terbaik
-              untuk pesakit yang sesuai, di mana buah pinggang yang sihat
-              daripada penderma ditransplant kepada pesakit.
+              {t.rich("treatments.transplant", {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
           </div>
         </>
@@ -94,7 +84,6 @@ export function LocationSeoContent({
     </div>
   );
 }
-
 
 
 

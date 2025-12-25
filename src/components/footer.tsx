@@ -1,27 +1,13 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 import Logo from "./logo";
 
 const boring = [
-  { label: "Blog", href: "/blog" },
-  { label: "Tentang Kami", href: "/tentang-kami" },
-  { label: "Hubungi Kami", href: "/hubungi-kami" },
-  { label: "Terma & Syarat", href: "/terma-dan-syarat" },
-  { label: "Polisi Privasi", href: "/polisi-privasi" },
-];
-
-const lawatiJuga = [
-  {
-    label: "Tidur Lebih Nyenyak",
-    href: "https://nyenyak.orderla.co/?ref=dialisis.my",
-  },
-  {
-    label: "Ayam Tak Cucuk",
-    href: "https://ayamlepaslenggeng.orderla.my/ayam-lepas-bebas?ref=dialisis.my",
-  },
-  {
-    label: "Kembali ke Fitrah",
-    href: "https://senjihouse.com.my/?ref=dialisis.my",
-  },
+  { label: "blog", href: "/blog" },
+  { label: "about", href: "/tentang-kami" },
+  { label: "contact", href: "/hubungi-kami" },
+  { label: "terms", href: "/terma-dan-syarat" },
+  { label: "privacy", href: "/polisi-privasi" },
 ];
 
 const relatedLinks = [
@@ -40,6 +26,8 @@ const relatedLinks = [
 ];
 
 export default function Footer() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="bg-transparent py-12 px-4 sm:px-6 lg:px-8 border-t border-zinc-200 rounded-t-3xl border-dashed">
       <div className="max-w-7xl mx-auto">
@@ -47,11 +35,10 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <Link href="/" className="flex items-center space-x-2">
               <Logo />
-              <span className="text-xl font-bold">Dialisis Malaysia</span>
+              <span className="text-xl font-bold">{t("brand")}</span>
             </Link>
             <p className="mt-4 text-sm text-gray-500 max-w-xs">
-              Dialisis.MY ialah platform yang membantu anda mencari pusat
-              dialisis di Malaysia.
+              {t("tagline")}
             </p>
             {/* <div className="mt-4 flex space-x-4">
               <Link href="#" className="text-gray-400 hover:text-gray-500">
@@ -93,7 +80,7 @@ export default function Footer() {
           </div> */}
           <div>
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-              Berkaitan
+              {t("related")}
             </h3>
             <ul className="mt-4 space-y-4">
               {relatedLinks.map(({ label, href }) => (
@@ -132,7 +119,7 @@ export default function Footer() {
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 flex flex-col sm:flex-row justify-between">
           <p className="text-base text-gray-400">
-            &copy; {new Date().getFullYear()} Dialysis.MY
+            &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
           <div className="mt-4 sm:mt-0 flex flex-wrap gap-6">
             {boring.map(({ label, href }) => (
@@ -141,7 +128,7 @@ export default function Footer() {
                 href={href}
                 className="text-sm text-gray-500 hover:text-gray-900"
               >
-                {label}
+                {t(label)}
               </Link>
             ))}
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 export default function FilterLayout({
@@ -7,7 +8,8 @@ export default function FilterLayout({
 }: {
   children?: React.ReactNode;
 }) {
-  const title = "Pusat Dialisis di Malaysia";
+  const t = useTranslations("home.filter");
+  const title = t("title");
 
   return (
     <div className="min-h-screen bg-[foreground] text-black relative">
@@ -20,7 +22,7 @@ export default function FilterLayout({
           <div className={cn("flex flex-col md:items-center space-y-8")}>
             <h1 className={cn("text-3xl md:text-5xl font-bold")}>{title}</h1>
             <p className={cn("text-gray-600 leading-8 text-lg")}>
-              {`Cari sekitar lebih 900+ pusat dialisis yang berdekatan dengan anda dengan mudah.`}
+              {t("description")}
             </p>
           </div>
         </div>

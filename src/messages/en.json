@@ -1,0 +1,425 @@
+{
+  "layout": {
+    "titleDefault": "Find Dialysis Centres Near You Easily",
+    "titleTemplate": "%s | Dialisis MY",
+    "description": "Get comprehensive information about dialysis centres in Malaysia by state, city and treatment type with ease.",
+    "ogTitle": "Dialisis MY | Find Dialysis Centres in Malaysia | Complete Directory",
+    "ogDescription": "A complete directory with over 900 dialysis centres across Malaysia. Details on locations, contacts, doctors, sectors and dialysis services.",
+    "ogImageAlt": "Dialisis MY - Find Dialysis Centres in Malaysia",
+    "twitterTitle": "Dialisis MY | Find Dialysis Centres in Malaysia",
+    "twitterDescription": "Search more than 900 dialysis centres across Malaysia.",
+    "siteName": "Dialisis MY"
+  },
+  "navbar": {
+    "brand": "Dialisis Malaysia",
+    "map": "View Map",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "languageLabel": "Language",
+    "malay": "Malay",
+    "english": "English"
+  },
+  "footer": {
+    "brand": "Dialisis Malaysia",
+    "tagline": "Dialisis.MY is a platform that helps you find dialysis centres in Malaysia.",
+    "related": "Related",
+    "copyright": "Dialysis.MY",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy"
+  },
+  "common": {
+    "actions": {
+      "call": "Call",
+      "location": "Location",
+      "details": "More Info",
+      "search": "Search Dialysis Centres",
+      "loading": "Loading...",
+      "backToList": "Back",
+      "email": "Email"
+    },
+    "sector": {
+      "moh": "Public",
+      "private": "Private",
+      "mohPrivate": "Public & Private",
+      "ngo": "NGO",
+      "university": "University",
+      "armedForce": "Armed Forces",
+      "others": "Others"
+    },
+    "hepatitis": {
+      "none": "No Hepatitis",
+      "b": "Hepatitis B",
+      "c": "Hepatitis C"
+    },
+    "treatments": {
+      "hd": "Hemodialysis",
+      "pd": "Peritoneal Dialysis",
+      "tx": "Transplant",
+      "mrrb": "MRRB"
+    },
+    "status": {
+      "noCentersTitle": "No Dialysis Centres",
+      "noCentersDescription": "Sorry, there are no dialysis centres that match your search criteria."
+    }
+  },
+  "onlineStatus": {
+    "onlineTitle": "Internet connection restored",
+    "onlineDescription": "You can now use all app features.",
+    "offlineTitle": "No internet connection",
+    "offlineDescription": "Some features may be unavailable."
+  },
+  "centerCard": {
+    "featuredBadge": "Featured",
+    "loadingImages": "Loading images...",
+    "treatmentHeading": "Treatment Services"
+  },
+  "centerDetails": {
+    "website": "Website",
+    "medicalStaff": "Doctors & Medical Staff",
+    "doctorOnDuty": "Doctor on duty",
+    "nephrology": "Nephrologist",
+    "management": "Management",
+    "coordinator": "Coordinator",
+    "services": "Treatment Services"
+  },
+  "enhancedCenter": {
+    "gallery": {
+      "title": "Gallery",
+      "loading": "Loading gallery...",
+      "fallback": "Using sample images",
+      "expandedAlt": "Expanded gallery image"
+    },
+    "locationHeading": "Location & Contact",
+    "address": "Address:",
+    "phone": "Phone:",
+    "email": "Email:",
+    "benefits": {
+      "heading": "{name} advantages",
+      "quality": {
+        "title": "Quality Hemodialysis Care",
+        "description": "Our centre offers high-quality dialysis treatment with modern equipment and experienced staff."
+      },
+      "team": {
+        "title": "Experienced & Friendly Team",
+        "description": "Our medical team consists of experienced, friendly professionals providing the best care to patients."
+      },
+      "access": {
+        "title": "Easy access with parking",
+        "description": "A strategic location with ample parking for patient and visitor convenience."
+      },
+      "comfort": {
+        "title": "Clean, air-conditioned treatment space",
+        "description": "Clean and comfortable treatment rooms with air-conditioning for patient comfort during sessions."
+      }
+    },
+    "cta": {
+      "callNow": "Call Now"
+    }
+  },
+  "location": {
+    "townFilter": {
+      "placeholder": "Choose city",
+      "allTowns": "All cities in {state}"
+    },
+    "stateList": {
+      "townFilterLabel": "Filter by city:",
+      "listTitle": "Dialysis Centre List",
+      "listTitleTown": "Dialysis Centre List in {town}",
+      "empty": "No dialysis centres found in {state}{town, select( '' '' other ' for {town}')}"
+    },
+    "header": {
+      "title": "Dialysis Centres in {location}",
+      "summary": "There are {totalCenters} dialysis centres in {locationName}.{totalCenters, plural, =0 { } other { This includes {moh} MOH centres, {private} private centres, {hepB} centres with Hepatitis B facilities, and {hepC} centres with Hepatitis C facilities.}}",
+      "home": "Home",
+      "stats": {
+        "total": "Total Centres",
+        "moh": "MOH Centres",
+        "private": "Private Centres",
+        "hepB": "Hepatitis B",
+        "hepC": "Hepatitis C"
+      }
+    },
+    "seo": {
+      "title": "About Dialysis Services in {location}",
+      "overview": "{locationName} has {totalCenters} dialysis centres providing kidney treatment services for patients in need. These centres include {moh} under the Ministry of Health (MOH) and {private} private centres.",
+      "services": "Most centres provide hemodialysis ({hemodialysisCenters} centres){peritonealCenters, plural, =0 {, while some also offer peritoneal dialysis and other treatments.} other {, while {peritonealCenters} centres offer peritoneal dialysis and other treatments.}}{hepatitisBCenters, plural, =0 {} other { There are also {hepatitisBCenters} centres with dedicated facilities for Hepatitis B and C patients.}}",
+      "access": "Patients needing dialysis in {location} can choose between subsidised MOH centres or private centres that provide additional facilities and services. All dialysis centres in Malaysia must meet the quality standards set by the Ministry of Health.",
+      "none": "Currently, no dialysis centres are recorded in {locationName}. Patients in this area may need to seek treatment at the nearest centres in other parts of {stateName}. Please contact the nearest hospital or clinic for a referral to a suitable dialysis centre.",
+      "treatmentHeading": "Dialysis Treatment Types",
+      "treatments": {
+        "hemodialysis": "<strong>Hemodialysis:</strong> A treatment that uses a dialysis machine to remove toxins and excess fluids from the blood. Typically done three times a week, with each session lasting 3-4 hours.",
+        "peritoneal": "<strong>Peritoneal Dialysis:</strong> A treatment that uses the peritoneal membrane as a natural filter. Can be done at home and offers more flexibility for patients.",
+        "transplant": "<strong>Kidney Transplant:</strong> The best option for suitable patients, where a healthy kidney from a donor is transplanted to the patient."
+      }
+    },
+    "metadata": {
+      "state": {
+        "title": "Dialysis Centres in {stateName} - {total} Available",
+        "description": "Find dialysis centres in {stateName}. There are {total} centres including {moh} MOH centres and {private} private centres. Complete details for locations, phone numbers and services.",
+        "ogTitle": "Dialysis Centres in {stateName} - {total} Available",
+        "ogDescription": "Find dialysis centres in {stateName}. There are {total} centres with complete location, phone and service information.",
+        "twitterTitle": "Dialysis Centres in {stateName} - {total} Available",
+        "twitterDescription": "Find dialysis centres in {stateName} with full details.",
+        "ogImageAlt": "Dialysis Centres in {stateName}",
+        "siteName": "Dialisis MY",
+        "notFoundTitle": "Not Found",
+        "notFoundDescription": "The page you're looking for doesn't exist."
+      },
+      "city": {
+        "title": "Dialysis Centres in {cityName}, {stateName} - {total} Available",
+        "description": "Find dialysis centres in {cityName}, {stateName}. There are {total} centres including {moh} MOH centres and {private} private centres. Complete location, phone and service details.",
+        "ogTitle": "Dialysis Centres in {cityName}, {stateName} - {total} Available",
+        "ogDescription": "Find dialysis centres in {cityName}, {stateName}. There are {total} centres with complete location, phone and service information.",
+        "twitterTitle": "Dialysis Centres in {cityName}, {stateName} - {total} Available",
+        "twitterDescription": "Find dialysis centres in {cityName}, {stateName} with full details.",
+        "ogImageAlt": "Dialysis Centres in {cityName}, {stateName}",
+        "siteName": "Dialisis MY",
+        "notFoundTitle": "Not Found",
+        "notFoundDescription": "The page you're looking for doesn't exist."
+      }
+    },
+    "cityPage": {
+      "empty": "No dialysis centres found in {cityName}",
+      "viewState": "View all dialysis centres in {stateName}"
+    }
+  },
+  "map": {
+    "offline": "The map requires an internet connection. Please check your network.",
+    "locating": "Getting your location...",
+    "featuredBadge": "Featured Centre 👍",
+    "treatmentHeading": "Treatment Types",
+    "metadata": {
+      "title": "Dialysis Centre Map in Malaysia",
+      "description": "Find nearby dialysis centres using the interactive map. View full service information across Malaysia.",
+      "ogTitle": "Dialysis Centre Map in Malaysia | Dialisis MY",
+      "ogDescription": "Find nearby dialysis centres through our interactive map. See locations, contact details and services offered.",
+      "twitterTitle": "Dialysis Centre Map in Malaysia | Dialisis MY",
+      "twitterDescription": "Find nearby dialysis centres through our interactive map. See locations, contact details and services offered."
+    }
+  },
+  "center": {
+    "metadata": {
+      "siteName": "Dialisis MY",
+      "services": {
+        "both": "Hemodialysis and Peritoneal Dialysis",
+        "hd": "Hemodialysis",
+        "pd": "Peritoneal Dialysis",
+        "default": "Dialysis Services"
+      },
+      "sector": {
+        "moh": "Public hospital",
+        "ngo": "NGO centre",
+        "private": "Private centre"
+      },
+      "title": "{centerName} - Dialysis Centre in {location}",
+      "description": "Dialysis centre {centerName} in {location}. Provides {services} for kidney patients. {sectorDescription}.",
+      "ogTitle": "{centerName} - Dialysis Centre in {location}",
+      "ogDescription": "Dialysis centre {centerName} in {location}. Provides {services} for kidney patients.",
+      "ogImageAlt": "Dialysis Centre {centerName}",
+      "twitterTitle": "{centerName} - Dialysis Centre in {location}",
+      "twitterDescription": "Dialysis centre in {location}. Provides {services}.",
+      "notFoundTitle": "Not Found",
+      "notFoundDescription": "The page you're looking for doesn't exist."
+    }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Contact Us to Update Your Dialysis Centre Details",
+      "description": "Get in touch with us for any questions about dialysis centres in Malaysia.",
+      "ogTitle": "Contact Us | Dialisis MY",
+      "ogDescription": "Get in touch with us for any questions about dialysis centres in Malaysia.",
+      "twitterTitle": "Contact Us | Dialisis.my",
+      "twitterDescription": "Get in touch with us for any questions about dialysis centres in Malaysia."
+    },
+    "content": {
+      "title": "Contact Us",
+      "updateHeading": "Update Dialysis Centre Information",
+      "updateDescription": "For any updates to information on this site, reach out using the details below.",
+      "email": "joharidialisis.my@gmail.com",
+      "address": "Putrajaya, Malaysia",
+      "whatsapp": "WhatsApp +60 11727 55299"
+    }
+  },
+  "about": {
+    "metadata": {
+      "title": "Learn More About Dialisis MY",
+      "description": "Learn more about our mission to help kidney patients in Malaysia find the right dialysis centre.",
+      "ogTitle": "About Us | Dialisis MY",
+      "ogDescription": "Learn more about our mission to help kidney patients in Malaysia find the right dialysis centre.",
+      "twitterTitle": "About Us | Dialisis.my",
+      "twitterDescription": "Learn more about our mission to help kidney patients in Malaysia find the right dialysis centre."
+    },
+    "content": {
+      "title": "About Us",
+      "missionTitle": "Our Mission",
+      "missionDescription": "Dialisis.MY was founded to make it easier for kidney patients in Malaysia to find a dialysis centre that fits their needs. We believe that access to accurate, complete information is vital when making health decisions.",
+      "offeringsTitle": "What We Offer",
+      "offerings": {
+        "directory": "A comprehensive directory of dialysis centres across Malaysia",
+        "details": "Detailed information about each centre including location, facilities and services",
+        "search": "Easy search by location and specific needs",
+        "guide": "Useful guides for dialysis patients"
+      },
+      "commitmentTitle": "Our Commitment",
+      "commitmentIntro": "We are committed to:",
+      "commitments": {
+        "accurate": "Providing accurate and up-to-date information",
+        "informed": "Helping patients make informed decisions",
+        "access": "Improving access to quality dialysis services",
+        "support": "Supporting the kidney patient community in Malaysia"
+      }
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Privacy Policy",
+      "description": "Dialisis.my's privacy policy explains how we collect, use and protect your personal information.",
+      "ogTitle": "Privacy Policy | Dialisis MY",
+      "ogDescription": "Dialisis.my's privacy policy explains how we collect, use and protect your personal information.",
+      "twitterTitle": "Privacy Policy | Dialisis.my",
+      "twitterDescription": "Dialisis.my's privacy policy explains how we collect, use and protect your personal information."
+    },
+    "content": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: {date}",
+      "intro": "Dialisis.my is committed to protecting your privacy. This policy explains how we collect, use and safeguard your personal information when you use our website.",
+      "sections": {
+        "collection": {
+          "title": "1. Information We Collect",
+          "description": "We collect information you provide directly to us through:",
+          "items": {
+            "form": "Contact forms",
+            "email": "Email enquiries",
+            "usage": "Website usage information"
+          }
+        },
+        "usage": {
+          "title": "2. How We Use Information",
+          "description": "We use the information collected to:",
+          "items": {
+            "info": "Provide information about dialysis centres",
+            "respond": "Respond to your enquiries",
+            "improve": "Improve our website and services",
+            "updates": "Send updates and related information"
+          }
+        },
+        "protection": {
+          "title": "3. Data Protection",
+          "description": "We take appropriate security measures to protect your information from unauthorized access, alteration or disclosure."
+        },
+        "sharing": {
+          "title": "4. Information Sharing",
+          "description": "We will not sell, rent or trade your personal information with third parties without your consent, except as required by law."
+        },
+        "cookies": {
+          "title": "5. Cookies and Tracking",
+          "description": "We use cookies and similar tracking technologies to collect information about website usage and enhance user experience."
+        },
+        "rights": {
+          "title": "6. Your Rights",
+          "description": "You have the right to:",
+          "items": {
+            "access": "Access your personal information",
+            "correct": "Correct inaccurate information",
+            "delete": "Request deletion of your information",
+            "object": "Object to the processing of your information"
+          }
+        },
+        "changes": {
+          "title": "7. Changes to This Policy",
+          "description": "We reserve the right to change this policy at any time. Any changes will be announced on this website."
+        },
+        "contact": {
+          "title": "8. Contact Us",
+          "description": "If you have any questions about this privacy policy or our practices, please contact us through the Contact page."
+        }
+      }
+    }
+  },
+  "terms": {
+    "metadata": {
+      "title": "Terms and Conditions",
+      "description": "The terms and conditions for using the Dialisis.my platform. Please read carefully before using our services.",
+      "ogTitle": "Terms and Conditions | Dialisis MY",
+      "ogDescription": "The terms and conditions for using the Dialisis.my platform. Please read carefully before using our services.",
+      "twitterTitle": "Terms and Conditions | Dialisis.my",
+      "twitterDescription": "The terms and conditions for using the Dialisis.my platform. Please read carefully before using our services."
+    },
+    "content": {
+      "title": "Terms and Conditions",
+      "sections": {
+        "intro": {
+          "title": "1. Introduction",
+          "description": "Welcome to Dialisis.my. By accessing and using this website, you agree to be bound by the terms and conditions outlined below."
+        },
+        "usage": {
+          "title": "2. Use of Content",
+          "description": "All content on Dialisis.my is protected by copyright. You may view and download content for personal, non-commercial use only."
+        },
+        "info": {
+          "title": "3. Dialysis Centre Information",
+          "description": "Information about dialysis centres displayed on this website is for informational purposes only. We strive for accuracy but do not guarantee completeness or correctness."
+        },
+        "disclaimer": {
+          "title": "4. Disclaimer",
+          "description": "Dialisis.my is not responsible for any loss or damage arising from the use of information on this website. Users are advised to verify information directly with the respective dialysis centres."
+        },
+        "changes": {
+          "title": "5. Changes to Terms",
+          "description": "We reserve the right to change these terms and conditions at any time. Changes take effect immediately after being posted on this website."
+        },
+        "law": {
+          "title": "6. Governing Law",
+          "description": "These terms and conditions are governed by Malaysian law and any disputes will be resolved in Malaysian courts."
+        },
+        "contact": {
+          "title": "7. Contact Us",
+          "description": "If you have any questions about these terms and conditions, please contact us via the Contact page."
+        }
+      }
+    }
+  },
+  "home": {
+    "filter": {
+      "title": "Dialysis Centres in Malaysia",
+      "description": "Explore over 900 dialysis centres near you with ease."
+    },
+    "list": {
+      "namePlaceholder": "Dialysis Centre Name",
+      "statePlaceholder": "Choose state / territory",
+      "allStates": "All States / Territories",
+      "cityPlaceholder": "Choose city",
+      "allCities": "All Cities",
+      "treatmentPlaceholder": "Choose treatment",
+      "allTreatments": "All Treatments",
+      "doctorPlaceholder": "Doctor on Duty",
+      "sectorPlaceholder": "Choose sector",
+      "allSectors": "All Sectors",
+      "searching": "Searching..."
+    },
+    "quiz": {
+      "questions": {
+        "state": "Where are you located?",
+        "city": "Which city are you in?",
+        "treatment": "What treatment do you need?",
+        "hepatitis": "Do you have Hepatitis?",
+        "sector": "Select your preferred sector:"
+      },
+      "stepLabel": "Step {current} of {total}",
+      "useLocation": "Use current location",
+      "locating": "Finding your location...",
+      "resultsTitle": "Matching Dialysis Centres",
+      "restart": "Start Over"
+    },
+    "metadata": {
+      "title": "Find Dialysis Centres Near You Easily",
+      "description": "Get comprehensive information about dialysis centres in Malaysia by state, city and treatment type with ease.",
+      "ogTitle": "Find Dialysis Centres | Dialisis.my",
+      "ogDescription": "Find dialysis centres across Malaysia by state, city and treatment type.",
+      "twitterTitle": "Find Dialysis Centres | Dialisis.my",
+      "twitterDescription": "Find dialysis centres across Malaysia by state, city and treatment type."
+    }
+  }
+}

@@ -1,6 +1,9 @@
 import { getAllLocationData } from "@/lib/location-utils";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
+
+import { defaultLocale, localePrefix, locales } from "./src/i18n/routing";
 
 const PUBLIC_FILE = /\.(.*)$/;
 
@@ -28,6 +31,12 @@ function getLocationSlugs(): Set<string> {
 
   return locationSlugs;
 }
+
+const intlMiddleware = createMiddleware({
+  defaultLocale,
+  locales,
+  localePrefix,
+});
 
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -75,7 +84,7 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  return NextResponse.next();
+  return intlMiddleware(request);
 }
 
 // Configure matcher for all paths except static files

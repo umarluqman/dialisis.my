@@ -3,6 +3,7 @@
 import { CenterCard } from "@/components/center-card";
 import { CenterCardSkeleton } from "@/components/center-card-skeleton";
 import { TownFilter } from "@/components/town-filter";
+import { useTranslations } from "next-intl";
 import { useQueryState } from "nuqs";
 import { useEffect, useState, useTransition } from "react";
 
@@ -27,6 +28,7 @@ export function StateCenterList({
   stateSlug,
   availableTowns,
 }: StateCenterListProps) {
+  const t = useTranslations("location.stateList");
   const [town] = useQueryState("town", {
     shallow: true,
   });
@@ -69,7 +71,7 @@ export function StateCenterList({
         <div className="mb-6">
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-4">
             <h3 className="text-lg font-medium text-gray-900">
-              Tapis mengikut bandar:
+              {t("townFilterLabel")}
             </h3>
             <TownFilter towns={availableTowns} stateName={stateName} />
           </div>
@@ -79,8 +81,7 @@ export function StateCenterList({
       {/* Centers Grid */}
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-          Senarai Pusat Dialisis
-          {town && ` di ${town}`}
+          {town ? t("listTitleTown", { town }) : t("listTitle")}
         </h2>
 
         {isPending ? (
@@ -98,8 +99,7 @@ export function StateCenterList({
         ) : (
           <div className="text-center py-12">
             <div className="text-gray-500 text-lg">
-              Tiada pusat dialisis dijumpai di {stateName}
-              {town && ` untuk bandar ${town}`}
+              {t("empty", { state: stateName, town: town || "" })}
             </div>
           </div>
         )}

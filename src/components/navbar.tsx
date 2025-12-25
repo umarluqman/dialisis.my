@@ -1,13 +1,22 @@
 "use client";
 
+import { Link, usePathname, useRouter } from "@/i18n/routing";
 import { PopiconsMapDuotone } from "@popicons/react";
-import Link from "next/link";
-import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import Logo from "./logo";
 import { Button } from "./ui/button";
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const t = useTranslations("navbar");
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleLocaleChange = (nextLocale: string) => {
+    if (nextLocale === locale) return;
+    router.replace(pathname, { locale: nextLocale });
+    router.refresh();
+  };
 
   return (
     <nav className="w-full bg-background py-2 px-4 md:py-4 md:px-20 text-black">
@@ -18,16 +27,16 @@ export const Navbar = () => {
             <Link className="flex items-center" href="/">
               <div className="flex space-x-3 items-center">
                 <Logo />
-                <span className="sr-only">Dialisis Malaysia</span>
+                <span className="sr-only">{t("brand")}</span>
                 <div className="tracking-wide font-medium leading-none">
-                  <div>Dialisis Malaysia</div>
+                  <div>{t("brand")}</div>
                 </div>
               </div>
             </Link>
             <Link className="flex items-center" href="/peta">
               <Button variant="outline" size="sm">
                 <PopiconsMapDuotone className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">Lihat Peta</span>
+                <span className="text-sm font-medium">{t("map")}</span>
               </Button>
             </Link>
             <Link href="/blog">
@@ -37,9 +46,32 @@ export const Navbar = () => {
             </Link>
             <Link href="/hubungi-kami">
               <Button variant="ghost" size="sm">
-                <span className="text-sm font-medium">Hubungi Kami</span>
+                <span className="text-sm font-medium">{t("contact")}</span>
               </Button>
             </Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-muted-foreground uppercase tracking-wide">
+              {t("languageLabel")}
+            </span>
+            <div className="flex items-center gap-1 bg-muted/60 rounded-full p-1">
+              <Button
+                variant={locale === "ms" ? "default" : "ghost"}
+                size="sm"
+                className="px-3"
+                onClick={() => handleLocaleChange("ms")}
+              >
+                BM
+              </Button>
+              <Button
+                variant={locale === "en" ? "default" : "ghost"}
+                size="sm"
+                className="px-3"
+                onClick={() => handleLocaleChange("en")}
+              >
+                EN
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -48,9 +80,9 @@ export const Navbar = () => {
           <Link className="flex items-center" href="/">
             <div className="flex space-x-3 items-center">
               <Logo />
-              <span className="sr-only">Dialisis Malaysia</span>
+              <span className="sr-only">{t("brand")}</span>
               <div className="tracking-wide font-medium leading-none">
-                <div>Dialisis Malaysia</div>
+                <div>{t("brand")}</div>
               </div>
             </div>
           </Link>
@@ -58,19 +90,32 @@ export const Navbar = () => {
             <Link href="/peta">
               <Button variant="outline" size="sm">
                 <PopiconsMapDuotone className="h-5 w-5 text-primary" />
-                <span className="text-sm font-medium">Lihat Peta</span>
+                <span className="text-sm font-medium">{t("map")}</span>
               </Button>
             </Link>
-            {/* <Link href="/tentang-kami">
-              <Button variant="ghost" size="sm">
-                <span className="text-sm font-medium">Tentang</span>
-              </Button>
-            </Link> */}
             <Link href="/hubungi-kami">
               <Button variant="ghost" size="sm">
-                <span className="text-sm font-medium">Hubungi Kami</span>
+                <span className="text-sm font-medium">{t("contact")}</span>
               </Button>
             </Link>
+            <div className="flex items-center gap-1 bg-muted/60 rounded-full p-1">
+              <Button
+                variant={locale === "ms" ? "default" : "ghost"}
+                size="icon"
+                className="px-3"
+                onClick={() => handleLocaleChange("ms")}
+              >
+                BM
+              </Button>
+              <Button
+                variant={locale === "en" ? "default" : "ghost"}
+                size="icon"
+                className="px-3"
+                onClick={() => handleLocaleChange("en")}
+              >
+                EN
+              </Button>
+            </div>
           </div>
         </div>
 

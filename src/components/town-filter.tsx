@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useTranslations } from "next-intl";
 import { useQueryState } from "nuqs";
 import { useCallback } from "react";
 
@@ -16,6 +17,7 @@ interface TownFilterProps {
 }
 
 export function TownFilter({ towns, stateName }: TownFilterProps) {
+  const t = useTranslations("location.townFilter");
   const [town, setTown] = useQueryState("town", {
     shallow: true,
   });
@@ -42,11 +44,11 @@ export function TownFilter({ towns, stateName }: TownFilterProps) {
         onValueChange={handleTownChange}
       >
         <SelectTrigger>
-          <SelectValue placeholder="Pilih bandar" />
+          <SelectValue placeholder={t("placeholder")} />
         </SelectTrigger>
         <SelectContent>
           <SelectItem value="semua bandar">
-            Semua Bandar di {stateName}
+            {t("allTowns", { state: stateName })}
           </SelectItem>
           {towns.map((townName) => (
             <SelectItem key={townName} value={townName}>

@@ -1,20 +1,23 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import { toast } from "sonner";
 
 export function OnlineStatusHandler() {
+  const t = useTranslations("onlineStatus");
+
   useEffect(() => {
     const handleOnline = () => {
-      toast.success("Sambungan internet dipulihkan", {
-        description: "Anda kini boleh menggunakan semua ciri aplikasi.",
+      toast.success(t("onlineTitle"), {
+        description: t("onlineDescription"),
         duration: 4000,
       });
     };
 
     const handleOffline = () => {
-      toast.error("Tiada sambungan internet", {
-        description: "Beberapa ciri mungkin tidak tersedia.",
+      toast.error(t("offlineTitle"), {
+        description: t("offlineDescription"),
         duration: 0, // Keep showing until back online
       });
     };
