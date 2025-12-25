@@ -18,6 +18,7 @@
 # Public
 /public/sitemap*.xml
 /public/robots.txt
+/public/sw.js
 
 # misc
 .DS_Store
