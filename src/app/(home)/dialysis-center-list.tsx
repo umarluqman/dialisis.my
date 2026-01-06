@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { CITIES, SECTOR, STATES, TREATMENT_TYPES } from "@/constants";
-import { ArrowRight, SearchX } from "lucide-react";
+import { ArrowRight, Loader2, SearchX } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import { parseAsInteger, useQueryState } from "nuqs";
 import {
@@ -208,20 +208,22 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
   const centersGrid = useMemo(() => {
     if (initialData.centers.length === 0) {
       return (
-        <div className="col-span-full flex flex-col items-center justify-center py-12">
-          <SearchX className="w-12 h-12 text-zinc-400" />
-          <h3 className="mt-4 text-lg font-semibold text-zinc-950">
+        <div className="col-span-full flex flex-col items-center justify-center py-16">
+          <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+            <SearchX className="w-8 h-8 text-muted-foreground" />
+          </div>
+          <h3 className="text-lg font-display font-semibold text-foreground">
             Tiada Pusat Dialisis
           </h3>
-          <p className="mt-1 text-sm text-zinc-600">
-            Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda.
+          <p className="mt-2 text-sm text-muted-foreground max-w-md text-center">
+            Maaf, tiada pusat dialisis yang memenuhi kriteria carian anda. Sila cuba carian lain.
           </p>
         </div>
       );
     }
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {initialData.centers.map((center) => (
           <Suspense key={center.id} fallback={<CenterCardSkeleton />}>
             <MemoizedCenterCard {...center} />
@@ -233,17 +235,19 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
 
   return (
     <FilterLayout>
-      <div className="flex flex-col bg-white lg:w-fit md:mx-auto py-8 md:p-8 border-b-0">
-        <div className="pt-4 mb-6 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-[1fr_1fr_1fr_1fr_1fr_150px] justify-items-center gap-3 max-w-7xl md:mx-auto px-4">
-          <div className="w-full">
+      {/* Filter Section */}
+      <div className="container mx-auto px-4 -mt-8 relative z-10 mb-8">
+        <div className="bg-card rounded-2xl shadow-card p-6 md:p-8">
+          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
+            Tapis Carian
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <Input
               type="text"
               placeholder="Nama Pusat Dialisis"
               value={name || ""}
               onChange={(e) => setName(e.target.value)}
             />
-          </div>
-          <div className="w-full">
             <Select
               defaultValue={
                 stateParam?.toLowerCase() || "semua negeri / wilayah"
@@ -261,9 +265,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
                 ))}
               </SelectContent>
             </Select>
-          </div>
 
-          <div className="w-full">
             <Select
               onValueChange={handleCityChange}
               defaultValue={cityParam?.toLowerCase() || "semua bandar"}
@@ -283,9 +285,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
                   ))}
               </SelectContent>
             </Select>
-          </div>
 
-          <div className="w-full">
             <Select
               key="rawatan"
               onValueChange={handleTreatmentChange}
@@ -305,16 +305,14 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
                 ))}
               </SelectContent>
             </Select>
-          </div>
-          <div className="w-full">
+
             <Input
               type="text"
               placeholder="Nama Doktor Bertugas"
               value={doctorName || ""}
               onChange={(e) => setDoctorName(e.target.value)}
             />
-          </div>
-          <div className="w-full">
+
             <Select
               key="sektor"
               onValueChange={handleSectorChange}
@@ -335,23 +333,35 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
               </SelectContent>
             </Select>
           </div>
-        </div>
-        <div className="flex justify-center gap-4">
-          <Button
-            size="lg"
-            className="mb-8 mt-2"
-            onClick={handleSearch}
-            disabled={isPending}
-          >
-            {isPending ? "Mencari..." : "Cari Pusat Dialisis"}
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
+          <div className="flex justify-center mt-6">
+            <Button
+              variant="trust"
+              size="lg"
+              onClick={handleSearch}
+              disabled={isPending}
+            >
+              {isPending ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  Mencari...
+                </>
+              ) : (
+                <>
+                  Cari Pusat Dialisis
+                  <ArrowRight className="w-4 h-4" />
+                </>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
-      {centersGrid}
+      {/* Results Grid */}
+      <div className="container mx-auto px-4 pb-8">
+        {centersGrid}
+      </div>
 
-      <Pagination className="my-16 cursor-pointer">
+      <Pagination className="my-12 cursor-pointer">
         <PaginationContent>
           {initialData.currentPage > 1 && (
             <MemoizedPaginationItem>

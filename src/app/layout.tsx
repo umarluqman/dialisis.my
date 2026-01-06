@@ -6,11 +6,24 @@ import { OnlineStatusHandler } from "@/components/online-status";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import { DM_Sans, Source_Serif_4 } from "next/font/google";
 import { Metadata } from "next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["400", "600", "700"],
+});
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
@@ -75,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ms" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="ms" className={`${dmSans.variable} ${sourceSerif.variable} ${GeistMono.variable}`}>
       <head>
         <NextPathsMeta />
         <link

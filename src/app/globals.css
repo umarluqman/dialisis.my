@@ -4,48 +4,90 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 206.75 97.65% 16.67%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    /* Serene Clinical Palette */
+    --background: 40 33% 98%;
+    --foreground: 220 26% 20%;
+
+    --muted: 150 10% 94%;
+    --muted-foreground: 220 10% 46%;
+
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 220 26% 20%;
+
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --primary: 148.49 73.06% 51.96%;
-    --primary-foreground: 206.75 97.65% 16.67%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --accent: 240 4.76% 95.88%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
+    --card-foreground: 220 26% 20%;
+
+    --border: 150 10% 88%;
+    --input: 150 10% 88%;
+
+    --primary: 175 79% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 150 10% 94%;
+    --secondary-foreground: 220 26% 20%;
+
+    --accent: 14 76% 62%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --ring: 206.75 97.65% 16.67%;
-    --radius: 0.5rem;
+
+    --ring: 175 79% 22%;
+    --radius: 0.75rem;
+
+    /* Custom easing functions */
+    --ease-out-quad: cubic-bezier(.25, .46, .45, .94);
+    --ease-out-cubic: cubic-bezier(.215, .61, .355, 1);
+    --ease-in-out-cubic: cubic-bezier(.645, .045, .355, 1);
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 220 26% 10%;
     --foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --popover: 240 10% 3.9%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 64%;
+    --popover: 220 26% 10%;
     --popover-foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 220 26% 12%;
     --card-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --border: 220 20% 22%;
+    --input: 220 20% 22%;
+    --primary: 175 60% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 18%;
     --secondary-foreground: 0 0% 98%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --accent: 14 76% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
-    --ring: 240 4.9% 83.9%;
+    --ring: 175 60% 45%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-image:
+      radial-gradient(circle at 20% 80%, hsl(175 30% 95% / 0.4) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(14 30% 95% / 0.3) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

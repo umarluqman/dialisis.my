@@ -2,12 +2,12 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
+import { cn } from "@/lib/utils";
 import {
   PopiconsArrowRightLine,
   PopiconsMapLine,
   PopiconsPhoneLine,
 } from "@popicons/react";
-import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { CenterCardGallery } from "./center-card-gallery";
@@ -114,17 +114,36 @@ export function CenterCard({
       : getSampleImages(town, dialysisCenterName) // Fallback to sample images if no API images
     : parsePhotos(photos);
 
+  const getSectorVariant = () => {
+    if (sector === "MOH" || sector === "MOH_PRIVATE") return "government";
+    if (sector === "NGO") return "ngo";
+    return "private";
+  };
+
+  const getSectorLabel = () => {
+    if (sector === "MOH") return "Kerajaan";
+    if (sector === "MOH_PRIVATE") return "Kerajaan & Swasta";
+    if (sector === "NGO") return "NGO";
+    if (sector?.toLowerCase() === "private") return "Swasta";
+    return sector;
+  };
+
   return (
     <Card
-      className={`shadow-sm transition-shadow flex flex-col min-h-fit relative ${
-        isFeatured
-          ? "shadow-primary/25 bg-gradient-to-br from-primary/5 to-primary/5 shadow-lg border-primary border-2"
-          : ""
-      }`}
+      className={cn(
+        "group flex flex-col min-h-fit relative overflow-hidden",
+        isFeatured && [
+          "ring-2 ring-primary/20",
+          "bg-gradient-to-br from-primary/[0.02] to-accent/[0.02]",
+        ]
+      )}
     >
       {isFeatured && (
-        <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none z-10">
-          Featured
+        <Badge
+          variant="featured"
+          className="absolute -top-0.5 right-4 z-10"
+        >
+          Pilihan Utama
         </Badge>
       )}
 
@@ -132,172 +151,100 @@ export function CenterCard({
       {isFeatured && (
         <div className="p-4 pb-0">
           {imagesLoading ? (
-            <div className="relative aspect-[4/3] rounded-lg bg-zinc-100 animate-pulse flex items-center justify-center">
-              <div className="text-zinc-400 text-sm">Loading images...</div>
+            <div className="relative aspect-[4/3] rounded-lg bg-muted animate-pulse flex items-center justify-center">
+              <div className="text-muted-foreground text-sm">Memuatkan...</div>
             </div>
           ) : galleryImages.length > 0 ? (
-            <CenterCardGallery images={galleryImages} centerName={title} />
+            <div className="overflow-hidden rounded-lg">
+              <CenterCardGallery images={galleryImages} centerName={title} />
+            </div>
           ) : null}
         </div>
       )}
 
-      <CardHeader className="pb-0">
-        <CardTitle className="text-lg font-bold text-foreground">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
           {title}
         </CardTitle>
-        <div className="flex justify-between w-full">
-          <CardTitle className="text-zinc-500 font-medium capitalize text-base">{`${
-            town ? town + ", " : ""
-          }${state.name}`}</CardTitle>
-
-          <p className="text-primary-foreground mb-4 text-sm">
-            {sector === "MOH" ||
-            sector === "NGO" ||
-            sector === "MOH_PRIVATE" ? (
-              sector === "MOH" ? (
-                "Kerajaan"
-              ) : sector === "MOH_PRIVATE" ? (
-                "Kerajaan & Swasta"
-              ) : (
-                sector
-              )
-            ) : (
-              <span className="capitalize">
-                {sector?.toLowerCase() === "private"
-                  ? "Swasta"
-                  : sector?.toLowerCase()}
-              </span>
-            )}
+        <div className="flex justify-between items-center w-full">
+          <p className="text-muted-foreground font-medium text-sm capitalize">
+            {town ? `${town}, ` : ""}{state.name}
           </p>
+          <Badge variant={getSectorVariant() as "government" | "private" | "ngo"}>
+            {getSectorLabel()}
+          </Badge>
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col flex-1">
-        <div
-          className={`flex-1 rounded-t-[10px] flex flex-col ${
-            isFeatured ? "transparent" : "bg-white"
-          }`}
-        >
-          {/* <p className="mt-3 text-zinc-600">{address}</p> */}
-          {showService && (
-            <div className="flex flex-col gap-2 my-2">
-              <div className="text-sm text-zinc-600">Servis Rawatan</div>
-              <div className="flex flex-wrap gap-2">
-                {treatmentArray.map((treatment) => (
-                  <Badge
-                    key={treatment.name}
-                    className="bg-[#a3bdffff]/20 text-[#375092ff] shadow-none font-normal border- border-primary-foreground/25"
-                  >
-                    {treatment.value}
-                  </Badge>
-                ))}{" "}
-              </div>
-            </div>
-          )}
 
-          {showService && (
-            <div className="flex flex-wrap mb-4">
-              {hepatitisArray.length > 0 ? (
-                <div className="flex items-center gap-2">
-                  {hepatitisArray.map((hep) => (
-                    <Badge
-                      key={hep}
-                      className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
-                    >
-                      {hep}
-                    </Badge>
-                  ))}
-                  {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
-                </div>
-              ) : null}
+      <CardContent className="flex flex-col flex-1 pt-2">
+        {showService && (
+          <div className="space-y-3 mb-4">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Perkhidmatan
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {treatmentArray.map((treatment) => (
+                <Badge key={treatment.name} variant="treatment">
+                  {treatment.value}
+                </Badge>
+              ))}
+              {hepatitisArray.map((hep) => (
+                <Badge key={hep} variant="hepatitis">
+                  {hep}
+                </Badge>
+              ))}
             </div>
-          )}
+          </div>
+        )}
 
-          <div className="flex flex-wrap gap-3 justify-end mt-4">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border/50">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => (window.location.href = `tel:${phoneNumber}`)}
+          >
+            <PopiconsPhoneLine className="w-4 h-4" />
+            Panggil
+          </Button>
+
+          {isFeatured && phoneNumber && (
             <Button
               variant="outline"
-              className="px-4 border-primary-foreground/30"
-              onClick={() => (window.location.href = `tel:${phoneNumber}`)}
+              size="sm"
+              onClick={() =>
+                (window.location.href = `https://wa.me/+6${phoneNumber.replace(
+                  /[\s-]/g,
+                  ""
+                )}`)
+              }
             >
-              <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
-              Panggil
+              <Image
+                src="/whatsapp.svg"
+                alt="WhatsApp"
+                width={16}
+                height={16}
+              />
+              WhatsApp
             </Button>
-            {isFeatured && phoneNumber ? (
-              <Button
-                variant="outline"
-                className="px-4 border-primary-foreground/30"
-                onClick={() =>
-                  (window.location.href = `https://wa.me/+6${phoneNumber.replace(
-                    /[\s-]/g,
-                    ""
-                  )}`)
-                }
-              >
-                <Image
-                  src="/whatsapp.svg"
-                  alt="WhatsApp"
-                  width={20}
-                  height={20}
-                />
-                WhatsApp
-              </Button>
-            ) : null}
+          )}
 
-            {/* <Button
-              variant={"outline"}
-              className="px-4 border-primary-foreground/30"
-              onClick={() => (window.location.href = `mailto:${email}`)}
-            >
-              <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
-              Emel
-            </Button> */}
+          <Link
+            href={`https://www.google.com/maps?q=${latitude},${longitude}`}
+            target="_blank"
+          >
+            <Button variant="outline" size="sm">
+              <PopiconsMapLine className="w-4 h-4" />
+              Lokasi
+            </Button>
+          </Link>
 
-            <Link
-              href={`https://www.google.com/maps?q=${latitude},${longitude}`}
-              target="_blank"
-            >
-              <Button
-                variant="outline"
-                className="px-4 border-primary-foreground/30"
-              >
-                <PopiconsMapLine className="w-4 h-4 text-primary-foreground" />
-                Lokasi
-              </Button>
-            </Link>
-            <Link href={`/${slug}`} scroll={false}>
-              <Button
-                variant={isFeatured ? "default" : "secondary"}
-                className={clsx(
-                  "w-full md:w-auto flex items-center justify-center md:justify-self-end",
-                  {
-                    "bg-[#0565f2] hover:bg-[#0565f2]/95 text-secondary shadow-primary/25 hover:shadow-lg hover:shadow-primary-foreground/25 transition-all":
-                      isFeatured,
-                  }
-                )}
-              >
-                Info Lanjut
-                <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            {/* {website && (
-              <Link
-                href={website.split("?")[0] + "?ref=dialisis.my"}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-              >
-                <Button
-                  variant={"outline"}
-                  className="border-primary-foreground/30 mb-4"
-                >
-                  <PopiconsGlobeLine className="w-4 h-4 text-primary-foreground" />
-                  Laman Web
-                </Button>
-              </Link>
-            )} */}
-          </div>
-
-          {/* <div className="mt-auto pt-6">
-            
-          </div> */}
+          <Link href={`/${slug}`} scroll={false} className="ml-auto">
+            <Button variant={isFeatured ? "trust" : "default"} size="sm">
+              Info Lanjut
+              <PopiconsArrowRightLine className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
