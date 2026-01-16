@@ -5,6 +5,10 @@ import { Suspense } from "react";
 
 import { CenterCard } from "@/components/center-card";
 import { CenterCardSkeleton } from "@/components/center-card-skeleton";
+import {
+  CrossLocationLinks,
+  RelatedBlogPosts,
+} from "@/components/internal-linking";
 import { LocationPageHeader } from "@/components/location-page-header";
 import { LocationSeoContent } from "@/components/location-seo-content";
 import { getCentersByCity, getLocationStats } from "@/lib/location-queries";
@@ -199,6 +203,17 @@ export default async function CityPage({ params }: Props) {
           cityName={cityName}
           stats={stats}
         />
+
+        <Suspense fallback={null}>
+          {/* @ts-expect-error Server Component */}
+          <CrossLocationLinks
+            stateName={stateName}
+            cityName={cityName}
+            stateSlug={params.state}
+          />
+        </Suspense>
+
+        <RelatedBlogPosts treatmentTypes={["hd", "pd"]} locale="ms" limit={2} />
       </div>
     </>
   );

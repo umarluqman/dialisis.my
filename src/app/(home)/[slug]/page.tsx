@@ -1,9 +1,17 @@
 import { BackButton } from "@/components/back-button";
 import { DialysisCenterDetails } from "@/components/center-details";
 import { EnhancedDialysisCenterDetails } from "@/components/enhanced-center-details";
+import {
+  RelatedCenters,
+  NearbyCenters,
+} from "@/components/internal-linking";
 import { prisma } from "@/lib/db";
+import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
+import { createLocationSlug } from "@/lib/location-utils";
 import { DialysisCenter, State } from "@prisma/client";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 interface Props {
   params: {
@@ -159,10 +167,11 @@ export const generateMetadata = async ({ params }: Props) => {
       type: "article",
       images: [
         {
-          url: "https://dialisis.my/og-image.png",
+          url: `https://dialisis.my/api/og/${params.slug}`,
           width: 1200,
           height: 630,
-          alt: `Pusat Dialisis ${center.dialysisCenterName} di ${location}`,
+          alt: `Pusat Dialisis ${center.dialysisCenterName}`,
+          type: "image/png",
         },
       ],
     },
@@ -170,7 +179,7 @@ export const generateMetadata = async ({ params }: Props) => {
       card: "summary_large_image",
       title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
       description: `Pusat dialisis di ${location}. Menyediakan ${services}.`,
-      images: ["/og-image.png"],
+      images: [`https://dialisis.my/api/og/${params.slug}`],
     },
   };
 };
@@ -207,13 +216,11 @@ export default async function DialysisCenterPage({
     { name: "Dialisis MY", item: "https://dialisis.my" },
     {
       name: center.state.name,
-      item: `https://dialisis.my/peta?state=${encodeURIComponent(
-        center.state.name
-      )}`,
+      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}`,
     },
     {
       name: center.town,
-      item: `https://dialisis.my/peta?town=${encodeURIComponent(center.town)}`,
+      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`,
     },
     {
       name: center.dialysisCenterName,
@@ -247,15 +254,59 @@ export default async function DialysisCenterPage({
         <EnhancedDialysisCenterDetails center={center} />
       ) : (
         <>
-          <nav className="container mt-4 flex items-center gap-3 text-xs md:text-sm text-muted-foreground">
-            <BackButton />
+          <nav
+            className="container mt-4 flex items-center gap-2 text-xs md:text-sm text-muted-foreground"
+            aria-label="Breadcrumb"
+          >
+            <Link href="/" className="hover:text-foreground">
+              Utama
+            </Link>
             <span>/</span>
-            <span className="text-foreground">
+            <Link
+              href={`/lokasi/${createLocationSlug(center.state.name)}`}
+              className="hover:text-foreground"
+            >
+              {center.state.name}
+            </Link>
+            <span>/</span>
+            <Link
+              href={`/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`}
+              className="hover:text-foreground"
+            >
+              {center.town}
+            </Link>
+            <span>/</span>
+            <span className="text-foreground truncate max-w-[200px]">
               {center.dialysisCenterName.split(",")[0]}
             </span>
           </nav>
           <div className="container max-w-5xl py-6">
             <DialysisCenterDetails center={center} />
+
+            <Suspense fallback={null}>
+              {/* @ts-expect-error Server Component */}
+              <RelatedCenters
+                currentCenterId={center.id}
+                city={center.town}
+                stateName={center.state.name}
+                treatmentTypes={parseTreatmentTypes(center.units)}
+                limit={4}
+              />
+            </Suspense>
+
+            {center.latitude && center.longitude && (
+              <Suspense fallback={null}>
+                {/* @ts-expect-error Server Component */}
+                <NearbyCenters
+                  currentCenterId={center.id}
+                  latitude={center.latitude}
+                  longitude={center.longitude}
+                  city={center.town}
+                  stateName={center.state.name}
+                  limit={3}
+                />
+              </Suspense>
+            )}
           </div>
         </>
       )}
