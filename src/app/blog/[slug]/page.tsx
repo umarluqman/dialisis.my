@@ -2,7 +2,13 @@ import { allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import {
+  BlogLocationLinks,
+  RelatedBlogPosts,
+} from "@/components/internal-linking";
 import { generateArticleJsonLd } from "@/lib/json-ld";
+import { mapTagsToTreatments } from "@/lib/internal-linking-utils";
 import { MdxContent } from "./mdx-content";
 
 interface Props {
@@ -74,7 +80,7 @@ function formatDate(dateString: string, locale: string): string {
   );
 }
 
-export default function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params }: Props) {
   const post = allPosts.find((p) => p.slug === params.slug);
 
   if (!post) {
@@ -83,8 +89,9 @@ export default function BlogPostPage({ params }: Props) {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
   const jsonLd = generateArticleJsonLd(post, baseUrl);
-  const locale = post.locale || "ms";
+  const locale = (post.locale || "ms") as "ms" | "en";
   const isEnglish = locale === "en";
+  const treatmentTypes = mapTagsToTreatments(post.tags || []);
 
   return (
     <main className="container max-w-3xl py-8">
@@ -135,7 +142,20 @@ export default function BlogPostPage({ params }: Props) {
         </div>
       </article>
 
-      <div className="mt-12 pt-6 border-t">
+      <Suspense fallback={null}>
+        {/* @ts-expect-error Server Component */}
+        <BlogLocationLinks treatmentTypes={treatmentTypes} locale={locale} limit={5} />
+      </Suspense>
+
+      <RelatedBlogPosts
+        treatmentTypes={treatmentTypes}
+        locale={locale}
+        limit={3}
+        excludeSlug={post.slug}
+        title={isEnglish ? "Related Articles" : "Artikel Berkaitan"}
+      />
+
+      <div className="mt-8 pt-6 border-t">
         <Link
           href="/blog"
           className="text-primary hover:underline inline-flex items-center gap-2"

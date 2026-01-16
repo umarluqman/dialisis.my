@@ -274,3 +274,22 @@ export const CITIES: Record<string, string[]> = {
   ],
   "Wilayah Persekutuan": ["Kuala Lumpur", "Labuan", "Putrajaya"],
 };
+
+export const NEIGHBORING_STATES: Record<string, string[]> = {
+  Selangor: ["Kuala Lumpur", "Putrajaya", "Negeri Sembilan", "Perak", "Pahang"],
+  "Kuala Lumpur": ["Selangor", "Putrajaya"],
+  Putrajaya: ["Selangor", "Kuala Lumpur"],
+  Johor: ["Melaka", "Negeri Sembilan", "Pahang"],
+  "Pulau Pinang": ["Kedah", "Perak"],
+  Perak: ["Pulau Pinang", "Kedah", "Kelantan", "Pahang", "Selangor"],
+  Kedah: ["Perlis", "Pulau Pinang", "Perak"],
+  Kelantan: ["Perak", "Pahang", "Terengganu"],
+  Terengganu: ["Kelantan", "Pahang"],
+  Pahang: ["Selangor", "Negeri Sembilan", "Johor", "Terengganu", "Kelantan", "Perak"],
+  "Negeri Sembilan": ["Selangor", "Melaka", "Johor", "Pahang"],
+  Melaka: ["Negeri Sembilan", "Johor"],
+  Sabah: ["Labuan"],
+  Sarawak: [],
+  Labuan: ["Sabah"],
+  Perlis: ["Kedah"],
+};

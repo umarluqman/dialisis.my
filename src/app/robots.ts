@@ -20,7 +20,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: `${baseUrl}/sitemap-index.xml`, // Point to index
-    host: baseUrl,
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }

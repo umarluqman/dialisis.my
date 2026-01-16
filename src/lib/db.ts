@@ -1,4 +1,3 @@
-import { createClient } from "@libsql/client";
 import { PrismaLibSQL } from "@prisma/adapter-libsql";
 import { PrismaClient } from "@prisma/client";
 
@@ -16,12 +15,10 @@ if (!globalForPrisma.prisma) {
     throw new Error("TURSO_AUTH_TOKEN environment variable is not set");
   }
 
-  const libsql = createClient({
+  const adapter = new PrismaLibSQL({
     url: process.env.TURSO_DATABASE_URL,
     authToken: process.env.TURSO_AUTH_TOKEN,
   });
-
-  const adapter = new PrismaLibSQL(libsql);
   globalForPrisma.prisma = new PrismaClient({ adapter });
 }
 

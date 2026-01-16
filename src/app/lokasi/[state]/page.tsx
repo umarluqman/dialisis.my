@@ -2,6 +2,10 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+import {
+  CrossLocationLinks,
+  RelatedBlogPosts,
+} from "@/components/internal-linking";
 import { LocationPageHeader } from "@/components/location-page-header";
 import { LocationSeoContent } from "@/components/location-seo-content";
 import { StateCenterList } from "@/components/state-center-list";
@@ -171,6 +175,13 @@ export default async function StatePage({ params }: Props) {
         </Suspense>
 
         <LocationSeoContent stateName={stateName} stats={stats} />
+
+        <Suspense fallback={null}>
+          {/* @ts-expect-error Server Component */}
+          <CrossLocationLinks stateName={stateName} stateSlug={params.state} />
+        </Suspense>
+
+        <RelatedBlogPosts treatmentTypes={["hd", "pd"]} locale="ms" limit={3} />
       </div>
     </>
   );
