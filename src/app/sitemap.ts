@@ -3,64 +3,97 @@ import { generateAllLocationParams } from "@/lib/location-utils";
 import { allPosts } from "contentlayer/generated";
 import type { MetadataRoute } from "next";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
+const CENTERS_PER_SITEMAP = 10000;
+
+export async function generateSitemaps() {
+  const centerCount = await prisma.dialysisCenter.count();
+  const sitemapCount = Math.ceil(centerCount / CENTERS_PER_SITEMAP);
+  // id 0 = static + blog + locations, id 1+ = centers
+  return Array.from({ length: sitemapCount + 1 }, (_, i) => ({ id: i }));
+}
+
+export default async function sitemap(props: {
+  id: string;
+}): Promise<MetadataRoute.Sitemap> {
+  const id = Number(props.id);
   const currentDate = new Date();
 
-  // Core pages that rarely change
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/tentang-kami`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/peta`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/hubungi-kami`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/terma-dan-syarat`,
-      lastModified: currentDate,
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/polisi-privasi`,
-      lastModified: currentDate,
-      changeFrequency: "yearly" as const,
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: currentDate,
-      changeFrequency: "weekly" as const,
-      priority: 0.8,
-    },
-  ];
+  if (id === 0) {
+    // Static pages
+    const staticPages: MetadataRoute.Sitemap = [
+      {
+        url: baseUrl,
+        lastModified: currentDate,
+        changeFrequency: "weekly",
+        priority: 1,
+      },
+      {
+        url: `${baseUrl}/tentang-kami`,
+        lastModified: currentDate,
+        changeFrequency: "monthly",
+        priority: 0.7,
+      },
+      {
+        url: `${baseUrl}/peta`,
+        lastModified: currentDate,
+        changeFrequency: "weekly",
+        priority: 0.9,
+      },
+      {
+        url: `${baseUrl}/hubungi-kami`,
+        lastModified: currentDate,
+        changeFrequency: "monthly",
+        priority: 0.8,
+      },
+      {
+        url: `${baseUrl}/terma-dan-syarat`,
+        lastModified: currentDate,
+        changeFrequency: "yearly",
+        priority: 0.3,
+      },
+      {
+        url: `${baseUrl}/polisi-privasi`,
+        lastModified: currentDate,
+        changeFrequency: "yearly",
+        priority: 0.3,
+      },
+      {
+        url: `${baseUrl}/blog`,
+        lastModified: currentDate,
+        changeFrequency: "weekly",
+        priority: 0.8,
+      },
+    ];
 
-  const blogPages = allPosts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
-    priority: post.featured ? 0.8 : 0.6,
-  }));
+    // Blog pages
+    const blogPages: MetadataRoute.Sitemap = allPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: "monthly",
+      priority: post.featured ? 0.8 : 0.6,
+    }));
 
-  // Get all dialysis centers
+    // Location pages
+    const locationParams = generateAllLocationParams();
+    const locationPages: MetadataRoute.Sitemap = locationParams.map((param) => {
+      const url = param.city
+        ? `${baseUrl}/lokasi/${param.state}/${param.city}`
+        : `${baseUrl}/lokasi/${param.state}`;
+
+      return {
+        url,
+        lastModified: currentDate,
+        changeFrequency: "monthly",
+        priority: param.city ? 0.7 : 0.8,
+      };
+    });
+
+    return [...staticPages, ...blogPages, ...locationPages];
+  }
+
+  // Centers for this segment (id 1+)
+  const skip = (id - 1) * CENTERS_PER_SITEMAP;
   const centers = await prisma.dialysisCenter.findMany({
     select: {
       slug: true,
@@ -70,37 +103,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     orderBy: {
       updatedAt: "desc",
     },
+    skip,
+    take: CENTERS_PER_SITEMAP,
   });
 
-  // Generate location pages (states and cities)
-  const locationParams = generateAllLocationParams();
-  const locationPages = locationParams.map((param) => {
-    const url = param.city
-      ? `${baseUrl}/lokasi/${param.state}/${param.city}`
-      : `${baseUrl}/lokasi/${param.state}`;
-
-    return {
-      url,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: param.city ? 0.7 : 0.8, // State pages slightly higher priority than city pages
-    };
-  });
-
-  const dynamicPages = centers.map((center) => ({
+  return centers.map((center) => ({
     url: `${baseUrl}/${center.slug}`,
     lastModified: center.updatedAt,
-    changeFrequency: determineChangeFrequency(
-      center.createdAt,
-      center.updatedAt
-    ),
+    changeFrequency: determineChangeFrequency(center.createdAt, center.updatedAt),
     priority: 0.9,
   }));
-
-  return [...staticPages, ...blogPages, ...locationPages, ...dynamicPages];
 }
 
-// Helper function to determine change frequency based on update patterns
 function determineChangeFrequency(
   created: Date,
   updated: Date

@@ -124,7 +124,7 @@ export function CenterCard({
     >
       {isFeatured && (
         <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none z-10">
-          Featured
+          Pilihan Utama
         </Badge>
       )}
 

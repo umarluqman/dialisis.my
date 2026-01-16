@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { LocationDirectory } from "@/components/location-directory";
 
 // Dynamically import components with loading fallbacks
 const DialysisQuiz = dynamic(
@@ -152,27 +153,71 @@ async function getInitialCenters(
   }
 }
 
-// Add preload hints for critical resources
-const preloadResources = [
-  { href: "/fonts/your-font.woff2", as: "font", type: "font/woff2" },
-];
+interface MetadataProps {
+  searchParams: {
+    page?: string;
+    sector?: string;
+    state?: string;
+    treatment?: string;
+    city?: string;
+    doctor?: string;
+    name?: string;
+    hepatitis?: string;
+  };
+}
 
 // Generate metadata
-export async function generateMetadata(): Promise<Metadata> {
-  const canonicalUrl = "https://dialisis.my";
+export async function generateMetadata({
+  searchParams,
+}: MetadataProps): Promise<Metadata> {
+  const baseUrl = "https://dialisis.my";
+  const hasFilters =
+    searchParams.page ||
+    searchParams.sector ||
+    searchParams.state ||
+    searchParams.treatment ||
+    searchParams.city ||
+    searchParams.doctor ||
+    searchParams.name ||
+    searchParams.hepatitis;
+
+  // Build current URL with params for self-referencing canonical
+  const params = new URLSearchParams();
+  if (searchParams.page) params.set("page", searchParams.page);
+  if (searchParams.sector) params.set("sector", searchParams.sector);
+  if (searchParams.state) params.set("state", searchParams.state);
+  if (searchParams.treatment) params.set("treatment", searchParams.treatment);
+  if (searchParams.city) params.set("city", searchParams.city);
+  if (searchParams.doctor) params.set("doctor", searchParams.doctor);
+  if (searchParams.name) params.set("name", searchParams.name);
+  if (searchParams.hepatitis) params.set("hepatitis", searchParams.hepatitis);
+
+  const currentUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+
+  if (hasFilters) {
+    return {
+      title: "Cari Pusat Dialisis Berdekatan Dengan Mudah",
+      description:
+        "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+      robots: { index: false, follow: true },
+      alternates: {
+        canonical: currentUrl,
+      },
+    };
+  }
 
   return {
     title: "Cari Pusat Dialisis Berdekatan Dengan Mudah",
     description:
       "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
     alternates: {
-      canonical: canonicalUrl,
+      canonical: baseUrl,
     },
     openGraph: {
       title: "Cari Pusat Dialisis | Dialisis.my",
       description:
         "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
-      url: canonicalUrl,
+      url: baseUrl,
       type: "website",
       siteName: "dialisis.my",
       locale: "ms_MY",
@@ -221,17 +266,10 @@ export default async function DialysisCenterDirectory({
 
   return (
     <>
-      {/* Add resource hints */}
-      {preloadResources.map((resource) => (
-        <link
-          key={resource.href}
-          rel="preload"
-          href={resource.href}
-          as={resource.as}
-          type={resource.type}
-          crossOrigin="anonymous"
-        />
-      ))}
+      {/* SEO: Main heading for the page */}
+      <h1 className="text-2xl md:text-3xl font-bold text-center py-6">
+        Cari Pusat Dialisis di Malaysia
+      </h1>
 
       {/* Add JSON-LD with streaming */}
       <Suspense>
@@ -281,6 +319,11 @@ export default async function DialysisCenterDirectory({
           <DialysisCenterList initialData={initialData} />
         </Suspense>
       </div>
+
+      <Suspense fallback={null}>
+        {/* @ts-expect-error Server Component */}
+        <LocationDirectory />
+      </Suspense>
     </>
   );
 }
