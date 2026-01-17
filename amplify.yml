@@ -10,6 +10,7 @@ frontend:
         - echo "TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN" >> .env.production
         - npx prisma generate
         - npm run build
+        - rm -rf .next/cache
         - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
         - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
   artifacts:
