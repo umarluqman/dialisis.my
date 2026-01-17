@@ -186,16 +186,20 @@ export const generateMetadata = async ({ params }: Props) => {
 
 // Add static generation for better performance and SEO
 export async function generateStaticParams() {
-  // Get all centers for static generation
-  const centers = await prisma.dialysisCenter.findMany({
-    select: {
-      slug: true,
-    },
-  });
+  try {
+    const centers = await prisma.dialysisCenter.findMany({
+      select: {
+        slug: true,
+      },
+    });
 
-  return centers.map((center) => ({
-    slug: center.slug,
-  }));
+    return centers.map((center) => ({
+      slug: center.slug,
+    }));
+  } catch {
+    // During build without DB access, return empty array (pages will be generated on-demand)
+    return [];
+  }
 }
 
 export default async function DialysisCenterPage({

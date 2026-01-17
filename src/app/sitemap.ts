@@ -7,10 +7,15 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
 const CENTERS_PER_SITEMAP = 10000;
 
 export async function generateSitemaps() {
-  const centerCount = await prisma.dialysisCenter.count();
-  const sitemapCount = Math.ceil(centerCount / CENTERS_PER_SITEMAP);
-  // id 0 = static + blog + locations, id 1+ = centers
-  return Array.from({ length: sitemapCount + 1 }, (_, i) => ({ id: i }));
+  try {
+    const centerCount = await prisma.dialysisCenter.count();
+    const sitemapCount = Math.ceil(centerCount / CENTERS_PER_SITEMAP);
+    // id 0 = static + blog + locations, id 1+ = centers
+    return Array.from({ length: sitemapCount + 1 }, (_, i) => ({ id: i }));
+  } catch {
+    // During build without DB access, return minimal sitemap
+    return [{ id: 0 }];
+  }
 }
 
 export default async function sitemap(props: {
