@@ -1,15 +1,7 @@
-const withPWA = require("next-pwa")({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-  register: true,
-  skipWaiting: true,
-});
-
 const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
   experimental: {
     serverComponentsExternalPackages: ["@libsql/client", "@prisma/adapter-libsql"],
   },
@@ -170,4 +162,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(withPWA(nextConfig));
+module.exports = withContentlayer(nextConfig);
