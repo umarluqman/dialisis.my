@@ -13,6 +13,11 @@ frontend:
         - rm -rf .next/cache
         - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
         - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
+        - rm -rf .amplify-hosting/compute/default/.next/cache
+        - rm -f .amplify-hosting/compute/default/node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
+        - rm -f .amplify-hosting/compute/default/node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
+        - rm -f .amplify-hosting/compute/default/node_modules/@esbuild/linux-x64/bin/esbuild
+        - rm -f .amplify-hosting/compute/default/node_modules/esbuild/bin/esbuild
   artifacts:
     baseDirectory: .next
     files:
