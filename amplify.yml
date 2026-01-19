@@ -21,7 +21,12 @@ frontend:
   artifacts:
     baseDirectory: .next
     files:
-      - '**/*'
+      - BUILD_ID
+      - '*.json'
+      - server/**/*
+      - static/**/*
+      - trace/**/*
+      - types/**/*
   cache:
     paths:
       - .npm/**/*
