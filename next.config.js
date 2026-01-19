@@ -2,8 +2,19 @@ const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   experimental: {
-    serverComponentsExternalPackages: ["@libsql/client", "@prisma/adapter-libsql"],
+    serverComponentsExternalPackages: [
+      "@libsql/client",
+      "@prisma/adapter-libsql",
+      "@opentelemetry/api",
+      "@opentelemetry/core",
+      "@opentelemetry/exporter-trace-otlp-grpc",
+      "@opentelemetry/resources",
+      "@opentelemetry/sdk-trace-base",
+      "@opentelemetry/sdk-trace-node",
+      "@opentelemetry/semantic-conventions",
+    ],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
