@@ -1,15 +1,10 @@
-const withPWA = require("next-pwa")({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-  register: true,
-  skipWaiting: true,
-});
-
 const { withContentlayer } = require("next-contentlayer");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  experimental: {
+    serverComponentsExternalPackages: ["@libsql/client", "@prisma/adapter-libsql"],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200],
@@ -20,6 +15,12 @@ const nextConfig = {
       { protocol: 'https', hostname: 's3.ap-southeast-1.amazonaws.com' },
       { protocol: 'https', hostname: '*.amazonaws.com' },
     ],
+  },
+  webpack: (config, { dev }) => {
+    if (config.cache && !dev) {
+      config.cache = { type: "memory" };
+    }
+    return config;
   },
   generateBuildId: async () => {
     return "build-id";
@@ -167,4 +168,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(withPWA(nextConfig));
+module.exports = withContentlayer(nextConfig);

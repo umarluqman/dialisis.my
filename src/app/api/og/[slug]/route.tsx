@@ -1,13 +1,20 @@
-import { createClient } from "@libsql/client";
+import { createClient, Client } from "@libsql/client";
 import { ImageResponse } from "@vercel/og";
 import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-const db = createClient({
-  url: `${process.env.TURSO_DATABASE_URL}`,
-  authToken: `${process.env.TURSO_AUTH_TOKEN}`,
-});
+let db: Client | null = null;
+
+function getDb() {
+  if (!db) {
+    db = createClient({
+      url: `${process.env.TURSO_DATABASE_URL}`,
+      authToken: `${process.env.TURSO_AUTH_TOKEN}`,
+    });
+  }
+  return db;
+}
 
 const interRegular = fetch(
   new URL(
@@ -26,7 +33,7 @@ export async function GET(
   { params }: { params: { slug: string } }
 ) {
   try {
-    const result = await db.execute({
+    const result = await getDb().execute({
       sql: `SELECT dc.title, dc.town, s.name as state_name 
             FROM DialysisCenter dc 
             JOIN State s ON dc.stateId = s.id 

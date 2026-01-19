@@ -41,6 +41,9 @@ next-env.d.ts
 
 .contentlayer
 .env
+
+# Prisma generated client
+/src/generated/prisma
 /data
 .turso
 later-todo

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { DialysisCenter, State } from "@prisma/client";
+import { DialysisCenter, State } from "@/generated/prisma/client";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 

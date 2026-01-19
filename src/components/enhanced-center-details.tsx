@@ -339,7 +339,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.9 }}
                 className="relative max-w-4xl max-h-[90vh]"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <Image
                   src={selectedImage}

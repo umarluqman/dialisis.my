@@ -1,5 +1,4 @@
 import { allPosts, Post } from "contentlayer/generated";
-import { generateMetadata as baseGenerateMetadata } from "@/lib/metadata";
 import { generateBlogListJsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import { Metadata } from "next";
@@ -11,14 +10,35 @@ interface Props {
 export function generateMetadata({ searchParams }: Props): Metadata {
   const locale = searchParams.locale || "ms";
   const isEnglish = locale === "en";
+  const baseUrl = "https://dialisis.my";
 
-  return baseGenerateMetadata({
-    title: "Blog",
+  // Self-referencing canonical based on current locale
+  const canonicalUrl = isEnglish ? `${baseUrl}/blog?locale=en` : `${baseUrl}/blog`;
+
+  return {
+    title: "Blog | Dialisis.my",
     description: isEnglish
       ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
       : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
-    canonicalUrl: "https://dialisis.my/blog",
-  });
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        "ms-MY": `${baseUrl}/blog`,
+        "en-MY": `${baseUrl}/blog?locale=en`,
+        "x-default": `${baseUrl}/blog`,
+      },
+    },
+    openGraph: {
+      title: "Blog | Dialisis.my",
+      description: isEnglish
+        ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
+        : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
+      url: canonicalUrl,
+      type: "website",
+      siteName: "dialisis.my",
+      locale: isEnglish ? "en_MY" : "ms_MY",
+    },
+  };
 }
 
 function formatDate(dateString: string, locale: string): string {

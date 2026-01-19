@@ -2,10 +2,23 @@ import Link from "next/link";
 import Logo from "./logo";
 
 const boring = [
+  { label: "Blog", href: "/blog" },
+  { label: "Peta", href: "/peta" },
   { label: "Tentang Kami", href: "/tentang-kami" },
   { label: "Hubungi Kami", href: "/hubungi-kami" },
   { label: "Terma & Syarat", href: "/terma-dan-syarat" },
   { label: "Polisi Privasi", href: "/polisi-privasi" },
+];
+
+const popularLocations = [
+  { label: "Selangor", href: "/lokasi/selangor" },
+  { label: "Johor", href: "/lokasi/johor" },
+  { label: "Pulau Pinang", href: "/lokasi/pulau-pinang" },
+  { label: "Perak", href: "/lokasi/perak" },
+  { label: "Kuala Lumpur", href: "/lokasi/kuala-lumpur" },
+  { label: "Sabah", href: "/lokasi/sabah" },
+  { label: "Pahang", href: "/lokasi/pahang" },
+  { label: "Kedah", href: "/lokasi/kedah" },
 ];
 
 const lawatiJuga = [
@@ -92,6 +105,23 @@ export default function Footer() {
           </div> */}
           <div>
             <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
+              Lokasi Popular
+            </h3>
+            <ul className="mt-4 space-y-4">
+              {popularLocations.map(({ label, href }) => (
+                <li key={label}>
+                  <Link
+                    href={href}
+                    className="text-base text-gray-500 hover:text-gray-900"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">
               Berkaitan
             </h3>
             <ul className="mt-4 space-y-4">
@@ -101,7 +131,7 @@ export default function Footer() {
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
                     target="_blank"
-                    rel="follow"
+                    rel="noopener noreferrer"
                   >
                     {label}
                   </Link>
@@ -120,7 +150,7 @@ export default function Footer() {
                     href={href}
                     className="text-base text-gray-500 hover:text-gray-900"
                     target="_blank"
-                    rel="follow"
+                    rel="noopener noreferrer"
                   >
                     {label}
                   </Link>
