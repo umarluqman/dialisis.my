@@ -12,8 +12,17 @@ frontend:
         - echo "TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN" >> .env.production
         - npx prisma generate
         - npm run build
+        # Copy static files to standalone
+        - cp -r .next/static .next/standalone/.next/static
+        - cp -r public .next/standalone/public
+        # Remove unnecessary files from standalone (if they exist)
+        - rm -rf .next/standalone/node_modules/@prisma/engines || true
+        - rm -rf .next/standalone/node_modules/@opentelemetry || true
+        - rm -rf .next/standalone/node_modules/@effect-ts || true
+        # Log final size
+        - du -sh .next/standalone
   artifacts:
-    baseDirectory: .next
+    baseDirectory: .next/standalone
     files:
       - '**/*'
   cache:
