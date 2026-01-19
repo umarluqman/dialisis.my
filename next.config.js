@@ -17,8 +17,8 @@ const nextConfig = {
     ],
   },
   webpack: (config, { dev }) => {
-    if (!dev) {
-      config.cache = false;
+    if (config.cache && !dev) {
+      config.cache = { type: "memory" };
     }
     return config;
   },
