@@ -3,6 +3,8 @@ frontend:
   phases:
     preBuild:
       commands:
+        - nvm install 22.12.0
+        - nvm use 22.12.0
         - npm ci --cache .npm --prefer-offline
     build:
       commands:
@@ -10,24 +12,10 @@ frontend:
         - echo "TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN" >> .env.production
         - npx prisma generate
         - npm run build
-        - rm -rf .next/cache
-        - npm prune --omit=dev
-        - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
-        - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
-        - rm -rf .amplify-hosting/compute/default/.next/cache
-        - rm -f .amplify-hosting/compute/default/node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
-        - rm -f .amplify-hosting/compute/default/node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
-        - rm -f .amplify-hosting/compute/default/node_modules/@esbuild/linux-x64/bin/esbuild
-        - rm -f .amplify-hosting/compute/default/node_modules/esbuild/bin/esbuild
   artifacts:
     baseDirectory: .next
     files:
-      - BUILD_ID
-      - '*.json'
-      - server/**/*
-      - static/**/*
-      - trace/**/*
-      - types/**/*
+      - '**/*'
   cache:
     paths:
       - .npm/**/*
