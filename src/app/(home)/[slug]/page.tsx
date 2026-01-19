@@ -8,7 +8,7 @@ import {
 import { prisma } from "@/lib/db";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
-import { DialysisCenter, State } from "@prisma/client";
+import { DialysisCenter, State } from "@/generated/prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
