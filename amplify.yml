@@ -11,6 +11,7 @@ frontend:
         - npx prisma generate
         - npm run build
         - rm -rf .next/cache
+        - npm prune --omit=dev
         - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node
         - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node
         - rm -rf .amplify-hosting/compute/default/.next/cache
