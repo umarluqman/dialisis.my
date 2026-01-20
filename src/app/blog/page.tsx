@@ -1,7 +1,9 @@
-import { allPosts, Post } from "contentlayer/generated";
+import { posts } from "#velite";
 import { generateBlogListJsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import { Metadata } from "next";
+
+type Post = (typeof posts)[number];
 
 interface Props {
   searchParams: { locale?: string };
@@ -12,7 +14,6 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   const isEnglish = locale === "en";
   const baseUrl = "https://dialisis.my";
 
-  // Self-referencing canonical based on current locale
   const canonicalUrl = isEnglish ? `${baseUrl}/blog?locale=en` : `${baseUrl}/blog`;
 
   return {
@@ -76,12 +77,12 @@ export default function BlogPage({ searchParams }: Props) {
   const locale = searchParams.locale || "ms";
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
 
-  const posts = allPosts
+  const filteredPosts = posts
     .filter((post) => (post.locale || "ms") === locale)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const featuredPosts = posts.filter((post) => post.featured);
-  const regularPosts = posts.filter((post) => !post.featured);
+  const featuredPosts = filteredPosts.filter((post) => post.featured);
+  const regularPosts = filteredPosts.filter((post) => !post.featured);
 
   const jsonLd = generateBlogListJsonLd(baseUrl, locale);
   const isEnglish = locale === "en";
@@ -148,7 +149,7 @@ export default function BlogPage({ searchParams }: Props) {
           ))}
         </div>
 
-        {posts.length === 0 && (
+        {filteredPosts.length === 0 && (
           <p className="text-muted-foreground py-8 text-center">
             {isEnglish ? "No articles yet." : "Tiada artikel lagi."}
           </p>

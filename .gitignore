@@ -39,7 +39,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.contentlayer
+.velite
 .env
 
 # Prisma generated client
@@ -68,3 +68,6 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 .csv
+
+
+.contentlayer

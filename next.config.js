@@ -1,19 +1,10 @@
-const { withContentlayer } = require("next-contentlayer");
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
   experimental: {
     serverComponentsExternalPackages: [
       "@libsql/client",
       "@prisma/adapter-libsql",
-      "@opentelemetry/api",
-      "@opentelemetry/core",
-      "@opentelemetry/exporter-trace-otlp-grpc",
-      "@opentelemetry/resources",
-      "@opentelemetry/sdk-trace-base",
-      "@opentelemetry/sdk-trace-node",
-      "@opentelemetry/semantic-conventions",
+      "mapbox-gl",
     ],
   },
   images: {
@@ -27,9 +18,12 @@ const nextConfig = {
       { protocol: 'https', hostname: '*.amazonaws.com' },
     ],
   },
-  webpack: (config, { dev }) => {
+  webpack: (config, { dev, isServer }) => {
     if (config.cache && !dev) {
       config.cache = { type: "memory" };
+    }
+    if (isServer) {
+      config.externals = [...(config.externals || []), 'mapbox-gl'];
     }
     return config;
   },
@@ -40,10 +34,8 @@ const nextConfig = {
     TURSO_DATABASE_URL: process.env.TURSO_DATABASE_URL,
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
   },
-  // Added redirects for SEO improvements
   async redirects() {
     return [
-      // Enforce non-www canonical host
       {
         source: '/:path*',
         has: [
@@ -55,7 +47,6 @@ const nextConfig = {
         destination: 'https://dialisis.my/:path*',
         permanent: true,
       },
-      // Redirect old URL patterns
       {
         source: '/dialysis-center/:slug',
         destination: '/:slug',
@@ -66,7 +57,6 @@ const nextConfig = {
         destination: '/:slug',
         permanent: true,
       },
-      // Handle possible case variations (improve user experience)
       {
         source: '/Dialysis-Center/:slug',
         destination: '/:slug',
@@ -77,13 +67,11 @@ const nextConfig = {
         destination: '/:slug',
         permanent: true,
       },
-      // Normalize trailing slashes - more specific to avoid refresh loops
       {
         source: '/((?!api|_next).+)/$',
         destination: '/$1',
         permanent: true,
       },
-      // Redirect old paths if they existed in your app
       {
         source: '/centers',
         destination: '/peta',
@@ -111,11 +99,9 @@ const nextConfig = {
       },
     ];
   },
-  // Added rewrites for cleaner URLs (if needed)
   async rewrites() {
     return {
       beforeFiles: [
-        // Handle dynamic sitemap generation
         {
           source: '/sitemap-centers-:num.xml',
           destination: '/api/sitemap/:num',
@@ -125,7 +111,6 @@ const nextConfig = {
       fallback: [],
     };
   },
-  // Enhanced headers for security and caching
   async headers() {
     return [
       {
@@ -146,7 +131,6 @@ const nextConfig = {
         ],
       },
       {
-        // Cache static assets
         source: '/(fonts|images|icons)/(.*)',
         headers: [
           {
@@ -156,7 +140,6 @@ const nextConfig = {
         ],
       },
       {
-        // Cache-control for static pages
         source: '/(tentang-kami|terma-dan-syarat|polisi-privasi)',
         headers: [
           {
@@ -166,7 +149,6 @@ const nextConfig = {
         ],
       },
       {
-        // Cache optimized images for 1 year
         source: '/_next/image',
         headers: [
           {
@@ -179,4 +161,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = nextConfig;

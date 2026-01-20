@@ -12,17 +12,34 @@ frontend:
         - echo "TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN" >> .env.production
         - npx prisma generate
         - npm run build
-        # Copy static files to standalone
-        - cp -r .next/static .next/standalone/.next/static
-        - cp -r public .next/standalone/public
-        # Remove unnecessary files from standalone (if they exist)
-        - rm -rf .next/standalone/node_modules/@prisma/engines || true
-        - rm -rf .next/standalone/node_modules/@opentelemetry || true
-        - rm -rf .next/standalone/node_modules/@effect-ts || true
+        # Remove cache
+        - rm -rf .next/cache
+        # Prune dev dependencies
+        - npm prune --omit=dev
+        # Remove heavy packages not needed at runtime
+        - rm -rf node_modules/@prisma/engines || true
+        - rm -rf node_modules/@prisma/studio-core || true
+        - rm -rf node_modules/@prisma/fetch-engine || true
+        - rm -rf node_modules/@prisma/get-platform || true
+        - rm -rf node_modules/@prisma/dev || true
+        - rm -rf node_modules/@opentelemetry || true
+        - rm -rf node_modules/@effect-ts || true
+        - rm -rf node_modules/@cloudflare || true
+        - rm -rf node_modules/wrangler || true
+        - rm -rf node_modules/playwright-core || true
+        - rm -rf node_modules/@electric-sql || true
+        - rm -rf node_modules/workerd || true
+        - rm -rf node_modules/mapbox-gl || true
+        # Remove SWC and esbuild binaries
+        - rm -f node_modules/@swc/core-linux-x64-gnu/swc.linux-x64-gnu.node || true
+        - rm -f node_modules/@swc/core-linux-x64-musl/swc.linux-x64-musl.node || true
+        - rm -f node_modules/@esbuild/linux-x64/bin/esbuild || true
+        - rm -f node_modules/esbuild/bin/esbuild || true
         # Log final size
-        - du -sh .next/standalone
+        - du -sh node_modules
+        - du -sh .next
   artifacts:
-    baseDirectory: .next/standalone
+    baseDirectory: .next
     files:
       - '**/*'
   cache:

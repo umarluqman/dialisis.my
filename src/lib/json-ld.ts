@@ -65,7 +65,7 @@ interface BlogPost {
   locale?: string;
   category?: string;
   tags?: string[];
-  body: { raw: string };
+  readingTime: number;
 }
 
 export function generateArticleJsonLd(post: BlogPost, baseUrl: string) {
@@ -99,7 +99,7 @@ export function generateArticleJsonLd(post: BlogPost, baseUrl: string) {
     inLanguage: post.locale === "en" ? "en-MY" : "ms-MY",
     articleSection: post.category || "Kesihatan",
     keywords: post.tags?.join(", "),
-    wordCount: post.body.raw.split(/\s+/).length,
+    wordCount: post.readingTime * 200,
   };
 }
 
