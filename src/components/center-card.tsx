@@ -2,11 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
-import {
-  PopiconsArrowRightLine,
-  PopiconsMapLine,
-  PopiconsPhoneLine,
-} from "@popicons/react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
@@ -218,7 +214,7 @@ export function CenterCard({
               className="px-4 border-primary-foreground/30"
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
-              <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
+              <Phone className="w-4 h-4 text-primary-foreground" />
               Panggil
             </Button>
             {isFeatured && phoneNumber ? (
@@ -259,7 +255,7 @@ export function CenterCard({
                 variant="outline"
                 className="px-4 border-primary-foreground/30"
               >
-                <PopiconsMapLine className="w-4 h-4 text-primary-foreground" />
+                <MapPin className="w-4 h-4 text-primary-foreground" />
                 Lokasi
               </Button>
             </Link>
@@ -275,7 +271,7 @@ export function CenterCard({
                 )}
               >
                 Info Lanjut
-                <PopiconsArrowRightLine className="w-4 h-4 ml-2" />
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             {/* {website && (

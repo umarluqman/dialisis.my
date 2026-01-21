@@ -1,6 +1,6 @@
 "use client";
 
-import { PopiconsMapDuotone } from "@popicons/react";
+import { MapPin } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Logo from "./logo";
@@ -26,7 +26,7 @@ export const Navbar = () => {
             </Link>
             <Link className="flex items-center" href="/peta">
               <Button variant="outline" size="sm">
-                <PopiconsMapDuotone className="h-5 w-5 text-primary" />
+                <MapPin className="h-5 w-5 text-primary" />
                 <span className="text-sm font-medium">Lihat Peta</span>
               </Button>
             </Link>
@@ -57,7 +57,7 @@ export const Navbar = () => {
           <div className="flex items-center space-x-2">
             <Link href="/peta">
               <Button variant="outline" size="sm">
-                <PopiconsMapDuotone className="h-5 w-5 text-primary" />
+                <MapPin className="h-5 w-5 text-primary" />
                 <span className="text-sm font-medium">Lihat Peta</span>
               </Button>
             </Link>

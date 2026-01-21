@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "velite && npx prisma generate && next build",
+    "analyze": "ANALYZE=true velite && next build",
+    "build": "velite && NODE_OPTIONS='--experimental-require-module' npx prisma generate && next build",
     "amplify:build": "velite && npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,7 +13,7 @@
     "studio": "npx dotenv -e .env.local -- prisma studio",
     "dev": "velite --watch & next dev",
     "db:push": "dotenv -e .env -- prisma db push",
-    "prod:build": "velite && npx prisma generate && npx prisma migrate deploy && next build",
+    "prod:build": "velite && NODE_OPTIONS='--experimental-require-module' npx prisma generate && npx prisma migrate deploy && next build",
     "populate-db": "node scripts/populate-db.js"
   },
   "dependencies": {
@@ -23,7 +24,6 @@
     "@hookform/resolvers": "^3.9.0",
     "@libsql/client": "^0.14.0",
     "@next/third-parties": "^15.0.4",
-    "@popicons/react": "^0.0.15",
     "@prisma/adapter-libsql": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "@radix-ui/react-checkbox": "^1.1.1",
@@ -66,6 +66,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.2.11",
     "@cloudflare/next-on-pages": "^1.13.5",
     "@playwright/test": "^1.46.0",
     "@types/mapbox-gl": "^3.4.0",
