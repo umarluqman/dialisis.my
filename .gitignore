@@ -70,4 +70,5 @@ amplifytools.xcconfig
 .csv
 
 
-.contentlayerpackage-lock.json
+.contentlayer
+package-lock.json
