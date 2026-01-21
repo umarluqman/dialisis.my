@@ -5,6 +5,7 @@ frontend:
       commands:
         - nvm install 22.12.0
         - nvm use 22.12.0
+        - npm install -g corepack@latest
         - corepack enable
         - pnpm install --frozen-lockfile
     build:
