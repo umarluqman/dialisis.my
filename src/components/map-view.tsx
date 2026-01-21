@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  PopiconsGlobeDuotone,
-  PopiconsMailLine,
-  PopiconsPhoneLine,
-} from "@popicons/react";
-import { Loader2 } from "lucide-react";
+import { Globe, Loader2, Mail, Phone } from "lucide-react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
@@ -616,7 +611,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                         variant={"ghost"}
                         className="text-primary-foreground mb-4"
                       >
-                        <PopiconsGlobeDuotone className="w-4 h-4 text-primary-foreground" />
+                        <Globe className="w-4 h-4 text-primary-foreground" />
                         {selectedCenter.website.split("?")[0]}
                       </Button>
                     </Link>
@@ -625,7 +620,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                   <div className="flex gap-4 justify-end">
                     <Link href={`tel:${selectedCenter.phoneNumber}`}>
                       <Button variant="outline" className="px-4">
-                        <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
+                        <Phone className="w-4 h-4 text-primary-foreground" />
                         Panggil
                       </Button>
                     </Link>
@@ -658,7 +653,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     {selectedCenter.email && (
                       <Link href={`mailto:${selectedCenter.email}`}>
                         <Button variant={"outline"} className="px-4">
-                          <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
+                          <Mail className="w-4 h-4 text-primary-foreground" />
                           Emel
                         </Button>
                       </Link>
