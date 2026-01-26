@@ -1,10 +1,10 @@
+import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
 import { Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { LocationDirectory } from "@/components/location-directory";
 
 // Dynamically import components with loading fallbacks
 const DialysisQuiz = dynamic(
@@ -267,7 +267,7 @@ export default async function DialysisCenterDirectory({
   return (
     <>
       {/* SEO: Main heading for the page */}
-      <h1 className="text-2xl md:text-3xl font-bold text-center py-6">
+      <h1 className="text-2xl font-bold text-center py-6 block md:hidden">
         Cari Pusat Dialisis di Malaysia
       </h1>
 

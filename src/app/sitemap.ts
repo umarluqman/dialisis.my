@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 import { generateAllLocationParams } from "@/lib/location-utils";
-import { allPosts } from "contentlayer/generated";
+import { posts } from "#velite";
 import type { MetadataRoute } from "next";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
@@ -72,7 +72,7 @@ export default async function sitemap(props: {
     ];
 
     // Blog pages
-    const blogPages: MetadataRoute.Sitemap = allPosts.map((post) => ({
+    const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.date),
       changeFrequency: "monthly",

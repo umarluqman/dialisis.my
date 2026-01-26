@@ -3,7 +3,7 @@
  */
 
 import { prisma } from "@/lib/db";
-import { allPosts } from "contentlayer/generated";
+import { posts } from "#velite";
 import { getDbStateName, createLocationSlug } from "./location-utils";
 import {
   parseTreatmentTypes,
@@ -233,14 +233,14 @@ export function getRelatedBlogPosts(params: {
 }): RelatedBlogPost[] {
   const { treatmentTypes, locale, limit = 3, excludeSlug } = params;
 
-  let posts = allPosts.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     if (excludeSlug && post.slug === excludeSlug) return false;
     if (locale && post.locale !== locale) return false;
     return true;
   });
 
   // Score by treatment type match
-  const scored = posts.map((post) => {
+  const scored = filteredPosts.map((post) => {
     const postTreatments = mapTagsToTreatments(post.tags || []);
     const matchScore =
       treatmentTypes.includes("all") || postTreatments.includes("all")

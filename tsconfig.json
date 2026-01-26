@@ -22,19 +22,15 @@
     ],
     "paths": {
       "@/*": ["src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "#velite": ["./.velite"]
     }
   },
-  // "ts-node": {
-  //   "esm": true,
-  //   "experimentalSpecifierResolution": "node"
-  // },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".velite"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PopiconsMapLine } from "@popicons/react";
+import { MapPin } from "lucide-react";
 import { getTopLocationsForBlog } from "@/lib/internal-linking-queries";
 
 interface BlogLocationLinksProps {
@@ -23,7 +23,7 @@ export async function BlogLocationLinks({
   return (
     <section className="mt-8 pt-6 border-t">
       <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <PopiconsMapLine className="w-5 h-5" />
+        <MapPin className="w-5 h-5" />
         {title}
       </h2>
       <div className="flex flex-wrap gap-2">

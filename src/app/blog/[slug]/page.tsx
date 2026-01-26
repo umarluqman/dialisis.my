@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated";
+import { posts } from "#velite";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -16,13 +16,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = allPosts.find((p) => p.slug === params.slug);
+  const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) {
     return {
@@ -81,7 +81,7 @@ function formatDate(dateString: string, locale: string): string {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = allPosts.find((p) => p.slug === params.slug);
+  const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <MdxContent code={post.body.code} />
+          <MdxContent code={post.body} />
         </div>
       </article>
 
