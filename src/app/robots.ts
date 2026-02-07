@@ -17,6 +17,7 @@ export default function robots(): MetadataRoute.Robots {
           "/*.json$",
           "/search?*", // Don't index search result pages
           "/peta?*", // Don't index filtered map URLs
+          "/cdn-cgi/*", // Block Cloudflare internal endpoints (email obfuscation, etc.)
         ],
       },
     ],

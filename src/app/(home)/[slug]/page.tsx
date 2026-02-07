@@ -52,7 +52,8 @@ function generateJsonLd(center: CenterWithState): any {
     description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
     url: `https://dialisis.my/${center.slug}`,
     telephone: center.phoneNumber || center.tel,
-    email: center.email,
+    // Removed: email in JSON-LD gets corrupted by Cloudflare Email Obfuscation,
+    // breaking the entire structured data block. Emails are still shown via mailto links.
     address: {
       "@type": "PostalAddress",
       streetAddress: center.addressWithUnit || center.address,
