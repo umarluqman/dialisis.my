@@ -278,7 +278,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className="min-h-screen bg-zinc-50 px-4 pt-4 pb-24">
+      <div className="min-h-screen bg-background px-4 pt-4 pb-24">
         <AnimatePresence mode="wait">
           {!showResults ? (
             <motion.div
@@ -287,44 +287,44 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               className="max-w-md mx-auto"
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
             >
               <div className="mb-6">
-                <div className="h-2 w-full bg-zinc-200 rounded-full">
+                <div className="h-2 w-full bg-muted rounded-full overflow-hidden">
                   <div
-                    className="h-full bg-primary rounded-full transition-all duration-300"
+                    className="h-full bg-primary rounded-full transition-all duration-250 ease-out-quint"
                     style={{
                       width: `${(currentStep / (steps.length - 1)) * 100}%`,
                     }}
                   />
                 </div>
-                <div className="mt-2 space-y-1">
-                  <p className="text-sm text-zinc-500">
+                <div className="mt-3 space-y-2">
+                  <p className="text-sm text-muted-foreground">
                     Langkah {currentStep + 1} dari {steps.length}
                   </p>
                   <div className="flex flex-row gap-2 flex-wrap">
                     {state && (
-                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                      <Badge variant="default" className="text-sm">
                         {state}
                       </Badge>
                     )}
                     {cityParam && (
-                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                      <Badge variant="default" className="text-sm">
                         {getFormattedValue(cityParam)}
                       </Badge>
                     )}
                     {treatmentParam && (
-                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                      <Badge variant="default" className="text-sm">
                         {getFormattedValue(treatmentParam)}
                       </Badge>
                     )}
                     {hepatitisParam && (
-                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                      <Badge variant="default" className="text-sm">
                         {getFormattedValue(hepatitisParam)}
                       </Badge>
                     )}
                     {sectorParam && (
-                      <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                      <Badge variant="default" className="text-sm">
                         {getFormattedValue(sectorParam) === "MOH"
                           ? "Kerajaan"
                           : getFormattedValue(sectorParam) === "PRIVATE"
@@ -344,12 +344,12 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                     variant="outline"
                     size="icon"
                     onClick={handleBack}
-                    className="shrink-0 border border-primary transition-colors"
+                    className="shrink-0 h-12 w-12 border-border transition-all duration-200 ease-out-cubic"
                   >
-                    <ChevronLeft className="h-4 w-4" />
+                    <ChevronLeft className="h-5 w-5" />
                   </Button>
                 )}
-                <h2 className="text-2xl font-bold">
+                <h2 className="font-display text-2xl font-semibold text-foreground">
                   {steps[currentStep].question}
                 </h2>
               </div>
@@ -357,32 +357,33 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                 {currentStep === 0 && (
                   <Button
                     variant="outline"
-                    className="w-full justify-between text-left h-auto py-4 px-6 shadow-md"
+                    className="w-full justify-between text-left h-14 px-5 shadow-warm-sm hover:shadow-warm-md transition-all duration-200 ease-out-cubic"
                     onClick={handleLocation}
                     disabled={isLocating}
                   >
-                    <span className="flex items-center gap-2">
+                    <span className="flex items-center gap-3">
                       {isLocating ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
+                        <Loader2 className="h-5 w-5 animate-spin text-primary" />
                       ) : (
-                        <div className="h-4 w-4">📍</div>
-                        // <PopiconsPinDuotone className="h-4 w-4 text-primary" />
+                        <span className="text-lg">📍</span>
                       )}
-                      {isLocating
-                        ? "Mencari lokasi anda..."
-                        : "Gunakan lokasi semasa"}
+                      <span className="font-medium">
+                        {isLocating
+                          ? "Mencari lokasi anda..."
+                          : "Gunakan lokasi semasa"}
+                      </span>
                     </span>
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
                   </Button>
                 )}
                 {steps[currentStep]?.options?.map((option) => (
                   <Button
                     key={option}
                     variant="outline"
-                    className="w-full justify-between text-left h-auto py-4 px-6"
+                    className="w-full justify-between text-left h-14 px-5 shadow-warm-sm hover:shadow-warm-md hover:border-primary/30 transition-all duration-200 ease-out-cubic"
                     onClick={() => handleOptionSelect(option)}
                   >
-                    <span>
+                    <span className="font-medium">
                       {option === "MOH"
                         ? "Kerajaan"
                         : option === "Private"
@@ -391,7 +392,7 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                         ? "Kerajaan & Swasta"
                         : option}
                     </span>
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-5 w-5 text-muted-foreground" />
                   </Button>
                 ))}
               </div>
@@ -402,10 +403,10 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               className="max-w-7xl mx-auto"
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
             >
-              <div className="mb-6">
-                <div className="flex justify-between items-center mb-2">
+              <div className="mb-8">
+                <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center gap-4">
                     <Button
                       variant="outline"
@@ -415,11 +416,11 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                         setShowResults(false);
                         setCurrentStepParam(4);
                       }}
-                      className="shrink-0 border border-primary transition-colors"
+                      className="shrink-0 h-12 w-12 border-border transition-all duration-200 ease-out-cubic"
                     >
-                      <ChevronLeft className="h-4 w-4" />
+                      <ChevronLeft className="h-5 w-5" />
                     </Button>
-                    <h2 className="text-xl md:text-2xl font-bold">
+                    <h2 className="font-display text-xl md:text-2xl font-semibold text-foreground">
                       Pusat Dialisis Yang Sesuai
                     </h2>
                   </div>
@@ -435,27 +436,27 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                 </div>
                 <div className="flex flex-row gap-2 flex-wrap">
                   {state && (
-                    <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                    <Badge variant="default" className="text-sm">
                       {state}
                     </Badge>
                   )}
                   {cityParam && (
-                    <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                    <Badge variant="default" className="text-sm">
                       {getFormattedValue(cityParam)}
                     </Badge>
                   )}
                   {treatmentParam && (
-                    <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                    <Badge variant="default" className="text-sm">
                       {getFormattedValue(treatmentParam)}
                     </Badge>
                   )}
                   {hepatitisParam && (
-                    <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                    <Badge variant="default" className="text-sm">
                       {getFormattedValue(hepatitisParam)}
                     </Badge>
                   )}
                   {sectorParam && (
-                    <Badge className="bg-primary-foreground text-white rounded-none font-semibold text-sm">
+                    <Badge variant="default" className="text-sm">
                       {getFormattedValue(sectorParam) === "MOH"
                         ? "Kerajaan"
                         : getFormattedValue(sectorParam) === "PRIVATE"
@@ -467,14 +468,14 @@ export function DialysisQuiz({ initialData }: { initialData: any }) {
                   )}
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {initialData.centers.length === 0 ? (
-                  <div className="col-span-full flex flex-col items-center justify-center py-12">
-                    <SearchX className="w-12 h-12 text-zinc-400" />
-                    <h3 className="mt-4 text-lg font-semibold text-zinc-950">
+                  <div className="col-span-full flex flex-col items-center justify-center py-16">
+                    <SearchX className="w-16 h-16 text-muted-foreground/50" />
+                    <h3 className="mt-6 text-xl font-display font-semibold text-foreground">
                       Tiada Pusat Dialisis
                     </h3>
-                    <p className="mt-1 text-sm text-zinc-600">
+                    <p className="mt-2 text-muted-foreground text-center max-w-md">
                       Maaf, tiada pusat dialisis yang memenuhi kriteria carian
                       anda.
                     </p>

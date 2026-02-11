@@ -177,12 +177,11 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
             {hepatitisArray.map((hep) => (
               <Badge
                 key={hep}
-                className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                className="bg-featured/15 text-base text-featured-foreground shadow-none hover:bg-featured/25 font-normal"
               >
                 {hep}
               </Badge>
             ))}
-            {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
           </div>
         ) : null}
       </div>

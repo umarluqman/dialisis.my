@@ -3,7 +3,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
-import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import { CenterCardGallery } from "./center-card-gallery";
@@ -33,7 +32,6 @@ interface CenterCardProps {
   photos?: string;
 }
 
-// Helper function to parse photos string into array
 function parsePhotos(photosString?: string) {
   if (!photosString) return [];
 
@@ -47,7 +45,6 @@ function parsePhotos(photosString?: string) {
     }
     return [];
   } catch {
-    // If parsing fails, treat as comma-separated URLs
     return photosString
       .split(",")
       .filter(Boolean)
@@ -62,16 +59,13 @@ export function CenterCard({
   slug,
   id,
   dialysisCenterName,
-  address,
   featured,
   phoneNumber,
-  email,
   state,
   town,
   hepatitisBay,
   sector,
   units,
-  website,
   latitude,
   showService = true,
   longitude,
@@ -81,55 +75,64 @@ export function CenterCard({
   const title = dialysisCenterName?.split(",")[0];
 
   const hepatitisArray = hepatitisBay ? hepatitisBay.split(", ") : [];
-  const treatmentArray = unitsArray.map((unit) => ({
-    name: unit,
-    value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialisis"
-      : unit.toLowerCase().includes("tx unit")
-      ? "Transplant"
-      : unit.toLowerCase().includes("mrrb unit")
-      ? "MRRB"
-      : "Peritoneal Dialisis",
-  }));
+  const treatmentArray = unitsArray
+    .map((unit) => ({
+      name: unit,
+      value: unit.toLowerCase().includes("hd unit")
+        ? "Hemodialisis"
+        : unit.toLowerCase().includes("tx unit")
+        ? "Transplant"
+        : unit.toLowerCase().includes("mrrb unit")
+        ? "MRRB"
+        : "Peritoneal Dialisis",
+    }))
+    .slice(0, 2);
 
   const isFeatured = featured;
 
-  // Fetch images from API for featured centers
   const { images: apiImages, isLoading: imagesLoading } = useCenterImages(
     id,
     isFeatured
   );
 
-  // Get images based on whether it's featured or not
   const galleryImages = isFeatured
     ? apiImages.length > 0
       ? apiImages.map((img) => ({
           src: img.url,
           alt: img.altText || `${dialysisCenterName} - Gallery Image`,
         }))
-      : getSampleImages(town, dialysisCenterName) // Fallback to sample images if no API images
+      : getSampleImages(town, dialysisCenterName)
     : parsePhotos(photos);
+
+  const getSectorLabel = (sector?: string) => {
+    if (!sector) return null;
+    switch (sector) {
+      case "MOH":
+        return "Kerajaan";
+      case "MOH_PRIVATE":
+        return "Kerajaan & Swasta";
+      case "PRIVATE":
+        return "Swasta";
+      default:
+        return sector;
+    }
+  };
 
   return (
     <Card
-      className={`shadow-sm transition-shadow flex flex-col min-h-fit relative ${
+      className={`flex flex-col min-h-fit relative overflow-hidden ${
         isFeatured
-          ? "shadow-primary/25 bg-gradient-to-br from-primary/5 to-primary/5 shadow-lg border-primary border-2"
-          : ""
+          ? "shadow-warm-lg border-2 border-primary/20 bg-gradient-to-br from-primary-light to-card"
+          : "shadow-warm"
       }`}
     >
       {isFeatured && (
-        <Badge className="absolute -top-2 right-4 bg-amber-400 text-amber-950 shadow-sm shadow-amber-400/25 px-3 py-1 border-none z-10">
-          Pilihan Utama
-        </Badge>
-      )}
-
-      {/* Photo Gallery for Featured Centers */}
-      {isFeatured && (
         <div className="p-4 pb-0">
           {imagesLoading ? (
-            <div className="relative aspect-[4/3] rounded-lg bg-zinc-100 animate-pulse flex items-center justify-center">
-              <div className="text-zinc-400 text-sm">Loading images...</div>
+            <div className="relative aspect-[16/9] rounded-xl bg-muted animate-pulse flex items-center justify-center">
+              <div className="text-muted-foreground text-sm">
+                Memuatkan gambar...
+              </div>
             </div>
           ) : galleryImages.length > 0 ? (
             <CenterCardGallery images={galleryImages} centerName={title} />
@@ -137,172 +140,111 @@ export function CenterCard({
         </div>
       )}
 
-      <CardHeader className="pb-0">
-        <CardTitle className="text-lg font-bold text-foreground">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-xl font-display font-semibold text-foreground leading-tight">
           {title}
         </CardTitle>
-        <div className="flex justify-between w-full">
-          <CardTitle className="text-zinc-500 font-medium capitalize text-base">{`${
-            town ? town + ", " : ""
-          }${state.name}`}</CardTitle>
-
-          <p className="text-primary-foreground mb-4 text-sm">
-            {sector === "MOH" ||
-            sector === "NGO" ||
-            sector === "MOH_PRIVATE" ? (
-              sector === "MOH" ? (
-                "Kerajaan"
-              ) : sector === "MOH_PRIVATE" ? (
-                "Kerajaan & Swasta"
-              ) : (
-                sector
-              )
-            ) : (
-              <span className="capitalize">
-                {sector?.toLowerCase() === "private"
-                  ? "Swasta"
-                  : sector?.toLowerCase()}
-              </span>
-            )}
+        <div className="flex items-center justify-between w-full mt-1">
+          <p className="text-muted-foreground text-sm capitalize">
+            {town ? `${town}, ` : ""}
+            {state.name}
           </p>
+          {sector && (
+            <Badge variant="subtle" className="text-xs">
+              {getSectorLabel(sector)}
+            </Badge>
+          )}
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col flex-1">
-        <div
-          className={`flex-1 rounded-t-[10px] flex flex-col ${
-            isFeatured ? "transparent" : "bg-white"
-          }`}
-        >
-          {/* <p className="mt-3 text-zinc-600">{address}</p> */}
-          {showService && (
-            <div className="flex flex-col gap-2 my-2">
-              <div className="text-sm text-zinc-600">Servis Rawatan</div>
-              <div className="flex flex-wrap gap-2">
-                {treatmentArray.map((treatment) => (
-                  <Badge
-                    key={treatment.name}
-                    className="bg-[#a3bdffff]/20 text-[#375092ff] shadow-none font-normal border- border-primary-foreground/25"
-                  >
-                    {treatment.value}
-                  </Badge>
-                ))}{" "}
-              </div>
-            </div>
-          )}
 
-          {showService && (
-            <div className="flex flex-wrap mb-4">
-              {hepatitisArray.length > 0 ? (
-                <div className="flex items-center gap-2">
-                  {hepatitisArray.map((hep) => (
-                    <Badge
-                      key={hep}
-                      className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
-                    >
-                      {hep}
-                    </Badge>
-                  ))}
-                  {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
-                </div>
-              ) : null}
+      <CardContent className="flex flex-col flex-1 pt-2">
+        {showService && treatmentArray.length > 0 && (
+          <div className="flex flex-col gap-2 mb-3">
+            <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+              Servis Rawatan
+            </p>
+            <div className="flex flex-wrap gap-1.5">
+              {treatmentArray.map((treatment) => (
+                <Badge key={treatment.name} variant="subtle" className="text-xs">
+                  {treatment.value}
+                </Badge>
+              ))}
             </div>
-          )}
+          </div>
+        )}
 
-          <div className="flex flex-wrap gap-3 justify-end mt-4">
+        {showService && hepatitisArray.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mb-4">
+            {hepatitisArray.map((hep) => (
+              <Badge key={hep} variant="hepatitis" className="text-xs">
+                {hep}
+              </Badge>
+            ))}
+          </div>
+        )}
+
+        <div className="flex flex-wrap gap-2 mt-auto pt-4">
+          {phoneNumber && (
             <Button
               variant="outline"
-              className="px-4 border-primary-foreground/30"
+              size="sm"
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
-              <Phone className="w-4 h-4 text-primary-foreground" />
+              <Phone className="w-4 h-4" />
               Panggil
             </Button>
-            {isFeatured && phoneNumber ? (
-              <Button
-                variant="outline"
-                className="px-4 border-primary-foreground/30"
-                onClick={() =>
-                  (window.location.href = `https://wa.me/+6${phoneNumber.replace(
-                    /[\s-]/g,
-                    ""
-                  )}`)
-                }
-              >
-                <Image
-                  src="/whatsapp.svg"
-                  alt="WhatsApp"
-                  width={20}
-                  height={20}
-                />
-                WhatsApp
-              </Button>
-            ) : null}
+          )}
 
-            {/* <Button
-              variant={"outline"}
-              className="px-4 border-primary-foreground/30"
-              onClick={() => (window.location.href = `mailto:${email}`)}
+          {isFeatured && phoneNumber && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() =>
+                (window.location.href = `https://wa.me/+6${phoneNumber.replace(
+                  /[\s-]/g,
+                  ""
+                )}`)
+              }
             >
-              <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
-              Emel
-            </Button> */}
+              <Image
+                src="/whatsapp.svg"
+                alt="WhatsApp"
+                width={16}
+                height={16}
+              />
+              WhatsApp
+            </Button>
+          )}
 
+          {latitude && longitude && (
             <Link
               href={`https://www.google.com/maps?q=${latitude},${longitude}`}
               target="_blank"
             >
-              <Button
-                variant="outline"
-                className="px-4 border-primary-foreground/30"
-              >
-                <MapPin className="w-4 h-4 text-primary-foreground" />
+              <Button variant="outline" size="sm">
+                <MapPin className="w-4 h-4" />
                 Lokasi
               </Button>
             </Link>
-            <Link href={`/${slug}`} scroll={false}>
-              <Button
-                variant={isFeatured ? "default" : "secondary"}
-                className={clsx(
-                  "w-full md:w-auto flex items-center justify-center md:justify-self-end",
-                  {
-                    "bg-[#0565f2] hover:bg-[#0565f2]/95 text-secondary shadow-primary/25 hover:shadow-lg hover:shadow-primary-foreground/25 transition-all":
-                      isFeatured,
-                  }
-                )}
-              >
-                Info Lanjut
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-            {/* {website && (
-              <Link
-                href={website.split("?")[0] + "?ref=dialisis.my"}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-              >
-                <Button
-                  variant={"outline"}
-                  className="border-primary-foreground/30 mb-4"
-                >
-                  <PopiconsGlobeLine className="w-4 h-4 text-primary-foreground" />
-                  Laman Web
-                </Button>
-              </Link>
-            )} */}
-          </div>
+          )}
 
-          {/* <div className="mt-auto pt-6">
-            
-          </div> */}
+          <Link href={`/${slug}`} scroll={false} className="ml-auto">
+            <Button
+              variant={isFeatured ? "default" : "secondary"}
+              size="sm"
+              className={isFeatured ? "shadow-warm-md" : ""}
+            >
+              Info Lanjut
+              <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </CardContent>
     </Card>
   );
 }
 
-// Temporary function to provide sample images for featured centers
 function getSampleImages(town: string, centerName: string) {
-  // Sample images for demonstration
   const sampleSets = [
     [
       {
@@ -352,7 +294,6 @@ function getSampleImages(town: string, centerName: string) {
     ],
   ];
 
-  // Use a consistent set based on center name hash
   const hash = centerName
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);

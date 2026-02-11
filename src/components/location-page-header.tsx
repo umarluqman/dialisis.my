@@ -80,38 +80,42 @@ export function LocationPageHeader({
         </nav>
       </div>
 
-      {/* Stats Cards */}
+      {/* Stats */}
       {totalCenters > 0 && (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="bg-blue-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-blue-600">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+          <div className="text-center">
+            <div className="text-2xl font-semibold text-foreground">
               {totalCenters}
             </div>
-            <div className="text-sm text-gray-600">Jumlah Pusat</div>
+            <div className="text-sm text-muted-foreground">Jumlah Pusat</div>
           </div>
-          <div className="bg-green-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-green-600">
+          <div className="hidden md:block w-px h-8 bg-border" />
+          <div className="text-center">
+            <div className="text-2xl font-semibold text-foreground">
               {stats.mohCenters}
             </div>
-            <div className="text-sm text-gray-600">Pusat MOH</div>
+            <div className="text-sm text-muted-foreground">Pusat MOH</div>
           </div>
-          <div className="bg-purple-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-purple-600">
+          <div className="hidden md:block w-px h-8 bg-border" />
+          <div className="text-center">
+            <div className="text-2xl font-semibold text-foreground">
               {stats.privateCenters}
             </div>
-            <div className="text-sm text-gray-600">Pusat Swasta</div>
+            <div className="text-sm text-muted-foreground">Pusat Swasta</div>
           </div>
-          <div className="bg-orange-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-orange-600">
+          <div className="hidden md:block w-px h-8 bg-border" />
+          <div className="text-center">
+            <div className="text-2xl font-semibold text-foreground">
               {stats.hepatitisBCenters}
             </div>
-            <div className="text-sm text-gray-600">Hepatitis B</div>
+            <div className="text-sm text-muted-foreground">Hepatitis B</div>
           </div>
-          <div className="bg-red-50 p-4 rounded-lg text-center">
-            <div className="text-2xl font-bold text-red-600">
+          <div className="hidden md:block w-px h-8 bg-border" />
+          <div className="text-center">
+            <div className="text-2xl font-semibold text-foreground">
               {stats.hepatitisCCenters}
             </div>
-            <div className="text-sm text-gray-600">Hepatitis C</div>
+            <div className="text-sm text-muted-foreground">Hepatitis C</div>
           </div>
         </div>
       )}

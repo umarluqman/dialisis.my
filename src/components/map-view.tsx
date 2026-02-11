@@ -278,16 +278,16 @@ export default function MapView({ center }: { center?: [number, number] }) {
             "circle-color": [
               "case",
               ["get", "hasFeatured"], // If cluster has featured centers
-              "#f59e0b", // Use amber/yellow for featured clusters
+              "#E5A820", // Warm amber gold for featured clusters
               [
                 // Otherwise use the original step-based coloring
                 "step",
                 ["get", "point_count"],
-                "#012f54", // Dark blue for small clusters
+                "#326B5A", // Deep forest green for small clusters
                 50,
-                "#2bde80", // Green for medium clusters
+                "#326B5A", // Deep forest green for medium clusters
                 100,
-                "#a3bdff", // Light blue for large clusters
+                "#4A8B7A", // Lighter forest green for large clusters
               ],
             ],
             "circle-radius": [
@@ -313,7 +313,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
           source: "centers",
           filter: ["all", ["has", "point_count"], ["get", "hasFeatured"]],
           paint: {
-            "circle-color": "#fbbf24", // Amber color
+            "circle-color": "#F0C040", // Light warm amber
             "circle-radius": [
               "step",
               ["get", "point_count"],
@@ -325,7 +325,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
             ],
             "circle-opacity": 0.15, // Start from lower opacity
             "circle-stroke-width": 2,
-            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-color": "#E5A820", // Warm amber gold for stroke
             "circle-stroke-opacity": 0.3,
             "circle-blur": 0.8, // Increased blur for softer edges
           },
@@ -357,8 +357,8 @@ export default function MapView({ center }: { center?: [number, number] }) {
             "circle-color": [
               "case",
               ["==", ["get", "featured"], true],
-              "#f59e0b", // Amber color for featured centers
-              "#012f54", // Default dark blue for other centers
+              "#E5A820", // Warm amber gold for featured centers
+              "#326B5A", // Deep forest green for other centers
             ],
             "circle-radius": [
               "case",
@@ -379,11 +379,11 @@ export default function MapView({ center }: { center?: [number, number] }) {
           source: "centers",
           filter: ["==", ["get", "featured"], true],
           paint: {
-            "circle-color": "#fbbf24", // Amber color
+            "circle-color": "#F0C040", // Light warm amber
             "circle-radius": 20, // Start from smaller size
             "circle-opacity": 0.15, // Start from lower opacity
             "circle-stroke-width": 2,
-            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-color": "#E5A820", // Warm amber gold for stroke
             "circle-stroke-opacity": 0.3,
             "circle-blur": 0.8, // Increased blur for softer edges
           },
@@ -530,23 +530,22 @@ export default function MapView({ center }: { center?: [number, number] }) {
         onOpenChange={() => setSelectedCenter(null)}
       >
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-10" />
-          {/* <Drawer.Title>{selectedCenter?.dialysisCenterName}</Drawer.Title> */}
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 mb-24 flex h-[85vh] flex-col rounded-t-[10px] bg-white z-20">
+          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-[60]" />
+          <Drawer.Content className="fixed bottom-0 left-0 right-0 mb-24 flex h-[85vh] flex-col rounded-t-[10px] bg-white z-[70]">
             <div className="flex-1 rounded-t-[10px] bg-white p-4">
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
                 <div className="mx-auto max-w-md">
                   {selectedCenter.featured && (
                     <div className="flex items-center gap-1 ml-auto mb-2">
-                      <Badge className="bg-amber-50 text-amber-600 hover:bg-amber-50 shadow-none font-normal border border-amber-400">
+                      <Badge className="bg-featured/10 text-featured-foreground hover:bg-featured/10 shadow-none font-normal border border-featured/40">
                         Pusat Pilihan 👍
                       </Badge>
                     </div>
                   )}
                   <h2 className="text-xl font-semibold">{title}</h2>
                   <div className="flex items-center gap-2">
-                    <p className="text-primary-foreground mb-4">
+                    <p className="text-muted-foreground mb-4">
                       {selectedCenter?.sector === "MOH" ||
                       selectedCenter?.sector === "NGO" ? (
                         selectedCenter?.sector
@@ -591,12 +590,11 @@ export default function MapView({ center }: { center?: [number, number] }) {
                         {hepatitisArray.map((hep) => (
                           <Badge
                             key={hep}
-                            className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                            className="bg-featured/20 text-featured-foreground shadow-none hover:bg-featured/30 font-normal"
                           >
                             {hep}
                           </Badge>
                         ))}
-                        {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
                       </div>
                     ) : null}
                   </div>
@@ -609,9 +607,9 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     >
                       <Button
                         variant={"ghost"}
-                        className="text-primary-foreground mb-4"
+                        className="text-foreground mb-4"
                       >
-                        <Globe className="w-4 h-4 text-primary-foreground" />
+                        <Globe className="w-4 h-4" />
                         {selectedCenter.website.split("?")[0]}
                       </Button>
                     </Link>
@@ -620,7 +618,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                   <div className="flex gap-4 justify-end">
                     <Link href={`tel:${selectedCenter.phoneNumber}`}>
                       <Button variant="outline" className="px-4">
-                        <Phone className="w-4 h-4 text-primary-foreground" />
+                        <Phone className="w-4 h-4 text-foreground" />
                         Panggil
                       </Button>
                     </Link>
@@ -653,7 +651,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     {selectedCenter.email && (
                       <Link href={`mailto:${selectedCenter.email}`}>
                         <Button variant={"outline"} className="px-4">
-                          <Mail className="w-4 h-4 text-primary-foreground" />
+                          <Mail className="w-4 h-4 text-foreground" />
                           Emel
                         </Button>
                       </Link>
