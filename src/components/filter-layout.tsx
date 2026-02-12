@@ -1,6 +1,5 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 
 export default function FilterLayout({
   children,
@@ -10,8 +9,8 @@ export default function FilterLayout({
   const title = "Pusat Dialisis di Malaysia";
 
   return (
-    <div className="min-h-screen bg-[foreground] text-black relative">
-      <div className="py-4 md:py-8">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* <div className="py-4 md:py-8">
         <div
           className={cn(
             "mb-8 p-12 flex flex-col md:flex-row justify-center md:items-center"
@@ -24,7 +23,7 @@ export default function FilterLayout({
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
       {children}
     </div>
   );

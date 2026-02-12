@@ -1,7 +1,7 @@
 import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
-import { Loader2 } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
@@ -266,10 +266,29 @@ export default async function DialysisCenterDirectory({
 
   return (
     <>
-      {/* SEO: Main heading for the page */}
-      <h1 className="text-2xl font-bold text-center py-6 block md:hidden">
-        Cari Pusat Dialisis di Malaysia
-      </h1>
+      {/* Hero Section */}
+      <div className="text-center py-8 md:py-12 px-4">
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">
+          Pusat Dialisis di Malaysia
+        </h1>
+        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-6">
+          Cari lebih daripada 900 pusat dialisis berdekatan dengan anda.
+          Maklumat lengkap untuk membantu anda membuat keputusan yang tepat.
+        </p>
+
+        {/* Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-primary">
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Maklumat Terkini
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Sumber Rasmi
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Seluruh Malaysia
+          </span>
+        </div>
+      </div>
 
       {/* Add JSON-LD with streaming */}
       <Suspense>

@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ImagesResponse } from "@/types/center-image";
+import { useCenterImages } from "@/hooks/use-center-images";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Car,
@@ -25,7 +25,6 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
-import useSWR from "swr";
 import { Badge } from "./ui/badge";
 
 // Import map component dynamically to avoid SSR issues
@@ -111,23 +110,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
-  // Fetch center images from API
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const {
-    data: imagesData,
-    error,
-    isLoading,
-  } = useSWR<ImagesResponse>(
-    `db
-    `,
-    fetcher
-  );
-
-  // Debug logging
-  console.log("Center ID:", center.id);
-  console.log("Images API Response:", imagesData);
-  console.log("Images API Error:", error);
-  console.log("Images Loading:", isLoading);
+  const { images, isLoading, error } = useCenterImages(center.id);
 
   // Fallback images for centers without uploaded images
   const isInBachok = center.town === "Bachok";
@@ -169,10 +152,9 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         },
       ];
 
-  // Use uploaded images if available, otherwise fallback to default images
   const GALLERY_IMAGES =
-    imagesData?.images && imagesData.images.length > 0
-      ? imagesData.images.map((img, index) => ({
+    images.length > 0
+      ? images.map((img, index) => ({
           src: failedImages.has(img.url)
             ? FALLBACK_IMAGES[index % FALLBACK_IMAGES.length].src
             : img.url,
@@ -245,7 +227,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             {hepatitisArray.map((hep) => (
               <Badge
                 key={hep}
-                className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                className="bg-featured/15 text-base text-featured-foreground shadow-none hover:bg-featured/25 font-normal"
               >
                 {hep}
               </Badge>
