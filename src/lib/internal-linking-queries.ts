@@ -321,6 +321,35 @@ export async function getNeighboringLocations(
 }
 
 /**
+ * Get all cities in a state with center counts
+ */
+export async function getCitiesForState(
+  stateName: string
+): Promise<LocationLink[]> {
+  const dbStateName = getDbStateName(stateName);
+
+  try {
+    const cities = await prisma.dialysisCenter.groupBy({
+      by: ["town"],
+      where: {
+        state: { name: { equals: dbStateName } },
+      },
+      _count: { id: true },
+      orderBy: { _count: { id: "desc" } },
+    });
+
+    return cities.map((c) => ({
+      name: c.town,
+      slug: `/lokasi/${createLocationSlug(stateName)}/${createLocationSlug(c.town)}`,
+      centerCount: c._count.id,
+    }));
+  } catch (error) {
+    console.error("Error fetching cities for state:", error);
+    return [];
+  }
+}
+
+/**
  * Get top locations for blog posts to link to
  */
 export async function getTopLocationsForBlog(params: {

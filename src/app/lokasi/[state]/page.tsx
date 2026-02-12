@@ -1,14 +1,16 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 
+import { CenterCard } from "@/components/center-card";
 import {
   CrossLocationLinks,
   RelatedBlogPosts,
 } from "@/components/internal-linking";
 import { LocationPageHeader } from "@/components/location-page-header";
 import { LocationSeoContent } from "@/components/location-seo-content";
-import { StateCenterList } from "@/components/state-center-list";
+import { getCitiesForState } from "@/lib/internal-linking-queries";
 import { getCentersByState, getLocationStats } from "@/lib/location-queries";
 import {
   generateLocationJsonLd,
@@ -17,16 +19,12 @@ import {
 import {
   generateAllLocationParams,
   getLocationDisplayNames,
-  getTownsForState,
   validateLocation,
 } from "@/lib/location-utils";
 
 interface Props {
   params: {
     state: string;
-  };
-  searchParams: {
-    town?: string;
   };
 }
 
@@ -115,18 +113,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function StatePage({ params }: Props) {
   const { stateName } = getLocationDisplayNames(params.state);
 
-  // Validate the location exists
   if (!validateLocation(params.state)) {
     notFound();
   }
 
-  // Get available towns for this state
-  const availableTowns = getTownsForState(stateName);
-
-  // Fetch initial centers and stats (without town filter for initial load)
-  const [centerData, stats] = await Promise.all([
+  const [centerData, stats, cities] = await Promise.all([
     getCentersByState(stateName),
     getLocationStats(stateName),
+    getCitiesForState(stateName),
   ]);
 
   const jsonLd = generateLocationJsonLd({
@@ -161,18 +155,46 @@ export default async function StatePage({ params }: Props) {
           }}
         />
 
-        {/* Client-side Center List with Town Filter */}
-        <Suspense fallback={<div>Loading...</div>}>
-          <StateCenterList
-            initialData={{
-              centers: centerData.centers,
-              totalCenters: centerData.totalCenters,
-            }}
-            stateName={stateName}
-            stateSlug={params.state}
-            availableTowns={availableTowns}
-          />
-        </Suspense>
+        {cities.length > 0 && (
+          <section className="mb-8">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">
+              Bandar di {stateName}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {cities.map((city) => (
+                <Link
+                  key={city.slug}
+                  href={city.slug}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                >
+                  {city.name}
+                  <span className="text-xs text-primary/70">
+                    ({city.centerCount})
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            Senarai Pusat Dialisis
+          </h2>
+          {centerData.centers.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {centerData.centers.map((center) => (
+                <CenterCard key={center.id} {...center} />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <div className="text-gray-500 text-lg">
+                Tiada pusat dialisis dijumpai di {stateName}
+              </div>
+            </div>
+          )}
+        </div>
 
         <LocationSeoContent stateName={stateName} stats={stats} />
 

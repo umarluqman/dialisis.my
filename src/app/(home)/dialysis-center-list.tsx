@@ -263,7 +263,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
               }
             }}
           >
-            <SelectTrigger className="w-auto h-10 px-4 rounded-full border-none bg-secondary text-secondary-foreground hover:bg-primary/10 transition-colors [&>span]:line-clamp-none">
+            <SelectTrigger className="w-auto h-10 px-4 rounded-full border-none bg-secondary text-secondary-foreground hover:bg-primary/10 transition-colors [&>span]:flex [&>svg]:hidden">
               <span className="flex items-center gap-1">
                 Lagi
                 <ChevronDown className="h-4 w-4" />
