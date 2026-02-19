@@ -5,14 +5,14 @@
   "scripts": {
     "analyze": "ANALYZE=true velite && next build",
     "build": "velite && NODE_OPTIONS='--experimental-require-module' npx prisma generate && next build",
-    "amplify:build": "velite && npx prisma generate && next build",
+    "amplify:build": "velite && NODE_OPTIONS='--experimental-require-module' npx prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "test:e2e": "playwright test",
-    "db": "npx dotenv -e .env.local -- prisma migrate dev",
-    "studio": "npx dotenv -e .env.local -- prisma studio",
+    "db": "NODE_OPTIONS='--experimental-require-module' npx dotenv -e .env.local -- prisma migrate dev",
+    "studio": "NODE_OPTIONS='--experimental-require-module' npx dotenv -e .env.local -- prisma studio",
     "dev": "velite --watch & next dev",
-    "db:push": "dotenv -e .env -- prisma db push",
+    "db:push": "NODE_OPTIONS='--experimental-require-module' dotenv -e .env -- prisma db push",
     "prod:build": "velite && NODE_OPTIONS='--experimental-require-module' npx prisma generate && npx prisma migrate deploy && next build",
     "populate-db": "node scripts/populate-db.js"
   },

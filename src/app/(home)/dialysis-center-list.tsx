@@ -284,7 +284,13 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
 
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-6">
-          <div className="relative">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
+            className="relative flex items-center"
+          >
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
               type="text"
@@ -294,9 +300,17 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
                 setName(e.target.value);
                 setDoctorName(null);
               }}
-              className="pl-12 pr-4 h-12 rounded-xl text-base bg-card border-border shadow-warm-sm focus:shadow-warm-md transition-shadow"
+              className="pl-12 pr-24 h-12 rounded-xl text-base bg-card border-border shadow-warm-sm focus:shadow-warm-md transition-shadow"
             />
-          </div>
+            <Button
+              type="submit"
+              size="sm"
+              className="absolute right-2 h-8 rounded-lg"
+              disabled={isPending}
+            >
+              {isPending ? "Mencari..." : "Cari"}
+            </Button>
+          </form>
         </div>
 
         {/* Advanced Filters Toggle */}
