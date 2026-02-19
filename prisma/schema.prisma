@@ -49,6 +49,7 @@ model DialysisCenter {
   @@index([town])
   @@index([units])
   @@index([drInCharge])
+  @@index([panelNephrologist])
   @@index([addressWithUnit])
   @@index([address])
   @@index([dialysisCenterName])

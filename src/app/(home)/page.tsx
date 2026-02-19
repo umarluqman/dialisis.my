@@ -51,6 +51,33 @@ async function getInitialCenters(
     "peritoneal dialisis": "PD Unit",
   };
 
+  const andConditions = [
+    ...(city
+      ? [
+          {
+            OR: [
+              { town: { contains: city } },
+              { address: { contains: city } },
+              { addressWithUnit: { contains: city } },
+              { dialysisCenterName: { contains: city } },
+              { title: { contains: city } },
+            ],
+          },
+        ]
+      : []),
+    ...(name
+      ? [
+          {
+            OR: [
+              { dialysisCenterName: { contains: name } },
+              { drInCharge: { contains: name } },
+              { panelNephrologist: { contains: name } },
+            ],
+          },
+        ]
+      : []),
+  ];
+
   const where = {
     ...(sector && {
       sector:
@@ -74,24 +101,19 @@ async function getInitialCenters(
         contains: treatmentMap[treatment as keyof typeof treatmentMap],
       },
     }),
-    ...(city && {
-      OR: [
-        { town: { contains: city } },
-        { address: { contains: city } },
-        { addressWithUnit: { contains: city } },
-        { dialysisCenterName: { contains: city } },
-        { title: { contains: city } },
-      ],
-    }),
     ...(doctor && {
-      drInCharge: {
-        contains: doctor,
-      },
-    }),
-    ...(name && {
-      dialysisCenterName: {
-        contains: name,
-      },
+      OR: [
+        {
+          drInCharge: {
+            contains: doctor,
+          },
+        },
+        {
+          panelNephrologist: {
+            contains: doctor,
+          },
+        },
+      ],
     }),
     ...(hepatitis &&
       hepatitis !== "tiada hepatitis" && {
@@ -99,6 +121,7 @@ async function getInitialCenters(
           equals: hepatitis === "b" ? "Hep B" : "Hep C",
         },
       }),
+    ...(andConditions.length > 0 && { AND: andConditions }),
   };
 
   try {
