@@ -17,7 +17,7 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   const canonicalUrl = isEnglish ? `${baseUrl}/blog?locale=en` : `${baseUrl}/blog`;
 
   return {
-    title: "Blog | Dialisis.my",
+    title: "Blog",
     description: isEnglish
       ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
       : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
@@ -30,7 +30,7 @@ export function generateMetadata({ searchParams }: Props): Metadata {
       },
     },
     openGraph: {
-      title: "Blog | Dialisis.my",
+      title: "Blog Dialisis MY",
       description: isEnglish
         ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
         : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
@@ -88,7 +88,10 @@ export default function BlogPage({ searchParams }: Props) {
   const isEnglish = locale === "en";
 
   return (
-    <main className="container max-w-4xl py-8">
+    <main
+      lang={isEnglish ? "en" : "ms"}
+      className="container max-w-4xl py-8"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

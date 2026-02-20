@@ -89,7 +89,7 @@ export function generateArticleJsonLd(post: BlogPost, baseUrl: string) {
       url: baseUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/logo.png`,
+        url: `${baseUrl}/apple-touch-icon.png`,
       },
     },
     mainEntityOfPage: {

@@ -76,6 +76,7 @@ export default function MapPage({ searchParams }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdMap) }}
       />
       <main className="min-h-screen max-w-7xl h-[calc(100vh-40rem)] mx-auto">
+        <h1 className="sr-only">Peta Pusat Dialisis di Malaysia</h1>
         <Suspense
           fallback={
             <div className="flex h-[calc(100vh-4rem)] items-center justify-center">

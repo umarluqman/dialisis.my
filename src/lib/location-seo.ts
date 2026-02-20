@@ -88,7 +88,7 @@ export function generateLocationJsonLd({
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://dialisis.my/?search={search_term_string}",
+        urlTemplate: "https://dialisis.my/?name={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },

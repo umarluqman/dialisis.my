@@ -1,8 +1,7 @@
 import { createClient, Client } from "@libsql/client";
 import { ImageResponse } from "@vercel/og";
-import { NextResponse } from "next/server";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 let db: Client | null = null;
 
@@ -16,22 +15,28 @@ function getDb() {
   return db;
 }
 
-const interRegular = fetch(
-  new URL(
-    "https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
-  )
-).then((res) => res.arrayBuffer());
-
 interface CenterResult {
   title: string;
   town: string;
   state_name: string;
 }
 
+function formatSlug(slug: string) {
+  return slug
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
 export async function GET(
-  request: Request,
+  _request: Request,
   { params }: { params: { slug: string } }
 ) {
+  let center: CenterResult = {
+    title: formatSlug(params.slug),
+    town: "Malaysia",
+    state_name: "",
+  };
+
   try {
     const result = await getDb().execute({
       sql: `SELECT dc.title, dc.town, s.name as state_name 
@@ -43,70 +48,64 @@ export async function GET(
 
     const row = result.rows[0];
 
-    if (!row) {
-      return new NextResponse("Not found", { status: 404 });
+    if (row) {
+      center = {
+        title: String(row.title),
+        town: String(row.town),
+        state_name: String(row.state_name),
+      };
     }
-
-    const center: CenterResult = {
-      title: String(row.title),
-      town: String(row.town),
-      state_name: String(row.state_name),
-    };
-
-    const fontData = await interRegular;
-
-    return new ImageResponse(
-      (
-        <div
-          style={{
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "white",
-            padding: "40px 80px",
-            fontFamily: "Inter",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 60,
-              fontWeight: 700,
-              textAlign: "center",
-              marginBottom: 20,
-              color: "#000",
-              lineHeight: 1.2,
-            }}
-          >
-            {center.title}
-          </div>
-          <div
-            style={{
-              fontSize: 30,
-              textAlign: "center",
-              color: "#666",
-            }}
-          >
-            {center.town}, {center.state_name.replace(/-/g, " ")}
-          </div>
-        </div>
-      ),
-      {
-        width: 1200,
-        height: 630,
-        fonts: [
-          {
-            name: "Inter",
-            data: fontData,
-            style: "normal",
-          },
-        ],
-      }
-    );
   } catch (error) {
     console.error("Error generating OG image:", error);
-    return new NextResponse("Error generating image", { status: 500 });
   }
+
+  const stateLabel = center.state_name
+    ? center.state_name.replace(/-/g, " ")
+    : "Malaysia";
+
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "white",
+          padding: "40px 80px",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            fontSize: 58,
+            fontWeight: 700,
+            textAlign: "center",
+            marginBottom: 20,
+            color: "#000",
+            lineHeight: 1.2,
+          }}
+        >
+          {center.title}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            textAlign: "center",
+            color: "#666",
+          }}
+        >
+          {`${center.town}, ${stateLabel}`}
+        </div>
+      </div>
+    ),
+    {
+      width: 1200,
+      height: 630,
+    }
+  );
 }

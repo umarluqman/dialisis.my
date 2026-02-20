@@ -43,13 +43,26 @@ async function getCenter(slug: string): Promise<CenterWithState | null> {
   return center as CenterWithState;
 }
 
+function formatLocationName(value: string) {
+  return value
+    .replace(/-/g, " ")
+    .split(" ")
+    .map((word) =>
+      word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word
+    )
+    .join(" ");
+}
+
 function generateJsonLd(center: CenterWithState): any {
+  const stateName = formatLocationName(center.state.name);
+  const townName = formatLocationName(center.town);
+
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "@id": `https://dialisis.my/${center.slug}`,
     name: center.dialysisCenterName,
-    description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+    description: `Pusat dialisis ${center.dialysisCenterName} di ${townName}, ${stateName}. Menyediakan perkhidmatan ${center.units}.`,
     url: `https://dialisis.my/${center.slug}`,
     telephone: center.phoneNumber || center.tel,
     // Removed: email in JSON-LD gets corrupted by Cloudflare Email Obfuscation,
@@ -57,8 +70,8 @@ function generateJsonLd(center: CenterWithState): any {
     address: {
       "@type": "PostalAddress",
       streetAddress: center.addressWithUnit || center.address,
-      addressLocality: center.town,
-      addressRegion: center.state.name,
+      addressLocality: townName,
+      addressRegion: stateName,
       addressCountry: "MY",
     },
     geo:
@@ -130,10 +143,11 @@ export const generateMetadata = async ({ params }: Props) => {
 
   const canonicalUrl = `https://dialisis.my/${params.slug}`;
 
-  // Optimize town/state names for better SEO
-  const location = `${center.town}, ${center.state.name}`;
+  const stateName = formatLocationName(center.state.name);
+  const townName = formatLocationName(center.town);
+  const location = `${townName}, ${stateName}`;
+  const centerName = center.dialysisCenterName.split(",")[0].trim();
 
-  // Get service types for more descriptive metadata
   const services = center.units
     ? center.units.toLowerCase().includes("hd") &&
       center.units.toLowerCase().includes("pd")
@@ -146,7 +160,7 @@ export const generateMetadata = async ({ params }: Props) => {
     : "Perkhidmatan Dialisis";
 
   return {
-    title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+    title: `${centerName} | ${location}`,
     description: `Pusat dialisis ${
       center.dialysisCenterName
     } di ${location}. Menyediakan ${services} untuk pesakit buah pinggang. ${
@@ -161,7 +175,7 @@ export const generateMetadata = async ({ params }: Props) => {
     },
     openGraph: {
       url: canonicalUrl,
-      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      title: `${centerName} | ${location}`,
       description: `Pusat dialisis ${center.dialysisCenterName} di ${location}. Menyediakan ${services} untuk pesakit buah pinggang.`,
       siteName: "Dialisis MY",
       locale: "ms_MY",
@@ -178,7 +192,7 @@ export const generateMetadata = async ({ params }: Props) => {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      title: `${centerName} | ${location}`,
       description: `Pusat dialisis di ${location}. Menyediakan ${services}.`,
       images: [`https://dialisis.my/api/og/${params.slug}`],
     },
