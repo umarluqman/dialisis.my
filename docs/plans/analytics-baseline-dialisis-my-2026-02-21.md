@@ -69,6 +69,6 @@ Conversion tracking gap:
 ## Action Priority
 
 1. Consolidate reporting to property `469818591`.
-2. Instrument lead events (`lead_form_submit`, `lead_whatsapp_click`, `lead_phone_click`).
+2. Instrument lead events (`search_submit`, `lead_whatsapp_click`, `lead_phone_click`).
 3. Mark submit/click lead events as key events in GA4.
 4. Optimize CTA and form UX on top location pages, not only homepage.

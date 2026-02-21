@@ -56,7 +56,7 @@ Proof points to show:
 - Branch page demo
 - Prepare outreach script and objection handling sheet.
 - Complete analytics foundation before paid lead sales:
-- Add `lead_form_submit` and set as key event.
+- Add `search_submit` and set as key event.
 - Add `lead_whatsapp_click` and `lead_phone_click`.
 - Create weekly dashboard for users, sessions, lead events, and session-to-lead rate.
 

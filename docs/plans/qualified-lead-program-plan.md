@@ -148,10 +148,10 @@ Reason codes:
 - Add status update fields in dashboard.
 - Add GA4 events:
 - `lead_form_start`
-- `lead_form_submit`
+- `search_submit`
 - `lead_whatsapp_click`
 - `lead_phone_click`
-- Mark `lead_form_submit` and `lead_whatsapp_click` as key events.
+- Mark `search_submit` and `lead_whatsapp_click` as key events.
 
 ### QA checklist
 

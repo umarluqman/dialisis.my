@@ -285,7 +285,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-6">
           <form
-            data-ga-submit-event="lead_form_submit"
+            data-ga-submit-event="search_submit"
             onSubmit={(e) => {
               e.preventDefault();
               handleSearch();
