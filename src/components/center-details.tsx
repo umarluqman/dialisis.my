@@ -38,7 +38,15 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
     : [];
 
   return (
-    <div className="">
+    <div
+      data-ga-context="center_detail"
+      data-center-id={center.id}
+      data-center-slug={center.slug}
+      data-center-name={center.dialysisCenterName}
+      data-center-town={center.town}
+      data-center-state={stateName}
+      className=""
+    >
       <div className="space-y-2">
         <h1 className="text-2xl md:text-4xl font-bold">
           {center.dialysisCenterName}

@@ -130,6 +130,12 @@ export function CenterCard({
 
   return (
     <Card
+      data-ga-context="center_card"
+      data-center-id={id}
+      data-center-slug={slug}
+      data-center-name={title}
+      data-center-town={town}
+      data-center-state={state.name}
       className={`flex flex-col min-h-fit relative overflow-hidden ${
         isFeatured
           ? "shadow-warm-lg border-2 border-primary/20 bg-gradient-to-br from-primary-light to-card"

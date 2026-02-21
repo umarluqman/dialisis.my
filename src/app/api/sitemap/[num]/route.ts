@@ -40,8 +40,6 @@ export async function GET(
   <url>
     <loc>${baseUrl}/${center.slug}</loc>
     <lastmod>${center.updatedAt.toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
   </url>
   `).join('')}
 </urlset>`;

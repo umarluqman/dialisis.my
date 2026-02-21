@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import { GaEventTracker } from "@/components/ga-event-tracker";
+import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
@@ -116,6 +117,10 @@ export default function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#FDFBF7" />
         <meta name="theme-color" content="#FDFBF7" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
         <link rel="manifest" href="/site.webmanifest" />
         <script
           type="application/ld+json"
@@ -138,6 +143,7 @@ export default function RootLayout({
         <NuqsAdapter>
           <Navbar />
           <main className="flex-grow">{children}</main>
+          <MedicalDisclaimer />
           <Footer />
         </NuqsAdapter>
       </body>

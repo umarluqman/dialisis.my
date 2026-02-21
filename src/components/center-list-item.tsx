@@ -24,6 +24,7 @@ interface CenterListItemProps {
 
 export function CenterListItem({
   slug,
+  id,
   dialysisCenterName,
   phoneNumber,
   tel,
@@ -51,7 +52,15 @@ export function CenterListItem({
   };
 
   return (
-    <div className="group flex items-center justify-between gap-4 px-4 py-4 bg-card border border-border rounded-xl hover:shadow-warm-md transition-all duration-200 ease-out-cubic">
+    <div
+      data-ga-context="center_list_item"
+      data-center-id={id}
+      data-center-slug={slug}
+      data-center-name={title}
+      data-center-town={town}
+      data-center-state={state.name}
+      className="group flex items-center justify-between gap-4 px-4 py-4 bg-card border border-border rounded-xl hover:shadow-warm-md transition-all duration-200 ease-out-cubic"
+    >
       <div className="flex-1 min-w-0">
         <Link href={`/${slug}`} className="block">
           <h3 className="font-semibold text-foreground truncate group-hover:text-primary transition-colors duration-200">

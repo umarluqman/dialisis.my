@@ -38,6 +38,22 @@ export function generateMetadata({ searchParams }: Props): Metadata {
       type: "website",
       siteName: "dialisis.my",
       locale: isEnglish ? "en_MY" : "ms_MY",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: "Blog Dialisis MY",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Blog Dialisis MY",
+      description: isEnglish
+        ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
+        : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
+      images: [`${baseUrl}/og-image.png`],
     },
   };
 }

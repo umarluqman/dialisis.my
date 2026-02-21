@@ -219,7 +219,15 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 pb-28">
+      <div
+        data-ga-context="center_detail"
+        data-center-id={center.id}
+        data-center-slug={center.slug}
+        data-center-name={center.dialysisCenterName}
+        data-center-town={center.town}
+        data-center-state={stateName}
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 pb-28"
+      >
         {/* Header Section */}
         <div className="space-y-2 text-center md:text-left md:flex md:justify-between md:items-end">
           <div>
@@ -546,7 +554,15 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
       </div>
 
       {/* Fixed CTA Section */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-40">
+      <div
+        data-ga-context="center_detail_fixed_cta"
+        data-center-id={center.id}
+        data-center-slug={center.slug}
+        data-center-name={center.dialysisCenterName}
+        data-center-town={center.town}
+        data-center-state={stateName}
+        className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-40"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
             <div className="flex-1">

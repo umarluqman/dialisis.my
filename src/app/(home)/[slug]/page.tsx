@@ -25,6 +25,9 @@ type CenterWithState = {
   featured: boolean;
 } & DialysisCenter & {
     state: Pick<State, "name">;
+    images: Array<{
+      url: string;
+    }>;
   };
 
 async function getCenter(slug: string): Promise<CenterWithState | null> {
@@ -34,6 +37,17 @@ async function getCenter(slug: string): Promise<CenterWithState | null> {
       state: {
         select: {
           name: true,
+        },
+      },
+      images: {
+        where: {
+          isActive: true,
+        },
+        select: {
+          url: true,
+        },
+        orderBy: {
+          displayOrder: "asc",
         },
       },
     },
@@ -58,6 +72,7 @@ function generateJsonLd(center: CenterWithState): any {
   const stateName = formatLocationName(center.state.name);
   const townName = formatLocationName(center.town);
   const phoneNumbers = getCenterPhoneNumbers(center);
+  const imageUrls = center.images.map((image) => image.url).filter(Boolean);
 
   return {
     "@context": "https://schema.org",
@@ -66,6 +81,10 @@ function generateJsonLd(center: CenterWithState): any {
     name: center.dialysisCenterName,
     description: `Pusat dialisis ${center.dialysisCenterName} di ${townName}, ${stateName}. Menyediakan perkhidmatan ${center.units}.`,
     url: `https://dialisis.my/${center.slug}`,
+    image:
+      imageUrls.length > 0
+        ? imageUrls
+        : [`https://dialisis.my/api/og/${center.slug}`],
     telephone:
       phoneNumbers.length > 1
         ? phoneNumbers

@@ -25,6 +25,8 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
+  const lastUpdated = "21 Februari 2026";
+
   return (
     <main className="container py-8 md:py-12">
       <div className="prose prose-slate max-w-none">
@@ -32,7 +34,7 @@ export default function PrivacyPage() {
 
         <section className="mb-8">
           <p className="text-gray-600 mb-8">
-            Dikemas kini terakhir: {new Date().toLocaleDateString("ms-MY")}
+            Dikemas kini terakhir: {lastUpdated}
           </p>
 
           <p>

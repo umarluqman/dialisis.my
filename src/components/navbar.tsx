@@ -55,13 +55,18 @@ export const Navbar = () => {
           </Link>
           <div className="flex items-center space-x-1">
             <Link href="/peta">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="h-11 px-4">
                 <MapPin className="h-4 w-4 text-primary" />
                 <span className="text-sm font-medium">Peta</span>
               </Button>
             </Link>
+            <Link href="/blog">
+              <Button variant="ghost" size="sm" className="h-11 px-4">
+                <span className="text-sm font-medium">Blog</span>
+              </Button>
+            </Link>
             <Link href="/hubungi-kami">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="h-11 px-4">
                 <span className="text-sm font-medium">Hubungi</span>
               </Button>
             </Link>

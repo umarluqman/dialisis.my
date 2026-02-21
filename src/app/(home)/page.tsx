@@ -1,12 +1,77 @@
 import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
+import type { Prisma } from "@/generated/prisma/client";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
 export const revalidate = 3600;
+const MAX_SEARCH_TOKENS = 6;
+
+function getSearchTokens(rawValue?: string) {
+  if (!rawValue) return [];
+
+  const normalized = rawValue.trim().replace(/\s+/g, " ");
+  if (!normalized) return [];
+
+  const seen = new Set<string>();
+  const tokens: string[] = [];
+
+  for (const chunk of normalized.split(/[^\p{L}\p{N}]+/u)) {
+    const token = chunk.trim();
+    if (!token) continue;
+
+    const key = token.toLowerCase();
+    if (seen.has(key)) continue;
+
+    seen.add(key);
+    tokens.push(token);
+
+    if (tokens.length >= MAX_SEARCH_TOKENS) break;
+  }
+
+  return tokens;
+}
+
+function buildFlexibleSearchConditions(
+  rawValue?: string,
+  doctorOnly = false
+): Prisma.DialysisCenterWhereInput[] {
+  const tokens = getSearchTokens(rawValue);
+  if (!tokens.length) return [];
+
+  const tokenFilters = tokens.map((token) => {
+    const phoneToken = token.replace(/[^\d]/g, "");
+    const tokenConditions: Prisma.DialysisCenterWhereInput[] = doctorOnly
+      ? [
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+        ]
+      : [
+          { dialysisCenterName: { contains: token } },
+          { title: { contains: token } },
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+          { town: { contains: token } },
+          { address: { contains: token } },
+          { addressWithUnit: { contains: token } },
+        ];
+
+    if (phoneToken.length >= 3) {
+      tokenConditions.push(
+        { phoneNumber: { contains: phoneToken } },
+        { tel: { contains: phoneToken } },
+        { drInChargeTel: { contains: phoneToken } }
+      );
+    }
+
+    return { OR: tokenConditions };
+  });
+
+  return [{ AND: tokenFilters }];
+}
 
 // Dynamically import components with loading fallbacks
 const DialysisQuiz = dynamic(
@@ -53,7 +118,7 @@ async function getInitialCenters(
     "peritoneal dialisis": "PD Unit",
   };
 
-  const andConditions = [
+  const andConditions: Prisma.DialysisCenterWhereInput[] = [
     ...(city
       ? [
           {
@@ -67,20 +132,11 @@ async function getInitialCenters(
           },
         ]
       : []),
-    ...(name
-      ? [
-          {
-            OR: [
-              { dialysisCenterName: { contains: name } },
-              { drInCharge: { contains: name } },
-              { panelNephrologist: { contains: name } },
-            ],
-          },
-        ]
-      : []),
+    ...buildFlexibleSearchConditions(name),
+    ...buildFlexibleSearchConditions(doctor, true),
   ];
 
-  const where = {
+  const where: Prisma.DialysisCenterWhereInput = {
     ...(sector && {
       sector:
         sector === "MOH_PRIVATE"
@@ -102,20 +158,6 @@ async function getInitialCenters(
       units: {
         contains: treatmentMap[treatment as keyof typeof treatmentMap],
       },
-    }),
-    ...(doctor && {
-      OR: [
-        {
-          drInCharge: {
-            contains: doctor,
-          },
-        },
-        {
-          panelNephrologist: {
-            contains: doctor,
-          },
-        },
-      ],
     }),
     ...(hepatitis &&
       hepatitis !== "tiada hepatitis" && {
@@ -246,12 +288,21 @@ export async function generateMetadata({
       type: "website",
       siteName: "dialisis.my",
       locale: "ms_MY",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: "Cari pusat dialisis di Malaysia",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: "Cari Pusat Dialisis | Dialisis.my",
       description:
         "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+      images: [`${baseUrl}/og-image.png`],
     },
   };
 }

@@ -121,12 +121,40 @@ export default async function BlogPostPage({ params }: Props) {
   const locale = (post.locale || "ms") as "ms" | "en";
   const isEnglish = locale === "en";
   const treatmentTypes = mapTagsToTreatments(post.tags || []);
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isEnglish ? "Home" : "Utama",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${baseUrl}/blog/${post.slug}`,
+      },
+    ],
+  };
 
   return (
     <main lang={isEnglish ? "en" : "ms"} className="container max-w-3xl py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">

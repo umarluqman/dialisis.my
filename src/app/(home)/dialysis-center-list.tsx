@@ -242,7 +242,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
             <button
               key={stateName}
               onClick={() => handleStatePillClick(stateName)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-out-cubic ${
+              className={`px-4 min-h-11 rounded-full text-sm font-medium transition-all duration-200 ease-out-cubic ${
                 stateParam?.toLowerCase() === stateName.toLowerCase()
                   ? "bg-primary text-primary-foreground shadow-warm-md"
                   : "bg-secondary text-secondary-foreground hover:bg-primary/10"
@@ -263,7 +263,7 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
               }
             }}
           >
-            <SelectTrigger className="w-auto h-10 px-4 rounded-full border-none bg-secondary text-secondary-foreground hover:bg-primary/10 transition-colors [&>span]:flex [&>svg]:hidden">
+            <SelectTrigger className="w-auto h-11 px-4 rounded-full border-none bg-secondary text-secondary-foreground hover:bg-primary/10 transition-colors [&>span]:flex [&>svg]:hidden">
               <span className="flex items-center gap-1">
                 Lagi
                 <ChevronDown className="h-4 w-4" />
@@ -285,6 +285,9 @@ export function DialysisCenterList({ initialData }: DialysisCenterListProps) {
         {/* Search Bar */}
         <div className="max-w-2xl mx-auto mb-6">
           <form
+            id="home-search-form"
+            data-ga-context="home_search"
+            data-ga-start-event="lead_form_start"
             data-ga-submit-event="search_submit"
             onSubmit={(e) => {
               e.preventDefault();
