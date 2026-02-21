@@ -7,6 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
+import {
+  buildWhatsAppUrl,
+  getCenterPhoneNumbers,
+  getPrimaryCenterPhoneNumber,
+} from "@/lib/center-phone-numbers";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -15,7 +20,7 @@ interface Center {
   dialysisCenterName: string;
   latitude: number;
   addressWithUnit: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   longitude: number;
   address: string;
   state: string;
@@ -488,6 +493,17 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const hepatitisArray = selectedCenter?.hepatitisBay
     ? selectedCenter.hepatitisBay.split(", ")
     : [];
+  const phoneNumbers = selectedCenter ? getCenterPhoneNumbers(selectedCenter) : [];
+  const primaryPhoneNumber = selectedCenter
+    ? getPrimaryCenterPhoneNumber(selectedCenter)
+    : null;
+  const whatsappUrl =
+    selectedCenter?.featured && primaryPhoneNumber
+      ? buildWhatsAppUrl(
+          primaryPhoneNumber,
+          "Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama."
+        )
+      : "";
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
     value: unit.toLowerCase().includes("hd unit")
@@ -570,6 +586,22 @@ export default function MapView({ center }: { center?: [number, number] }) {
                       )
                       .join(" ")}
                   </p>
+                  {phoneNumbers.length > 0 && (
+                    <div className="mt-3">
+                      <p className="text-sm text-zinc-500">Telefon</p>
+                      <div className="mt-1 flex flex-wrap gap-2">
+                        {phoneNumbers.map((phoneNumber) => (
+                          <a
+                            key={phoneNumber}
+                            href={`tel:${phoneNumber}`}
+                            className="text-sm text-primary-foreground hover:underline"
+                          >
+                            {phoneNumber}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   <div className="flex flex-col gap-2 mt-8">
                     <div className="text-sm text-zinc-500">Jenis Rawatan</div>
                     <div className="flex flex-wrap gap-2">
@@ -616,25 +648,21 @@ export default function MapView({ center }: { center?: [number, number] }) {
                   )}
 
                   <div className="flex gap-4 justify-end">
-                    <Link href={`tel:${selectedCenter.phoneNumber}`}>
-                      <Button variant="outline" className="px-4">
-                        <Phone className="w-4 h-4 text-foreground" />
-                        Panggil
-                      </Button>
-                    </Link>
-                    {selectedCenter.featured ? (
+                    {primaryPhoneNumber && (
+                      <Link href={`tel:${primaryPhoneNumber}`}>
+                        <Button variant="outline" className="px-4">
+                          <Phone className="w-4 h-4 text-foreground" />
+                          Panggil
+                        </Button>
+                      </Link>
+                    )}
+                    {whatsappUrl ? (
                       <Button
                         size="lg"
                         className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
                         asChild
-                        onClick={() =>
-                          (window.location.href = `https://wa.me/+6${selectedCenter?.phoneNumber.replace(
-                            /[\s-]/g,
-                            ""
-                          )}?text=Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama.`)
-                        }
                       >
-                        <div>
+                        <a href={whatsappUrl} className="flex items-center gap-2">
                           <Image
                             src="/whatsapp.svg"
                             alt="WhatsApp"
@@ -644,7 +672,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                           <span className="text-primary-foreground">
                             WhatsApp
                           </span>
-                        </div>
+                        </a>
                       </Button>
                     ) : null}
 

@@ -2,6 +2,7 @@
 
 import { ChevronRight, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
+import { getPrimaryCenterPhoneNumber } from "@/lib/center-phone-numbers";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -11,6 +12,7 @@ interface CenterListItemProps {
   dialysisCenterName: string;
   address?: string;
   phoneNumber?: string;
+  tel?: string;
   state: {
     name: string;
   };
@@ -24,6 +26,7 @@ export function CenterListItem({
   slug,
   dialysisCenterName,
   phoneNumber,
+  tel,
   state,
   town,
   sector,
@@ -31,6 +34,7 @@ export function CenterListItem({
   longitude,
 }: CenterListItemProps) {
   const title = dialysisCenterName?.split(",")[0];
+  const primaryPhoneNumber = getPrimaryCenterPhoneNumber({ phoneNumber, tel });
 
   const getSectorLabel = (sector?: string) => {
     if (!sector) return null;
@@ -67,17 +71,11 @@ export function CenterListItem({
         )}
 
         <div className="hidden sm:flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-          {phoneNumber && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="h-9 w-9"
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = `tel:${phoneNumber}`;
-              }}
-            >
-              <Phone className="h-4 w-4 text-muted-foreground" />
+          {primaryPhoneNumber && (
+            <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+              <a href={`tel:${primaryPhoneNumber}`}>
+                <Phone className="h-4 w-4 text-muted-foreground" />
+              </a>
             </Button>
           )}
           {latitude && longitude && (

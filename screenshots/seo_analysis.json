@@ -1,0 +1,122 @@
+{
+  "homepage": {
+    "og:title": "Cari Pusat Dialisis | Dialisis.my",
+    "og:description": "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+    "og:url": "https://dialisis.my",
+    "og:site_name": "dialisis.my",
+    "og:locale": "ms_MY",
+    "og:type": "website",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Cari Pusat Dialisis | Dialisis.my",
+    "twitter:description": "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+    "title": "Cari Pusat Dialisis Berdekatan Dengan Mudah | Dialisis MY",
+    "description": "Dapatkan maklumat lengkap tentang pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan dengan mudah.",
+    "total_images": 10,
+    "images_without_alt": 0,
+    "images_without_alt_srcs": [],
+    "h1_tags": [
+      "Pusat Dialisis di Malaysia"
+    ],
+    "has_breadcrumbs": false,
+    "logo_images": [],
+    "canonical": "https://dialisis.my",
+    "json_ld_count": 1,
+    "json_ld_types": [
+      "MedicalWebPage"
+    ],
+    "viewport": "width=device-width, initial-scale=1"
+  },
+  "blog-post": {
+    "og:title": "What Is Dialysis? A Complete Guide for Patients",
+    "og:description": "A comprehensive guide about dialysis treatment, types of dialysis, and what kidney patients in Malaysia need to know.",
+    "og:url": "https://dialisis.my/blog/what-is-dialysis",
+    "og:site_name": "Dialisis MY",
+    "og:locale": "en_MY",
+    "og:image": "https://dialisis.my/og-image.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "What Is Dialysis? A Complete Guide for Patients",
+    "og:type": "article",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "What Is Dialysis? A Complete Guide for Patients",
+    "twitter:description": "A comprehensive guide about dialysis treatment, types of dialysis, and what kidney patients in Malaysia need to know.",
+    "twitter:image": "https://dialisis.my/og-image.png",
+    "title": "What Is Dialysis? A Complete Guide for Patients | Dialisis MY",
+    "description": "A comprehensive guide about dialysis treatment, types of dialysis, and what kidney patients in Malaysia need to know.",
+    "total_images": 0,
+    "images_without_alt": 0,
+    "images_without_alt_srcs": [],
+    "h1_tags": [
+      "What Is Dialysis? A Complete Guide for Patients"
+    ],
+    "has_breadcrumbs": false,
+    "logo_images": [],
+    "canonical": "https://dialisis.my/blog/what-is-dialysis",
+    "json_ld_count": 1,
+    "json_ld_types": [
+      "Article"
+    ],
+    "viewport": "width=device-width, initial-scale=1"
+  },
+  "location-selangor": {
+    "og:title": "Pusat Dialisis di Selangor - 188 Pusat Tersedia",
+    "og:description": "Cari pusat dialisis di Selangor. Terdapat 188 pusat dialisis dengan maklumat lengkap lokasi, telefon dan perkhidmatan.",
+    "og:url": "https://dialisis.my/lokasi/selangor",
+    "og:site_name": "Dialisis MY",
+    "og:locale": "ms_MY",
+    "og:image": "https://dialisis.my/og-image.png",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Pusat Dialisis di Selangor",
+    "og:type": "website",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Pusat Dialisis di Selangor - 188 Pusat Tersedia",
+    "twitter:description": "Cari pusat dialisis di Selangor. Terdapat 188 pusat dialisis dengan maklumat lengkap.",
+    "twitter:image": "https://dialisis.my/og-image.png",
+    "title": "Pusat Dialisis di Selangor - 188 Pusat Tersedia | Dialisis MY",
+    "description": "Cari pusat dialisis di Selangor. Terdapat 188 pusat dialisis termasuk 13 pusat MOH dan 142 pusat swasta. Maklumat lengkap lokasi, telefon dan perkhidmatan.",
+    "total_images": 0,
+    "images_without_alt": 0,
+    "images_without_alt_srcs": [],
+    "h1_tags": [
+      "Pusat Dialisis di Selangor"
+    ],
+    "has_breadcrumbs": true,
+    "logo_images": [],
+    "canonical": "https://dialisis.my/lokasi/selangor",
+    "json_ld_count": 2,
+    "json_ld_types": [
+      "WebPage",
+      "FAQPage"
+    ],
+    "viewport": "width=device-width, initial-scale=1"
+  },
+  "blog-list": {
+    "og:title": "Blog Dialisis MY",
+    "og:description": "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
+    "og:url": "https://dialisis.my/blog",
+    "og:site_name": "dialisis.my",
+    "og:locale": "ms_MY",
+    "og:type": "website",
+    "twitter:card": "summary_large_image",
+    "twitter:title": "Dialisis MY | Cari Pusat Dialisis Malaysia",
+    "twitter:description": "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia.",
+    "twitter:image": "https://dialisis.my/og-image.png",
+    "title": "Blog | Dialisis MY",
+    "description": "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
+    "total_images": 0,
+    "images_without_alt": 0,
+    "images_without_alt_srcs": [],
+    "h1_tags": [
+      "Blog"
+    ],
+    "has_breadcrumbs": false,
+    "logo_images": [],
+    "canonical": "https://dialisis.my/blog",
+    "json_ld_count": 1,
+    "json_ld_types": [
+      "Blog"
+    ],
+    "viewport": "width=device-width, initial-scale=1"
+  }
+}

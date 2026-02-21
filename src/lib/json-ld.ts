@@ -1,6 +1,8 @@
 export const jsonLdHome = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
+  "@id": "https://dialisis.my/#webpage",
+  url: "https://dialisis.my",
   name: "Dialisis MY | Cari Pusat Dialisis di Malaysia",
   description:
     "Cari lebih daripada 900 pusat dialisis di seluruh Malaysia. Maklumat lengkap tentang lokasi, info kontak, doktor bertugas, sektor, dan perkhidmatan dialisis.",
@@ -15,22 +17,48 @@ export const jsonLdHome = {
   },
   provider: {
     "@type": "Organization",
-    name: "Dialisis MY",
-    url: "https://dialisis.my",
-  },
-  offers: {
-    "@type": "Service",
-    serviceType: "Medical Directory Service",
-    availableService: [
-      "Hemodialysis",
-      "Peritoneal Dialysis",
-      "Transplant Services",
-      "MRRB Services",
-    ],
+    "@id": "https://dialisis.my/#organization",
   },
 };
 
-// JSON-LD data
+export const jsonLdGlobal = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dialisis.my/#organization",
+      name: "Dialisis MY",
+      url: "https://dialisis.my",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://dialisis.my/apple-touch-icon.png",
+      },
+      description:
+        "Direktori lengkap pusat dialisis di Malaysia dengan lebih 900 pusat berdaftar.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dialisis.my/#website",
+      url: "https://dialisis.my",
+      name: "Dialisis MY",
+      description: "Direktori lengkap pusat dialisis di Malaysia",
+      publisher: {
+        "@type": "Organization",
+        "@id": "https://dialisis.my/#organization",
+      },
+      inLanguage: "ms-MY",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://dialisis.my/?name={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
 export const jsonLdMap = {
   "@context": "https://schema.org",
   "@type": "WebPage",

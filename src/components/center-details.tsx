@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { DialysisCenter, State } from "@/generated/prisma/client";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 
@@ -13,6 +14,7 @@ interface Props {
 export function DialysisCenterDetails({ center, isModal }: Props) {
   // const units = center.units.split(",").filter(Boolean);
   const stateName = center.state.name
+    .replace(/-/g, " ")
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
@@ -21,6 +23,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
   const hepatitisArray = center.hepatitisBay
     ? center.hepatitisBay.split(", ")
     : [];
+  const phoneNumbers = getCenterPhoneNumbers(center);
   const treatmentArray = center.units
     ? center.units.split(", ").map((unit) => ({
         name: unit,
@@ -79,16 +82,16 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
         </p>
       </div>
       <div className="space-y-2 text-sm mt-12">
-        {center.phoneNumber && (
-          <p className="flex items-center gap-2">
+        {phoneNumbers.map((phoneNumber) => (
+          <p key={phoneNumber} className="flex items-center gap-2">
             <Button variant="secondary" size="sm">
               <Phone className="w-4 h-4" />
-              <a href={`tel:${center.phoneNumber}`} className="hover:underline">
-                {center.phoneNumber}
+              <a href={`tel:${phoneNumber}`} className="hover:underline">
+                {phoneNumber}
               </a>
             </Button>
           </p>
-        )}
+        ))}
         {center.email && (
           <p className="flex items-center gap-2">
             <Button variant="secondary" size="sm">

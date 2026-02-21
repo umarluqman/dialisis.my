@@ -12,10 +12,7 @@ import { LocationPageHeader } from "@/components/location-page-header";
 import { LocationSeoContent } from "@/components/location-seo-content";
 import { getCitiesForState } from "@/lib/internal-linking-queries";
 import { getCentersByState, getLocationStats } from "@/lib/location-queries";
-import {
-  generateLocationJsonLd,
-  generateLocationFaqJsonLd,
-} from "@/lib/location-seo";
+import { generateLocationJsonLd } from "@/lib/location-seo";
 import {
   generateAllLocationParams,
   getLocationDisplayNames,
@@ -174,17 +171,11 @@ export default async function StatePage({ params, searchParams }: Props) {
     url: currentUrl,
   });
 
-  const faqJsonLd = generateLocationFaqJsonLd(stateName);
-
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="container mx-auto px-4 py-8">

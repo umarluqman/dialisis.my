@@ -6,6 +6,8 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
+export const revalidate = 3600;
+
 // Dynamically import components with loading fallbacks
 const DialysisQuiz = dynamic(
   () => import("./dialysis-quiz").then((mod) => mod.DialysisQuiz),

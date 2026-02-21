@@ -2,6 +2,10 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
+import {
+  buildWhatsAppUrl,
+  getPrimaryCenterPhoneNumber,
+} from "@/lib/center-phone-numbers";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,6 +19,7 @@ interface CenterCardProps {
   dialysisCenterName: string;
   address?: string;
   phoneNumber?: string;
+  tel?: string;
   email?: string;
   state: {
     name: string;
@@ -61,6 +66,7 @@ export function CenterCard({
   dialysisCenterName,
   featured,
   phoneNumber,
+  tel,
   state,
   town,
   hepatitisBay,
@@ -89,6 +95,10 @@ export function CenterCard({
     .slice(0, 2);
 
   const isFeatured = featured;
+  const primaryPhoneNumber = getPrimaryCenterPhoneNumber({ phoneNumber, tel });
+  const whatsappUrl = primaryPhoneNumber
+    ? buildWhatsAppUrl(primaryPhoneNumber)
+    : "";
 
   const { images: apiImages, isLoading: imagesLoading } = useCenterImages(
     id,
@@ -184,35 +194,26 @@ export function CenterCard({
         )}
 
         <div className="flex flex-wrap gap-2 mt-auto pt-4">
-          {phoneNumber && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => (window.location.href = `tel:${phoneNumber}`)}
-            >
-              <Phone className="w-4 h-4" />
-              Panggil
+          {primaryPhoneNumber && (
+            <Button variant="outline" size="sm" asChild>
+              <a href={`tel:${primaryPhoneNumber}`}>
+                <Phone className="w-4 h-4" />
+                Panggil
+              </a>
             </Button>
           )}
 
-          {isFeatured && phoneNumber && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() =>
-                (window.location.href = `https://wa.me/+6${phoneNumber.replace(
-                  /[\s-]/g,
-                  ""
-                )}`)
-              }
-            >
-              <Image
-                src="/whatsapp.svg"
-                alt="WhatsApp"
-                width={16}
-                height={16}
-              />
-              WhatsApp
+          {isFeatured && whatsappUrl && (
+            <Button variant="outline" size="sm" asChild>
+              <a href={whatsappUrl}>
+                <Image
+                  src="/whatsapp.svg"
+                  alt="WhatsApp"
+                  width={16}
+                  height={16}
+                />
+                WhatsApp
+              </a>
             </Button>
           )}
 

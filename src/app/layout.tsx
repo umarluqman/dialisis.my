@@ -1,13 +1,29 @@
 import Footer from "@/components/footer";
+import { GaEventTracker } from "@/components/ga-event-tracker";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
+import { jsonLdGlobal } from "@/lib/json-ld";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Metadata } from "next";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
@@ -72,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ms">
+    <html lang="ms" className={`${fraunces.variable} ${plusJakartaSans.variable}`}>
       <head>
         <NextPathsMeta />
         <link
@@ -102,6 +118,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#FDFBF7" />
         <link rel="manifest" href="/site.webmanifest" />
         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGlobal) }}
+        />
+        <script
           dangerouslySetInnerHTML={{
             __html: `if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}`,
           }}
@@ -113,6 +133,7 @@ export default function RootLayout({
           "min-h-screen bg-background font-sans antialiased flex flex-col"
         )}
       >
+        <GaEventTracker />
         <OnlineStatusHandler />
         <NuqsAdapter>
           <Navbar />

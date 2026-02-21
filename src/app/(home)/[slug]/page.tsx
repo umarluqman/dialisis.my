@@ -8,6 +8,7 @@ import {
 import { prisma } from "@/lib/db";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { DialysisCenter, State } from "@/generated/prisma/client";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -56,6 +57,7 @@ function formatLocationName(value: string) {
 function generateJsonLd(center: CenterWithState): any {
   const stateName = formatLocationName(center.state.name);
   const townName = formatLocationName(center.town);
+  const phoneNumbers = getCenterPhoneNumbers(center);
 
   return {
     "@context": "https://schema.org",
@@ -64,7 +66,12 @@ function generateJsonLd(center: CenterWithState): any {
     name: center.dialysisCenterName,
     description: `Pusat dialisis ${center.dialysisCenterName} di ${townName}, ${stateName}. Menyediakan perkhidmatan ${center.units}.`,
     url: `https://dialisis.my/${center.slug}`,
-    telephone: center.phoneNumber || center.tel,
+    telephone:
+      phoneNumbers.length > 1
+        ? phoneNumbers
+        : phoneNumbers[0]
+        ? phoneNumbers[0]
+        : undefined,
     // Removed: email in JSON-LD gets corrupted by Cloudflare Email Obfuscation,
     // breaking the entire structured data block. Emails are still shown via mailto links.
     address: {
@@ -229,34 +236,45 @@ export default async function DialysisCenterPage({
 
   const jsonLd = generateJsonLd(center);
   const isFeatured = !!center?.featured;
+  const stateDisplayName = formatLocationName(center.state.name);
+  const stateSlug = createLocationSlug(center.state.name);
+  const townName = center.town.trim();
+  const skipTownInStates = new Set(["kuala-lumpur", "labuan", "putrajaya"]);
+  const hasTownBreadcrumb =
+    townName.length > 0 && !skipTownInStates.has(stateSlug);
+  const townSlug = hasTownBreadcrumb ? createLocationSlug(townName) : null;
 
-  // Format location for breadcrumbs structured data
   const locationParts = [
     { name: "Dialisis MY", item: "https://dialisis.my" },
     {
-      name: center.state.name,
-      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}`,
+      name: stateDisplayName,
+      item: `https://dialisis.my/lokasi/${stateSlug}`,
     },
-    {
-      name: center.town,
-      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`,
-    },
+    ...(hasTownBreadcrumb && townSlug
+      ? [
+          {
+            name: townName,
+            item: `https://dialisis.my/lokasi/${stateSlug}/${townSlug}`,
+          },
+        ]
+      : []),
     {
       name: center.dialysisCenterName,
       item: `https://dialisis.my/${center.slug}`,
     },
   ];
 
-  // Create breadcrumbs structured data
   const breadcrumbsJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: locationParts.map((part, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: part.name,
-      item: part.item,
-    })),
+    itemListElement: locationParts
+      .filter((part) => part.name.trim().length > 0)
+      .map((part, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: part.name,
+        item: part.item,
+      })),
   };
 
   return (
@@ -282,18 +300,22 @@ export default async function DialysisCenterPage({
             </Link>
             <span>/</span>
             <Link
-              href={`/lokasi/${createLocationSlug(center.state.name)}`}
+              href={`/lokasi/${stateSlug}`}
               className="hover:text-foreground"
             >
-              {center.state.name}
+              {stateDisplayName}
             </Link>
-            <span>/</span>
-            <Link
-              href={`/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`}
-              className="hover:text-foreground"
-            >
-              {center.town}
-            </Link>
+            {hasTownBreadcrumb && townSlug && (
+              <>
+                <span>/</span>
+                <Link
+                  href={`/lokasi/${stateSlug}/${townSlug}`}
+                  className="hover:text-foreground"
+                >
+                  {townName}
+                </Link>
+              </>
+            )}
             <span>/</span>
             <span className="text-foreground truncate max-w-[200px]">
               {center.dialysisCenterName.split(",")[0]}
