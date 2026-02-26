@@ -4,7 +4,11 @@
 
 import { prisma } from "@/lib/db";
 import { posts } from "#velite";
-import { getDbStateName, createLocationSlug } from "./location-utils";
+import {
+  getDbStateName,
+  createLocationSlug,
+  getTownsForState,
+} from "./location-utils";
 import {
   parseTreatmentTypes,
   haversineDistance,
@@ -327,22 +331,40 @@ export async function getCitiesForState(
   stateName: string
 ): Promise<LocationLink[]> {
   const dbStateName = getDbStateName(stateName);
+  const towns = getTownsForState(stateName);
 
   try {
-    const cities = await prisma.dialysisCenter.groupBy({
-      by: ["town"],
-      where: {
-        state: { name: { equals: dbStateName } },
-      },
-      _count: { id: true },
-      orderBy: { _count: { id: "desc" } },
-    });
+    if (towns.length === 0) return [];
 
-    return cities.map((c) => ({
-      name: c.town,
-      slug: `/lokasi/${createLocationSlug(stateName)}/${createLocationSlug(c.town)}`,
-      centerCount: c._count.id,
-    }));
+    const counts = await Promise.all(
+      towns.map(async (town) => ({
+        name: town,
+        centerCount: await prisma.dialysisCenter.count({
+          where: {
+            state: { name: { equals: dbStateName } },
+            OR: [
+              { town: { contains: town } },
+              { address: { contains: town } },
+              { addressWithUnit: { contains: town } },
+            ],
+          },
+        }),
+      }))
+    );
+
+    const links = counts
+      .map((item) => ({
+        name: item.name,
+        slug: `/lokasi/${createLocationSlug(stateName)}/${createLocationSlug(item.name)}`,
+        centerCount: item.centerCount,
+      }))
+      .filter((link) => link.centerCount > 0)
+      .sort(
+        (a, b) =>
+          b.centerCount - a.centerCount || a.name.localeCompare(b.name)
+      );
+
+    return links;
   } catch (error) {
     console.error("Error fetching cities for state:", error);
     return [];

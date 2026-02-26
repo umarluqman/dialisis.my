@@ -194,7 +194,9 @@ export default async function StatePage({ params, searchParams }: Props) {
         {cities.length > 0 && (
           <section className="mb-8">
             <h3 className="text-lg font-medium text-gray-900 mb-4">
-              Bandar di {stateName}
+              {["Kuala Lumpur", "Labuan", "Putrajaya"].includes(stateName)
+                ? stateName
+                : `Bandar di ${stateName}`}
             </h3>
             <div className="flex flex-wrap gap-2">
               {cities.map((city) => (

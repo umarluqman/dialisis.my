@@ -59,9 +59,15 @@ async function getCenter(slug: string): Promise<CenterWithState | null> {
 }
 
 function formatLocationName(value: string) {
-  return value
+  const normalizedValue = value.trim();
+
+  if (!normalizedValue) {
+    return "";
+  }
+
+  return normalizedValue
     .replace(/-/g, " ")
-    .split(" ")
+    .split(/\s+/)
     .map((word) =>
       word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word
     )
@@ -71,6 +77,8 @@ function formatLocationName(value: string) {
 function generateJsonLd(center: CenterWithState): any {
   const stateName = formatLocationName(center.state.name);
   const townName = formatLocationName(center.town);
+  const locationName = townName ? `${townName}, ${stateName}` : stateName;
+  const centerName = center.dialysisCenterName.trim() || formatLocationName(center.slug);
   const phoneNumbers = getCenterPhoneNumbers(center);
   const imageUrls = center.images.map((image) => image.url).filter(Boolean);
 
@@ -78,8 +86,8 @@ function generateJsonLd(center: CenterWithState): any {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "@id": `https://dialisis.my/${center.slug}`,
-    name: center.dialysisCenterName,
-    description: `Pusat dialisis ${center.dialysisCenterName} di ${townName}, ${stateName}. Menyediakan perkhidmatan ${center.units}.`,
+    name: centerName,
+    description: `Pusat dialisis ${centerName} di ${locationName}. Menyediakan perkhidmatan ${center.units}.`,
     url: `https://dialisis.my/${center.slug}`,
     image:
       imageUrls.length > 0
@@ -96,7 +104,7 @@ function generateJsonLd(center: CenterWithState): any {
     address: {
       "@type": "PostalAddress",
       streetAddress: center.addressWithUnit || center.address,
-      addressLocality: townName,
+      addressLocality: townName || undefined,
       addressRegion: stateName,
       addressCountry: "MY",
     },
@@ -171,8 +179,9 @@ export const generateMetadata = async ({ params }: Props) => {
 
   const stateName = formatLocationName(center.state.name);
   const townName = formatLocationName(center.town);
-  const location = `${townName}, ${stateName}`;
-  const centerName = center.dialysisCenterName.split(",")[0].trim();
+  const location = townName ? `${townName}, ${stateName}` : stateName;
+  const centerName =
+    center.dialysisCenterName.split(",")[0].trim() || formatLocationName(center.slug);
 
   const services = center.units
     ? center.units.toLowerCase().includes("hd") &&
@@ -257,11 +266,13 @@ export default async function DialysisCenterPage({
   const isFeatured = !!center?.featured;
   const stateDisplayName = formatLocationName(center.state.name);
   const stateSlug = createLocationSlug(center.state.name);
-  const townName = center.town.trim();
+  const townName = formatLocationName(center.town);
   const skipTownInStates = new Set(["kuala-lumpur", "labuan", "putrajaya"]);
   const hasTownBreadcrumb =
     townName.length > 0 && !skipTownInStates.has(stateSlug);
   const townSlug = hasTownBreadcrumb ? createLocationSlug(townName) : null;
+  const centerBreadcrumbName =
+    center.dialysisCenterName.trim() || formatLocationName(center.slug);
 
   const locationParts = [
     { name: "Dialisis MY", item: "https://dialisis.my" },
@@ -278,7 +289,7 @@ export default async function DialysisCenterPage({
         ]
       : []),
     {
-      name: center.dialysisCenterName,
+      name: centerBreadcrumbName,
       item: `https://dialisis.my/${center.slug}`,
     },
   ];
@@ -286,14 +297,29 @@ export default async function DialysisCenterPage({
   const breadcrumbsJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: locationParts
-      .filter((part) => part.name.trim().length > 0)
-      .map((part, index) => ({
+    itemListElement: locationParts.reduce<
+      Array<{
+        "@type": "ListItem";
+        position: number;
+        name: string;
+        item: string;
+      }>
+    >((items, part) => {
+      const name = part.name.trim();
+
+      if (!name) {
+        return items;
+      }
+
+      items.push({
         "@type": "ListItem",
-        position: index + 1,
-        name: part.name,
+        position: items.length + 1,
+        name,
         item: part.item,
-      })),
+      });
+
+      return items;
+    }, []),
   };
 
   return (

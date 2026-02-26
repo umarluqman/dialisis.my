@@ -1,7 +1,9 @@
 import { prisma } from "@/lib/db";
+import type { Prisma } from "@/generated/prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 const ITEMS_PER_PAGE = 20;
+const MAX_SEARCH_TOKENS = 6;
 
 // Map treatment params to DB unit values
 const TREATMENT_TO_UNIT_MAP = {
@@ -11,6 +13,69 @@ const TREATMENT_TO_UNIT_MAP = {
   "peritoneal dialisis": "PD Unit",
 } as const;
 
+function getSearchTokens(rawValue?: string | null) {
+  if (!rawValue) return [];
+
+  const normalized = rawValue.trim().replace(/\s+/g, " ");
+  if (!normalized) return [];
+
+  const seen = new Set<string>();
+  const tokens: string[] = [];
+
+  for (const chunk of normalized.split(/[^\p{L}\p{N}]+/u)) {
+    const token = chunk.trim();
+    if (!token) continue;
+
+    const key = token.toLowerCase();
+    if (seen.has(key)) continue;
+
+    seen.add(key);
+    tokens.push(token);
+
+    if (tokens.length >= MAX_SEARCH_TOKENS) break;
+  }
+
+  return tokens;
+}
+
+function buildFlexibleSearchConditions(
+  rawValue?: string | null,
+  doctorOnly = false
+): Prisma.DialysisCenterWhereInput[] {
+  const tokens = getSearchTokens(rawValue);
+  if (!tokens.length) return [];
+
+  const tokenFilters = tokens.map((token) => {
+    const phoneToken = token.replace(/[^\d]/g, "");
+    const tokenConditions: Prisma.DialysisCenterWhereInput[] = doctorOnly
+      ? [
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+        ]
+      : [
+          { dialysisCenterName: { contains: token } },
+          { title: { contains: token } },
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+          { town: { contains: token } },
+          { address: { contains: token } },
+          { addressWithUnit: { contains: token } },
+        ];
+
+    if (phoneToken.length >= 3) {
+      tokenConditions.push(
+        { phoneNumber: { contains: phoneToken } },
+        { tel: { contains: phoneToken } },
+        { drInChargeTel: { contains: phoneToken } }
+      );
+    }
+
+    return { OR: tokenConditions };
+  });
+
+  return [{ AND: tokenFilters }];
+}
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -18,35 +83,37 @@ export async function GET(request: NextRequest) {
     // Extract filter values
     const page = Number(searchParams.get("page")) || 1;
     const drInCharge = searchParams.get("drInCharge");
+    const doctor = searchParams.get("doctor");
     const town = searchParams.get("town");
-    const dialysisCenterName = searchParams.get("dialysisCenterName");
+    const name = searchParams.get("name");
+    const query = searchParams.get("q") ?? searchParams.get("query");
     const treatment = searchParams.get("treatment");
     const state = searchParams.get("state");
     const sector = searchParams.get("sector");
 
-    // Build where clause
-    const where: any = {};
+    const generalSearchValue = query ?? name;
+    const doctorSearchValue = doctor ?? drInCharge;
+    const andConditions: Prisma.DialysisCenterWhereInput[] = [
+      ...buildFlexibleSearchConditions(generalSearchValue),
+      ...buildFlexibleSearchConditions(doctorSearchValue, true),
+      ...(town
+        ? [
+            {
+              OR: [
+                { town: { contains: town } },
+                { address: { contains: town } },
+                { addressWithUnit: { contains: town } },
+                { dialysisCenterName: { contains: town } },
+                { title: { contains: town } },
+              ],
+            },
+          ]
+        : []),
+    ];
 
-    if (drInCharge) {
-      where.drInCharge = {
-        contains: drInCharge,
-        mode: "insensitive",
-      };
-    }
-
-    if (town) {
-      where.town = {
-        contains: town,
-        mode: "insensitive",
-      };
-    }
-
-    if (dialysisCenterName) {
-      where.dialysisCenterName = {
-        contains: dialysisCenterName,
-        mode: "insensitive",
-      };
-    }
+    const where: Prisma.DialysisCenterWhereInput = {
+      ...(andConditions.length > 0 ? { AND: andConditions } : {}),
+    };
 
     if (treatment) {
       const unitValue =
@@ -54,7 +121,6 @@ export async function GET(request: NextRequest) {
       if (unitValue) {
         where.units = {
           contains: unitValue,
-          mode: "insensitive",
         };
       }
     }
@@ -63,7 +129,6 @@ export async function GET(request: NextRequest) {
       where.state = {
         name: {
           contains: state,
-          mode: "insensitive",
         },
       };
     }
@@ -73,11 +138,9 @@ export async function GET(request: NextRequest) {
         sector === "MOH_PRIVATE"
           ? {
               in: ["MOH", "PRIVATE"],
-              mode: "insensitive",
             }
           : {
               contains: sector,
-              mode: "insensitive",
             };
     }
 
