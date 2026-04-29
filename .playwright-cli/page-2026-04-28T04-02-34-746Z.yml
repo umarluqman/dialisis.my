@@ -1,0 +1,162 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e6]:
+        - link "NRR Logo" [ref=e8] [cursor=pointer]:
+          - /url: "#"
+          - img "NRR Logo" [ref=e9]
+        - navigation [ref=e10]:
+          - list [ref=e11]:
+            - listitem [ref=e12]:
+              - link "Back to NRR website" [ref=e13] [cursor=pointer]:
+                - /url: https://www.msn.org.my/nrr
+                - generic [ref=e14]: Back to NRR website
+    - generic [ref=e16]:
+      - heading "CENTRE DIRECTORY" [level=1] [ref=e18]
+      - list [ref=e19]:
+        - listitem [ref=e20]:
+          - link "Home" [ref=e21] [cursor=pointer]:
+            - /url: https://www.msn.org.my/nrr
+        - listitem [ref=e22]:
+          - text: /
+          - link "Centre Directory" [ref=e23] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory
+        - listitem [ref=e24]:
+          - text: /
+          - link "PERLIS INDERA KAYANGAN" [ref=e25] [cursor=pointer]:
+            - /url: "#"
+    - generic [ref=e29]:
+      - paragraph [ref=e30]:
+        - strong [ref=e31]: "Disclaimer:"
+        - emphasis [ref=e32]: The centres listed in this directory are the ones which submit data to the NRR. The list does not reflect the status of their licensing by the health authority.
+      - generic [ref=e34]:
+        - text: "Dr In Charge:"
+        - textbox [ref=e35]
+        - text: "Modality:"
+        - combobox [ref=e36]:
+          - option "--Show All--" [selected]
+          - option "PD"
+          - option "HAEMODIALYSIS"
+          - option "TRANSPLANT"
+          - option "MRRB"
+        - text: "Hepatitis Bay:"
+        - combobox [ref=e37]:
+          - option "--Show All--" [selected]
+          - option "Hepatitis B"
+          - option "Hepatitis C"
+          - option "Hepatitis B & C"
+        - button "Filter" [ref=e38] [cursor=pointer]
+      - table [ref=e39]:
+        - rowgroup [ref=e40]:
+          - row [ref=e99]:
+            - 'cell "Select Town / City: Kangar [Show All]" [ref=e42]':
+              - text: "Select Town / City:"
+              - list [ref=e43]:
+                - listitem [ref=e44]:
+                  - link "Kangar" [ref=e45] [cursor=pointer]:
+                    - /url: javascript:void(0);
+                - listitem [ref=e46]:
+                  - link "[Show All]" [ref=e47] [cursor=pointer]:
+                    - /url: javascript:void(0);
+            - 'cell "Centres Sector Dr In Charge Hepatitis Bay Kangar Pusat Dialisis Davita Kangar, HD Unit PRIVATE CHEW SHI WEI; Pusat Dialisis Davita Kangar, HD Unit PRIVATE; Pusat Dialisis Davita Kangar No.9, 11, 13 dan 15, Lorong Dua Wisma Perkumpulan Perempuan Jalan Raja Syed Alwi 01000 Kangar Perlis Indera Kayangan MALAYSIA Tel : 04-9760771 Email: cdcka@gmail.com eNRR Doctor in charge Dr. CHEW SHI WEI ✓ Panel Nephrologist Dr WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL ✓ Centre manager SN NURUL ASYIKIN BINTI ZAINOL ✓ Centre Coordinator SN NOORSHAFINI BINTI MOHAMAD SHAFRI ✓ Pusat Dialysis Remedic, HD Unit PRIVATE CHEW SHI WEI; Pusat Dialysis Tuanku Syed Putra-NKF, HD Unit NGO EASON CHANG; Tuanku Fauziah Hospital, HD Unit MOH - Hep B - Hep C Zaharah Dialysis Center (Kangar), HD Unit PRIVATE AHMAD FAKARUDDIN BIN AHMAD SAMSUDDIN; Tuanku Fauziah Hospital, MRRB Unit MOH WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL;" [ref=e100]':
+              - table [ref=e49]:
+                - rowgroup [ref=e50]:
+                  - row "Centres Sector Dr In Charge Hepatitis Bay" [ref=e51]:
+                    - columnheader "Centres" [ref=e52]
+                    - columnheader "Sector" [ref=e53]
+                    - columnheader "Dr In Charge" [ref=e54]
+                    - columnheader "Hepatitis Bay" [ref=e55]
+                  - row "Kangar" [ref=e56]:
+                    - cell "Kangar" [ref=e57]
+                  - row "Pusat Dialisis Davita Kangar, HD Unit PRIVATE CHEW SHI WEI;" [ref=e58]:
+                    - cell "Pusat Dialisis Davita Kangar, HD Unit" [ref=e59]:
+                      - link "Pusat Dialisis Davita Kangar, HD Unit" [active] [ref=e60] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "PRIVATE" [ref=e61]
+                    - cell "CHEW SHI WEI;" [ref=e62]
+                    - cell [ref=e63]
+                  - 'row "Pusat Dialisis Davita Kangar, HD Unit PRIVATE; Pusat Dialisis Davita Kangar No.9, 11, 13 dan 15, Lorong Dua Wisma Perkumpulan Perempuan Jalan Raja Syed Alwi 01000 Kangar Perlis Indera Kayangan MALAYSIA Tel : 04-9760771 Email: cdcka@gmail.com eNRR Doctor in charge Dr. CHEW SHI WEI ✓ Panel Nephrologist Dr WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL ✓ Centre manager SN NURUL ASYIKIN BINTI ZAINOL ✓ Centre Coordinator SN NOORSHAFINI BINTI MOHAMAD SHAFRI ✓" [ref=e101]':
+                    - 'cell "Pusat Dialisis Davita Kangar, HD Unit PRIVATE; Pusat Dialisis Davita Kangar No.9, 11, 13 dan 15, Lorong Dua Wisma Perkumpulan Perempuan Jalan Raja Syed Alwi 01000 Kangar Perlis Indera Kayangan MALAYSIA Tel : 04-9760771 Email: cdcka@gmail.com eNRR Doctor in charge Dr. CHEW SHI WEI ✓ Panel Nephrologist Dr WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL ✓ Centre manager SN NURUL ASYIKIN BINTI ZAINOL ✓ Centre Coordinator SN NOORSHAFINI BINTI MOHAMAD SHAFRI ✓" [ref=e102]':
+                      - generic [ref=e103]:
+                        - heading "Pusat Dialisis Davita Kangar, HD Unit PRIVATE;" [level=3] [ref=e104]:
+                          - text: Pusat Dialisis Davita Kangar, HD Unit
+                          - generic [ref=e105]: PRIVATE;
+                        - text: Pusat Dialisis Davita Kangar
+                        - text: No.9, 11, 13 dan 15, Lorong Dua
+                        - text: Wisma Perkumpulan Perempuan
+                        - text: Jalan Raja Syed Alwi
+                        - text: 01000 Kangar
+                        - text: Perlis Indera Kayangan
+                        - text: MALAYSIA
+                        - table [ref=e106]:
+                          - rowgroup [ref=e107]:
+                            - 'row "Tel : 04-9760771" [ref=e108]':
+                              - cell "Tel :" [ref=e109]
+                              - cell "04-9760771" [ref=e110]
+                            - 'row "Email: cdcka@gmail.com" [ref=e111]':
+                              - cell "Email:" [ref=e112]
+                              - cell "cdcka@gmail.com" [ref=e113]:
+                                - link "cdcka@gmail.com" [ref=e114] [cursor=pointer]:
+                                  - /url: mailto:cdcka@gmail.com
+                        - table [ref=e115]:
+                          - rowgroup [ref=e116]:
+                            - row "eNRR" [ref=e117]:
+                              - cell [ref=e118]
+                              - cell [ref=e119]
+                              - cell "eNRR" [ref=e120]
+                            - row "Doctor in charge Dr. CHEW SHI WEI ✓" [ref=e121]:
+                              - cell "Doctor in charge" [ref=e122]
+                              - cell "Dr. CHEW SHI WEI" [ref=e123]
+                              - cell "✓" [ref=e124]
+                            - row "Panel Nephrologist Dr WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL ✓" [ref=e125]:
+                              - cell "Panel Nephrologist" [ref=e126]
+                              - cell "Dr WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL" [ref=e127]
+                              - cell "✓" [ref=e128]
+                            - row "Centre manager SN NURUL ASYIKIN BINTI ZAINOL ✓" [ref=e129]:
+                              - cell "Centre manager" [ref=e130]
+                              - cell "SN NURUL ASYIKIN BINTI ZAINOL" [ref=e131]
+                              - cell "✓" [ref=e132]
+                            - row "Centre Coordinator SN NOORSHAFINI BINTI MOHAMAD SHAFRI ✓" [ref=e133]:
+                              - cell "Centre Coordinator" [ref=e134]
+                              - cell "SN NOORSHAFINI BINTI MOHAMAD SHAFRI" [ref=e135]
+                              - cell "✓" [ref=e136]
+                  - row "Pusat Dialysis Remedic, HD Unit PRIVATE CHEW SHI WEI;" [ref=e64]:
+                    - cell "Pusat Dialysis Remedic, HD Unit" [ref=e65]:
+                      - link "Pusat Dialysis Remedic, HD Unit" [ref=e66] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "PRIVATE" [ref=e67]
+                    - cell "CHEW SHI WEI;" [ref=e68]
+                    - cell [ref=e69]
+                  - row "Pusat Dialysis Tuanku Syed Putra-NKF, HD Unit NGO EASON CHANG;" [ref=e70]:
+                    - cell "Pusat Dialysis Tuanku Syed Putra-NKF, HD Unit" [ref=e71]:
+                      - link "Pusat Dialysis Tuanku Syed Putra-NKF, HD Unit" [ref=e72] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "NGO" [ref=e73]
+                    - cell "EASON CHANG;" [ref=e74]
+                    - cell [ref=e75]
+                  - row "Tuanku Fauziah Hospital, HD Unit MOH - Hep B - Hep C" [ref=e76]:
+                    - cell "Tuanku Fauziah Hospital, HD Unit" [ref=e77]:
+                      - link "Tuanku Fauziah Hospital, HD Unit" [ref=e78] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "MOH" [ref=e79]
+                    - cell [ref=e80]
+                    - cell "- Hep B - Hep C" [ref=e81]:
+                      - text: "- Hep B"
+                      - text: "- Hep C"
+                  - row "Zaharah Dialysis Center (Kangar), HD Unit PRIVATE AHMAD FAKARUDDIN BIN AHMAD SAMSUDDIN;" [ref=e82]:
+                    - cell "Zaharah Dialysis Center (Kangar), HD Unit" [ref=e83]:
+                      - link "Zaharah Dialysis Center (Kangar), HD Unit" [ref=e84] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "PRIVATE" [ref=e85]
+                    - cell "AHMAD FAKARUDDIN BIN AHMAD SAMSUDDIN;" [ref=e86]
+                    - cell [ref=e87]
+                  - row "Tuanku Fauziah Hospital, MRRB Unit MOH WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL;" [ref=e88]:
+                    - cell "Tuanku Fauziah Hospital, MRRB Unit" [ref=e89]:
+                      - link "Tuanku Fauziah Hospital, MRRB Unit" [ref=e90] [cursor=pointer]:
+                        - /url: javascript:void(0);
+                    - cell "MOH" [ref=e91]
+                    - cell "WAN SYAMIR ZHARIF BIN WAN AHMAD KAMAL;" [ref=e92]
+                    - cell [ref=e93]
+    - contentinfo [ref=e94]:
+      - generic [ref=e98]: All Rights Reserved © 2022 by Malaysian Society of Nephrology
+  - text: 

@@ -42,6 +42,21 @@ export function middleware(request: NextRequest) {
     });
   }
 
+  if (
+    process.env.MAINTENANCE_MODE === "true" &&
+    path !== "/maintenance" &&
+    !path.startsWith("/_next") &&
+    !PUBLIC_FILE.test(path)
+  ) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/maintenance";
+    const response = NextResponse.rewrite(url);
+    response.headers.set("Retry-After", "3600");
+    response.headers.set("X-Robots-Tag", "noindex, nofollow");
+    response.headers.set("Cache-Control", "no-store");
+    return response;
+  }
+
   // Enhanced URL pattern matching for redirects
   // Handles both /undefined/ and /dialysis-center/ legacy paths
   if (
