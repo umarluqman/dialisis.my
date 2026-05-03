@@ -1,6 +1,7 @@
 import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
+import { getDbStateName } from "@/lib/location-utils";
 import type { Prisma } from "@/generated/prisma/client";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { Metadata } from "next";
@@ -150,7 +151,7 @@ async function getInitialCenters(
     ...(state && {
       state: {
         name: {
-          equals: state.replace(/\s+/g, "-"),
+          equals: getDbStateName(state),
         },
       },
     }),

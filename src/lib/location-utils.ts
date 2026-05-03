@@ -139,11 +139,12 @@ export function getLocationDisplayNames(
   return { stateName, cityName };
 }
 
-/**
- * Gets the database state name format (lowercase with hyphens to match Turso data)
- */
 export function getDbStateName(stateName: string): string {
-  return stateName.toLowerCase().replace(/\s+/g, "-");
+  return stateName
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 }
 
 /**
