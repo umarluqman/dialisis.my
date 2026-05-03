@@ -72,3 +72,9 @@ amplifytools.xcconfig
 
 .contentlayer
 package-lock.json
+
+restore.sql
+.env.production
+Deployment-151-artifacts
+Deployment-151-artifacts.zip
+scripts
