@@ -78,3 +78,5 @@ restore.sql
 Deployment-151-artifacts
 Deployment-151-artifacts.zip
 scripts
+
+.playwright-cli
