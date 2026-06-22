@@ -21,6 +21,8 @@ interface Props {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
+export const revalidate = 3600;
+
 type CenterWithState = {
   featured: boolean;
 } & DialysisCenter & {

@@ -24,6 +24,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
     ? center.hepatitisBay.split(", ")
     : [];
   const phoneNumbers = getCenterPhoneNumbers(center);
+  const hasCoordinates = center.latitude != null && center.longitude != null;
   const treatmentArray = center.units
     ? center.units.split(", ").map((unit) => ({
         name: unit,
@@ -58,21 +59,23 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
         <p className="flex flex-col gap-2 space-y-2">
           <div className="flex-1">{center.addressWithUnit}</div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2"
-              asChild
-            >
-              <a
-                href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
-                target="_blank"
-                rel="noopener noreferrer"
+            {hasCoordinates && (
+              <Button
+                variant="outline"
+                size="sm"
                 className="flex items-center gap-2"
+                asChild
               >
-                Waze <ExternalLink className="w-4 h-4" />
-              </a>
-            </Button>
+                <a
+                  href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  Waze <ExternalLink className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
             <Button variant="outline" size="sm" asChild>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
