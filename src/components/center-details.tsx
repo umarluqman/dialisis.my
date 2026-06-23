@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { DialysisCenter, State } from "@/generated/prisma/client";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 
@@ -20,9 +21,7 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
     .join(" ");
   const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
 
-  const hepatitisArray = center.hepatitisBay
-    ? center.hepatitisBay.split(", ")
-    : [];
+  const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const phoneNumbers = getCenterPhoneNumbers(center);
   const hasCoordinates = center.latitude != null && center.longitude != null;
   const treatmentArray = center.units

@@ -6,6 +6,7 @@ import {
   NearbyCenters,
 } from "@/components/internal-linking";
 import { prisma } from "@/lib/db";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
@@ -83,6 +84,7 @@ function generateJsonLd(center: CenterWithState): any {
   const centerName = center.dialysisCenterName.trim() || formatLocationName(center.slug);
   const phoneNumbers = getCenterPhoneNumbers(center);
   const imageUrls = center.images.map((image) => image.url).filter(Boolean);
+  const hepatitisOptions = getAvailableHepatitisOptions(center.hepatitisBay);
 
   return {
     "@context": "https://schema.org",
@@ -141,11 +143,15 @@ function generateJsonLd(center: CenterWithState): any {
       "Kidney Failure",
     ],
     additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Hepatitis Treatment",
-        value: center.hepatitisBay || "Not Available",
-      },
+      ...(hepatitisOptions.length > 0
+        ? [
+            {
+              "@type": "PropertyValue",
+              name: "Hepatitis Treatment",
+              value: hepatitisOptions.join(", "),
+            },
+          ]
+        : []),
       {
         "@type": "PropertyValue",
         name: "Sector",

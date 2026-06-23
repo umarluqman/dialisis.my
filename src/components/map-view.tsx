@@ -12,6 +12,7 @@ import {
   getCenterPhoneNumbers,
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -490,9 +491,9 @@ export default function MapView({ center }: { center?: [number, number] }) {
     : [];
   const title = selectedCenter?.dialysisCenterName?.split(",")[0];
 
-  const hepatitisArray = selectedCenter?.hepatitisBay
-    ? selectedCenter.hepatitisBay.split(", ")
-    : [];
+  const hepatitisArray = getAvailableHepatitisOptions(
+    selectedCenter?.hepatitisBay
+  );
   const phoneNumbers = selectedCenter ? getCenterPhoneNumbers(selectedCenter) : [];
   const primaryPhoneNumber = selectedCenter
     ? getPrimaryCenterPhoneNumber(selectedCenter)

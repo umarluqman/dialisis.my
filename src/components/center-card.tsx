@@ -6,6 +6,7 @@ import {
   buildWhatsAppUrl,
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { ArrowRight, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -80,7 +81,7 @@ export function CenterCard({
   const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
 
-  const hepatitisArray = hepatitisBay ? hepatitisBay.split(", ") : [];
+  const hepatitisArray = getAvailableHepatitisOptions(hepatitisBay);
   const treatmentArray = unitsArray
     .map((unit) => ({
       name: unit,

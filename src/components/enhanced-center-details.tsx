@@ -15,6 +15,7 @@ import {
   getCenterPhoneNumbers,
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import {
   Car,
   ExternalLink,
@@ -201,9 +202,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
       )
     : "";
 
-  const hepatitisArray = center.hepatitisBay
-    ? center.hepatitisBay.split(", ")
-    : [];
+  const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const treatmentArray = center.units
     ? center.units.split(", ").map((unit) => ({
         name: unit,
