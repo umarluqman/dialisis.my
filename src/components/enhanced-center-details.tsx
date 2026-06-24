@@ -75,6 +75,25 @@ const BENEFITS = [
   },
 ];
 
+function getCenterExtraDetails(benefits?: string | null) {
+  return (benefits ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separatorIndex = line.indexOf(":");
+
+      if (separatorIndex === -1) {
+        return { label: null, value: line };
+      }
+
+      return {
+        label: line.slice(0, separatorIndex).trim(),
+        value: line.slice(separatorIndex + 1).trim(),
+      };
+    });
+}
+
 interface Props {
   center: {
     id: string;
@@ -204,6 +223,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
     : "";
 
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
+  const extraDetails = getCenterExtraDetails(center.benefits);
   const treatmentArray = center.units
     ? center.units.split(", ").map((unit) => ({
         name: unit,
@@ -235,6 +255,11 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               {center.dialysisCenterName}
             </h1>
             <p className="text-muted-foreground text-lg mt-2">{shortAddress}</p>
+            {center.description && (
+              <p className="text-muted-foreground mt-4 max-w-3xl">
+                {center.description}
+              </p>
+            )}
           </div>
           <div className="flex gap-2 flex-wrap justify-center md:justify-end mt-4 md:mt-0">
             {treatmentArray.map((treatment) => (
@@ -526,6 +551,29 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 )}
               </div>
             </div>
+
+            {extraDetails.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-2xl font-semibold mb-6">
+                  Maklumat Cawangan
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {extraDetails.map((detail, index) => (
+                    <div
+                      key={`${detail.label ?? detail.value}-${index}`}
+                      className="rounded-lg border p-4"
+                    >
+                      {detail.label && (
+                        <p className="font-medium text-zinc-500">
+                          {detail.label}
+                        </p>
+                      )}
+                      <p className="text-lg">{detail.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Map Section */}
