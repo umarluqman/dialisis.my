@@ -25,6 +25,7 @@ import {
   Mail,
   MapPin,
   Phone,
+  Printer,
   Shield,
   Star,
 } from "lucide-react";
@@ -438,6 +439,16 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                     </div>
                   </div>
                 ))}
+
+                {center.fax && (
+                  <div className="flex gap-2 items-center">
+                    <Printer className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <div>
+                      <p className="font-medium">Faks:</p>
+                      <p className="text-primary-foreground">{center.fax}</p>
+                    </div>
+                  </div>
+                )}
 
                 {center.email && (
                   <div className="flex gap-2 items-center">
