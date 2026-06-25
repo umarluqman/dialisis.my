@@ -25,7 +25,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  Printer,
   Shield,
   Star,
 } from "lucide-react";
@@ -105,7 +104,6 @@ interface Props {
     address: string;
     addressWithUnit: string;
     tel: string;
-    fax?: string | null;
     panelNephrologist?: string | null;
     centreManager?: string | null;
     centreCoordinator?: string | null;
@@ -450,39 +448,36 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               </div>
 
               <div className="space-y-4">
-                {phoneNumbers.map((phoneNumber) => (
-                  <div key={phoneNumber} className="flex gap-2 items-center">
-                    <Phone className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                {phoneNumbers.length > 0 && (
+                  <div className="flex gap-2 items-center">
+                    <Phone className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">Telefon:</p>
-                      <a
-                        href={`tel:${phoneNumber}`}
-                        className="text-primary-foreground hover:underline"
-                      >
-                        {phoneNumber}
-                      </a>
-                    </div>
-                  </div>
-                ))}
-
-                {center.fax && (
-                  <div className="flex gap-2 items-center">
-                    <Printer className="w-5 h-5 text-primary-foreground flex-shrink-0" />
-                    <div>
-                      <p className="font-medium">Faks:</p>
-                      <p className="text-primary-foreground">{center.fax}</p>
+                      <div className="flex flex-wrap gap-x-2 gap-y-1">
+                        {phoneNumbers.map((phoneNumber, index) => (
+                          <span key={phoneNumber}>
+                            <a
+                              href={`tel:${phoneNumber}`}
+                              className="text-primary hover:underline"
+                            >
+                              {phoneNumber}
+                            </a>
+                            {index < phoneNumbers.length - 1 ? "," : null}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {center.email && (
                   <div className="flex gap-2 items-center">
-                    <Mail className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <Mail className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">E-mel:</p>
                       <a
                         href={`mailto:${center.email}`}
-                        className="text-primary-foreground hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {center.email}
                       </a>
@@ -492,14 +487,14 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
                 {center.website && (
                   <div className="flex gap-2 items-center">
-                    <Globe className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <Globe className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">Laman Web:</p>
                       <a
                         href={center.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary-foreground hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {center.website.replace(/^https?:\/\//, "")}
                       </a>
