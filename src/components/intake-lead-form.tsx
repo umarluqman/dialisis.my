@@ -22,6 +22,7 @@ type IntakeLeadFormProps = {
   centerId: string;
   centerName: string;
   className?: string;
+  hideHeader?: boolean;
 };
 
 type SubmitResult = {
@@ -79,6 +80,7 @@ export function IntakeLeadForm({
   centerId,
   centerName,
   className,
+  hideHeader,
 }: IntakeLeadFormProps) {
   const { toast } = useToast();
   const [preferredSession, setPreferredSession] = useState("");
@@ -158,17 +160,20 @@ export function IntakeLeadForm({
 
   return (
     <section
-      className={cn("border-t border-border pt-8", className)}
+      id="borang-temujanji"
+      className={cn("scroll-mt-8 border-t border-border pt-8", className)}
       data-ga-context="intake_lead_form"
       data-center-id={centerId}
       data-center-name={centerName}
     >
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold">Borang temujanji dialisis</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Lengkapkan maklumat untuk dihantar kepada pusat dialisis.
-        </p>
-      </div>
+      {!hideHeader && (
+        <div className="mb-6">
+          <h2 className="text-2xl font-semibold">Borang temujanji dialisis</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Lengkapkan maklumat untuk dihantar kepada pusat dialisis.
+          </p>
+        </div>
+      )}
 
       <form
         id={`intake-lead-form-${centerId}`}

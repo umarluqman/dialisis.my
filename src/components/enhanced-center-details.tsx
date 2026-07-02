@@ -12,12 +12,12 @@ import {
 import { useCenterImages } from "@/hooks/use-center-images";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  buildWhatsAppUrl,
   getCenterPhoneNumbers,
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import {
+  CalendarPlus,
   Car,
   ExternalLink,
   Globe,
@@ -214,12 +214,6 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
   const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
   const phoneNumbers = getCenterPhoneNumbers(center);
   const primaryPhoneNumber = getPrimaryCenterPhoneNumber(center);
-  const whatsappUrl = primaryPhoneNumber
-    ? buildWhatsAppUrl(
-        primaryPhoneNumber,
-        "Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama."
-      )
-    : "";
 
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const extraDetails = getCenterExtraDetails(center.benefits);
@@ -646,23 +640,20 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   </a>
                 </Button>
               )}
-              {whatsappUrl && (
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-                  asChild
-                >
-                  <a href={whatsappUrl} className="flex items-center gap-2">
-                    <Image
-                      src="/whatsapp.svg"
-                      alt="WhatsApp"
-                      width={20}
-                      height={20}
-                    />
-                    <span className="text-primary-foreground">WhatsApp</span>
-                  </a>
-                </Button>
-              )}
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 flex items-center gap-2"
+                onClick={() =>
+                  document
+                    .getElementById("borang-temujanji")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              >
+                <CalendarPlus className="w-5 h-5 text-primary-foreground" />
+                <span className="text-primary-foreground">
+                  Borang Temujanji
+                </span>
+              </Button>
             </div>
           </div>
         </div>

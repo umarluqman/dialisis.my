@@ -1,14 +1,11 @@
 "use client";
 
+import { IntakeLeadDialog } from "@/components/intake-lead-dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
-import {
-  buildWhatsAppUrl,
-  getPrimaryCenterPhoneNumber,
-} from "@/lib/center-phone-numbers";
+import { getPrimaryCenterPhoneNumber } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
-import { ArrowRight, MapPin, Phone } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, CalendarPlus, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { CenterCardGallery } from "./center-card-gallery";
 import { Badge } from "./ui/badge";
@@ -97,9 +94,6 @@ export function CenterCard({
 
   const isFeatured = featured;
   const primaryPhoneNumber = getPrimaryCenterPhoneNumber({ phoneNumber, tel });
-  const whatsappUrl = primaryPhoneNumber
-    ? buildWhatsAppUrl(primaryPhoneNumber)
-    : "";
 
   const { images: apiImages, isLoading: imagesLoading } = useCenterImages(
     id,
@@ -210,18 +204,13 @@ export function CenterCard({
             </Button>
           )}
 
-          {isFeatured && whatsappUrl && (
-            <Button variant="outline" size="sm" asChild>
-              <a href={whatsappUrl}>
-                <Image
-                  src="/whatsapp.svg"
-                  alt="WhatsApp"
-                  width={16}
-                  height={16}
-                />
-                WhatsApp
-              </a>
-            </Button>
+          {isFeatured && (
+            <IntakeLeadDialog centerId={id} centerName={title}>
+              <Button variant="outline" size="sm">
+                <CalendarPlus className="w-4 h-4" />
+                Temujanji
+              </Button>
+            </IntakeLeadDialog>
           )}
 
           {latitude && longitude && (

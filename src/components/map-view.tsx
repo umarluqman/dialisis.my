@@ -1,14 +1,13 @@
 "use client";
 
-import { Globe, Loader2, Mail, Phone } from "lucide-react";
+import { CalendarPlus, Globe, Loader2, Mail, Phone } from "lucide-react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
+import { IntakeLeadDialog } from "@/components/intake-lead-dialog";
 import {
-  buildWhatsAppUrl,
   getCenterPhoneNumbers,
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
@@ -55,6 +54,10 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [selectedCenter, setSelectedCenter] = useState<Center | null>(null);
+  const [leadCenter, setLeadCenter] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
   const [isLocating, setIsLocating] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const animationRef = useRef<number | null>(null);
@@ -498,13 +501,6 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const primaryPhoneNumber = selectedCenter
     ? getPrimaryCenterPhoneNumber(selectedCenter)
     : null;
-  const whatsappUrl =
-    selectedCenter?.featured && primaryPhoneNumber
-      ? buildWhatsAppUrl(
-          primaryPhoneNumber,
-          "Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama."
-        )
-      : "";
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
     value: unit.toLowerCase().includes("hd unit")
@@ -657,23 +653,22 @@ export default function MapView({ center }: { center?: [number, number] }) {
                         </Button>
                       </Link>
                     )}
-                    {whatsappUrl ? (
+                    {selectedCenter.featured ? (
                       <Button
                         size="lg"
-                        className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-                        asChild
+                        className="bg-primary hover:bg-primary/90 flex items-center gap-2"
+                        onClick={() => {
+                          setLeadCenter({
+                            id: selectedCenter.id,
+                            name: title ?? selectedCenter.dialysisCenterName,
+                          });
+                          setSelectedCenter(null);
+                        }}
                       >
-                        <a href={whatsappUrl} className="flex items-center gap-2">
-                          <Image
-                            src="/whatsapp.svg"
-                            alt="WhatsApp"
-                            width={20}
-                            height={20}
-                          />
-                          <span className="text-primary-foreground">
-                            WhatsApp
-                          </span>
-                        </a>
+                        <CalendarPlus className="w-5 h-5 text-primary-foreground" />
+                        <span className="text-primary-foreground">
+                          Temujanji
+                        </span>
                       </Button>
                     ) : null}
 
@@ -700,6 +695,17 @@ export default function MapView({ center }: { center?: [number, number] }) {
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>
+
+      {leadCenter && (
+        <IntakeLeadDialog
+          centerId={leadCenter.id}
+          centerName={leadCenter.name}
+          open
+          onOpenChange={(open) => {
+            if (!open) setLeadCenter(null);
+          }}
+        />
+      )}
     </>
   );
 }
