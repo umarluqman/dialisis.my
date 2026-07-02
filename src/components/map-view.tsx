@@ -1,29 +1,33 @@
 "use client";
 
-import { CalendarPlus, Globe, Loader2, Mail, Phone } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarPlus,
+  Globe,
+  Loader2,
+  MapPin,
+} from "lucide-react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
 import { IntakeLeadDialog } from "@/components/intake-lead-dialog";
-import {
-  getCenterPhoneNumbers,
-  getPrimaryCenterPhoneNumber,
-} from "@/lib/center-phone-numbers";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 interface Center {
   id: string;
+  slug: string;
   dialysisCenterName: string;
   latitude: number;
   addressWithUnit: string;
   phoneNumber?: string;
   longitude: number;
   address: string;
-  state: string;
+  state: string | { name: string };
   town: string;
   units: string;
   hepatitisBay: string;
@@ -44,6 +48,32 @@ const MALAYSIA_BOUNDS = {
 
 const DEFAULT_CENTER = [101.6869, 3.139]; // Malaysia center coordinates
 const DEFAULT_ZOOM = 5;
+
+function getSectorLabel(sector?: string) {
+  if (!sector) return null;
+
+  switch (sector) {
+    case "MOH":
+      return "Kerajaan";
+    case "MOH_PRIVATE":
+      return "Kerajaan & Swasta";
+    case "PRIVATE":
+      return "Swasta";
+    default:
+      return sector;
+  }
+}
+
+function getStateName(state: Center["state"]) {
+  if (typeof state !== "string") return state.name;
+
+  try {
+    const parsed = JSON.parse(state);
+    return parsed?.name ?? state;
+  } catch {
+    return state;
+  }
+}
 
 // Move this outside the component
 if (typeof window !== "undefined") {
@@ -493,14 +523,14 @@ export default function MapView({ center }: { center?: [number, number] }) {
     ? selectedCenter.units.split(",")
     : [];
   const title = selectedCenter?.dialysisCenterName?.split(",")[0];
+  const stateName = selectedCenter ? getStateName(selectedCenter.state) : "";
+  const sectorLabel = getSectorLabel(selectedCenter?.sector);
+  const address = selectedCenter?.addressWithUnit || selectedCenter?.address;
 
   const hepatitisArray = getAvailableHepatitisOptions(
     selectedCenter?.hepatitisBay
   );
   const phoneNumbers = selectedCenter ? getCenterPhoneNumbers(selectedCenter) : [];
-  const primaryPhoneNumber = selectedCenter
-    ? getPrimaryCenterPhoneNumber(selectedCenter)
-    : null;
   const treatmentArray = unitsArray.map((unit) => ({
     name: unit,
     value: unit.toLowerCase().includes("hd unit")
@@ -557,32 +587,20 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     </div>
                   )}
                   <h2 className="text-xl font-semibold">{title}</h2>
-                  <div className="flex items-center gap-2">
-                    <p className="text-muted-foreground mb-4">
-                      {selectedCenter?.sector === "MOH" ||
-                      selectedCenter?.sector === "NGO" ? (
-                        selectedCenter?.sector
-                      ) : (
-                        <span className="capitalize">
-                          {selectedCenter?.sector?.toLowerCase() ?? ""}
-                        </span>
-                      )}
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <p className="text-muted-foreground text-sm capitalize">
+                      {selectedCenter.town ? `${selectedCenter.town}, ` : ""}
+                      {stateName}
                     </p>
+                    {sectorLabel && (
+                      <Badge variant="subtle" className="text-xs">
+                        {sectorLabel}
+                      </Badge>
+                    )}
                   </div>
-                  <p className="mt-3 text-zinc-600">
-                    {selectedCenter.addressWithUnit}
-                  </p>
-                  <p className="mt-2 text-zinc-600">
-                    {selectedCenter.town ? selectedCenter.town + ", " : " "}
-                    {JSON.parse(selectedCenter.state)
-                      .name.split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() +
-                          word.slice(1).toLowerCase()
-                      )
-                      .join(" ")}
-                  </p>
+                  {address && (
+                    <p className="mt-4 text-zinc-600">{address}</p>
+                  )}
                   {phoneNumbers.length > 0 && (
                     <div className="mt-3">
                       <p className="text-sm text-zinc-500">Telefon</p>
@@ -591,7 +609,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
                           <a
                             key={phoneNumber}
                             href={`tel:${phoneNumber}`}
-                            className="text-sm text-primary-foreground hover:underline"
+                            className="text-sm text-primary hover:underline"
                           >
                             {phoneNumber}
                           </a>
@@ -644,18 +662,10 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     </Link>
                   )}
 
-                  <div className="flex gap-4 justify-end">
-                    {primaryPhoneNumber && (
-                      <Link href={`tel:${primaryPhoneNumber}`}>
-                        <Button variant="outline" className="px-4">
-                          <Phone className="w-4 h-4 text-foreground" />
-                          Panggil
-                        </Button>
-                      </Link>
-                    )}
+                  <div className="flex flex-wrap gap-2">
                     {selectedCenter.featured ? (
                       <Button
-                        size="lg"
+                        size="sm"
                         className="bg-primary hover:bg-primary/90 flex items-center gap-2"
                         onClick={() => {
                           setLeadCenter({
@@ -672,14 +682,33 @@ export default function MapView({ center }: { center?: [number, number] }) {
                       </Button>
                     ) : null}
 
-                    {selectedCenter.email && (
-                      <Link href={`mailto:${selectedCenter.email}`}>
-                        <Button variant={"outline"} className="px-4">
-                          <Mail className="w-4 h-4 text-foreground" />
-                          Emel
+                    {selectedCenter.latitude && selectedCenter.longitude && (
+                      <Link
+                        href={`https://www.google.com/maps?q=${selectedCenter.latitude},${selectedCenter.longitude}`}
+                        target="_blank"
+                      >
+                        <Button variant="outline" size="sm">
+                          <MapPin className="w-4 h-4 text-foreground" />
+                          Lokasi
                         </Button>
                       </Link>
                     )}
+
+                    <Link
+                      href={`/${selectedCenter.slug}`}
+                      scroll={false}
+                      className="ml-auto"
+                    >
+                      <Button
+                        variant={
+                          selectedCenter.featured ? "default" : "secondary"
+                        }
+                        size="sm"
+                      >
+                        Info Lanjut
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
 
                   {/* <Button
