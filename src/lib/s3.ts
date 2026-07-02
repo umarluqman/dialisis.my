@@ -30,20 +30,23 @@ export interface ImageFile {
   originalName: string;
 }
 
-/**
- * Upload an image to S3
- */
-export async function uploadImageToS3(
-  file: ImageFile,
-  folder: string = "dialysis-centers"
-): Promise<UploadResult> {
+export async function uploadFileToS3({
+  file,
+  folder = "uploads",
+  cacheControl = "private, max-age=0, no-store",
+}: {
+  file: ImageFile;
+  folder?: string;
+  cacheControl?: string;
+}): Promise<UploadResult> {
   const timestamp = Date.now();
   const sanitizedName = file.originalName
     .toLowerCase()
     .replace(/[^a-z0-9.-]/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 
-  const key = `${folder}/${timestamp}-${sanitizedName}`;
+  const key = `${folder}/${timestamp}-${sanitizedName || "file"}`;
 
   try {
     const upload = new Upload({
@@ -53,7 +56,7 @@ export async function uploadImageToS3(
         Key: key,
         Body: file.buffer,
         ContentType: file.mimetype,
-        CacheControl: "max-age=31536000", // Cache for 1 year
+        CacheControl: cacheControl,
         Metadata: {
           originalName: file.originalName,
           uploadedAt: new Date().toISOString(),
@@ -71,8 +74,22 @@ export async function uploadImageToS3(
     };
   } catch (error) {
     console.error("Error uploading to S3:", error);
-    throw new Error("Failed to upload image");
+    throw new Error("Failed to upload file");
   }
+}
+
+/**
+ * Upload an image to S3
+ */
+export async function uploadImageToS3(
+  file: ImageFile,
+  folder: string = "dialysis-centers"
+): Promise<UploadResult> {
+  return uploadFileToS3({
+    file,
+    folder,
+    cacheControl: "max-age=31536000",
+  });
 }
 
 /**
@@ -98,6 +115,13 @@ export async function deleteImageFromS3(key: string): Promise<void> {
 export async function getSignedImageUrl(
   key: string,
   expiresIn: number = 3600 // 1 hour
+): Promise<string> {
+  return getSignedFileUrl(key, expiresIn);
+}
+
+export async function getSignedFileUrl(
+  key: string,
+  expiresIn: number = 3600
 ): Promise<string> {
   try {
     const command = new GetObjectCommand({

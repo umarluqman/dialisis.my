@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { IntakeLeadForm } from "@/components/intake-lead-form";
 import {
   Carousel,
   CarouselContent,
@@ -585,6 +586,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             )}
           </div>
         </div>
+
+        <IntakeLeadForm
+          centerId={center.id}
+          centerName={center.dialysisCenterName}
+          className="mt-16"
+        />
 
         {/* Benefits Section */}
         <div className="mt-16">

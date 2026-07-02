@@ -10,7 +10,10 @@ import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
-import { DialysisCenter, State } from "@/generated/prisma/client";
+import {
+  centerDetailSelect,
+  type CenterDetail,
+} from "@/lib/center-detail-query";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -24,41 +27,15 @@ interface Props {
 
 export const revalidate = 3600;
 
-type CenterWithState = {
-  featured: boolean;
-} & DialysisCenter & {
-    state: Pick<State, "name">;
-    images: Array<{
-      url: string;
-    }>;
-  };
-
-async function getCenter(slug: string): Promise<CenterWithState | null> {
+async function getCenter(slug: string): Promise<CenterDetail | null> {
   const center = await prisma.dialysisCenter.findUnique({
     where: { slug },
-    include: {
-      state: {
-        select: {
-          name: true,
-        },
-      },
-      images: {
-        where: {
-          isActive: true,
-        },
-        select: {
-          url: true,
-        },
-        orderBy: {
-          displayOrder: "asc",
-        },
-      },
-    },
+    select: centerDetailSelect,
   });
 
   if (!center) return null;
 
-  return center as CenterWithState;
+  return center;
 }
 
 function formatLocationName(value: string) {
@@ -77,7 +54,7 @@ function formatLocationName(value: string) {
     .join(" ");
 }
 
-function generateJsonLd(center: CenterWithState): any {
+function generateJsonLd(center: CenterDetail): any {
   const stateName = formatLocationName(center.state.name);
   const townName = formatLocationName(center.town);
   const locationName = townName ? `${townName}, ${stateName}` : stateName;

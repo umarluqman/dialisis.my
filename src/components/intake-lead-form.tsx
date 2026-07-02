@@ -1,0 +1,324 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
+import { CheckCircle2, Loader2, Send, Upload } from "lucide-react";
+import type { FormEvent, ReactNode } from "react";
+import { useMemo, useRef, useState } from "react";
+
+type IntakeLeadFormProps = {
+  centerId: string;
+  centerName: string;
+  className?: string;
+};
+
+type SubmitResult = {
+  leadId: string;
+  whatsappHandoffUrl: string;
+  picNotificationStatus: string;
+  accessExpiresAt: string;
+};
+
+const LAB_RESULT_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/heic",
+  "image/heif",
+];
+
+function getMalaysiaDateString() {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "Asia/Kuala_Lumpur",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+
+  const year = parts.find((part) => part.type === "year")?.value;
+  const month = parts.find((part) => part.type === "month")?.value;
+  const day = parts.find((part) => part.type === "day")?.value;
+
+  return `${year}-${month}-${day}`;
+}
+
+function Field({
+  label,
+  children,
+  required,
+}: {
+  label: string;
+  children: ReactNode;
+  required?: boolean;
+}) {
+  return (
+    <div className="space-y-2">
+      <Label>
+        {label}
+        {required ? <span className="text-destructive"> *</span> : null}
+      </Label>
+      {children}
+    </div>
+  );
+}
+
+export function IntakeLeadForm({
+  centerId,
+  centerName,
+  className,
+}: IntakeLeadFormProps) {
+  const { toast } = useToast();
+  const [preferredSession, setPreferredSession] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
+  const [fileError, setFileError] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const today = useMemo(() => getMalaysiaDateString(), []);
+
+  function validateLabResult(file?: File) {
+    if (!file || file.size === 0) {
+      setFileError("");
+      return true;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError("Saiz fail maksimum 10MB.");
+      return false;
+    }
+
+    if (!LAB_RESULT_TYPES.includes(file.type)) {
+      setFileError("Muat naik PDF atau imej sahaja.");
+      return false;
+    }
+
+    setFileError("");
+    return true;
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const labResult = fileInputRef.current?.files?.[0];
+
+    if (!validateLabResult(labResult)) return;
+
+    try {
+      setIsSubmitting(true);
+      setSubmitResult(null);
+
+      const formData = new FormData(form);
+      formData.set("centerId", centerId);
+      formData.set("preferredSession", preferredSession);
+      formData.set("consent", consent ? "true" : "");
+
+      const response = await fetch("/api/intake-leads", {
+        method: "POST",
+        body: formData,
+      });
+
+      const payload = await response.json();
+
+      if (!response.ok) {
+        throw new Error(payload.error || "Permohonan gagal dihantar");
+      }
+
+      setSubmitResult(payload);
+      toast({
+        title: "Permohonan direkodkan",
+        description: "Pusat akan dimaklumkan melalui email. Anda juga boleh terus WhatsApp pusat.",
+      });
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: "Ralat",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Permohonan gagal dihantar.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  return (
+    <section
+      className={cn("border-t border-border pt-8", className)}
+      data-ga-context="intake_lead_form"
+      data-center-id={centerId}
+      data-center-name={centerName}
+    >
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold">Borang temujanji dialisis</h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Lengkapkan maklumat untuk dihantar kepada pusat dialisis.
+        </p>
+      </div>
+
+      <form
+        id={`intake-lead-form-${centerId}`}
+        data-ga-start-event="lead_form_start"
+        data-ga-submit-event="lead_form_submit"
+        className="space-y-8"
+        onSubmit={handleSubmit}
+      >
+        <input type="hidden" name="centerId" value={centerId} />
+        <input
+          className="hidden"
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <Field label="Nama penuh" required>
+            <Input name="fullName" required minLength={2} maxLength={120} />
+          </Field>
+          <Field label="No kad pengenalan (MyKad)" required>
+            <Input
+              name="myKadNumber"
+              required
+              inputMode="numeric"
+              pattern="[0-9-]{12,14}"
+              placeholder="900101-01-1234"
+            />
+          </Field>
+        </div>
+
+        <Field label="Alamat penuh" required>
+          <Textarea
+            name="homeAddress"
+            required
+            minLength={10}
+            maxLength={1000}
+            className="min-h-28"
+          />
+        </Field>
+
+        <div className="grid gap-4 md:grid-cols-3">
+          <Field label="Tarikh pilihan" required>
+            <Input name="preferredDate" type="date" min={today} required />
+          </Field>
+          <Field label="Sesi" required>
+            <Select
+              required
+              value={preferredSession}
+              onValueChange={setPreferredSession}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Pilih sesi" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="Pagi">Pagi</SelectItem>
+                <SelectItem value="Tengah hari">Tengah hari</SelectItem>
+                <SelectItem value="Petang">Petang</SelectItem>
+                <SelectItem value="Malam">Malam</SelectItem>
+                <SelectItem value="Fleksibel">Fleksibel</SelectItem>
+              </SelectContent>
+            </Select>
+          </Field>
+          <Field label="No telefon" required>
+            <Input
+              name="phoneNumber"
+              required
+              inputMode="tel"
+              autoComplete="tel"
+              placeholder="012-345 6789"
+            />
+          </Field>
+        </div>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          <Field label="Muatnaik keputusan makmal">
+            <div className="relative">
+              <Input
+                ref={fileInputRef}
+                name="labResult"
+                type="file"
+                accept=".pdf,image/jpeg,image/png,image/webp,image/heic,image/heif"
+                className="h-11 cursor-pointer pr-10 file:mr-3"
+                onChange={(event) =>
+                  validateLabResult(event.currentTarget.files?.[0])
+                }
+              />
+              <Upload className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            </div>
+            {fileError ? (
+              <p className="text-sm text-destructive">{fileError}</p>
+            ) : null}
+          </Field>
+          <Field label="Catatan tambahan">
+            <Textarea name="additionalNotes" maxLength={1000} />
+          </Field>
+        </div>
+
+        <label className="flex items-start gap-3 text-sm">
+          <Checkbox
+            checked={consent}
+            onCheckedChange={(value) => setConsent(value === true)}
+            className="mt-0.5"
+          />
+          <span>
+            Saya bersetuju maklumat ini dihantar kepada pusat dialisis yang
+            dipilih untuk tujuan temujanji dan susulan rawatan.
+          </span>
+        </label>
+
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button
+            type="submit"
+            disabled={isSubmitting || !consent || !preferredSession || !!fileError}
+            className="w-full sm:w-auto"
+          >
+            {isSubmitting ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Menyediakan...
+              </>
+            ) : (
+              <>
+                <Send className="h-4 w-4" />
+                Hantar permohonan
+              </>
+            )}
+          </Button>
+
+          {submitResult ? (
+            <Button variant="featured" className="w-full sm:w-auto" asChild>
+              <a
+                href={submitResult.whatsappHandoffUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CheckCircle2 className="h-4 w-4" />
+                Hantar ke WhatsApp pusat
+              </a>
+            </Button>
+          ) : null}
+        </div>
+
+        {submitResult?.picNotificationStatus === "sent" ? (
+          <p className="text-sm text-muted-foreground">
+            Pusat telah dimaklumkan melalui email.
+          </p>
+        ) : null}
+      </form>
+    </section>
+  );
+}

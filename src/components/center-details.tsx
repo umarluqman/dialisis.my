@@ -1,14 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { DialysisCenter, State } from "@/generated/prisma/client";
+import { IntakeLeadForm } from "@/components/intake-lead-form";
+import type { CenterDetail } from "@/lib/center-detail-query";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 interface Props {
-  center: DialysisCenter & {
-    state: Pick<State, "name">;
-  };
+  center: CenterDetail;
   isModal?: boolean;
 }
 
@@ -225,6 +224,14 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
           </Button>
         </div>
       )} */}
+
+      {!isModal && (
+        <IntakeLeadForm
+          centerId={center.id}
+          centerName={center.dialysisCenterName}
+          className="mt-12"
+        />
+      )}
     </div>
   );
 }

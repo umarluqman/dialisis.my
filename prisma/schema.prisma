@@ -43,6 +43,12 @@ model DialysisCenter {
   updatedAt         DateTime @updatedAt
   town              String   @default("")
   featured          Boolean  @default(false)
+  whatsappPicName              String?
+  whatsappPicPhoneNumber       String?
+  whatsappPicOptedInAt         DateTime?
+  whatsappTemplateName         String?
+  whatsappTemplateLanguageCode String? @default("ms")
+  intakeLeads                  IntakeLead[]
 
   @@index([sector])
   @@index([title])
@@ -93,4 +99,38 @@ model Contact {
 
   @@index([email])
   @@index([ipAddress])
+}
+
+model IntakeLead {
+  id                       String         @id @default(cuid())
+  dialysisCenter           DialysisCenter @relation(fields: [dialysisCenterId], references: [id], onDelete: Cascade)
+  dialysisCenterId         String
+  fullName                 String
+  myKadNumber              String
+  homeAddress              String
+  preferredDate            DateTime
+  preferredSession         String
+  phoneNumber              String
+  labResultUrl             String?
+  labResultS3Key           String?
+  labResultOriginalName    String?
+  additionalNotes          String?
+  consentAt                DateTime
+  ipAddress                String
+  userAgent                String?
+  whatsappHandoffUrl       String
+  picNotificationStatus    String         @default("skipped")
+  picNotificationMessageId String?
+  picNotificationError     String?
+  accessToken              String         @unique
+  accessExpiresAt          DateTime
+  viewedAt                 DateTime?
+  createdAt                DateTime       @default(now())
+  updatedAt                DateTime       @updatedAt
+
+  @@index([dialysisCenterId])
+  @@index([phoneNumber])
+  @@index([myKadNumber])
+  @@index([preferredDate])
+  @@index([createdAt])
 }

@@ -46,16 +46,28 @@ export function getPrimaryCenterPhoneNumber(
   return getCenterPhoneNumbers(phoneFields)[0] ?? null;
 }
 
-export function buildWhatsAppUrl(phoneNumber: string, text?: string): string {
+export function normalizeMalaysiaPhoneNumber(phoneNumber: string): string {
   const digitsOnly = phoneNumber.replace(/[^\d]/g, "");
   if (!digitsOnly) return "";
 
-  const normalizedPhoneNumber = digitsOnly.startsWith("60")
+  return digitsOnly.startsWith("60")
     ? digitsOnly
     : digitsOnly.startsWith("0")
     ? `6${digitsOnly}`
     : digitsOnly;
+}
+
+export function buildWhatsAppUrl(phoneNumber: string, text?: string): string {
+  const normalizedPhoneNumber = normalizeMalaysiaPhoneNumber(phoneNumber);
+  if (!normalizedPhoneNumber) return "";
 
   const baseUrl = `https://wa.me/${normalizedPhoneNumber}`;
   return text ? `${baseUrl}?text=${text}` : baseUrl;
+}
+
+export function buildWhatsAppUrlWithMessage(
+  phoneNumber: string,
+  message: string
+): string {
+  return buildWhatsAppUrl(phoneNumber, encodeURIComponent(message));
 }
