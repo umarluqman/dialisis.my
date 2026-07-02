@@ -62,7 +62,7 @@ export default async function DialysisCenterModal({ params }: Props) {
 
   return (
     <ModalDialog>
-      <DialysisCenterDetails center={center} isModal />
+      <DialysisCenterDetails center={center} />
     </ModalDialog>
   );
 }
