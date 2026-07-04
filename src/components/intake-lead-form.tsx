@@ -281,7 +281,9 @@ export function IntakeLeadForm({
           />
           <span>
             Saya bersetuju maklumat ini dihantar kepada pusat dialisis yang
-            dipilih untuk tujuan temujanji dan susulan rawatan.
+            dipilih untuk tujuan temujanji dan susulan rawatan. Saya faham
+            deposit RM50 diperlukan selepas borang dihantar untuk mengesahkan
+            slot, dan deposit ini akan ditolak daripada bayaran rawatan.
           </span>
         </label>
 
