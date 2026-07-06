@@ -16,6 +16,7 @@ import {
   getPrimaryCenterPhoneNumber,
 } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import {
   CalendarPlus,
   Car,
@@ -217,18 +218,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const extraDetails = getCenterExtraDetails(center.benefits);
-  const treatmentArray = center.units
-    ? center.units.split(", ").map((unit) => ({
-        name: unit,
-        value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
-          : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
-          : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
-      }))
-    : [];
+  const treatmentArray = getTreatmentBadges(center.units);
 
   return (
     <>

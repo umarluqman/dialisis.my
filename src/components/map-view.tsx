@@ -15,6 +15,7 @@ import { Drawer } from "vaul";
 import { IntakeLeadDialog } from "@/components/intake-lead-dialog";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -519,9 +520,6 @@ export default function MapView({ center }: { center?: [number, number] }) {
     };
   }, [center]);
 
-  const unitsArray = selectedCenter?.units
-    ? selectedCenter.units.split(",")
-    : [];
   const title = selectedCenter?.dialysisCenterName?.split(",")[0];
   const stateName = selectedCenter ? getStateName(selectedCenter.state) : "";
   const sectorLabel = getSectorLabel(selectedCenter?.sector);
@@ -531,16 +529,9 @@ export default function MapView({ center }: { center?: [number, number] }) {
     selectedCenter?.hepatitisBay
   );
   const phoneNumbers = selectedCenter ? getCenterPhoneNumbers(selectedCenter) : [];
-  const treatmentArray = unitsArray.map((unit) => ({
-    name: unit,
-    value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialisis"
-      : unit.toLowerCase().includes("tx unit")
-      ? "Transplant"
-      : unit.toLowerCase().includes("mrrb unit")
-      ? "MRRB"
-      : "Peritoneal Dialisis",
-  }));
+  const treatmentArray = selectedCenter
+    ? getTreatmentBadges(selectedCenter.units)
+    : [];
 
   return (
     <>

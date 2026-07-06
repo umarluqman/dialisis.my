@@ -1,6 +1,4 @@
-/**
- * Utility functions for internal linking system
- */
+import { getCenterUnits } from "./treatment-units";
 
 const TREATMENT_ANCHOR_MAP: Record<string, Record<string, string>> = {
   hd: { ms: "hemodialisis", en: "hemodialysis" },
@@ -8,14 +6,9 @@ const TREATMENT_ANCHOR_MAP: Record<string, Record<string, string>> = {
   tx: { ms: "transplant buah pinggang", en: "kidney transplant" },
 };
 
-/**
- * Parse treatment types from units string (e.g., "HD Unit, PD Unit")
- */
 export function parseTreatmentTypes(units: string | null): string[] {
-  if (!units) return [];
-
   const types: string[] = [];
-  const lowerUnits = units.toLowerCase();
+  const lowerUnits = getCenterUnits(units).toLowerCase();
 
   if (lowerUnits.includes("hd")) types.push("hd");
   if (lowerUnits.includes("pd")) types.push("pd");

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { getDbStateName } from "./location-utils";
+import { buildTreatmentUnitsWhere } from "./treatment-units";
 
 export interface LocationCenterData {
   centers: any[];
@@ -233,7 +234,7 @@ export async function getLocationStats(stateName: string, cityName?: string) {
         where: { ...baseWhere, sector: { equals: "PRIVATE" } },
       }),
       prisma.dialysisCenter.count({
-        where: { ...baseWhere, units: { contains: "HD Unit" } },
+        where: { AND: [baseWhere, buildTreatmentUnitsWhere("hemodialisis")!] },
       }),
       prisma.dialysisCenter.count({
         where: { ...baseWhere, units: { contains: "PD Unit" } },

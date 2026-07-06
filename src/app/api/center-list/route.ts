@@ -1,17 +1,10 @@
 import { prisma } from "@/lib/db";
 import type { Prisma } from "@/generated/prisma/client";
+import { buildTreatmentUnitsWhere } from "@/lib/treatment-units";
 import { NextRequest, NextResponse } from "next/server";
 
 const ITEMS_PER_PAGE = 20;
 const MAX_SEARCH_TOKENS = 6;
-
-// Map treatment params to DB unit values
-const TREATMENT_TO_UNIT_MAP = {
-  hemodialisis: "HD unit",
-  MRRB: "MRRB unit",
-  transplant: "TX Unit",
-  "peritoneal dialisis": "PD Unit",
-} as const;
 
 function getSearchTokens(rawValue?: string | null) {
   if (!rawValue) return [];
@@ -116,12 +109,10 @@ export async function GET(request: NextRequest) {
     };
 
     if (treatment) {
-      const unitValue =
-        TREATMENT_TO_UNIT_MAP[treatment as keyof typeof TREATMENT_TO_UNIT_MAP];
-      if (unitValue) {
-        where.units = {
-          contains: unitValue,
-        };
+      const treatmentWhere = buildTreatmentUnitsWhere(treatment);
+
+      if (treatmentWhere) {
+        Object.assign(where, treatmentWhere);
       }
     }
 

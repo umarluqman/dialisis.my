@@ -10,6 +10,7 @@ import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
+import { getCenterUnitList, getCenterUnits } from "@/lib/treatment-units";
 import {
   centerDetailSelect,
   type CenterDetail,
@@ -62,13 +63,14 @@ function generateJsonLd(center: CenterDetail): any {
   const phoneNumbers = getCenterPhoneNumbers(center);
   const imageUrls = center.images.map((image) => image.url).filter(Boolean);
   const hepatitisOptions = getAvailableHepatitisOptions(center.hepatitisBay);
+  const units = getCenterUnits(center.units);
 
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "@id": `https://dialisis.my/${center.slug}`,
     name: centerName,
-    description: `Pusat dialisis ${centerName} di ${locationName}. Menyediakan perkhidmatan ${center.units}.`,
+    description: `Pusat dialisis ${centerName} di ${locationName}. Menyediakan perkhidmatan ${units}.`,
     url: `https://dialisis.my/${center.slug}`,
     image:
       imageUrls.length > 0
@@ -98,7 +100,7 @@ function generateJsonLd(center: CenterDetail): any {
           }
         : undefined,
     medicalSpecialty: ["Nephrology", "Dialysis"],
-    availableService: center.units?.split(",").map((unit: string) => ({
+    availableService: getCenterUnitList(center.units).map((unit: string) => ({
       "@type": "MedicalProcedure",
       name: unit.trim(),
       procedureType: unit.toLowerCase().includes("hd")
@@ -168,13 +170,15 @@ export const generateMetadata = async ({ params }: Props) => {
   const centerName =
     center.dialysisCenterName.split(",")[0].trim() || formatLocationName(center.slug);
 
-  const services = center.units
-    ? center.units.toLowerCase().includes("hd") &&
-      center.units.toLowerCase().includes("pd")
+  const units = getCenterUnits(center.units);
+  const lowerUnits = units.toLowerCase();
+  const services = units
+    ? lowerUnits.includes("hd") &&
+      lowerUnits.includes("pd")
       ? "Hemodialisis dan Peritoneal Dialisis"
-      : center.units.toLowerCase().includes("hd")
+      : lowerUnits.includes("hd")
       ? "Hemodialisis"
-      : center.units.toLowerCase().includes("pd")
+      : lowerUnits.includes("pd")
       ? "Peritoneal Dialisis"
       : "Perkhidmatan Dialisis"
     : "Perkhidmatan Dialisis";

@@ -2,6 +2,7 @@ import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
 import { getDbStateName } from "@/lib/location-utils";
+import { buildTreatmentUnitsWhere } from "@/lib/treatment-units";
 import type { Prisma } from "@/generated/prisma/client";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { Metadata } from "next";
@@ -112,13 +113,6 @@ async function getInitialCenters(
   const take = 12;
   const skip = (page - 1) * take;
 
-  const treatmentMap = {
-    hemodialisis: "HD Unit",
-    transplant: "TX Unit",
-    mrrb: "MRRB Unit",
-    "peritoneal dialisis": "PD Unit",
-  };
-
   const andConditions: Prisma.DialysisCenterWhereInput[] = [
     ...(city
       ? [
@@ -155,11 +149,7 @@ async function getInitialCenters(
         },
       },
     }),
-    ...(treatment && {
-      units: {
-        contains: treatmentMap[treatment as keyof typeof treatmentMap],
-      },
-    }),
+    ...(buildTreatmentUnitsWhere(treatment) ?? {}),
     ...(hepatitis &&
       hepatitis !== "tiada hepatitis" && {
         hepatitisBay: {

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { CenterDetail } from "@/lib/center-detail-query";
 import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 
@@ -10,7 +11,6 @@ interface Props {
 }
 
 export function DialysisCenterDetails({ center }: Props) {
-  // const units = center.units.split(",").filter(Boolean);
   const stateName = center.state.name
     .replace(/-/g, " ")
     .split(" ")
@@ -21,18 +21,7 @@ export function DialysisCenterDetails({ center }: Props) {
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const phoneNumbers = getCenterPhoneNumbers(center);
   const hasCoordinates = center.latitude != null && center.longitude != null;
-  const treatmentArray = center.units
-    ? center.units.split(", ").map((unit) => ({
-        name: unit,
-        value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
-          : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
-          : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
-      }))
-    : [];
+  const treatmentArray = getTreatmentBadges(center.units);
 
   return (
     <div

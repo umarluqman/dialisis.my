@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useCenterImages } from "@/hooks/use-center-images";
 import { getPrimaryCenterPhoneNumber } from "@/lib/center-phone-numbers";
 import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import { ArrowRight, CalendarPlus, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { CenterCardGallery } from "./center-card-gallery";
@@ -75,22 +76,10 @@ export function CenterCard({
   longitude,
   photos,
 }: CenterCardProps) {
-  const unitsArray = units ? units.split(",") : [];
   const title = dialysisCenterName?.split(",")[0];
 
   const hepatitisArray = getAvailableHepatitisOptions(hepatitisBay);
-  const treatmentArray = unitsArray
-    .map((unit) => ({
-      name: unit,
-      value: unit.toLowerCase().includes("hd unit")
-        ? "Hemodialisis"
-        : unit.toLowerCase().includes("tx unit")
-        ? "Transplant"
-        : unit.toLowerCase().includes("mrrb unit")
-        ? "MRRB"
-        : "Peritoneal Dialisis",
-    }))
-    .slice(0, 2);
+  const treatmentArray = getTreatmentBadges(units).slice(0, 2);
 
   const isFeatured = featured;
   const primaryPhoneNumber = getPrimaryCenterPhoneNumber({ phoneNumber, tel });
