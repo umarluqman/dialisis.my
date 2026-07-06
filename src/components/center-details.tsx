@@ -21,6 +21,11 @@ export function DialysisCenterDetails({ center }: Props) {
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const phoneNumbers = getCenterPhoneNumbers(center);
   const hasCoordinates = center.latitude != null && center.longitude != null;
+  const googleMapsHref = hasCoordinates
+    ? `https://www.google.com/maps?q=${center.latitude},${center.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        center.addressWithUnit || center.address || center.dialysisCenterName
+      )}`;
   const treatmentArray = getTreatmentBadges(center.units);
 
   return (
@@ -63,9 +68,7 @@ export function DialysisCenterDetails({ center }: Props) {
             )}
             <Button variant="outline" size="sm" asChild>
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  center.addressWithUnit
-                )}`}
+                href={googleMapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"

@@ -215,6 +215,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
   const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
   const phoneNumbers = getCenterPhoneNumbers(center);
   const primaryPhoneNumber = getPrimaryCenterPhoneNumber(center);
+  const hasCoordinates = center.latitude != null && center.longitude != null;
+  const googleMapsHref = hasCoordinates
+    ? `https://www.google.com/maps?q=${center.latitude},${center.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        center.addressWithUnit || center.address || center.dialysisCenterName
+      )}`;
 
   const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
   const extraDetails = getCenterExtraDetails(center.benefits);
@@ -401,26 +407,26 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   </div>
                 </div>
                 <div className="flex gap-2 mt-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                    asChild
-                  >
-                    <a
-                      href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {hasCoordinates && (
+                    <Button
+                      variant="outline"
+                      size="sm"
                       className="flex items-center gap-2"
+                      asChild
                     >
-                      Waze <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
+                      <a
+                        href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        Waze <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
                   <Button variant="outline" size="sm" asChild>
                     <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        center.addressWithUnit
-                      )}`}
+                      href={googleMapsHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
@@ -558,7 +564,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
           {/* Map Section */}
           <div className="h-96 md:h-full min-h-[400px] bg-gray-100 rounded-lg overflow-hidden">
-            {center.latitude && center.longitude && (
+            {hasCoordinates && (
               <div className="h-full w-full">
                 <SingleCenterMap
                   center={
