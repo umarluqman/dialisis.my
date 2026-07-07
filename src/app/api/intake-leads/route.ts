@@ -1,6 +1,9 @@
-import { buildWhatsAppUrlWithMessage, getPrimaryCenterPhoneNumber } from "@/lib/center-phone-numbers";
+import { buildWhatsAppUrlWithMessage } from "@/lib/center-phone-numbers";
 import { sendEmail } from "@/lib/email";
-import { createIntakeLeadEmail } from "@/lib/intake-lead-email";
+import {
+  createIntakeLeadEmail,
+  createPicWhatsAppMessage,
+} from "@/lib/intake-lead-email";
 import { prisma } from "@/lib/db";
 import { uploadFileToS3 } from "@/lib/s3";
 import { randomBytes } from "crypto";
@@ -92,10 +95,6 @@ function getBaseUrl(request: NextRequest) {
   return host ? `${proto}://${host}` : "https://dialisis.my";
 }
 
-function formatMyKad(myKadNumber: string) {
-  return myKadNumber.replace(/^(\d{6})(\d{2})(\d{4})$/, "$1-$2-$3");
-}
-
 function formatDateForMessage(dateValue: string) {
   const [year, month, day] = dateValue.split("-");
   return `${day}/${month}/${year}`;
@@ -104,43 +103,6 @@ function formatDateForMessage(dateValue: string) {
 function normalizeEmail(email: string | null | undefined) {
   const value = email?.trim().toLowerCase();
   return value && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? value : null;
-}
-
-function buildPatientHandoffMessage({
-  centerName,
-  leadId,
-  leadUrl,
-  values,
-  hasLabResult,
-}: {
-  centerName: string;
-  leadId: string;
-  leadUrl: string;
-  values: z.infer<typeof intakeLeadSchema>;
-  hasLabResult: boolean;
-}) {
-  return [
-    "Assalamualaikum/Salam sejahtera.",
-    "",
-    "Saya ingin membuat permohonan/temujanji dialisis melalui Dialisis.my.",
-    "",
-    `Pusat: ${centerName}`,
-    `Nama penuh: ${values.fullName}`,
-    `No. MyKad: ${formatMyKad(values.myKadNumber)}`,
-    `Alamat kediaman: ${values.homeAddress}`,
-    `Tarikh pilihan: ${formatDateForMessage(values.preferredDate)}`,
-    `Sesi: ${values.preferredSession}`,
-    `No. telefon: ${values.phoneNumber}`,
-    `Keputusan makmal: ${hasLabResult ? "Dimuat naik" : "Tiada"}`,
-    values.additionalNotes ? `Catatan: ${values.additionalNotes}` : null,
-    "",
-    `Rekod rujukan: ${leadUrl}`,
-    `ID permohonan: ${leadId}`,
-    "",
-    "Terima kasih.",
-  ]
-    .filter(Boolean)
-    .join("\n");
 }
 
 function isFileUpload(value: FormDataEntryValue | null): value is File {
@@ -187,7 +149,13 @@ async function uploadLabResult(
   };
 }
 
-async function getLeadNotificationEmails(centerId: string, centerEmail?: string | null) {
+async function getLeadNotificationEmails(
+  centerId: string,
+  centerEmail?: string | null
+) {
+  const defaultEmail = normalizeEmail(centerEmail);
+  if (defaultEmail) return [defaultEmail];
+
   try {
     const assignedUsers = await prisma.$queryRaw<{ email: string | null }[]>`
       SELECT DISTINCT "user"."email"
@@ -205,8 +173,7 @@ async function getLeadNotificationEmails(centerId: string, centerEmail?: string 
     console.warn("Unable to load assigned PIC emails:", error);
   }
 
-  const fallbackEmail = normalizeEmail(centerEmail);
-  return fallbackEmail ? [fallbackEmail] : [];
+  return [];
 }
 
 export async function POST(request: NextRequest) {
@@ -231,10 +198,6 @@ export async function POST(request: NextRequest) {
         id: true,
         dialysisCenterName: true,
         email: true,
-        phoneNumber: true,
-        tel: true,
-        whatsappPicName: true,
-        whatsappPicPhoneNumber: true,
       },
     });
 
@@ -248,15 +211,6 @@ export async function POST(request: NextRequest) {
     const accessToken = randomBytes(32).toString("hex");
     const accessExpiresAt = new Date(Date.now() + 48 * 60 * 60 * 1000);
     const leadUrl = `${getBaseUrl(request)}/intake-leads/${accessToken}`;
-    const handoffTarget =
-      center.whatsappPicPhoneNumber || getPrimaryCenterPhoneNumber(center);
-
-    if (!handoffTarget) {
-      return NextResponse.json(
-        { error: "Nombor WhatsApp pusat belum tersedia" },
-        { status: 400 }
-      );
-    }
 
     const labResult = await uploadLabResult(formData, center.id, accessToken);
 
@@ -283,21 +237,25 @@ export async function POST(request: NextRequest) {
     });
 
     const whatsappHandoffUrl = buildWhatsAppUrlWithMessage(
-      handoffTarget,
-      buildPatientHandoffMessage({
+      values.phoneNumber,
+      createPicWhatsAppMessage({
         centerName: center.dialysisCenterName,
-        leadId: lead.id,
-        leadUrl,
-        values,
-        hasLabResult: !!labResult,
+        fullName: values.fullName,
       })
     );
 
     let notificationResult:
       | { status: "sent"; messageId: string | null; error?: never }
-      | { status: "skipped_no_email" | "failed"; messageId?: never; error: string };
+      | {
+          status: "skipped_no_email" | "failed";
+          messageId?: never;
+          error: string;
+        };
 
-    const notificationEmails = await getLeadNotificationEmails(center.id, center.email);
+    const notificationEmails = await getLeadNotificationEmails(
+      center.id,
+      center.email
+    );
 
     if (notificationEmails.length === 0) {
       notificationResult = {

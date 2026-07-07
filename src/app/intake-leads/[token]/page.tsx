@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { buildWhatsAppUrlWithMessage } from "@/lib/center-phone-numbers";
 import { prisma } from "@/lib/db";
+import { createPicWhatsAppMessage } from "@/lib/intake-lead-email";
 import { getSignedFileUrl } from "@/lib/s3";
 import { Download, Phone } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -104,7 +105,10 @@ export default async function IntakeLeadPage({ params }: Props) {
   const labResultUrl = await getLabResultUrl(lead);
   const patientWhatsAppUrl = buildWhatsAppUrlWithMessage(
     lead.phoneNumber,
-    `Assalamualaikum/Salam sejahtera ${lead.fullName}, kami daripada ${lead.dialysisCenter.dialysisCenterName} telah menerima permohonan temujanji dialisis anda melalui Dialisis.my.`
+    createPicWhatsAppMessage({
+      centerName: lead.dialysisCenter.dialysisCenterName,
+      fullName: lead.fullName,
+    })
   );
 
   return (

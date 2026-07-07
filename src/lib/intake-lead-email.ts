@@ -13,6 +13,16 @@ type IntakeLeadEmailInput = {
   additionalNotes?: string | null;
 };
 
+export function createPicWhatsAppMessage({
+  centerName,
+  fullName,
+}: {
+  centerName: string;
+  fullName: string;
+}) {
+  return `Assalamualaikum/Salam sejahtera ${fullName}, kami dari pihak ${centerName} telah menerima butiran anda daripada Dialisis.my untuk susulan temujanji dialisis.`;
+}
+
 function escapeHtml(value: string) {
   return value
     .replace(/&/g, "&amp;")

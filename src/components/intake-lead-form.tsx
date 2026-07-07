@@ -14,7 +14,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { CheckCircle2, Loader2, Send, Upload } from "lucide-react";
+import { Loader2, Send, Upload } from "lucide-react";
 import type { FormEvent, ReactNode } from "react";
 import { useMemo, useRef, useState } from "react";
 
@@ -26,10 +26,7 @@ type IntakeLeadFormProps = {
 };
 
 type SubmitResult = {
-  leadId: string;
-  whatsappHandoffUrl: string;
   picNotificationStatus: string;
-  accessExpiresAt: string;
 };
 
 const LAB_RESULT_TYPES = [
@@ -142,16 +139,15 @@ export function IntakeLeadForm({
       setSubmitResult(payload);
       toast({
         title: "Permohonan direkodkan",
-        description: "Pusat akan dimaklumkan melalui email. Anda juga boleh terus WhatsApp pusat.",
+        description:
+          "Pusat akan dimaklumkan melalui email untuk susulan.",
       });
     } catch (error) {
       toast({
         variant: "destructive",
         title: "Ralat",
         description:
-          error instanceof Error
-            ? error.message
-            : "Permohonan gagal dihantar.",
+          error instanceof Error ? error.message : "Permohonan gagal dihantar.",
       });
     } finally {
       setIsSubmitting(false);
@@ -250,7 +246,7 @@ export function IntakeLeadForm({
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <Field label="Muatnaik keputusan makmal">
+          <Field label="Muatnaik keputusan makmal atau gambar berkaitan rawatan">
             <div className="relative">
               <Input
                 ref={fileInputRef}
@@ -290,7 +286,9 @@ export function IntakeLeadForm({
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button
             type="submit"
-            disabled={isSubmitting || !consent || !preferredSession || !!fileError}
+            disabled={
+              isSubmitting || !consent || !preferredSession || !!fileError
+            }
             className="w-full sm:w-auto"
           >
             {isSubmitting ? (
@@ -305,19 +303,6 @@ export function IntakeLeadForm({
               </>
             )}
           </Button>
-
-          {submitResult ? (
-            <Button variant="featured" className="w-full sm:w-auto" asChild>
-              <a
-                href={submitResult.whatsappHandoffUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CheckCircle2 className="h-4 w-4" />
-                Hantar ke WhatsApp pusat
-              </a>
-            </Button>
-          ) : null}
         </div>
 
         {submitResult?.picNotificationStatus === "sent" ? (
