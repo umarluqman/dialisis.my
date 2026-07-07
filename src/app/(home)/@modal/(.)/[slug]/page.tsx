@@ -1,4 +1,5 @@
 import { DialysisCenterDetails } from "@/components/center-details";
+import { IntakeLeadForm } from "@/components/intake-lead-form";
 import { centerDetailSelect } from "@/lib/center-detail-query";
 import { prisma } from "@/lib/db";
 import { Metadata } from "next";
@@ -63,6 +64,11 @@ export default async function DialysisCenterModal({ params }: Props) {
   return (
     <ModalDialog>
       <DialysisCenterDetails center={center} />
+      <IntakeLeadForm
+        centerId={center.id}
+        centerName={center.dialysisCenterName}
+        className="mt-8"
+      />
     </ModalDialog>
   );
 }

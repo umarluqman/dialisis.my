@@ -4,6 +4,7 @@ import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
+import { Toaster } from "@/components/ui/toaster";
 import { jsonLdGlobal } from "@/lib/json-ld";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -140,6 +141,7 @@ export default function RootLayout({
       >
         <GaEventTracker />
         <OnlineStatusHandler />
+        <Toaster />
         <NuqsAdapter>
           <Navbar />
           <main className="flex-grow">{children}</main>

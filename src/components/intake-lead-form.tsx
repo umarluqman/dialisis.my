@@ -1,20 +1,12 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { Loader2, Send, Upload } from "lucide-react";
+import { CheckCircle2, Loader2, Send, Upload } from "lucide-react";
 import type { FormEvent, ReactNode } from "react";
 import { useMemo, useRef, useState } from "react";
 
@@ -26,6 +18,7 @@ type IntakeLeadFormProps = {
 };
 
 type SubmitResult = {
+  leadId: string;
   picNotificationStatus: string;
 };
 
@@ -136,11 +129,14 @@ export function IntakeLeadForm({
         throw new Error(payload.error || "Permohonan gagal dihantar");
       }
 
-      setSubmitResult(payload);
+      const result = payload as SubmitResult;
+      setSubmitResult(result);
       toast({
         title: "Permohonan direkodkan",
         description:
-          "Pusat akan dimaklumkan melalui email untuk susulan.",
+          result.picNotificationStatus === "sent"
+            ? "Pusat telah dimaklumkan melalui email untuk susulan."
+            : "Permohonan telah disimpan untuk susulan.",
       });
     } catch (error) {
       toast({
@@ -217,22 +213,22 @@ export function IntakeLeadForm({
             <Input name="preferredDate" type="date" min={today} required />
           </Field>
           <Field label="Sesi" required>
-            <Select
+            <select
+              name="preferredSession"
               required
               value={preferredSession}
-              onValueChange={setPreferredSession}
+              onChange={(event) => setPreferredSession(event.target.value)}
+              className="flex h-9 w-full rounded-none border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
             >
-              <SelectTrigger>
-                <SelectValue placeholder="Pilih sesi" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Pagi">Pagi</SelectItem>
-                <SelectItem value="Tengah hari">Tengah hari</SelectItem>
-                <SelectItem value="Petang">Petang</SelectItem>
-                <SelectItem value="Malam">Malam</SelectItem>
-                <SelectItem value="Fleksibel">Fleksibel</SelectItem>
-              </SelectContent>
-            </Select>
+              <option value="" disabled>
+                Pilih sesi
+              </option>
+              <option value="Pagi">Pagi</option>
+              <option value="Tengah hari">Tengah hari</option>
+              <option value="Petang">Petang</option>
+              <option value="Malam">Malam</option>
+              <option value="Fleksibel">Fleksibel</option>
+            </select>
           </Field>
           <Field label="No telefon" required>
             <Input
@@ -270,10 +266,11 @@ export function IntakeLeadForm({
         </div>
 
         <label className="flex items-start gap-3 text-sm">
-          <Checkbox
+          <input
+            type="checkbox"
             checked={consent}
-            onCheckedChange={(value) => setConsent(value === true)}
-            className="mt-0.5"
+            onChange={(event) => setConsent(event.target.checked)}
+            className="mt-0.5 h-4 w-4 flex-shrink-0 rounded-sm border border-primary accent-primary"
           />
           <span>
             Saya bersetuju maklumat ini dihantar kepada pusat dialisis yang
@@ -305,10 +302,23 @@ export function IntakeLeadForm({
           </Button>
         </div>
 
-        {submitResult?.picNotificationStatus === "sent" ? (
-          <p className="text-sm text-muted-foreground">
-            Pusat telah dimaklumkan melalui email.
-          </p>
+        {submitResult ? (
+          <div
+            role="status"
+            className="flex gap-3 rounded-lg border border-primary/20 bg-primary/5 p-4 text-sm"
+          >
+            <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+            <div className="space-y-1">
+              <p className="font-medium text-foreground">
+                Permohonan berjaya direkodkan.
+              </p>
+              <p className="text-muted-foreground">
+                {submitResult.picNotificationStatus === "sent"
+                  ? "Pusat telah dimaklumkan melalui email."
+                  : "Permohonan telah disimpan untuk susulan."}
+              </p>
+            </div>
+          </div>
         ) : null}
       </form>
     </section>

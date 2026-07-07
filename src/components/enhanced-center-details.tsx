@@ -611,7 +611,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         data-center-name={center.dialysisCenterName}
         data-center-town={center.town}
         data-center-state={stateName}
-        className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-40"
+        className="fixed bottom-0 left-0 right-0 z-40 hidden border-t bg-white p-4 shadow-lg md:block"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
