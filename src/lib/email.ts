@@ -1,3 +1,5 @@
+import { getAwsCredentials, getAwsSesRegion } from "@/lib/aws";
+
 type SendEmailParams = {
   to: string | string[];
   subject: string;
@@ -6,24 +8,14 @@ type SendEmailParams = {
   replyTo?: string | string[];
 };
 
-type SesCredentials = {
-  accessKeyId: string;
-  secretAccessKey: string;
-  sessionToken?: string;
-};
+type SesCredentials = ReturnType<typeof getAwsCredentials>;
 
 const SES_SERVICE = "ses";
 const AWS_ALGORITHM = "AWS4-HMAC-SHA256";
 const encoder = new TextEncoder();
 
-function getRequiredEnv(name: string) {
-  const value = process.env[name];
-  if (!value) throw new Error(`${name} environment variable is not set`);
-  return value;
-}
-
 function getSesRegion() {
-  return process.env.AWS_SES_REGION || process.env.AWS_REGION || "ap-southeast-1";
+  return getAwsSesRegion();
 }
 
 function getFromEmail() {
@@ -31,11 +23,7 @@ function getFromEmail() {
 }
 
 function getCredentials(): SesCredentials {
-  return {
-    accessKeyId: getRequiredEnv("AWS_ACCESS_KEY_ID"),
-    secretAccessKey: getRequiredEnv("AWS_SECRET_ACCESS_KEY"),
-    sessionToken: process.env.AWS_SESSION_TOKEN,
-  };
+  return getAwsCredentials();
 }
 
 function normalizeEmails(value: string | string[] | undefined) {

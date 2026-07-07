@@ -4,20 +4,18 @@ import {
   ListObjectsV2Command,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { getAwsCredentials, getAwsRegion } from "@/lib/aws";
 import { Upload } from "@aws-sdk/lib-storage";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-// Initialize S3 client
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
+  region: getAwsRegion(),
+  credentials: async () => getAwsCredentials(),
   forcePathStyle: true, // Use path-style URLs to avoid SSL certificate issues
 });
 
-const BUCKET_NAME = process.env.S3_BUCKET_NAME || process.env.AWS_S3_BUCKET_NAME || "dialisis.my";
+const BUCKET_NAME =
+  process.env.S3_BUCKET_NAME || process.env.AWS_S3_BUCKET_NAME || "dialisis.my";
 
 export interface UploadResult {
   url: string;
@@ -67,9 +65,7 @@ export async function uploadFileToS3({
     const result = await upload.done();
 
     return {
-      url: `https://s3.${
-        process.env.AWS_REGION || "ap-southeast-1"
-      }.amazonaws.com/${BUCKET_NAME}/${key}`,
+      url: `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${key}`,
       key,
     };
   } catch (error) {
@@ -151,9 +147,7 @@ export async function listCenterImages(centerId: string): Promise<string[]> {
     return (
       response.Contents?.map(
         (obj) =>
-          `https://s3.${
-            process.env.AWS_REGION || "ap-southeast-1"
-          }.amazonaws.com/${BUCKET_NAME}/${obj.Key}`
+          `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${obj.Key}`
       ) || []
     );
   } catch (error) {
@@ -185,7 +179,5 @@ export async function uploadCenterImages(
  * Get the public URL for an image (for public buckets)
  */
 export function getPublicImageUrl(key: string): string {
-  return `https://s3.${
-    process.env.AWS_REGION || "ap-southeast-1"
-  }.amazonaws.com/${BUCKET_NAME}/${key}`;
+  return `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${key}`;
 }

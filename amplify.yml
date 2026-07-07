@@ -12,6 +12,15 @@ frontend:
       commands:
         - echo "TURSO_DATABASE_URL=$TURSO_DATABASE_URL" >> .env.production
         - echo "TURSO_AUTH_TOKEN=$TURSO_AUTH_TOKEN" >> .env.production
+        - echo "DIALISIS_AWS_REGION=${DIALISIS_AWS_REGION:-${AWS_REGION:-ap-southeast-1}}" >> .env.production
+        - echo "DIALISIS_AWS_ACCESS_KEY_ID=${DIALISIS_AWS_ACCESS_KEY_ID:-$AWS_ACCESS_KEY_ID}" >> .env.production
+        - echo "DIALISIS_AWS_SECRET_ACCESS_KEY=${DIALISIS_AWS_SECRET_ACCESS_KEY:-$AWS_SECRET_ACCESS_KEY}" >> .env.production
+        - echo "DIALISIS_AWS_SESSION_TOKEN=${DIALISIS_AWS_SESSION_TOKEN:-$AWS_SESSION_TOKEN}" >> .env.production
+        - echo "AWS_S3_BUCKET_NAME=$AWS_S3_BUCKET_NAME" >> .env.production
+        - echo "S3_BUCKET_NAME=$S3_BUCKET_NAME" >> .env.production
+        - echo "AWS_SES_REGION=$AWS_SES_REGION" >> .env.production
+        - echo "EMAIL_FROM=$EMAIL_FROM" >> .env.production
+        - echo "EMAIL_REPLY_TO=$EMAIL_REPLY_TO" >> .env.production
         - pnpm prisma generate
         - pnpm run build
         # Remove cache
