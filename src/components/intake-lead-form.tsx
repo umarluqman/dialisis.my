@@ -192,7 +192,7 @@ export function IntakeLeadForm({
               name="myKadNumber"
               required
               inputMode="numeric"
-              pattern="[0-9-]{12,14}"
+              pattern="[0-9\-]{12,14}"
               placeholder="900101-01-1234"
             />
           </Field>

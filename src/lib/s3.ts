@@ -70,7 +70,8 @@ export async function uploadFileToS3({
     };
   } catch (error) {
     console.error("Error uploading to S3:", error);
-    throw new Error("Failed to upload file");
+    const detail = error instanceof Error ? error.message : String(error);
+    throw new Error(`Failed to upload file: ${detail}`);
   }
 }
 
