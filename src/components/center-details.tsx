@@ -1,41 +1,43 @@
 import { Button } from "@/components/ui/button";
-import { DialysisCenter, State } from "@/generated/prisma/client";
+import type { CenterDetail } from "@/lib/center-detail-query";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import { ExternalLink, Globe, Mail, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 
 interface Props {
-  center: DialysisCenter & {
-    state: Pick<State, "name">;
-  };
-  isModal?: boolean;
+  center: CenterDetail;
 }
 
-export function DialysisCenterDetails({ center, isModal }: Props) {
-  // const units = center.units.split(",").filter(Boolean);
+export function DialysisCenterDetails({ center }: Props) {
   const stateName = center.state.name
+    .replace(/-/g, " ")
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
   const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
 
-  const hepatitisArray = center.hepatitisBay
-    ? center.hepatitisBay.split(", ")
-    : [];
-  const treatmentArray = center.units
-    ? center.units.split(", ").map((unit) => ({
-        name: unit,
-        value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
-          : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
-          : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
-      }))
-    : [];
+  const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
+  const phoneNumbers = getCenterPhoneNumbers(center);
+  const hasCoordinates = center.latitude != null && center.longitude != null;
+  const googleMapsHref = hasCoordinates
+    ? `https://www.google.com/maps?q=${center.latitude},${center.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        center.addressWithUnit || center.address || center.dialysisCenterName
+      )}`;
+  const treatmentArray = getTreatmentBadges(center.units);
 
   return (
-    <div className="">
+    <div
+      data-ga-context="center_detail"
+      data-center-id={center.id}
+      data-center-slug={center.slug}
+      data-center-name={center.dialysisCenterName}
+      data-center-town={center.town}
+      data-center-state={stateName}
+      className=""
+    >
       <div className="space-y-2">
         <h1 className="text-2xl md:text-4xl font-bold">
           {center.dialysisCenterName}
@@ -47,26 +49,26 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
         <p className="flex flex-col gap-2 space-y-2">
           <div className="flex-1">{center.addressWithUnit}</div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="flex items-center gap-2"
-              asChild
-            >
-              <a
-                href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
-                target="_blank"
-                rel="noopener noreferrer"
+            {hasCoordinates && (
+              <Button
+                variant="outline"
+                size="sm"
                 className="flex items-center gap-2"
+                asChild
               >
-                Waze <ExternalLink className="w-4 h-4" />
-              </a>
-            </Button>
+                <a
+                  href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  Waze <ExternalLink className="w-4 h-4" />
+                </a>
+              </Button>
+            )}
             <Button variant="outline" size="sm" asChild>
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                  center.addressWithUnit
-                )}`}
+                href={googleMapsHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -79,16 +81,16 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
         </p>
       </div>
       <div className="space-y-2 text-sm mt-12">
-        {center.phoneNumber && (
-          <p className="flex items-center gap-2">
+        {phoneNumbers.map((phoneNumber) => (
+          <p key={phoneNumber} className="flex items-center gap-2">
             <Button variant="secondary" size="sm">
               <Phone className="w-4 h-4" />
-              <a href={`tel:${center.phoneNumber}`} className="hover:underline">
-                {center.phoneNumber}
+              <a href={`tel:${phoneNumber}`} className="hover:underline">
+                {phoneNumber}
               </a>
             </Button>
           </p>
-        )}
+        ))}
         {center.email && (
           <p className="flex items-center gap-2">
             <Button variant="secondary" size="sm">
@@ -177,12 +179,11 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
             {hepatitisArray.map((hep) => (
               <Badge
                 key={hep}
-                className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                className="bg-featured/15 text-base text-featured-foreground shadow-none hover:bg-featured/25 font-normal"
               >
                 {hep}
               </Badge>
             ))}
-            {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
           </div>
         ) : null}
       </div>
@@ -204,15 +205,6 @@ export function DialysisCenterDetails({ center, isModal }: Props) {
           )}
         </div> */}
 
-      {/* {isModal && (
-        <div className="flex justify-end">
-          <Button asChild>
-            <Link href={`/dialysis-center/${center.id}`}>
-              View Full Details
-            </Link>
-          </Button>
-        </div>
-      )} */}
     </div>
   );
 }

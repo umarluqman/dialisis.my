@@ -38,6 +38,7 @@ export function slugToDisplayName(slug: string): string {
  */
 export function getAllLocationData(): LocationData[] {
   const locationData: LocationData[] = [];
+  const stateSlugs = new Set<string>();
 
   // Process regular states and federal territories
   Object.entries(CITIES).forEach(([state, cities]) => {
@@ -51,11 +52,15 @@ export function getAllLocationData(): LocationData[] {
       return;
     }
 
+    const stateSlug = createLocationSlug(actualState);
+    if (stateSlugs.has(stateSlug)) return;
+
     locationData.push({
       state: actualState,
-      stateSlug: createLocationSlug(actualState),
-      cities: cities,
+      stateSlug,
+      cities,
     });
+    stateSlugs.add(stateSlug);
   });
 
   // Add federal territories as separate states
@@ -65,11 +70,15 @@ export function getAllLocationData(): LocationData[] {
       territory === "Kuala Lumpur" ? "Kuala Lumpur" : territory;
     const cities = CITIES[territoryKey] || [];
 
+    const stateSlug = createLocationSlug(territory);
+    if (stateSlugs.has(stateSlug)) return;
+
     locationData.push({
       state: territory,
-      stateSlug: createLocationSlug(territory),
-      cities: cities,
+      stateSlug,
+      cities,
     });
+    stateSlugs.add(stateSlug);
   });
 
   return locationData;
@@ -130,11 +139,12 @@ export function getLocationDisplayNames(
   return { stateName, cityName };
 }
 
-/**
- * Gets the database state name format (lowercase with hyphens to match Turso data)
- */
 export function getDbStateName(stateName: string): string {
-  return stateName.toLowerCase().replace(/\s+/g, "-");
+  return stateName
+    .split(/[\s-]+/)
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
 }
 
 /**
@@ -163,10 +173,6 @@ export function validateLocation(
 
   return location.cities.some((city) => createLocationSlug(city) === citySlug);
 }
-
-
-
-
 
 
 

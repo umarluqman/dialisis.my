@@ -58,6 +58,10 @@ export async function POST(
     // Verify that the dialysis center exists
     const center = await prisma.dialysisCenter.findUnique({
       where: { id },
+      select: {
+        id: true,
+        dialysisCenterName: true,
+      },
     });
 
     if (!center) {

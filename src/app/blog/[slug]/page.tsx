@@ -1,4 +1,4 @@
-import { allPosts } from "contentlayer/generated";
+import { posts } from "#velite";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Link from "next/link";
@@ -16,13 +16,13 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => ({
+  return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = allPosts.find((p) => p.slug === params.slug);
+  const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) {
     return {
@@ -33,9 +33,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
   const canonicalUrl = `${baseUrl}/blog/${post.slug}`;
+  const translationKey = post.translationKey || post.slug;
+  const translatedPost = posts.find(
+    (candidate) =>
+      candidate.slug !== post.slug &&
+      (candidate.translationKey || candidate.slug) === translationKey &&
+      candidate.locale !== post.locale
+  );
+  const translatedUrl = translatedPost
+    ? `${baseUrl}/blog/${translatedPost.slug}`
+    : null;
+  const languageAlternates = translatedPost
+    ? {
+        "ms-MY":
+          post.locale === "ms"
+            ? canonicalUrl
+            : (translatedUrl as string),
+        "en-MY":
+          post.locale === "en"
+            ? canonicalUrl
+            : (translatedUrl as string),
+        "x-default":
+          post.locale === "ms"
+            ? canonicalUrl
+            : (translatedUrl as string),
+      }
+    : undefined;
 
   return {
-    title: `${post.title} | Dialisis.my`,
+    title: post.title,
     description: post.description,
     authors: [{ name: post.author || "Dialisis MY" }],
     openGraph: {
@@ -65,6 +91,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     alternates: {
       canonical: canonicalUrl,
+      ...(languageAlternates && {
+        languages: languageAlternates,
+      }),
     },
   };
 }
@@ -81,7 +110,7 @@ function formatDate(dateString: string, locale: string): string {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const post = allPosts.find((p) => p.slug === params.slug);
+  const post = posts.find((p) => p.slug === params.slug);
 
   if (!post) {
     notFound();
@@ -92,12 +121,40 @@ export default async function BlogPostPage({ params }: Props) {
   const locale = (post.locale || "ms") as "ms" | "en";
   const isEnglish = locale === "en";
   const treatmentTypes = mapTagsToTreatments(post.tags || []);
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isEnglish ? "Home" : "Utama",
+        item: baseUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${baseUrl}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${baseUrl}/blog/${post.slug}`,
+      },
+    ],
+  };
 
   return (
-    <main className="container max-w-3xl py-8">
+    <main lang={isEnglish ? "en" : "ms"} className="container max-w-3xl py-8">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
@@ -138,7 +195,7 @@ export default async function BlogPostPage({ params }: Props) {
         </header>
 
         <div className="prose prose-neutral dark:prose-invert max-w-none">
-          <MdxContent code={post.body.code} />
+          <MdxContent code={post.body} />
         </div>
       </article>
 

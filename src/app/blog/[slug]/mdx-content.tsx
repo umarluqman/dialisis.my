@@ -1,12 +1,18 @@
 "use client";
 
-import { useMDXComponent } from "next-contentlayer/hooks";
+import * as runtime from "react/jsx-runtime";
+
+const useMDXComponent = (code: string) => {
+  const fn = new Function(code);
+  return fn({ ...runtime }).default;
+};
 
 interface MdxContentProps {
   code: string;
+  components?: Record<string, React.ComponentType>;
 }
 
-export function MdxContent({ code }: MdxContentProps) {
-  const MDXContent = useMDXComponent(code);
-  return <MDXContent />;
+export function MdxContent({ code, components }: MdxContentProps) {
+  const Component = useMDXComponent(code);
+  return <Component components={components} />;
 }

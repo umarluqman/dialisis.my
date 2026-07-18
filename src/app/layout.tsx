@@ -1,16 +1,31 @@
-// import { CookieBanner } from "@/components/CookieBanner";
 import Footer from "@/components/footer";
+import { GaEventTracker } from "@/components/ga-event-tracker";
+import { MedicalDisclaimer } from "@/components/medical-disclaimer";
 import { Navbar } from "@/components/navbar";
 import { NextPathsMeta } from "@/components/next-paths-meta";
 import { OnlineStatusHandler } from "@/components/online-status";
+import { Toaster } from "@/components/ui/toaster";
+import { jsonLdGlobal } from "@/lib/json-ld";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
 import { Metadata } from "next";
+import { Fraunces, Plus_Jakarta_Sans } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import "./globals.css";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://dialisis.my"),
   title: {
@@ -75,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ms" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="ms" className={`${fraunces.variable} ${plusJakartaSans.variable}`}>
       <head>
         <NextPathsMeta />
         <link
@@ -101,9 +116,17 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Dialisis MY" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-TileColor" content="#FDFBF7" />
+        <meta name="theme-color" content="#FDFBF7" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://googleads.g.doubleclick.net" />
         <link rel="manifest" href="/site.webmanifest" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdGlobal) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}`,
@@ -114,13 +137,15 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex flex-col"
-          // fontSans.variable
         )}
       >
+        <GaEventTracker />
         <OnlineStatusHandler />
+        <Toaster />
         <NuqsAdapter>
           <Navbar />
           <main className="flex-grow">{children}</main>
+          <MedicalDisclaimer />
           <Footer />
         </NuqsAdapter>
       </body>

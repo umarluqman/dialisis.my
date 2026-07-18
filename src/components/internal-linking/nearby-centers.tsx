@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PopiconsMapLine } from "@popicons/react";
+import { MapPin } from "lucide-react";
 import {
   getNearbyCenters,
   NearbyCenter,
@@ -57,7 +57,7 @@ function NearbyCenterCard({ center }: { center: NearbyCenter }) {
       className="flex items-center justify-between gap-3 p-3 rounded-lg border bg-card hover:bg-muted/50 transition-colors"
     >
       <div className="flex items-start gap-3 min-w-0">
-        <PopiconsMapLine className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+        <MapPin className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
         <div className="min-w-0">
           <span className="font-medium text-foreground line-clamp-1">
             {center.name.split(",")[0]}

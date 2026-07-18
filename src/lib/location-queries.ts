@@ -1,11 +1,20 @@
 import { prisma } from "@/lib/db";
 import { getDbStateName } from "./location-utils";
+import { buildTreatmentUnitsWhere } from "./treatment-units";
 
 export interface LocationCenterData {
   centers: any[];
   totalCenters: number;
+  totalPages: number;
+  currentPage: number;
+  pageSize: number;
   stateName: string;
   cityName?: string;
+}
+
+interface StateQueryOptions {
+  page?: number;
+  pageSize?: number;
 }
 
 /**
@@ -13,9 +22,14 @@ export interface LocationCenterData {
  */
 export async function getCentersByState(
   stateName: string,
-  townName?: string
+  townName?: string,
+  options?: StateQueryOptions
 ): Promise<LocationCenterData> {
   const dbStateName = getDbStateName(stateName);
+  const page = options?.page && options.page > 0 ? options.page : 1;
+  const pageSize =
+    options?.pageSize && options.pageSize > 0 ? options.pageSize : 24;
+  const skip = (page - 1) * pageSize;
 
   try {
     const baseWhere = {
@@ -51,6 +65,8 @@ export async function getCentersByState(
             dialysisCenterName: "asc",
           },
         ],
+        skip,
+        take: pageSize,
       }),
       prisma.dialysisCenter.count({
         where: baseWhere,
@@ -71,6 +87,9 @@ export async function getCentersByState(
     return {
       centers: transformedCenters,
       totalCenters: totalCount,
+      totalPages: Math.max(1, Math.ceil(totalCount / pageSize)),
+      currentPage: page,
+      pageSize,
       stateName,
     };
   } catch (error) {
@@ -78,6 +97,9 @@ export async function getCentersByState(
     return {
       centers: [],
       totalCenters: 0,
+      totalPages: 1,
+      currentPage: page,
+      pageSize,
       stateName,
     };
   }
@@ -153,6 +175,9 @@ export async function getCentersByCity(
     return {
       centers: transformedCenters,
       totalCenters: totalCount,
+      totalPages: 1,
+      currentPage: 1,
+      pageSize: totalCount || 1,
       stateName,
       cityName,
     };
@@ -161,6 +186,9 @@ export async function getCentersByCity(
     return {
       centers: [],
       totalCenters: 0,
+      totalPages: 1,
+      currentPage: 1,
+      pageSize: 1,
       stateName,
       cityName,
     };
@@ -206,7 +234,7 @@ export async function getLocationStats(stateName: string, cityName?: string) {
         where: { ...baseWhere, sector: { equals: "PRIVATE" } },
       }),
       prisma.dialysisCenter.count({
-        where: { ...baseWhere, units: { contains: "HD Unit" } },
+        where: { AND: [baseWhere, buildTreatmentUnitsWhere("hemodialisis")!] },
       }),
       prisma.dialysisCenter.count({
         where: { ...baseWhere, units: { contains: "PD Unit" } },

@@ -10,6 +10,7 @@ export async function GET() {
       },
       select: {
         id: true,
+        slug: true,
         dialysisCenterName: true,
         latitude: true,
         longitude: true,

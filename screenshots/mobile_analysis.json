@@ -1,0 +1,498 @@
+{
+  "mobile_375": {
+    "has_horizontal_scroll": false,
+    "page_width": 375,
+    "viewport_width": 375,
+    "body_font_size": "16px",
+    "small_text_elements": [
+      {
+        "tag": "P",
+        "text": "Servis Rawatan",
+        "fontSize": "12px"
+      },
+      {
+        "tag": "P",
+        "text": "Servis Rawatan",
+        "fontSize": "12px"
+      }
+    ],
+    "small_text_count": 2,
+    "small_touch_targets": [
+      {
+        "tag": "A",
+        "text": "Peta",
+        "width": 89,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Peta",
+        "width": 89,
+        "height": 36
+      },
+      {
+        "tag": "A",
+        "text": "Hubungi",
+        "width": 89,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi",
+        "width": 89,
+        "height": 36
+      },
+      {
+        "tag": "A",
+        "text": "Selangor(188)",
+        "width": 123,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Johor(137)",
+        "width": 98,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Perak(84)",
+        "width": 96,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Kedah(74)",
+        "width": 98,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Pahang(62)",
+        "width": 107,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Pulau Pinang(61)",
+        "width": 138,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Melaka(61)",
+        "width": 101,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Kuala Lumpur(60)",
+        "width": 148,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Sarawak(51)",
+        "width": 110,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Kelantan(51)",
+        "width": 112,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Negeri Sembilan(50)",
+        "width": 168,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Sabah(49)",
+        "width": 100,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Terengganu(44)",
+        "width": 137,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Perlis(5)",
+        "width": 85,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Putrajaya(2)",
+        "width": 110,
+        "height": 34
+      },
+      {
+        "tag": "A",
+        "text": "Labuan(2)",
+        "width": 98,
+        "height": 34
+      }
+    ],
+    "small_touch_targets_count": 35,
+    "has_nav": true,
+    "has_hamburger_or_menu": false,
+    "above_fold_headings": [
+      {
+        "tag": "H1",
+        "text": "Pusat Dialisis di Malaysia",
+        "top": 105,
+        "height": 72
+      },
+      {
+        "tag": "H2",
+        "text": "Di manakah lokasi anda?",
+        "top": 485,
+        "height": 32
+      },
+      {
+        "tag": "H2",
+        "text": "Pilihan Utama",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "Pusat Hemodialisis As-Salam (Tanah Merah)",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "Pusat Hemodialisis As-Salam - Cawangan Jelawat",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H2",
+        "text": "Semua Pusat Dialisis",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "801 Rumah Sakit Angkatan Tentera (Kuching)",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "94 Hospital Angkatan Tentera (Terendak)",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "96 Hospital Angkatan Tentera (Lumut)",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H3",
+        "text": "AD Dhouha Haemodialysis Centre",
+        "top": 0,
+        "height": 0
+      }
+    ],
+    "above_fold_buttons": [
+      {
+        "tag": "BUTTON",
+        "text": "Lihat Peta",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Blog",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi Kami",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Peta",
+        "top": 18,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi",
+        "top": 18,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "📍Gunakan lokasi semasa",
+        "top": 541,
+        "height": 56
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Selangor",
+        "top": 609,
+        "height": 56
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Kuala Lumpur",
+        "top": 677,
+        "height": 56
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Pulau Pinang",
+        "top": 745,
+        "height": 56
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Selangor",
+        "top": 0,
+        "height": 0
+      }
+    ],
+    "above_fold_inputs": []
+  },
+  "desktop_1920": {
+    "has_horizontal_scroll": false,
+    "page_width": 1920,
+    "viewport_width": 1920,
+    "body_font_size": "16px",
+    "small_text_elements": [
+      {
+        "tag": "P",
+        "text": "Servis Rawatan",
+        "fontSize": "12px"
+      },
+      {
+        "tag": "P",
+        "text": "Servis Rawatan",
+        "fontSize": "12px"
+      }
+    ],
+    "small_text_count": 2,
+    "small_touch_targets": [
+      {
+        "tag": "A",
+        "text": "Lihat Peta",
+        "width": 124,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Lihat Peta",
+        "width": 124,
+        "height": 36
+      },
+      {
+        "tag": "A",
+        "text": "Blog",
+        "width": 63,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Blog",
+        "width": 63,
+        "height": 36
+      },
+      {
+        "tag": "A",
+        "text": "Hubungi Kami",
+        "width": 124,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi Kami",
+        "width": 124,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Selangor",
+        "width": 92,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Kuala Lumpur",
+        "width": 122,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Johor",
+        "width": 69,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Pulau Pinang",
+        "width": 117,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Perak",
+        "width": 70,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Lagi",
+        "width": 80,
+        "height": 40
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Cari",
+        "width": 59,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Tapis Lanjutan",
+        "width": 185,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Previous slide",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Next slide",
+        "width": 32,
+        "height": 32
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Panggil",
+        "width": 108,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "WhatsApp",
+        "width": 129,
+        "height": 36
+      },
+      {
+        "tag": "A",
+        "text": "Lokasi",
+        "width": 101,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Lokasi",
+        "width": 101,
+        "height": 36
+      }
+    ],
+    "small_touch_targets_count": 104,
+    "has_nav": true,
+    "has_hamburger_or_menu": false,
+    "above_fold_headings": [
+      {
+        "tag": "H1",
+        "text": "Pusat Dialisis di Malaysia",
+        "top": 129,
+        "height": 40
+      },
+      {
+        "tag": "H2",
+        "text": "Di manakah lokasi anda?",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "H2",
+        "text": "Pilihan Utama",
+        "top": 581,
+        "height": 28
+      }
+    ],
+    "above_fold_buttons": [
+      {
+        "tag": "BUTTON",
+        "text": "Lihat Peta",
+        "top": 22,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Blog",
+        "top": 22,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi Kami",
+        "top": 22,
+        "height": 36
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Peta",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Hubungi",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "📍Gunakan lokasi semasa",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Selangor",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Kuala Lumpur",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Pulau Pinang",
+        "top": 0,
+        "height": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "Johor",
+        "top": 0,
+        "height": 0
+      }
+    ],
+    "above_fold_inputs": []
+  }
+}

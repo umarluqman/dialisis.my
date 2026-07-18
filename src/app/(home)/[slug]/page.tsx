@@ -6,9 +6,15 @@ import {
   NearbyCenters,
 } from "@/components/internal-linking";
 import { prisma } from "@/lib/db";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
 import { parseTreatmentTypes } from "@/lib/internal-linking-utils";
 import { createLocationSlug } from "@/lib/location-utils";
-import { DialysisCenter, State } from "@/generated/prisma/client";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
+import { getCenterUnitList, getCenterUnits } from "@/lib/treatment-units";
+import {
+  centerDetailSelect,
+  type CenterDetail,
+} from "@/lib/center-detail-query";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
@@ -20,44 +26,69 @@ interface Props {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-type CenterWithState = {
-  featured: boolean;
-} & DialysisCenter & {
-    state: Pick<State, "name">;
-  };
+export const revalidate = 3600;
 
-async function getCenter(slug: string): Promise<CenterWithState | null> {
+async function getCenter(slug: string): Promise<CenterDetail | null> {
   const center = await prisma.dialysisCenter.findUnique({
     where: { slug },
-    include: {
-      state: {
-        select: {
-          name: true,
-        },
-      },
-    },
+    select: centerDetailSelect,
   });
 
   if (!center) return null;
 
-  return center as CenterWithState;
+  return center;
 }
 
-function generateJsonLd(center: CenterWithState): any {
+function formatLocationName(value: string) {
+  const normalizedValue = value.trim();
+
+  if (!normalizedValue) {
+    return "";
+  }
+
+  return normalizedValue
+    .replace(/-/g, " ")
+    .split(/\s+/)
+    .map((word) =>
+      word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word
+    )
+    .join(" ");
+}
+
+function generateJsonLd(center: CenterDetail): any {
+  const stateName = formatLocationName(center.state.name);
+  const townName = formatLocationName(center.town);
+  const locationName = townName ? `${townName}, ${stateName}` : stateName;
+  const centerName = center.dialysisCenterName.trim() || formatLocationName(center.slug);
+  const phoneNumbers = getCenterPhoneNumbers(center);
+  const imageUrls = center.images.map((image) => image.url).filter(Boolean);
+  const hepatitisOptions = getAvailableHepatitisOptions(center.hepatitisBay);
+  const units = getCenterUnits(center.units);
+
   return {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "@id": `https://dialisis.my/${center.slug}`,
-    name: center.dialysisCenterName,
-    description: `Pusat dialisis ${center.dialysisCenterName} di ${center.town}, ${center.state.name}. Menyediakan perkhidmatan ${center.units}.`,
+    name: centerName,
+    description: `Pusat dialisis ${centerName} di ${locationName}. Menyediakan perkhidmatan ${units}.`,
     url: `https://dialisis.my/${center.slug}`,
-    telephone: center.phoneNumber || center.tel,
-    email: center.email,
+    image:
+      imageUrls.length > 0
+        ? imageUrls
+        : [`https://dialisis.my/api/og/${center.slug}`],
+    telephone:
+      phoneNumbers.length > 1
+        ? phoneNumbers
+        : phoneNumbers[0]
+        ? phoneNumbers[0]
+        : undefined,
+    // Removed: email in JSON-LD gets corrupted by Cloudflare Email Obfuscation,
+    // breaking the entire structured data block. Emails are still shown via mailto links.
     address: {
       "@type": "PostalAddress",
       streetAddress: center.addressWithUnit || center.address,
-      addressLocality: center.town,
-      addressRegion: center.state.name,
+      addressLocality: townName || undefined,
+      addressRegion: stateName,
       addressCountry: "MY",
     },
     geo:
@@ -69,7 +100,7 @@ function generateJsonLd(center: CenterWithState): any {
           }
         : undefined,
     medicalSpecialty: ["Nephrology", "Dialysis"],
-    availableService: center.units?.split(",").map((unit: string) => ({
+    availableService: getCenterUnitList(center.units).map((unit: string) => ({
       "@type": "MedicalProcedure",
       name: unit.trim(),
       procedureType: unit.toLowerCase().includes("hd")
@@ -91,11 +122,15 @@ function generateJsonLd(center: CenterWithState): any {
       "Kidney Failure",
     ],
     additionalProperty: [
-      {
-        "@type": "PropertyValue",
-        name: "Hepatitis Treatment",
-        value: center.hepatitisBay || "Not Available",
-      },
+      ...(hepatitisOptions.length > 0
+        ? [
+            {
+              "@type": "PropertyValue",
+              name: "Hepatitis Treatment",
+              value: hepatitisOptions.join(", "),
+            },
+          ]
+        : []),
       {
         "@type": "PropertyValue",
         name: "Sector",
@@ -129,23 +164,27 @@ export const generateMetadata = async ({ params }: Props) => {
 
   const canonicalUrl = `https://dialisis.my/${params.slug}`;
 
-  // Optimize town/state names for better SEO
-  const location = `${center.town}, ${center.state.name}`;
+  const stateName = formatLocationName(center.state.name);
+  const townName = formatLocationName(center.town);
+  const location = townName ? `${townName}, ${stateName}` : stateName;
+  const centerName =
+    center.dialysisCenterName.split(",")[0].trim() || formatLocationName(center.slug);
 
-  // Get service types for more descriptive metadata
-  const services = center.units
-    ? center.units.toLowerCase().includes("hd") &&
-      center.units.toLowerCase().includes("pd")
+  const units = getCenterUnits(center.units);
+  const lowerUnits = units.toLowerCase();
+  const services = units
+    ? lowerUnits.includes("hd") &&
+      lowerUnits.includes("pd")
       ? "Hemodialisis dan Peritoneal Dialisis"
-      : center.units.toLowerCase().includes("hd")
+      : lowerUnits.includes("hd")
       ? "Hemodialisis"
-      : center.units.toLowerCase().includes("pd")
+      : lowerUnits.includes("pd")
       ? "Peritoneal Dialisis"
       : "Perkhidmatan Dialisis"
     : "Perkhidmatan Dialisis";
 
   return {
-    title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+    title: `${centerName} | ${location}`,
     description: `Pusat dialisis ${
       center.dialysisCenterName
     } di ${location}. Menyediakan ${services} untuk pesakit buah pinggang. ${
@@ -160,7 +199,7 @@ export const generateMetadata = async ({ params }: Props) => {
     },
     openGraph: {
       url: canonicalUrl,
-      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      title: `${centerName} | ${location}`,
       description: `Pusat dialisis ${center.dialysisCenterName} di ${location}. Menyediakan ${services} untuk pesakit buah pinggang.`,
       siteName: "Dialisis MY",
       locale: "ms_MY",
@@ -177,7 +216,7 @@ export const generateMetadata = async ({ params }: Props) => {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${center.dialysisCenterName} - Pusat Dialisis di ${location}`,
+      title: `${centerName} | ${location}`,
       description: `Pusat dialisis di ${location}. Menyediakan ${services}.`,
       images: [`https://dialisis.my/api/og/${params.slug}`],
     },
@@ -214,34 +253,62 @@ export default async function DialysisCenterPage({
 
   const jsonLd = generateJsonLd(center);
   const isFeatured = !!center?.featured;
+  const stateDisplayName = formatLocationName(center.state.name);
+  const stateSlug = createLocationSlug(center.state.name);
+  const townName = formatLocationName(center.town);
+  const skipTownInStates = new Set(["kuala-lumpur", "labuan", "putrajaya"]);
+  const hasTownBreadcrumb =
+    townName.length > 0 && !skipTownInStates.has(stateSlug);
+  const townSlug = hasTownBreadcrumb ? createLocationSlug(townName) : null;
+  const centerBreadcrumbName =
+    center.dialysisCenterName.trim() || formatLocationName(center.slug);
 
-  // Format location for breadcrumbs structured data
   const locationParts = [
     { name: "Dialisis MY", item: "https://dialisis.my" },
     {
-      name: center.state.name,
-      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}`,
+      name: stateDisplayName,
+      item: `https://dialisis.my/lokasi/${stateSlug}`,
     },
+    ...(hasTownBreadcrumb && townSlug
+      ? [
+          {
+            name: townName,
+            item: `https://dialisis.my/lokasi/${stateSlug}/${townSlug}`,
+          },
+        ]
+      : []),
     {
-      name: center.town,
-      item: `https://dialisis.my/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`,
-    },
-    {
-      name: center.dialysisCenterName,
+      name: centerBreadcrumbName,
       item: `https://dialisis.my/${center.slug}`,
     },
   ];
 
-  // Create breadcrumbs structured data
   const breadcrumbsJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: locationParts.map((part, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: part.name,
-      item: part.item,
-    })),
+    itemListElement: locationParts.reduce<
+      Array<{
+        "@type": "ListItem";
+        position: number;
+        name: string;
+        item: string;
+      }>
+    >((items, part) => {
+      const name = part.name.trim();
+
+      if (!name) {
+        return items;
+      }
+
+      items.push({
+        "@type": "ListItem",
+        position: items.length + 1,
+        name,
+        item: part.item,
+      });
+
+      return items;
+    }, []),
   };
 
   return (
@@ -267,18 +334,22 @@ export default async function DialysisCenterPage({
             </Link>
             <span>/</span>
             <Link
-              href={`/lokasi/${createLocationSlug(center.state.name)}`}
+              href={`/lokasi/${stateSlug}`}
               className="hover:text-foreground"
             >
-              {center.state.name}
+              {stateDisplayName}
             </Link>
-            <span>/</span>
-            <Link
-              href={`/lokasi/${createLocationSlug(center.state.name)}/${createLocationSlug(center.town)}`}
-              className="hover:text-foreground"
-            >
-              {center.town}
-            </Link>
+            {hasTownBreadcrumb && townSlug && (
+              <>
+                <span>/</span>
+                <Link
+                  href={`/lokasi/${stateSlug}/${townSlug}`}
+                  className="hover:text-foreground"
+                >
+                  {townName}
+                </Link>
+              </>
+            )}
             <span>/</span>
             <span className="text-foreground truncate max-w-[200px]">
               {center.dialysisCenterName.split(",")[0]}

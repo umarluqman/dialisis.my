@@ -1,0 +1,171 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e6]:
+        - link "NRR Logo" [ref=e8] [cursor=pointer]:
+          - /url: "#"
+          - img "NRR Logo" [ref=e9]
+        - navigation [ref=e10]:
+          - list [ref=e11]:
+            - listitem [ref=e12]:
+              - link "Back to NRR website" [ref=e13] [cursor=pointer]:
+                - /url: https://www.msn.org.my/nrr
+                - generic [ref=e14]: Back to NRR website
+    - generic [ref=e16]:
+      - heading "CENTRE DIRECTORY" [level=1] [ref=e18]
+      - list [ref=e19]:
+        - listitem [ref=e20]:
+          - link "Home" [ref=e21] [cursor=pointer]:
+            - /url: https://www.msn.org.my/nrr
+        - listitem [ref=e22]:
+          - text: /
+          - link "Centre Directory" [ref=e23] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory
+    - generic [ref=e26]:
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30] [cursor=pointer]: Dialysis & Transplant F/U Centre
+          - textbox [ref=e31]
+        - generic [ref=e32]:
+          - generic [ref=e33] [cursor=pointer]: Dr In Charge
+          - textbox [ref=e34]
+        - generic [ref=e35]:
+          - generic [ref=e36] [cursor=pointer]: State
+          - combobox [ref=e37]:
+            - option "Choose..." [selected]
+            - option "Johor"
+            - option "Kedah"
+            - option "Kelantan"
+            - option "Melaka"
+            - option "Negeri Sembilan"
+            - option "Pahang"
+            - option "Perak"
+            - option "Perlis"
+            - option "Pulau Pinang"
+            - option "Sabah"
+            - option "Sarawak"
+            - option "Selangor"
+            - option "Terengganu"
+            - option "Wilayah Persekutuan Labuan, Sabah"
+            - option "Wilayah Persekutuan Putrajaya, Selangor"
+            - option "Wilayah Persekutuan Kuala Lumpur"
+        - generic [ref=e38]:
+          - generic [ref=e39] [cursor=pointer]: Town / City
+          - textbox [ref=e40]
+        - generic [ref=e41]:
+          - generic [ref=e42] [cursor=pointer]: Modality
+          - combobox [ref=e43]:
+            - option "Choose..." [selected]
+            - option "PD"
+            - option "HAEMODIALYSIS"
+            - option "TRANSPLANT"
+            - option "MRRB"
+        - generic [ref=e44]:
+          - generic [ref=e45] [cursor=pointer]: Sector
+          - combobox [ref=e46]:
+            - option "Choose..." [selected]
+            - option "MOH"
+            - option "NGO"
+            - option "ARMED FORCE"
+            - option "PRIVATE"
+            - option "UNIVERSITY"
+            - option "OTHERS"
+        - generic [ref=e47]:
+          - button "Search" [ref=e48] [cursor=pointer]
+          - button "Reset" [ref=e49] [cursor=pointer]
+      - paragraph [ref=e51]:
+        - strong [ref=e52]: "Disclaimer:"
+        - emphasis [ref=e53]: The centres listed in this directory are the ones which submit data to the NRR. The list does not reflect the status of their licensing by the health authority.
+      - generic [ref=e54]:
+        - paragraph [ref=e55]:
+          - text: Please contact us at
+          - link "nrr@msn.org.my" [ref=e56] [cursor=pointer]:
+            - /url: mailto:nrr@msn.org.my
+          - text: ", if,"
+          - text: 1. you are no longer affiliated with or no longer working in the listed centre
+          - text: 2. the information displayed here is not current or not accurate
+          - strong [ref=e57]: Find a centre that provide haemodialysis therapy for patients with viral hepatitis
+          - text: List of HD centres that provide haemodialysis therapy for patients with viral hepatitis (as registered with CKAP) are available in this Directory.
+        - paragraph [ref=e59]:
+          - link "JOHOR" [ref=e60] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=1
+            - img [ref=e61]
+            - text: JOHOR
+        - paragraph [ref=e63]:
+          - link "KEDAH" [ref=e64] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=2
+            - img [ref=e65]
+            - text: KEDAH
+        - paragraph [ref=e67]:
+          - link "KELANTAN" [ref=e68] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=3
+            - img [ref=e69]
+            - text: KELANTAN
+        - paragraph [ref=e71]:
+          - link "MELAKA" [ref=e72] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=4
+            - img [ref=e73]
+            - text: MELAKA
+        - paragraph [ref=e75]:
+          - link "N. SEMBILAN" [ref=e76] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=5
+            - img [ref=e77]
+            - text: N. SEMBILAN
+        - paragraph [ref=e79]:
+          - link "PAHANG" [ref=e80] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=6
+            - img [ref=e81]
+            - text: PAHANG
+        - paragraph [ref=e83]:
+          - link "PERAK" [ref=e84] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=7
+            - img [ref=e85]
+            - text: PERAK
+        - paragraph [ref=e87]:
+          - link "PERLIS" [ref=e88] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=8
+            - img [ref=e89]
+            - text: PERLIS
+        - paragraph [ref=e91]:
+          - link "P. PINANG" [ref=e92] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=9
+            - img [ref=e93]
+            - text: P. PINANG
+        - paragraph [ref=e95]:
+          - link "SABAH" [ref=e96] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=10
+            - img [ref=e97]
+            - text: SABAH
+        - paragraph [ref=e99]:
+          - link "SARAWAK" [ref=e100] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=11
+            - img [ref=e101]
+            - text: SARAWAK
+        - paragraph [ref=e103]:
+          - link "SELANGOR" [ref=e104] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=12
+            - img [ref=e105]
+            - text: SELANGOR
+        - paragraph [ref=e107]:
+          - link "TERENGGANU" [ref=e108] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=13
+            - img [ref=e109]
+            - text: TERENGGANU
+        - paragraph [ref=e111]:
+          - link "WILAYAH PERSEKUTUAN KUALA LUMPUR" [ref=e112] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=17
+            - img [ref=e113]
+            - text: WILAYAH PERSEKUTUAN KUALA LUMPUR
+        - paragraph [ref=e115]:
+          - link "WILAYAH PERSEKUTUAN LABUAN" [ref=e116] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=15
+            - img [ref=e117]
+            - text: WILAYAH PERSEKUTUAN LABUAN
+        - paragraph [ref=e119]:
+          - link "WILAYAH PERSEKUTUAN PUTRAJAYA" [ref=e120] [cursor=pointer]:
+            - /url: page.jsp?pageId=centre_directory_by_state&stateID=16
+            - img [ref=e121]
+            - text: WILAYAH PERSEKUTUAN PUTRAJAYA
+    - contentinfo [ref=e122]:
+      - generic [ref=e126]: All Rights Reserved © 2022 by Malaysian Society of Nephrology
+  - text: 

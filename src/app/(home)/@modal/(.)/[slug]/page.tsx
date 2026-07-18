@@ -1,4 +1,6 @@
 import { DialysisCenterDetails } from "@/components/center-details";
+import { IntakeLeadForm } from "@/components/intake-lead-form";
+import { centerDetailSelect } from "@/lib/center-detail-query";
 import { prisma } from "@/lib/db";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -13,13 +15,7 @@ interface Props {
 async function getCenter(slug: string) {
   const center = await prisma.dialysisCenter.findUnique({
     where: { slug },
-    include: {
-      state: {
-        select: {
-          name: true,
-        },
-      },
-    },
+    select: centerDetailSelect,
   });
 
   if (!center) return null;
@@ -67,7 +63,12 @@ export default async function DialysisCenterModal({ params }: Props) {
 
   return (
     <ModalDialog>
-      <DialysisCenterDetails center={center} isModal />
+      <DialysisCenterDetails center={center} />
+      <IntakeLeadForm
+        centerId={center.id}
+        centerName={center.dialysisCenterName}
+        className="mt-8"
+      />
     </ModalDialog>
   );
 }

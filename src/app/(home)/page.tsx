@@ -1,10 +1,79 @@
+import { LocationDirectory } from "@/components/location-directory";
 import { prisma } from "@/lib/db";
 import { jsonLdHome } from "@/lib/json-ld";
-import { Loader2 } from "lucide-react";
+import { getDbStateName } from "@/lib/location-utils";
+import { buildTreatmentUnitsWhere } from "@/lib/treatment-units";
+import type { Prisma } from "@/generated/prisma/client";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { LocationDirectory } from "@/components/location-directory";
+
+export const revalidate = 3600;
+const MAX_SEARCH_TOKENS = 6;
+
+function getSearchTokens(rawValue?: string) {
+  if (!rawValue) return [];
+
+  const normalized = rawValue.trim().replace(/\s+/g, " ");
+  if (!normalized) return [];
+
+  const seen = new Set<string>();
+  const tokens: string[] = [];
+
+  for (const chunk of normalized.split(/[^\p{L}\p{N}]+/u)) {
+    const token = chunk.trim();
+    if (!token) continue;
+
+    const key = token.toLowerCase();
+    if (seen.has(key)) continue;
+
+    seen.add(key);
+    tokens.push(token);
+
+    if (tokens.length >= MAX_SEARCH_TOKENS) break;
+  }
+
+  return tokens;
+}
+
+function buildFlexibleSearchConditions(
+  rawValue?: string,
+  doctorOnly = false
+): Prisma.DialysisCenterWhereInput[] {
+  const tokens = getSearchTokens(rawValue);
+  if (!tokens.length) return [];
+
+  const tokenFilters = tokens.map((token) => {
+    const phoneToken = token.replace(/[^\d]/g, "");
+    const tokenConditions: Prisma.DialysisCenterWhereInput[] = doctorOnly
+      ? [
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+        ]
+      : [
+          { dialysisCenterName: { contains: token } },
+          { title: { contains: token } },
+          { drInCharge: { contains: token } },
+          { panelNephrologist: { contains: token } },
+          { town: { contains: token } },
+          { address: { contains: token } },
+          { addressWithUnit: { contains: token } },
+        ];
+
+    if (phoneToken.length >= 3) {
+      tokenConditions.push(
+        { phoneNumber: { contains: phoneToken } },
+        { tel: { contains: phoneToken } },
+        { drInChargeTel: { contains: phoneToken } }
+      );
+    }
+
+    return { OR: tokenConditions };
+  });
+
+  return [{ AND: tokenFilters }];
+}
 
 // Dynamically import components with loading fallbacks
 const DialysisQuiz = dynamic(
@@ -44,14 +113,25 @@ async function getInitialCenters(
   const take = 12;
   const skip = (page - 1) * take;
 
-  const treatmentMap = {
-    hemodialisis: "HD Unit",
-    transplant: "TX Unit",
-    mrrb: "MRRB Unit",
-    "peritoneal dialisis": "PD Unit",
-  };
+  const andConditions: Prisma.DialysisCenterWhereInput[] = [
+    ...(city
+      ? [
+          {
+            OR: [
+              { town: { contains: city } },
+              { address: { contains: city } },
+              { addressWithUnit: { contains: city } },
+              { dialysisCenterName: { contains: city } },
+              { title: { contains: city } },
+            ],
+          },
+        ]
+      : []),
+    ...buildFlexibleSearchConditions(name),
+    ...buildFlexibleSearchConditions(doctor, true),
+  ];
 
-  const where = {
+  const where: Prisma.DialysisCenterWhereInput = {
     ...(sector && {
       sector:
         sector === "MOH_PRIVATE"
@@ -65,40 +145,18 @@ async function getInitialCenters(
     ...(state && {
       state: {
         name: {
-          equals: state.replace(/\s+/g, "-"),
+          equals: getDbStateName(state),
         },
       },
     }),
-    ...(treatment && {
-      units: {
-        contains: treatmentMap[treatment as keyof typeof treatmentMap],
-      },
-    }),
-    ...(city && {
-      OR: [
-        { town: { contains: city } },
-        { address: { contains: city } },
-        { addressWithUnit: { contains: city } },
-        { dialysisCenterName: { contains: city } },
-        { title: { contains: city } },
-      ],
-    }),
-    ...(doctor && {
-      drInCharge: {
-        contains: doctor,
-      },
-    }),
-    ...(name && {
-      dialysisCenterName: {
-        contains: name,
-      },
-    }),
+    ...(buildTreatmentUnitsWhere(treatment) ?? {}),
     ...(hepatitis &&
       hepatitis !== "tiada hepatitis" && {
         hepatitisBay: {
           equals: hepatitis === "b" ? "Hep B" : "Hep C",
         },
       }),
+    ...(andConditions.length > 0 && { AND: andConditions }),
   };
 
   try {
@@ -221,12 +279,21 @@ export async function generateMetadata({
       type: "website",
       siteName: "dialisis.my",
       locale: "ms_MY",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: "Cari pusat dialisis di Malaysia",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: "Cari Pusat Dialisis | Dialisis.my",
       description:
         "Cari pusat dialisis di Malaysia mengikut negeri, bandar, dan jenis rawatan.",
+      images: [`${baseUrl}/og-image.png`],
     },
   };
 }
@@ -266,10 +333,29 @@ export default async function DialysisCenterDirectory({
 
   return (
     <>
-      {/* SEO: Main heading for the page */}
-      <h1 className="text-2xl md:text-3xl font-bold text-center py-6">
-        Cari Pusat Dialisis di Malaysia
-      </h1>
+      {/* Hero Section */}
+      <div className="text-center py-8 md:py-12 px-4">
+        <h1 className="font-display text-3xl md:text-4xl font-semibold text-foreground mb-3">
+          Pusat Dialisis di Malaysia
+        </h1>
+        <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-6">
+          Cari lebih daripada 900 pusat dialisis berdekatan dengan anda.
+          Maklumat lengkap untuk membantu anda membuat keputusan yang tepat.
+        </p>
+
+        {/* Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-primary">
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Maklumat Terkini
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Sumber Rasmi
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4" /> Seluruh Malaysia
+          </span>
+        </div>
+      </div>
 
       {/* Add JSON-LD with streaming */}
       <Suspense>

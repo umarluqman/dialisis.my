@@ -1,0 +1,13 @@
+Total messages: 3 (Errors: 2, Warnings: 1)
+
+[ERROR] Connecting to 'https://ep1.adtrafficquality.google/getconfig/sodar?sv=200&tid=gda&tv=r20260424&st=env&sjk=6267489142754890' violates the following Content Security Policy directive: "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net". The action has been blocked. @ https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202604220101/show_ads_impl.js?bust=31098074:156
+[WARNING] The resource https://www.googletagmanager.com/gtag/js?id=G-8RNH5M9B1K was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/:0
+EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net".
+
+    at (app-pages-browser)/./node_modules/.pnpm/next@14.2.11_@opentelemetry+api@1.9.0_@playwright+test@1.46.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next/dist/compiled/@next/react-refresh-utils/dist/runtime.js (http://localhost:3000/_next/static/chunks/main-app.js?v=1777334579214:50:26)
+    at options.factory (http://localhost:3000/_next/static/chunks/webpack.js?v=1777334579214:715:31)
+    at __webpack_require__ (http://localhost:3000/_next/static/chunks/webpack.js?v=1777334579214:37:33)
+    at __webpack_exec__ (http://localhost:3000/_next/static/chunks/main-app.js?v=1777334579214:1996:61)
+    at http://localhost:3000/_next/static/chunks/main-app.js?v=1777334579214:1997:37
+    at webpackJsonpCallback (http://localhost:3000/_next/static/chunks/webpack.js?v=1777334579214:1387:39)
+    at http://localhost:3000/_next/static/chunks/main-app.js?v=1777334579214:9:61

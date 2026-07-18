@@ -88,7 +88,7 @@ export function generateLocationJsonLd({
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://dialisis.my/?search={search_term_string}",
+        urlTemplate: "https://dialisis.my/?name={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -97,45 +97,3 @@ export function generateLocationJsonLd({
   return jsonLd;
 }
 
-/**
- * Generates FAQ structured data for location pages
- */
-export function generateLocationFaqJsonLd(
-  stateName: string,
-  cityName?: string
-) {
-  const locationName = cityName ? `${cityName}, ${stateName}` : stateName;
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `Berapa banyak pusat dialisis di ${locationName}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Terdapat beberapa pusat dialisis di ${locationName} yang menyediakan perkhidmatan hemodialisis dan peritoneal dialisis. Sila semak senarai lengkap di laman ini untuk maklumat terkini.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Adakah terdapat pusat dialisis MOH di ${locationName}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Ya, terdapat pusat dialisis di bawah Kementerian Kesihatan Malaysia (MOH) dan juga pusat swasta di ${locationName}. Setiap pusat menyediakan perkhidmatan yang berkualiti untuk pesakit buah pinggang.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Bagaimana untuk membuat temujanji di pusat dialisis di ${locationName}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Untuk membuat temujanji, anda boleh menghubungi terus pusat dialisis melalui nombor telefon yang disediakan. Pastikan anda membawa rujukan doktor dan dokumen perubatan yang berkaitan.`,
-        },
-      },
-    ],
-  };
-
-  return jsonLd;
-}

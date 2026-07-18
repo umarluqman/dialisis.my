@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PopiconsArrowRightLine } from "@popicons/react";
+import { ArrowRight } from "lucide-react";
 import { getRelatedBlogPosts } from "@/lib/internal-linking-queries";
 
 interface RelatedBlogPostsProps {
@@ -42,7 +42,7 @@ export function RelatedBlogPosts({
             href={`/blog/${post.slug}`}
             className="flex items-start gap-3 p-3 rounded-lg border bg-card hover:bg-muted/50 transition-colors"
           >
-            <PopiconsArrowRightLine className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+            <ArrowRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
             <div className="min-w-0">
               <span className="font-medium text-foreground line-clamp-1">
                 {post.title}

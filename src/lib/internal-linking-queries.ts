@@ -3,8 +3,12 @@
  */
 
 import { prisma } from "@/lib/db";
-import { allPosts } from "contentlayer/generated";
-import { getDbStateName, createLocationSlug } from "./location-utils";
+import { posts } from "#velite";
+import {
+  getDbStateName,
+  createLocationSlug,
+  getTownsForState,
+} from "./location-utils";
 import {
   parseTreatmentTypes,
   haversineDistance,
@@ -233,14 +237,14 @@ export function getRelatedBlogPosts(params: {
 }): RelatedBlogPost[] {
   const { treatmentTypes, locale, limit = 3, excludeSlug } = params;
 
-  let posts = allPosts.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     if (excludeSlug && post.slug === excludeSlug) return false;
     if (locale && post.locale !== locale) return false;
     return true;
   });
 
   // Score by treatment type match
-  const scored = posts.map((post) => {
+  const scored = filteredPosts.map((post) => {
     const postTreatments = mapTagsToTreatments(post.tags || []);
     const matchScore =
       treatmentTypes.includes("all") || postTreatments.includes("all")
@@ -316,6 +320,53 @@ export async function getNeighboringLocations(
       }));
   } catch (error) {
     console.error("Error fetching neighboring locations:", error);
+    return [];
+  }
+}
+
+/**
+ * Get all cities in a state with center counts
+ */
+export async function getCitiesForState(
+  stateName: string
+): Promise<LocationLink[]> {
+  const dbStateName = getDbStateName(stateName);
+  const towns = getTownsForState(stateName);
+
+  try {
+    if (towns.length === 0) return [];
+
+    const counts = await Promise.all(
+      towns.map(async (town) => ({
+        name: town,
+        centerCount: await prisma.dialysisCenter.count({
+          where: {
+            state: { name: { equals: dbStateName } },
+            OR: [
+              { town: { contains: town } },
+              { address: { contains: town } },
+              { addressWithUnit: { contains: town } },
+            ],
+          },
+        }),
+      }))
+    );
+
+    const links = counts
+      .map((item) => ({
+        name: item.name,
+        slug: `/lokasi/${createLocationSlug(stateName)}/${createLocationSlug(item.name)}`,
+        centerCount: item.centerCount,
+      }))
+      .filter((link) => link.centerCount > 0)
+      .sort(
+        (a, b) =>
+          b.centerCount - a.centerCount || a.name.localeCompare(b.name)
+      );
+
+    return links;
+  } catch (error) {
+    console.error("Error fetching cities for state:", error);
     return [];
   }
 }

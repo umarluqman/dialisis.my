@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 import { generateAllLocationParams } from "@/lib/location-utils";
-import { allPosts } from "contentlayer/generated";
+import { posts } from "#velite";
 import type { MetadataRoute } from "next";
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
@@ -22,61 +22,37 @@ export default async function sitemap(props: {
   id: string;
 }): Promise<MetadataRoute.Sitemap> {
   const id = Number(props.id);
-  const currentDate = new Date();
 
   if (id === 0) {
     // Static pages
     const staticPages: MetadataRoute.Sitemap = [
       {
         url: baseUrl,
-        lastModified: currentDate,
-        changeFrequency: "weekly",
-        priority: 1,
       },
       {
         url: `${baseUrl}/tentang-kami`,
-        lastModified: currentDate,
-        changeFrequency: "monthly",
-        priority: 0.7,
       },
       {
         url: `${baseUrl}/peta`,
-        lastModified: currentDate,
-        changeFrequency: "weekly",
-        priority: 0.9,
       },
       {
         url: `${baseUrl}/hubungi-kami`,
-        lastModified: currentDate,
-        changeFrequency: "monthly",
-        priority: 0.8,
       },
       {
         url: `${baseUrl}/terma-dan-syarat`,
-        lastModified: currentDate,
-        changeFrequency: "yearly",
-        priority: 0.3,
       },
       {
         url: `${baseUrl}/polisi-privasi`,
-        lastModified: currentDate,
-        changeFrequency: "yearly",
-        priority: 0.3,
       },
       {
         url: `${baseUrl}/blog`,
-        lastModified: currentDate,
-        changeFrequency: "weekly",
-        priority: 0.8,
       },
     ];
 
     // Blog pages
-    const blogPages: MetadataRoute.Sitemap = allPosts.map((post) => ({
+    const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
       lastModified: new Date(post.date),
-      changeFrequency: "monthly",
-      priority: post.featured ? 0.8 : 0.6,
     }));
 
     // Location pages
@@ -88,9 +64,6 @@ export default async function sitemap(props: {
 
       return {
         url,
-        lastModified: currentDate,
-        changeFrequency: "monthly",
-        priority: param.city ? 0.7 : 0.8,
       };
     });
 
@@ -103,7 +76,6 @@ export default async function sitemap(props: {
     select: {
       slug: true,
       updatedAt: true,
-      createdAt: true,
     },
     orderBy: {
       updatedAt: "desc",
@@ -115,21 +87,5 @@ export default async function sitemap(props: {
   return centers.map((center) => ({
     url: `${baseUrl}/${center.slug}`,
     lastModified: center.updatedAt,
-    changeFrequency: determineChangeFrequency(center.createdAt, center.updatedAt),
-    priority: 0.9,
   }));
-}
-
-function determineChangeFrequency(
-  created: Date,
-  updated: Date
-): "daily" | "weekly" | "monthly" | "yearly" {
-  const daysSinceUpdate = Math.floor(
-    (Date.now() - updated.getTime()) / (1000 * 60 * 60 * 24)
-  );
-
-  if (daysSinceUpdate < 7) return "daily";
-  if (daysSinceUpdate < 30) return "weekly";
-  if (daysSinceUpdate < 365) return "monthly";
-  return "yearly";
 }

@@ -1,7 +1,9 @@
-import { allPosts, Post } from "contentlayer/generated";
+import { posts } from "#velite";
 import { generateBlogListJsonLd } from "@/lib/json-ld";
 import Link from "next/link";
 import { Metadata } from "next";
+
+type Post = (typeof posts)[number];
 
 interface Props {
   searchParams: { locale?: string };
@@ -12,11 +14,10 @@ export function generateMetadata({ searchParams }: Props): Metadata {
   const isEnglish = locale === "en";
   const baseUrl = "https://dialisis.my";
 
-  // Self-referencing canonical based on current locale
   const canonicalUrl = isEnglish ? `${baseUrl}/blog?locale=en` : `${baseUrl}/blog`;
 
   return {
-    title: "Blog | Dialisis.my",
+    title: "Blog",
     description: isEnglish
       ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
       : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
@@ -29,7 +30,7 @@ export function generateMetadata({ searchParams }: Props): Metadata {
       },
     },
     openGraph: {
-      title: "Blog | Dialisis.my",
+      title: "Blog Dialisis MY",
       description: isEnglish
         ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
         : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
@@ -37,6 +38,22 @@ export function generateMetadata({ searchParams }: Props): Metadata {
       type: "website",
       siteName: "dialisis.my",
       locale: isEnglish ? "en_MY" : "ms_MY",
+      images: [
+        {
+          url: `${baseUrl}/og-image.png`,
+          width: 1200,
+          height: 630,
+          alt: "Blog Dialisis MY",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Blog Dialisis MY",
+      description: isEnglish
+        ? "Articles about dialysis, kidney health, and healthcare in Malaysia"
+        : "Artikel tentang dialisis, kesihatan buah pinggang, dan penjagaan kesihatan di Malaysia",
+      images: [`${baseUrl}/og-image.png`],
     },
   };
 }
@@ -76,18 +93,21 @@ export default function BlogPage({ searchParams }: Props) {
   const locale = searchParams.locale || "ms";
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://dialisis.my";
 
-  const posts = allPosts
+  const filteredPosts = posts
     .filter((post) => (post.locale || "ms") === locale)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const featuredPosts = posts.filter((post) => post.featured);
-  const regularPosts = posts.filter((post) => !post.featured);
+  const featuredPosts = filteredPosts.filter((post) => post.featured);
+  const regularPosts = filteredPosts.filter((post) => !post.featured);
 
   const jsonLd = generateBlogListJsonLd(baseUrl, locale);
   const isEnglish = locale === "en";
 
   return (
-    <main className="container max-w-4xl py-8">
+    <main
+      lang={isEnglish ? "en" : "ms"}
+      className="container max-w-4xl py-8"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -148,7 +168,7 @@ export default function BlogPage({ searchParams }: Props) {
           ))}
         </div>
 
-        {posts.length === 0 && (
+        {filteredPosts.length === 0 && (
           <p className="text-muted-foreground py-8 text-center">
             {isEnglish ? "No articles yet." : "Tiada artikel lagi."}
           </p>

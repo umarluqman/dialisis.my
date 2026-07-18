@@ -4,20 +4,18 @@ import {
   ListObjectsV2Command,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { getAwsCredentials, getAwsRegion } from "@/lib/aws";
 import { Upload } from "@aws-sdk/lib-storage";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-// Initialize S3 client
 const s3Client = new S3Client({
-  region: process.env.AWS_REGION || "us-east-1",
-  credentials: {
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-  },
+  region: getAwsRegion(),
+  credentials: async () => getAwsCredentials(),
   forcePathStyle: true, // Use path-style URLs to avoid SSL certificate issues
 });
 
-const BUCKET_NAME = process.env.S3_BUCKET_NAME || process.env.AWS_S3_BUCKET_NAME || "dialisis.my";
+const BUCKET_NAME =
+  process.env.S3_BUCKET_NAME || process.env.AWS_S3_BUCKET_NAME || "dialisis.my";
 
 export interface UploadResult {
   url: string;
@@ -30,20 +28,23 @@ export interface ImageFile {
   originalName: string;
 }
 
-/**
- * Upload an image to S3
- */
-export async function uploadImageToS3(
-  file: ImageFile,
-  folder: string = "dialysis-centers"
-): Promise<UploadResult> {
+export async function uploadFileToS3({
+  file,
+  folder = "uploads",
+  cacheControl = "private, max-age=0, no-store",
+}: {
+  file: ImageFile;
+  folder?: string;
+  cacheControl?: string;
+}): Promise<UploadResult> {
   const timestamp = Date.now();
   const sanitizedName = file.originalName
     .toLowerCase()
     .replace(/[^a-z0-9.-]/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
 
-  const key = `${folder}/${timestamp}-${sanitizedName}`;
+  const key = `${folder}/${timestamp}-${sanitizedName || "file"}`;
 
   try {
     const upload = new Upload({
@@ -53,7 +54,7 @@ export async function uploadImageToS3(
         Key: key,
         Body: file.buffer,
         ContentType: file.mimetype,
-        CacheControl: "max-age=31536000", // Cache for 1 year
+        CacheControl: cacheControl,
         Metadata: {
           originalName: file.originalName,
           uploadedAt: new Date().toISOString(),
@@ -64,15 +65,28 @@ export async function uploadImageToS3(
     const result = await upload.done();
 
     return {
-      url: `https://s3.${
-        process.env.AWS_REGION || "ap-southeast-1"
-      }.amazonaws.com/${BUCKET_NAME}/${key}`,
+      url: `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${key}`,
       key,
     };
   } catch (error) {
     console.error("Error uploading to S3:", error);
-    throw new Error("Failed to upload image");
+    const detail = error instanceof Error ? error.message : String(error);
+    throw new Error(`Failed to upload file: ${detail}`);
   }
+}
+
+/**
+ * Upload an image to S3
+ */
+export async function uploadImageToS3(
+  file: ImageFile,
+  folder: string = "dialysis-centers"
+): Promise<UploadResult> {
+  return uploadFileToS3({
+    file,
+    folder,
+    cacheControl: "max-age=31536000",
+  });
 }
 
 /**
@@ -98,6 +112,13 @@ export async function deleteImageFromS3(key: string): Promise<void> {
 export async function getSignedImageUrl(
   key: string,
   expiresIn: number = 3600 // 1 hour
+): Promise<string> {
+  return getSignedFileUrl(key, expiresIn);
+}
+
+export async function getSignedFileUrl(
+  key: string,
+  expiresIn: number = 3600
 ): Promise<string> {
   try {
     const command = new GetObjectCommand({
@@ -127,9 +148,7 @@ export async function listCenterImages(centerId: string): Promise<string[]> {
     return (
       response.Contents?.map(
         (obj) =>
-          `https://s3.${
-            process.env.AWS_REGION || "ap-southeast-1"
-          }.amazonaws.com/${BUCKET_NAME}/${obj.Key}`
+          `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${obj.Key}`
       ) || []
     );
   } catch (error) {
@@ -161,7 +180,5 @@ export async function uploadCenterImages(
  * Get the public URL for an image (for public buckets)
  */
 export function getPublicImageUrl(key: string): string {
-  return `https://s3.${
-    process.env.AWS_REGION || "ap-southeast-1"
-  }.amazonaws.com/${BUCKET_NAME}/${key}`;
+  return `https://s3.${getAwsRegion()}.amazonaws.com/${BUCKET_NAME}/${key}`;
 }

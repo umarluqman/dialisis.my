@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { IntakeLeadForm } from "@/components/intake-lead-form";
 import {
   Carousel,
   CarouselContent,
@@ -8,9 +9,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ImagesResponse } from "@/types/center-image";
+import { useCenterImages } from "@/hooks/use-center-images";
 import { AnimatePresence, motion } from "framer-motion";
 import {
+  getCenterPhoneNumbers,
+  getPrimaryCenterPhoneNumber,
+} from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
+import {
+  CalendarPlus,
   Car,
   ExternalLink,
   Globe,
@@ -25,7 +33,6 @@ import {
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useState } from "react";
-import useSWR from "swr";
 import { Badge } from "./ui/badge";
 
 // Import map component dynamically to avoid SSR issues
@@ -69,6 +76,25 @@ const BENEFITS = [
   },
 ];
 
+function getCenterExtraDetails(benefits?: string | null) {
+  return (benefits ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const separatorIndex = line.indexOf(":");
+
+      if (separatorIndex === -1) {
+        return { label: null, value: line };
+      }
+
+      return {
+        label: line.slice(0, separatorIndex).trim(),
+        value: line.slice(separatorIndex + 1).trim(),
+      };
+    });
+}
+
 interface Props {
   center: {
     id: string;
@@ -80,7 +106,6 @@ interface Props {
     address: string;
     addressWithUnit: string;
     tel: string;
-    fax?: string | null;
     panelNephrologist?: string | null;
     centreManager?: string | null;
     centreCoordinator?: string | null;
@@ -111,23 +136,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
-  // Fetch center images from API
-  const fetcher = (url: string) => fetch(url).then((res) => res.json());
-  const {
-    data: imagesData,
-    error,
-    isLoading,
-  } = useSWR<ImagesResponse>(
-    `db
-    `,
-    fetcher
-  );
-
-  // Debug logging
-  console.log("Center ID:", center.id);
-  console.log("Images API Response:", imagesData);
-  console.log("Images API Error:", error);
-  console.log("Images Loading:", isLoading);
+  const { images, isLoading, error } = useCenterImages(center.id);
 
   // Fallback images for centers without uploaded images
   const isInBachok = center.town === "Bachok";
@@ -169,10 +178,9 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
         },
       ];
 
-  // Use uploaded images if available, otherwise fallback to default images
   const GALLERY_IMAGES =
-    imagesData?.images && imagesData.images.length > 0
-      ? imagesData.images.map((img, index) => ({
+    images.length > 0
+      ? images.map((img, index) => ({
           src: failedImages.has(img.url)
             ? FALLBACK_IMAGES[index % FALLBACK_IMAGES.length].src
             : img.url,
@@ -205,26 +213,30 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
   const shortAddress = center.town ? `${center.town}, ${stateName}` : stateName;
+  const phoneNumbers = getCenterPhoneNumbers(center);
+  const primaryPhoneNumber = getPrimaryCenterPhoneNumber(center);
+  const hasCoordinates = center.latitude != null && center.longitude != null;
+  const googleMapsHref = hasCoordinates
+    ? `https://www.google.com/maps?q=${center.latitude},${center.longitude}`
+    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        center.addressWithUnit || center.address || center.dialysisCenterName
+      )}`;
 
-  const hepatitisArray = center.hepatitisBay
-    ? center.hepatitisBay.split(", ")
-    : [];
-  const treatmentArray = center.units
-    ? center.units.split(", ").map((unit) => ({
-        name: unit,
-        value: unit.toLowerCase().includes("hd unit")
-          ? "Hemodialisis"
-          : unit.toLowerCase().includes("tx unit")
-          ? "Transplant"
-          : unit.toLowerCase().includes("mrrb unit")
-          ? "MRRB"
-          : "Peritoneal Dialisis",
-      }))
-    : [];
+  const hepatitisArray = getAvailableHepatitisOptions(center.hepatitisBay);
+  const extraDetails = getCenterExtraDetails(center.benefits);
+  const treatmentArray = getTreatmentBadges(center.units);
 
   return (
     <>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 pb-28">
+      <div
+        data-ga-context="center_detail"
+        data-center-id={center.id}
+        data-center-slug={center.slug}
+        data-center-name={center.dialysisCenterName}
+        data-center-town={center.town}
+        data-center-state={stateName}
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 pb-28"
+      >
         {/* Header Section */}
         <div className="space-y-2 text-center md:text-left md:flex md:justify-between md:items-end">
           <div>
@@ -232,6 +244,11 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               {center.dialysisCenterName}
             </h1>
             <p className="text-muted-foreground text-lg mt-2">{shortAddress}</p>
+            {center.description && (
+              <p className="text-muted-foreground mt-4 max-w-3xl">
+                {center.description}
+              </p>
+            )}
           </div>
           <div className="flex gap-2 flex-wrap justify-center md:justify-end mt-4 md:mt-0">
             {treatmentArray.map((treatment) => (
@@ -245,7 +262,7 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             {hepatitisArray.map((hep) => (
               <Badge
                 key={hep}
-                className="bg-amber-100 text-base text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                className="bg-featured/15 text-base text-featured-foreground shadow-none hover:bg-featured/25 font-normal"
               >
                 {hep}
               </Badge>
@@ -390,26 +407,26 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                   </div>
                 </div>
                 <div className="flex gap-2 mt-4">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                    asChild
-                  >
-                    <a
-                      href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {hasCoordinates && (
+                    <Button
+                      variant="outline"
+                      size="sm"
                       className="flex items-center gap-2"
+                      asChild
                     >
-                      Waze <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
+                      <a
+                        href={`https://www.waze.com/ul?ll=${center.latitude},${center.longitude}&navigate=yes`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        Waze <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  )}
                   <Button variant="outline" size="sm" asChild>
                     <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                        center.addressWithUnit
-                      )}`}
+                      href={googleMapsHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
@@ -422,29 +439,36 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               </div>
 
               <div className="space-y-4">
-                {center.phoneNumber && (
+                {phoneNumbers.length > 0 && (
                   <div className="flex gap-2 items-center">
-                    <Phone className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <Phone className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">Telefon:</p>
-                      <a
-                        href={`tel:${center.phoneNumber}`}
-                        className="text-primary-foreground hover:underline"
-                      >
-                        {center.phoneNumber}
-                      </a>
+                      <div className="flex flex-wrap gap-x-2 gap-y-1">
+                        {phoneNumbers.map((phoneNumber, index) => (
+                          <span key={phoneNumber}>
+                            <a
+                              href={`tel:${phoneNumber}`}
+                              className="text-primary hover:underline"
+                            >
+                              {phoneNumber}
+                            </a>
+                            {index < phoneNumbers.length - 1 ? "," : null}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 )}
 
                 {center.email && (
                   <div className="flex gap-2 items-center">
-                    <Mail className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <Mail className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">E-mel:</p>
                       <a
                         href={`mailto:${center.email}`}
-                        className="text-primary-foreground hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {center.email}
                       </a>
@@ -454,14 +478,14 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
 
                 {center.website && (
                   <div className="flex gap-2 items-center">
-                    <Globe className="w-5 h-5 text-primary-foreground flex-shrink-0" />
+                    <Globe className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                     <div>
                       <p className="font-medium">Laman Web:</p>
                       <a
                         href={center.website}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary-foreground hover:underline"
+                        className="text-primary hover:underline"
                       >
                         {center.website.replace(/^https?:\/\//, "")}
                       </a>
@@ -513,11 +537,34 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
                 )}
               </div>
             </div>
+
+            {extraDetails.length > 0 && (
+              <div className="mt-8">
+                <h2 className="text-2xl font-semibold mb-6">
+                  Maklumat Cawangan
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {extraDetails.map((detail, index) => (
+                    <div
+                      key={`${detail.label ?? detail.value}-${index}`}
+                      className="rounded-lg border p-4"
+                    >
+                      {detail.label && (
+                        <p className="font-medium text-zinc-500">
+                          {detail.label}
+                        </p>
+                      )}
+                      <p className="text-lg">{detail.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Map Section */}
           <div className="h-96 md:h-full min-h-[400px] bg-gray-100 rounded-lg overflow-hidden">
-            {center.latitude && center.longitude && (
+            {hasCoordinates && (
               <div className="h-full w-full">
                 <SingleCenterMap
                   center={
@@ -529,6 +576,12 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
             )}
           </div>
         </div>
+
+        <IntakeLeadForm
+          centerId={center.id}
+          centerName={center.dialysisCenterName}
+          className="mt-16"
+        />
 
         {/* Benefits Section */}
         <div className="mt-16">
@@ -551,7 +604,15 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
       </div>
 
       {/* Fixed CTA Section */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 z-40">
+      <div
+        data-ga-context="center_detail_fixed_cta"
+        data-center-id={center.id}
+        data-center-slug={center.slug}
+        data-center-name={center.dialysisCenterName}
+        data-center-town={center.town}
+        data-center-state={stateName}
+        className="fixed bottom-0 left-0 right-0 z-40 hidden border-t bg-white p-4 shadow-lg md:block"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center gap-4">
             <div className="flex-1">
@@ -561,38 +622,33 @@ export function EnhancedDialysisCenterDetails({ center }: Props) {
               <p className="text-sm text-muted-foreground">{shortAddress}</p>
             </div>
             <div className="flex flex-col gap-2 sm:flex-row">
+              {primaryPhoneNumber && (
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
+                  asChild
+                >
+                  <a href={`tel:${primaryPhoneNumber}`}>
+                    <Phone className="w-5 h-5 text-primary-foreground" />
+                    <span className="text-primary-foreground">
+                      Hubungi Sekarang
+                    </span>
+                  </a>
+                </Button>
+              )}
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-                asChild
-              >
-                <a href={`tel:${center.phoneNumber}`}>
-                  <Phone className="w-5 h-5 text-primary-foreground" />
-                  <span className="text-primary-foreground">
-                    Hubungi Sekarang
-                  </span>
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-                asChild
+                className="bg-primary hover:bg-primary/90 flex items-center gap-2"
                 onClick={() =>
-                  (window.location.href = `https://wa.me/+6${center.phoneNumber.replace(
-                    /[\s-]/g,
-                    ""
-                  )}?text=Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama.`)
+                  document
+                    .getElementById("borang-temujanji")
+                    ?.scrollIntoView({ behavior: "smooth", block: "start" })
                 }
               >
-                <div>
-                  <Image
-                    src="/whatsapp.svg"
-                    alt="WhatsApp"
-                    width={20}
-                    height={20}
-                  />
-                  <span className="text-primary-foreground">WhatsApp</span>
-                </div>
+                <CalendarPlus className="w-5 h-5 text-primary-foreground" />
+                <span className="text-primary-foreground">
+                  Borang Temujanji
+                </span>
               </Button>
             </div>
           </div>

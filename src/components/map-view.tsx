@@ -1,29 +1,34 @@
 "use client";
 
 import {
-  PopiconsGlobeDuotone,
-  PopiconsMailLine,
-  PopiconsPhoneLine,
-} from "@popicons/react";
-import { Loader2 } from "lucide-react";
+  ArrowRight,
+  CalendarPlus,
+  Globe,
+  Loader2,
+  MapPin,
+} from "lucide-react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { Drawer } from "vaul";
+import { IntakeLeadDialog } from "@/components/intake-lead-dialog";
+import { getCenterPhoneNumbers } from "@/lib/center-phone-numbers";
+import { getAvailableHepatitisOptions } from "@/lib/hepatitis";
+import { getTreatmentBadges } from "@/lib/treatment-units";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
 interface Center {
   id: string;
+  slug: string;
   dialysisCenterName: string;
   latitude: number;
   addressWithUnit: string;
-  phoneNumber: string;
+  phoneNumber?: string;
   longitude: number;
   address: string;
-  state: string;
+  state: string | { name: string };
   town: string;
   units: string;
   hepatitisBay: string;
@@ -45,6 +50,32 @@ const MALAYSIA_BOUNDS = {
 const DEFAULT_CENTER = [101.6869, 3.139]; // Malaysia center coordinates
 const DEFAULT_ZOOM = 5;
 
+function getSectorLabel(sector?: string) {
+  if (!sector) return null;
+
+  switch (sector) {
+    case "MOH":
+      return "Kerajaan";
+    case "MOH_PRIVATE":
+      return "Kerajaan & Swasta";
+    case "PRIVATE":
+      return "Swasta";
+    default:
+      return sector;
+  }
+}
+
+function getStateName(state: Center["state"]) {
+  if (typeof state !== "string") return state.name;
+
+  try {
+    const parsed = JSON.parse(state);
+    return parsed?.name ?? state;
+  } catch {
+    return state;
+  }
+}
+
 // Move this outside the component
 if (typeof window !== "undefined") {
   mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
@@ -54,6 +85,10 @@ export default function MapView({ center }: { center?: [number, number] }) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const [selectedCenter, setSelectedCenter] = useState<Center | null>(null);
+  const [leadCenter, setLeadCenter] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
   const [isLocating, setIsLocating] = useState(true);
   const [isOffline, setIsOffline] = useState(!navigator.onLine);
   const animationRef = useRef<number | null>(null);
@@ -283,16 +318,16 @@ export default function MapView({ center }: { center?: [number, number] }) {
             "circle-color": [
               "case",
               ["get", "hasFeatured"], // If cluster has featured centers
-              "#f59e0b", // Use amber/yellow for featured clusters
+              "#E5A820", // Warm amber gold for featured clusters
               [
                 // Otherwise use the original step-based coloring
                 "step",
                 ["get", "point_count"],
-                "#012f54", // Dark blue for small clusters
+                "#326B5A", // Deep forest green for small clusters
                 50,
-                "#2bde80", // Green for medium clusters
+                "#326B5A", // Deep forest green for medium clusters
                 100,
-                "#a3bdff", // Light blue for large clusters
+                "#4A8B7A", // Lighter forest green for large clusters
               ],
             ],
             "circle-radius": [
@@ -318,7 +353,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
           source: "centers",
           filter: ["all", ["has", "point_count"], ["get", "hasFeatured"]],
           paint: {
-            "circle-color": "#fbbf24", // Amber color
+            "circle-color": "#F0C040", // Light warm amber
             "circle-radius": [
               "step",
               ["get", "point_count"],
@@ -330,7 +365,7 @@ export default function MapView({ center }: { center?: [number, number] }) {
             ],
             "circle-opacity": 0.15, // Start from lower opacity
             "circle-stroke-width": 2,
-            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-color": "#E5A820", // Warm amber gold for stroke
             "circle-stroke-opacity": 0.3,
             "circle-blur": 0.8, // Increased blur for softer edges
           },
@@ -362,8 +397,8 @@ export default function MapView({ center }: { center?: [number, number] }) {
             "circle-color": [
               "case",
               ["==", ["get", "featured"], true],
-              "#f59e0b", // Amber color for featured centers
-              "#012f54", // Default dark blue for other centers
+              "#E5A820", // Warm amber gold for featured centers
+              "#326B5A", // Deep forest green for other centers
             ],
             "circle-radius": [
               "case",
@@ -384,11 +419,11 @@ export default function MapView({ center }: { center?: [number, number] }) {
           source: "centers",
           filter: ["==", ["get", "featured"], true],
           paint: {
-            "circle-color": "#fbbf24", // Amber color
+            "circle-color": "#F0C040", // Light warm amber
             "circle-radius": 20, // Start from smaller size
             "circle-opacity": 0.15, // Start from lower opacity
             "circle-stroke-width": 2,
-            "circle-stroke-color": "#f59e0b", // Slightly darker amber for stroke
+            "circle-stroke-color": "#E5A820", // Warm amber gold for stroke
             "circle-stroke-opacity": 0.3,
             "circle-blur": 0.8, // Increased blur for softer edges
           },
@@ -485,24 +520,18 @@ export default function MapView({ center }: { center?: [number, number] }) {
     };
   }, [center]);
 
-  const unitsArray = selectedCenter?.units
-    ? selectedCenter.units.split(",")
-    : [];
   const title = selectedCenter?.dialysisCenterName?.split(",")[0];
+  const stateName = selectedCenter ? getStateName(selectedCenter.state) : "";
+  const sectorLabel = getSectorLabel(selectedCenter?.sector);
+  const address = selectedCenter?.addressWithUnit || selectedCenter?.address;
 
-  const hepatitisArray = selectedCenter?.hepatitisBay
-    ? selectedCenter.hepatitisBay.split(", ")
+  const hepatitisArray = getAvailableHepatitisOptions(
+    selectedCenter?.hepatitisBay
+  );
+  const phoneNumbers = selectedCenter ? getCenterPhoneNumbers(selectedCenter) : [];
+  const treatmentArray = selectedCenter
+    ? getTreatmentBadges(selectedCenter.units)
     : [];
-  const treatmentArray = unitsArray.map((unit) => ({
-    name: unit,
-    value: unit.toLowerCase().includes("hd unit")
-      ? "Hemodialisis"
-      : unit.toLowerCase().includes("tx unit")
-      ? "Transplant"
-      : unit.toLowerCase().includes("mrrb unit")
-      ? "MRRB"
-      : "Peritoneal Dialisis",
-  }));
 
   return (
     <>
@@ -535,47 +564,50 @@ export default function MapView({ center }: { center?: [number, number] }) {
         onOpenChange={() => setSelectedCenter(null)}
       >
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-10" />
-          {/* <Drawer.Title>{selectedCenter?.dialysisCenterName}</Drawer.Title> */}
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 mb-24 flex h-[85vh] flex-col rounded-t-[10px] bg-white z-20">
+          <Drawer.Overlay className="fixed inset-0 bg-black/40 z-[60]" />
+          <Drawer.Content className="fixed bottom-0 left-0 right-0 mb-24 flex h-[85vh] flex-col rounded-t-[10px] bg-white z-[70]">
             <div className="flex-1 rounded-t-[10px] bg-white p-4">
               <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-zinc-300" />
               {selectedCenter && (
                 <div className="mx-auto max-w-md">
                   {selectedCenter.featured && (
                     <div className="flex items-center gap-1 ml-auto mb-2">
-                      <Badge className="bg-amber-50 text-amber-600 hover:bg-amber-50 shadow-none font-normal border border-amber-400">
+                      <Badge className="bg-featured/10 text-featured-foreground hover:bg-featured/10 shadow-none font-normal border border-featured/40">
                         Pusat Pilihan 👍
                       </Badge>
                     </div>
                   )}
                   <h2 className="text-xl font-semibold">{title}</h2>
-                  <div className="flex items-center gap-2">
-                    <p className="text-primary-foreground mb-4">
-                      {selectedCenter?.sector === "MOH" ||
-                      selectedCenter?.sector === "NGO" ? (
-                        selectedCenter?.sector
-                      ) : (
-                        <span className="capitalize">
-                          {selectedCenter?.sector?.toLowerCase() ?? ""}
-                        </span>
-                      )}
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <p className="text-muted-foreground text-sm capitalize">
+                      {selectedCenter.town ? `${selectedCenter.town}, ` : ""}
+                      {stateName}
                     </p>
+                    {sectorLabel && (
+                      <Badge variant="subtle" className="text-xs">
+                        {sectorLabel}
+                      </Badge>
+                    )}
                   </div>
-                  <p className="mt-3 text-zinc-600">
-                    {selectedCenter.addressWithUnit}
-                  </p>
-                  <p className="mt-2 text-zinc-600">
-                    {selectedCenter.town ? selectedCenter.town + ", " : " "}
-                    {JSON.parse(selectedCenter.state)
-                      .name.split(" ")
-                      .map(
-                        (word: string) =>
-                          word.charAt(0).toUpperCase() +
-                          word.slice(1).toLowerCase()
-                      )
-                      .join(" ")}
-                  </p>
+                  {address && (
+                    <p className="mt-4 text-zinc-600">{address}</p>
+                  )}
+                  {phoneNumbers.length > 0 && (
+                    <div className="mt-3">
+                      <p className="text-sm text-zinc-500">Telefon</p>
+                      <div className="mt-1 flex flex-wrap gap-2">
+                        {phoneNumbers.map((phoneNumber) => (
+                          <a
+                            key={phoneNumber}
+                            href={`tel:${phoneNumber}`}
+                            className="text-sm text-primary hover:underline"
+                          >
+                            {phoneNumber}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                   <div className="flex flex-col gap-2 mt-8">
                     <div className="text-sm text-zinc-500">Jenis Rawatan</div>
                     <div className="flex flex-wrap gap-2">
@@ -596,12 +628,11 @@ export default function MapView({ center }: { center?: [number, number] }) {
                         {hepatitisArray.map((hep) => (
                           <Badge
                             key={hep}
-                            className="bg-amber-200 text-amber-800 shadow-none hover:bg-amber-200 font-normal"
+                            className="bg-featured/20 text-featured-foreground shadow-none hover:bg-featured/30 font-normal"
                           >
                             {hep}
                           </Badge>
                         ))}
-                        {/* <PopiconsCircleInfoLine className="cursor-pointer w-4 h-4 text-zinc-500" /> */}
                       </div>
                     ) : null}
                   </div>
@@ -614,55 +645,61 @@ export default function MapView({ center }: { center?: [number, number] }) {
                     >
                       <Button
                         variant={"ghost"}
-                        className="text-primary-foreground mb-4"
+                        className="text-foreground mb-4"
                       >
-                        <PopiconsGlobeDuotone className="w-4 h-4 text-primary-foreground" />
+                        <Globe className="w-4 h-4" />
                         {selectedCenter.website.split("?")[0]}
                       </Button>
                     </Link>
                   )}
 
-                  <div className="flex gap-4 justify-end">
-                    <Link href={`tel:${selectedCenter.phoneNumber}`}>
-                      <Button variant="outline" className="px-4">
-                        <PopiconsPhoneLine className="w-4 h-4 text-primary-foreground" />
-                        Panggil
-                      </Button>
-                    </Link>
+                  <div className="flex flex-wrap gap-2">
                     {selectedCenter.featured ? (
                       <Button
-                        size="lg"
-                        className="bg-primary hover:bg-primary/90 text-white flex items-center gap-2"
-                        asChild
-                        onClick={() =>
-                          (window.location.href = `https://wa.me/+6${selectedCenter?.phoneNumber.replace(
-                            /[\s-]/g,
-                            ""
-                          )}?text=Assalamualaikum%2FSalam%20sejahtera%2C%0A%0AUntuk%20tujuan%20pendaftaran%2Fperkhidmatan%20dialisis%2C%20mohon%20isikan%20maklumat%20berikut%3A%0A%0A%F0%9F%A7%A1%EF%B8%8F%20Nama%20Pesakit%3A%0A%0A%F0%9F%93%9E%20Nombor%20Telefon%3A%0A%0A%F0%9F%86%95%20Jenis%20Pesakit%3A%0A(Sila%20pilih%20satu%3A%20Pesakit%20Baru%20%2F%20Tumpang%20Sementara)%0A%0A%F0%9F%8F%A0%20Tempat%20Tinggal%20(Alamat%20Ringkas)%3A%0A%0AContoh%20jawapan%3A%0A%0AAhmad%20bin%20Ali%0A%0A012-3456789%0A%0ATumpang%20Sementara%0A%0ATaman%20Maju%2C%20Parit%20Raja%0A%0ATerima%20kasih%20atas%20kerjasama.`)
-                        }
+                        size="sm"
+                        className="bg-primary hover:bg-primary/90 flex items-center gap-2"
+                        onClick={() => {
+                          setLeadCenter({
+                            id: selectedCenter.id,
+                            name: title ?? selectedCenter.dialysisCenterName,
+                          });
+                          setSelectedCenter(null);
+                        }}
                       >
-                        <div>
-                          <Image
-                            src="/whatsapp.svg"
-                            alt="WhatsApp"
-                            width={20}
-                            height={20}
-                          />
-                          <span className="text-primary-foreground">
-                            WhatsApp
-                          </span>
-                        </div>
+                        <CalendarPlus className="w-5 h-5 text-primary-foreground" />
+                        <span className="text-primary-foreground">
+                          Temujanji
+                        </span>
                       </Button>
                     ) : null}
 
-                    {selectedCenter.email && (
-                      <Link href={`mailto:${selectedCenter.email}`}>
-                        <Button variant={"outline"} className="px-4">
-                          <PopiconsMailLine className="w-4 h-4 text-primary-foreground" />
-                          Emel
+                    {selectedCenter.latitude && selectedCenter.longitude && (
+                      <Link
+                        href={`https://www.google.com/maps?q=${selectedCenter.latitude},${selectedCenter.longitude}`}
+                        target="_blank"
+                      >
+                        <Button variant="outline" size="sm">
+                          <MapPin className="w-4 h-4 text-foreground" />
+                          Lokasi
                         </Button>
                       </Link>
                     )}
+
+                    <Link
+                      href={`/${selectedCenter.slug}`}
+                      scroll={false}
+                      className="ml-auto"
+                    >
+                      <Button
+                        variant={
+                          selectedCenter.featured ? "default" : "secondary"
+                        }
+                        size="sm"
+                      >
+                        Info Lanjut
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
                   </div>
 
                   {/* <Button
@@ -678,6 +715,17 @@ export default function MapView({ center }: { center?: [number, number] }) {
           </Drawer.Content>
         </Drawer.Portal>
       </Drawer.Root>
+
+      {leadCenter && (
+        <IntakeLeadDialog
+          centerId={leadCenter.id}
+          centerName={leadCenter.name}
+          open
+          onOpenChange={(open) => {
+            if (!open) setLeadCenter(null);
+          }}
+        />
+      )}
     </>
   );
 }
